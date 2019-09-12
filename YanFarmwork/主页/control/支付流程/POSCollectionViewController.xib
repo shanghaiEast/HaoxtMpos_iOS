@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="POSCollectionViewController">
+            <connections>
+                <outlet property="stateBGImageView" destination="snr-6B-qMT" id="vBR-sD-qGc"/>
+                <outlet property="stateLabel" destination="lbQ-Wp-f5W" id="BpH-3v-Z5c"/>
+                <outlet property="toolsImageView" destination="sFW-uR-4os" id="ECp-BO-XdD"/>
+                <outlet property="toolsNameLabel" destination="hWK-Sy-QwF" id="mY9-xM-vTZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchTools.png" translatesAutoresizingMaskIntoConstraints="NO" id="snr-6B-qMT">
+                    <rect key="frame" x="60" y="20" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="Bw9-za-1Ke"/>
+                        <constraint firstAttribute="width" secondItem="snr-6B-qMT" secondAttribute="height" multiplier="1:1" id="Jyx-4b-6eS"/>
+                        <constraint firstAttribute="width" constant="200" id="N2i-Am-BWK"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请连接刷卡器" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbQ-Wp-f5W">
+                    <rect key="frame" x="16" y="237" width="288" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="KIg-VR-ta7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <color key="textColor" red="0.25882631540000001" green="0.25881996750000003" blue="0.25882121920000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toolsBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="gtV-RF-Cxq">
+                    <rect key="frame" x="15" y="442" width="290" height="76"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="76" id="A8I-6M-Jhp"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toolsImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="sFW-uR-4os">
+                    <rect key="frame" x="36" y="463" width="53" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="53" id="sak-LQ-MW3"/>
+                        <constraint firstAttribute="height" constant="35" id="yuH-lR-29g"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新国都-G2 自备机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-Sy-QwF">
+                    <rect key="frame" x="97" y="470" width="195" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Uc7-Xp-uFo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <color key="textColor" red="0.25882631540298462" green="0.25881996750831604" blue="0.25882121920585632" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="sFW-uR-4os" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="36" id="45g-do-tyY"/>
+                <constraint firstAttribute="bottom" secondItem="sFW-uR-4os" secondAttribute="bottom" constant="70" id="4wM-gz-a5c"/>
+                <constraint firstAttribute="trailing" secondItem="hWK-Sy-QwF" secondAttribute="trailing" constant="28" id="B4k-7M-gme"/>
+                <constraint firstItem="snr-6B-qMT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="D2W-aD-q1m"/>
+                <constraint firstItem="hWK-Sy-QwF" firstAttribute="leading" secondItem="sFW-uR-4os" secondAttribute="trailing" constant="8" id="KcT-aM-rRw"/>
+                <constraint firstAttribute="bottom" secondItem="hWK-Sy-QwF" secondAttribute="bottom" constant="77" id="UKj-p4-8h1"/>
+                <constraint firstItem="lbQ-Wp-f5W" firstAttribute="top" secondItem="snr-6B-qMT" secondAttribute="bottom" constant="17" id="XIa-kT-rGF"/>
+                <constraint firstItem="lbQ-Wp-f5W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="bpV-YS-m5x"/>
+                <constraint firstAttribute="bottom" secondItem="gtV-RF-Cxq" secondAttribute="bottom" constant="50" id="r0j-cD-FoK"/>
+                <constraint firstAttribute="trailing" secondItem="lbQ-Wp-f5W" secondAttribute="trailing" constant="16" id="sl9-Qy-djp"/>
+                <constraint firstItem="snr-6B-qMT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sws-hg-tsO"/>
+                <constraint firstAttribute="trailing" secondItem="gtV-RF-Cxq" secondAttribute="trailing" constant="15" id="yXx-no-s97"/>
+                <constraint firstItem="gtV-RF-Cxq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="zsc-Fd-XsP"/>
+            </constraints>
+            <point key="canvasLocation" x="108.75" y="62.323943661971832"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="searchTools.png" width="219" height="211"/>
+        <image name="toolsBG.png" width="338" height="68"/>
+        <image name="toolsImage.png" width="58" height="45"/>
+    </resources>
+</document>

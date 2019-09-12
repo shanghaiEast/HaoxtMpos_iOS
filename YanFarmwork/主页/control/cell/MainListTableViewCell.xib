@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="MainListTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-hl-ibv">
+                        <rect key="frame" x="15" y="69" width="289" height="0.0"/>
+                        <color key="backgroundColor" red="0.92157727479934692" green="0.92155736684799194" blue="0.92156130075454712" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCC-64-tz1">
+                        <rect key="frame" x="30" y="27" width="25" height="16"/>
+                        <color key="backgroundColor" red="0.96459382772445679" green="0.9176899790763855" blue="0.89802736043930054" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.86601585149765015" green="0.49070835113525391" blue="0.29796162247657776" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="6ii-C3-hfW"/>
+                            <constraint firstAttribute="width" constant="25" id="WRQ-Yc-v1l"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.86601585149765015" green="0.49070835113525391" blue="0.29796162247657776" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝尾号 (2234)交易 236.00元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVN-Tt-Zvh">
+                        <rect key="frame" x="68" y="15" width="222" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <color key="textColor" red="0.20000222325325012" green="0.19999706745147705" blue="0.19999805092811584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易日期：2019/12/13 15:23:11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWe-g4-L1n">
+                        <rect key="frame" x="68" y="36" width="221" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.6000058650970459" green="0.59999251365661621" blue="0.5999951958656311" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="mVN-Tt-Zvh" secondAttribute="trailing" constant="30" id="1qh-Xh-Fha"/>
+                    <constraint firstItem="tCC-64-tz1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="27" id="2RQ-eO-eqL"/>
+                    <constraint firstItem="VWe-g4-L1n" firstAttribute="top" secondItem="mVN-Tt-Zvh" secondAttribute="bottom" id="8MC-q0-uWj"/>
+                    <constraint firstAttribute="trailing" secondItem="VWe-g4-L1n" secondAttribute="trailing" constant="31" id="JIm-f9-B0j"/>
+                    <constraint firstItem="mVN-Tt-Zvh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="L8h-L2-7FC"/>
+                    <constraint firstItem="mVN-Tt-Zvh" firstAttribute="leading" secondItem="tCC-64-tz1" secondAttribute="trailing" constant="13" id="VYl-Xr-1no"/>
+                    <constraint firstItem="tCC-64-tz1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Y80-pj-vk3"/>
+                    <constraint firstAttribute="bottom" secondItem="Z2a-hl-ibv" secondAttribute="bottom" constant="0.5" id="f7c-pl-8MZ"/>
+                    <constraint firstItem="Z2a-hl-ibv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="q5D-O9-LsS"/>
+                    <constraint firstItem="VWe-g4-L1n" firstAttribute="leading" secondItem="tCC-64-tz1" secondAttribute="trailing" constant="13" id="tRy-6F-lC6"/>
+                    <constraint firstAttribute="trailing" secondItem="Z2a-hl-ibv" secondAttribute="trailing" constant="16" id="unj-OF-psg"/>
+                    <constraint firstItem="Z2a-hl-ibv" firstAttribute="top" secondItem="tCC-64-tz1" secondAttribute="bottom" constant="26" id="yqA-xf-VzH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="timeStyleLabel" destination="tCC-64-tz1" id="3W9-u4-Fab"/>
+                <outlet property="titleLabel" destination="mVN-Tt-Zvh" id="qE5-Bm-JU8"/>
+                <outlet property="tradTimeLabel" destination="VWe-g4-L1n" id="EfM-eg-isP"/>
+            </connections>
+            <point key="canvasLocation" x="56.521739130434788" y="88.392857142857139"/>
+        </tableViewCell>
+    </objects>
+</document>

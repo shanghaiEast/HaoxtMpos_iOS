@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="KGk-i7-Jjw" customClass="EmptyTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="299.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptycell.png" translatesAutoresizingMaskIntoConstraints="NO" id="GL3-Cd-YmU">
+                        <rect key="frame" x="96" y="79" width="128" height="87"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="GL3-Cd-YmU" secondAttribute="height" multiplier="128:87" id="0gs-dA-eZn"/>
+                            <constraint firstAttribute="width" constant="128" id="PGs-TM-HHb"/>
+                            <constraint firstAttribute="height" constant="87" id="UNd-Vq-eNb"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无消息…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeR-iA-xrz">
+                        <rect key="frame" x="0.0" y="168" width="320" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="pc8-j1-lQy"/>
+                            <constraint firstAttribute="height" constant="21" id="qQE-m5-YJZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.68235951662063599" green="0.68234449625015259" blue="0.68234741687774658" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="GL3-Cd-YmU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="24" id="85T-cS-Eux"/>
+                    <constraint firstAttribute="trailing" secondItem="XeR-iA-xrz" secondAttribute="trailing" id="HGk-hR-984"/>
+                    <constraint firstItem="GL3-Cd-YmU" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="OrO-VQ-2Gh"/>
+                    <constraint firstItem="XeR-iA-xrz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ad5-bi-1g1"/>
+                    <constraint firstItem="XeR-iA-xrz" firstAttribute="top" secondItem="GL3-Cd-YmU" secondAttribute="bottom" constant="2" id="j7G-Qd-SfD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="emptyImageView" destination="GL3-Cd-YmU" id="mk7-7J-JcA"/>
+                <outlet property="emptyTitleLabel" destination="XeR-iA-xrz" id="Xms-hp-exJ"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="217.63392857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="emptycell.png" width="100" height="85"/>
+    </resources>
+</document>

@@ -1,0 +1,218 @@
+//
+//  PrefixHeader.pch
+//  YanFarmwork
+//
+//  Created by Jack Yan on 2019/2/27.
+//  Copyright © 2019年 Yanhuaqiang. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
+
+#import <UIKit/UIKit.h>
+
+#import "AppDelegate.h"
+#import "GetXToken.h"
+#import "YanNetworkOBJ.h"
+#import "MyTools.h"//导航栏封装
+#import "UIColor+WFHex.h"//日常颜色
+#import "UIImage+UIImage_GradientChange.h"//导航栏颜色
+#import <MBProgressHUD.h>
+#import "AESUtility.h"
+#import <AdSupport/ASIdentifierManager.h>
+#import "ToolsObject.h"
+#import <MJRefresh/MJRefresh.h>
+#import <UIImageView+WebCache.h>
+
+
+//baidu keys
+#define baiduKey @"oOb6rUHuoPMtWGxzfYS7RTjx8pTviwj8"
+#define myBundleID @"com.huaTong.one"
+
+
+//JPush
+#define PUSH_JGPUSH_APPKEY @"c08d159a36fa3f040686bd0f"
+#define PUBLISH_CHANNEL @"App Store"
+//是否为生产
+#define ISPRODUCTION TRUE
+
+
+//APP数据安全加密
+#define privateKeys @"i*&l@s[d"
+
+
+#define myToken @""
+
+
+#define ScreenWidth    (CGFloat)[UIScreen mainScreen].bounds.size.width
+
+#define ScreenHeight    (CGFloat)[UIScreen mainScreen].bounds.size.height
+
+#define YYISiPhoneX [[UIScreen mainScreen] bounds].size.width >=375.0f && [[UIScreen mainScreen] bounds].size.height >=812.0f&& YYIS_IPHONE
+#define YYIS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+//状态栏高度
+#define kStatusBarHeight (CGFloat)(YYISiPhoneX?(44):(20))
+// 导航栏高度
+#define kNavBarHBelow7 (44)
+// 状态栏和导航栏总高度
+#define kNavBarHAbove7 (CGFloat)(YYISiPhoneX?(88):(64))
+// TabBar高度
+#define kTabBarHeight (CGFloat)(YYISiPhoneX?(49+34):(49))
+// 顶部安全区域远离高度
+#define kTopBarSafeHeight (CGFloat)(YYISiPhoneX?(44):(0))
+// 底部安全区域远离高度
+#define kBottomSafeHeight (CGFloat)(YYISiPhoneX?(34):(0))
+// iPhoneX的状态栏高度差值
+#define kTopBarDifHeight (CGFloat)(YYISiPhoneX?(24):(0))
+
+
+
+
+
+#define checkNull(__X__)        (__X__) == [NSNull null] || (__X__) == nil ? @"" : [NSString stringWithFormat:@"%@", (__X__)]
+
+
+//// 状态栏(statusbar)
+//#define StatusHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+//
+////标题栏
+//#define  NavHeight self.navigationController.navigationBar.frame.size.height
+//
+//#define  topBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height + self.navigationController.navigationBar.frame.size.height)
+//
+////标签栏
+//#define  TabbarHeight [(AppDelegate *)[[UIApplication sharedApplication] delegate] tabBarC].tabBar.frame.size.height
+
+
+#define iOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
+
+/** 获取APP名称 */
+#define APP_NAME ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"])
+
+/** 程序版本号 */
+#define APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
+/** 获取APP build版本 */
+#define APP_BUILD ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"])
+
+
+//判断系统版本
+#define iOS7Later ([UIDevice currentDevice].systemVersion.floatValue >= 7.0f)
+#define iOS8Later ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f)
+#define iOS9Later ([UIDevice currentDevice].systemVersion.floatValue >= 9.0f)
+#define iOS11Later ([UIDevice currentDevice].systemVersion.floatValue >= 11.0f)
+
+
+#define defaultBarBackImage_black [UIImage imageNamed:@"backBtnImage"]
+#define defaultBarBackImage_White [UIImage imageNamed:@"backBtnImageWhite"]
+
+//导航栏背景颜色
+#define NavigationBarColor [UIColor colorWithHexString:@"#ffffff"]//白色
+//标签背景颜色
+#define redTabbarColor [UIColor colorWithHexString:@"#C40629"]//红色
+
+#define MAINCOLOR [UIColor colorWithHexString:@"#FE4049"]
+
+#define WHITECOLOR [UIColor colorWithHexString:@"#ffffff"]
+#define BLACKCOLOR [UIColor colorWithHexString:@"#333333"]
+
+//NSLog(...)提交状态下注释；
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define NSLog(...)
+#define debugMethod()
+#endif
+
+
+//收款模式
+#define PUSHTAG [[NSUserDefaults standardUserDefaults] objectForKey:@"PUSHTAG"]
+
+//是否记住密码
+#define ISMINDPW [[[NSUserDefaults standardUserDefaults] valueForKey:@"mindPW"] objectForKey:@"isMindPW"]
+//密码
+#define PW [[[NSUserDefaults standardUserDefaults] valueForKey:@"mindPW"] objectForKey:@"password"]
+//手机号
+#define PHONE [[[NSUserDefaults standardUserDefaults] valueForKey:@"mindPW"] objectForKey:@"phone"]
+
+
+
+//-----------------------------------OCR--------------------
+/*SDK授权码（此授权码为测试授权码）请更换为从云从科技获取的正式授权码
+ Demo中把授权码、ip地址都是存在NSUserDefaults里的，更换对应值之后卸载重新运行Demo */
+
+//#error please change the authcodeString请替换从云从科技获取的授权码 然后删除此行错误警告（正式上线时请替换为正式授权码）
+#define AuthCodeString @"MDYxNjE2bm9kZXZpY2Vjd2F1dGhvcml6ZfXn5efk5ubk/OXm4OXn5uP35ubn5ODm4JHl5ubr5ebmouvl5ubr5ebE5uvl5ubr5cjm5uvl5ubgq+bn6+fr5+vX5+Dn6+fr597r5+bm5uXm/uU="
+
+/*此服务器地址为云从科技演示地址 请更换为部署的私有云或者公有云服务器地址
+ Demo中把授权码、ip地址都是存在NSUserDefaults里的，更换对应值之后卸载重新运行Demo*/
+#define  DefaultIpAddress @"http://192.168.10.174:8000"
+
+/*从云从科技获取的云之眼api授权app_id  部署的私有云可默认使用user*/
+
+#define  DefaultApp_id @"user"
+
+/*从云从科技获取的api授权App_secret  部署的私有云可默认使用12345*/
+#define  DefaultApp_secret  @"12345"
+
+/*获取ip地址、app_id、app_secret*/
+#define IpAddress  [CWCommon getValueForKey:@"ipAddress"]
+
+/*此app_id为云从科技云之眼引擎的app_id 和联网鉴身平台的apiKey不是同一个，调用联网鉴身平台的接口请参考联网鉴身平台接口自行实现*/
+#define App_id  [CWCommon getValueForKey:@"app_id"]
+
+/*此App_secret为云从科技云之眼引擎的App_secret 和联网鉴身平台的appSecret不是同一个，调用联网鉴身平台的接口请参考联网鉴身平台接口自行实现*/
+
+#define App_secret  [CWCommon getValueForKey:@"app_secret"]
+
+/*人脸比对阈值  推荐阈值为0.7*/
+#define  ThresholdValue  0.7f
+
+/*活体动作个数*/
+#define  LivessNumber  3
+
+//-----------------------------------OCR--------------------
+
+
+
+
+
+
+#define companyKey @"T5E5YuUk796nBRIs523i6A3DT95cGIF4"
+
+#define URL_BASE @"http://192.168.1.40:8822/app"
+
+
+
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //

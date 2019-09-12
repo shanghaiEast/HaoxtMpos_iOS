@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DebitCardViewController">
+            <connections>
+                <outlet property="bankCardID" destination="rux-hE-vwT" id="nK0-5e-APb"/>
+                <outlet property="bankCardType" destination="zUM-GY-dpx" id="hPc-vr-xyy"/>
+                <outlet property="bankLogoImageView" destination="zh2-47-lnb" id="QMI-k7-FFa"/>
+                <outlet property="bankNameLabel" destination="8Tj-AA-bCR" id="8C8-oc-bU4"/>
+                <outlet property="cardView" destination="YkZ-Qf-6CV" id="FZr-js-Myo"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkZ-Qf-6CV">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditCardBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="kHb-8Z-372">
+                            <rect key="frame" x="8" y="29" width="304" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="kHb-8Z-372" secondAttribute="height" multiplier="19:8" id="BLA-xg-bKV"/>
+                                <constraint firstAttribute="height" constant="128" id="imV-xq-SB1"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中信实业银行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tj-AA-bCR">
+                            <rect key="frame" x="71" y="56" width="223" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="V18-9m-pvQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="储蓄卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUM-GY-dpx">
+                            <rect key="frame" x="71" y="75" width="223" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="XRM-OX-JYe"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123123******3123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rux-hE-vwT">
+                            <rect key="frame" x="71" y="111" width="223" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Cz5-e3-OYm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="中信logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="zh2-47-lnb">
+                            <rect key="frame" x="25" y="58" width="42" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="CIG-ew-KUe"/>
+                                <constraint firstAttribute="width" constant="42" id="kqb-N8-cfZ"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="kHb-8Z-372" secondAttribute="bottom" id="6a3-df-1S0"/>
+                        <constraint firstItem="8Tj-AA-bCR" firstAttribute="leading" secondItem="zh2-47-lnb" secondAttribute="trailing" constant="4" id="7UI-xO-jyE"/>
+                        <constraint firstItem="rux-hE-vwT" firstAttribute="leading" secondItem="YkZ-Qf-6CV" secondAttribute="leading" constant="71" id="BOO-EX-qJ1"/>
+                        <constraint firstItem="rux-hE-vwT" firstAttribute="top" secondItem="8Tj-AA-bCR" secondAttribute="bottom" constant="35" id="Ch2-JT-Ofe"/>
+                        <constraint firstAttribute="trailing" secondItem="kHb-8Z-372" secondAttribute="trailing" constant="8" id="EMG-zm-HJS"/>
+                        <constraint firstAttribute="trailing" secondItem="rux-hE-vwT" secondAttribute="trailing" constant="26" id="GsG-22-Z6v"/>
+                        <constraint firstAttribute="height" constant="157" id="Jly-JV-avb"/>
+                        <constraint firstAttribute="width" secondItem="YkZ-Qf-6CV" secondAttribute="height" multiplier="320:157" id="KCu-x6-UFe"/>
+                        <constraint firstAttribute="trailing" secondItem="8Tj-AA-bCR" secondAttribute="trailing" constant="26" id="KTS-nF-vzz"/>
+                        <constraint firstAttribute="bottom" secondItem="rux-hE-vwT" secondAttribute="bottom" constant="26" id="UYT-IF-8sb"/>
+                        <constraint firstItem="zUM-GY-dpx" firstAttribute="leading" secondItem="zh2-47-lnb" secondAttribute="trailing" constant="4" id="dyJ-FG-8Ag"/>
+                        <constraint firstAttribute="bottom" secondItem="zh2-47-lnb" secondAttribute="bottom" constant="63" id="gnm-Jv-XIa"/>
+                        <constraint firstItem="zh2-47-lnb" firstAttribute="leading" secondItem="YkZ-Qf-6CV" secondAttribute="leading" constant="25" id="k2d-JN-180"/>
+                        <constraint firstItem="kHb-8Z-372" firstAttribute="leading" secondItem="YkZ-Qf-6CV" secondAttribute="leading" constant="8" id="kNJ-hy-kg2"/>
+                        <constraint firstAttribute="trailing" secondItem="zUM-GY-dpx" secondAttribute="trailing" constant="26" id="pcg-2b-AWX"/>
+                        <constraint firstItem="rux-hE-vwT" firstAttribute="top" secondItem="zUM-GY-dpx" secondAttribute="bottom" constant="16" id="vll-9S-BuS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="YkZ-Qf-6CV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ObU-6I-9k3"/>
+                <constraint firstItem="YkZ-Qf-6CV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iAK-rO-tPo"/>
+                <constraint firstAttribute="trailing" secondItem="YkZ-Qf-6CV" secondAttribute="trailing" id="j12-Mo-LdZ"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="creditCardBG.png" width="348" height="145"/>
+        <image name="中信logo.png" width="36" height="36"/>
+    </resources>
+</document>

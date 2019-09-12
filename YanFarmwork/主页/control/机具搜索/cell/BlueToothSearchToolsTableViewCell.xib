@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="85" id="KGk-i7-Jjw" customClass="BlueToothSearchToolsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="84.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toolsBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="uLE-SE-RYW">
+                        <rect key="frame" x="15" y="8" width="290" height="76"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="76" id="4p4-08-n1E"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toolsImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="IxZ-Iq-I4j">
+                        <rect key="frame" x="33" y="31" width="53" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="53" id="387-lt-5iM"/>
+                            <constraint firstAttribute="height" constant="35" id="4Kf-RJ-O3p"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新国都-G2 自备机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgI-ed-DfV">
+                        <rect key="frame" x="97" y="37" width="188" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Id1-g9-6YQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" red="0.25882631540000001" green="0.25881996750000003" blue="0.25882121920000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="uLE-SE-RYW" secondAttribute="trailing" constant="15" id="14G-iy-Z7w"/>
+                    <constraint firstAttribute="trailing" secondItem="fgI-ed-DfV" secondAttribute="trailing" constant="35" id="3Nm-mk-lki"/>
+                    <constraint firstItem="uLE-SE-RYW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="5uQ-2c-pci"/>
+                    <constraint firstItem="IxZ-Iq-I4j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="33" id="GVB-sC-lj1"/>
+                    <constraint firstItem="fgI-ed-DfV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="37" id="Kfi-Gz-jnh"/>
+                    <constraint firstAttribute="bottom" secondItem="uLE-SE-RYW" secondAttribute="bottom" constant="0.5" id="MwP-04-Lb1"/>
+                    <constraint firstItem="IxZ-Iq-I4j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="31" id="Por-Mb-DKg"/>
+                    <constraint firstItem="fgI-ed-DfV" firstAttribute="leading" secondItem="IxZ-Iq-I4j" secondAttribute="trailing" constant="11" id="hcl-LL-Akb"/>
+                    <constraint firstItem="uLE-SE-RYW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="mw7-qb-y9s"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="toolsImageView" destination="IxZ-Iq-I4j" id="vd9-7P-cLg"/>
+                <outlet property="toolsNameLabel" destination="fgI-ed-DfV" id="qPe-In-28H"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="126.22767857142857"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="toolsBG.png" width="338" height="68"/>
+        <image name="toolsImage.png" width="58" height="45"/>
+    </resources>
+</document>
