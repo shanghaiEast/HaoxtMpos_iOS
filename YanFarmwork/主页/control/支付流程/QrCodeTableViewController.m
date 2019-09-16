@@ -68,7 +68,6 @@
         resultVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:resultVC animated:YES];
     });
-    
    
 }
 

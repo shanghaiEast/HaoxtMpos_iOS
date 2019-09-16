@@ -28,18 +28,27 @@
     _headImage.layer.masksToBounds = YES;
     
     _middleView.layer.cornerRadius = 9;
-    _middleView.layer.masksToBounds = YES;
+//    _middleView.layer.masksToBounds = YES;
     
-    //    [self addShadowToView:_fourBtnView withColor:MAINCOLOR];
-    // 阴影颜色
-    _fourBtnView.layer.shadowColor = MAINCOLOR.CGColor;
-    // 阴影偏移，默认(0, -3)
-    _fourBtnView.layer.shadowOffset = CGSizeMake(0,-3);
-    // 阴影透明度，默认0
-    _fourBtnView.layer.shadowOpacity = 0.5;
-    // 阴影半径，默认3
-    _fourBtnView.layer.shadowRadius = 10;
+ 
+
+    [self addShadowToView:_middleView withColor:[UIColor colorWithHexString:@"#FAF3F4"]];
+    
+//    _middleView.layer.masksToBounds = YES;
 }
+
+/// 添加四边阴影效果
+- (void)addShadowToView:(UIView *)theView withColor:(UIColor *)theColor {
+    // 阴影颜色
+    theView.layer.shadowColor = theColor.CGColor;
+    // 阴影偏移，默认(0, -3)
+    theView.layer.shadowOffset = CGSizeMake(0,3);
+    // 阴影透明度，默认0
+    theView.layer.shadowOpacity = 1;
+    // 阴影半径，默认3
+    theView.layer.shadowRadius = 5;
+}
+
 
 
 

@@ -66,9 +66,9 @@
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
     
-    POSCollectionViewController *cardCerVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
-    cardCerVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:cardCerVC animated:YES];
+//    POSCollectionViewController *cardCerVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
+//    cardCerVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:cardCerVC animated:YES];
     
 //    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 //    loginVC.hidesBottomBarWhenPushed = YES;
@@ -105,9 +105,6 @@
     _myTableView.tableFooterView = [UIView new];
     [self.view addSubview:_myTableView];
     
-   
-
-    
     if (@available(iOS 11.0, *)) {
         _myTableView.estimatedRowHeight = 0;
         _myTableView.estimatedSectionFooterHeight = 0;
@@ -127,7 +124,6 @@
 //    _myTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(upDown)];
 //
 //    [self refreshTableView];
-    
 }
 #pragma mark  -----  Refresh
 -(void)refreshTableView
@@ -226,7 +222,8 @@
             NSLog(@"点击collection");
             //[@"普通收款",@"超级收款",@"二维码收款",@"闪付优惠"]
             
-            [self pushPayWay:tag];
+//            [self pushPayWay:tag];
+             [self createAlertView];
             
             
 //            if (tag == 0) {
@@ -285,20 +282,25 @@
 
 - (void)createAlertView {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"需要绑定机具" message:@"使用好享推APP需先绑定机具" preferredStyle:UIAlertControllerStyleAlert];
-
+    
     [alertController addAction:[UIAlertAction actionWithTitle:@"暂不绑定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
+
         NSLog(@"点击取消");
-        
+
+    }]];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"前往绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        NSLog(@"点击确认");
+
     }]];
     
-    [alertController addAction:[UIAlertAction actionWithTitle:@"前往绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        NSLog(@"点击确认");
-        
-    }]];
-   
+    
+//    [cancel setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+
     [self presentViewController:alertController animated:YES completion:nil];
+    
+   
 }
 
 
