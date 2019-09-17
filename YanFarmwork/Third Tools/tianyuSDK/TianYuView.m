@@ -38,6 +38,16 @@
 }
 */
 
+- (void)stopBlueLink {
+    
+#if TARGET_IPHONE_SIMULATOR
+    
+#else
+    [_tySwiper disconnectDevice];
+    
+#endif
+}
+
 - (void)stopSearchPOS {
 #if TARGET_IPHONE_SIMULATOR
     

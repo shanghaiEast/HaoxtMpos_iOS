@@ -138,10 +138,10 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="usZ-5U-zm9">
-                    <rect key="frame" x="15" y="200" width="289" height="200"/>
+                    <rect key="frame" x="15" y="200" width="289" height="176"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="200" id="byB-Q5-HU0"/>
+                        <constraint firstAttribute="height" constant="176" id="byB-Q5-HU0"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -157,7 +157,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8p2-N6-Kwh">
-                    <rect key="frame" x="20" y="459" width="284" height="50"/>
+                    <rect key="frame" x="20" y="423" width="284" height="50"/>
                     <color key="backgroundColor" red="0.89736628529999996" green="0.34575632210000001" blue="0.3136770129" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Wkc-8Y-aWl"/>
@@ -214,7 +214,7 @@
                 <constraint firstItem="NK9-FT-t7I" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="17" id="j6V-c1-E7W"/>
                 <constraint firstItem="ksD-Su-9fW" firstAttribute="leading" secondItem="NK9-FT-t7I" secondAttribute="trailing" constant="14" id="nL5-XB-HaG"/>
                 <constraint firstItem="CVu-pW-EPD" firstAttribute="top" secondItem="ksD-Su-9fW" secondAttribute="bottom" constant="12" id="nbI-CF-UTf"/>
-                <constraint firstItem="8p2-N6-Kwh" firstAttribute="top" secondItem="usZ-5U-zm9" secondAttribute="bottom" constant="59" id="oWJ-Bz-TdQ"/>
+                <constraint firstItem="8p2-N6-Kwh" firstAttribute="top" secondItem="usZ-5U-zm9" secondAttribute="bottom" constant="47" id="oWJ-Bz-TdQ"/>
                 <constraint firstAttribute="trailing" secondItem="v6l-bL-9KT" secondAttribute="trailing" constant="14" id="obc-YT-Nia"/>
                 <constraint firstAttribute="trailing" secondItem="mwj-kD-WRA" secondAttribute="trailing" constant="16" id="pAk-Ha-O8S"/>
                 <constraint firstItem="2Wv-zZ-7cv" firstAttribute="top" secondItem="n4y-Ag-H7K" secondAttribute="bottom" constant="8" id="qUk-xu-C7e"/>

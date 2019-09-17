@@ -23,7 +23,7 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    [MyTools setViewController:self withNavigationBarColor:MAINCOLOR andItem:@"" itemColor:WHITECOLOR haveBackBtn:YES withBackImage:defaultBarBackImage_White withBackClickTarget:self BackClickAction:@selector(popViewClick)];
+    [MyTools setViewController:self withNavigationBarColor:MAINCOLOR andItem:@"" itemColor:WHITECOLOR haveBackBtn:NO withBackImage:defaultBarBackImage_White withBackClickTarget:self BackClickAction:@selector(popViewClick)];
     
     
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
@@ -36,6 +36,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [ToolsObject disableTheSideslip:self];
     
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

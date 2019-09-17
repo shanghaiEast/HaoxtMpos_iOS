@@ -165,4 +165,7 @@
 #pragma mark 使用UIImageView实现加载GIF图片
 + (void)playGIFWithNameL:(NSString *)gifName playTime:(int)time showImageView:(UIImageView *)imageView;
 
+#pragma mark  禁用侧滑返回手势
++ (void)disableTheSideslip:(UIViewController *)rootView;
+
 @end

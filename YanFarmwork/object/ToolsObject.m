@@ -1419,6 +1419,14 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
         //animationRepeatCount：可设置动画执行的次数
 }
 
+//禁用侧滑返回手势
++ (void)disableTheSideslip:(UIViewController *)rootView{
+    
+    id traget = rootView.navigationController.interactivePopGestureRecognizer.delegate;
+    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc]initWithTarget:traget action:nil];
+    [rootView.view addGestureRecognizer:pan];
+}
+
 
 //#pragma mark 半圆角
 //- (void)buttonrounder {

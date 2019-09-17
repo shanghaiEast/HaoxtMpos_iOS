@@ -37,7 +37,8 @@
 //    [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     [MyTools setViewController:self withNavigationBarColor:WHITECOLOR andItem:@"交易查询" itemColor:BLACKCOLOR haveBackBtn:NO withBackImage:defaultBarBackImage_black withBackClickTarget:self BackClickAction:nil];
-  
+    
+   
 }
 
 - (void)viewDidLoad {

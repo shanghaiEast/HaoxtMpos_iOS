@@ -37,6 +37,7 @@ typedef void(^DisConnectedDeviceBlock)(BOOL success);//DisConnectedDevice
 - (void)clickedIndexDict:(CBPeripheral *)dict;
 - (void)stopSearchPOS;
 - (void)startTrading;//开始交易
+- (void)stopBlueLink;//开始交易
 
 @end
 

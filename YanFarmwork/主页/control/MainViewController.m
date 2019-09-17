@@ -62,13 +62,14 @@
     // Do any additional setup after loading the view from its nib.
     
     
+    
 //    BlueToothSearchToolsTableViewController *cardCerVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
     
-    POSCollectionViewController *cardCerVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
-    cardCerVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:cardCerVC animated:YES];
+//    POSCollectionViewController *cardCerVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
+//    cardCerVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:cardCerVC animated:YES];
     
 //    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 //    loginVC.hidesBottomBarWhenPushed = YES;

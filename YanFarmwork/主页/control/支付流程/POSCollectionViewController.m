@@ -35,7 +35,7 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    [MyTools setViewController:self withNavigationBarColor:WHITECOLOR andItem:@"机具申领" itemColor:BLACKCOLOR haveBackBtn:YES withBackImage:defaultBarBackImage_black withBackClickTarget:self BackClickAction:@selector(popViewClick)];
+    [MyTools setViewController:self withNavigationBarColor:WHITECOLOR andItem:@"机具申领" itemColor:BLACKCOLOR haveBackBtn:NO withBackImage:defaultBarBackImage_black withBackClickTarget:self BackClickAction:@selector(popViewClick)];
     
     
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
@@ -49,12 +49,17 @@
 {
     [super viewDidDisappear:animated];
     
+    
     [_stateBGImageView stopAnimating];
+    
+    [_tianYuView stopBlueLink];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [ToolsObject disableTheSideslip:self];
     
     _deviceName = @"MP46-000005";
     

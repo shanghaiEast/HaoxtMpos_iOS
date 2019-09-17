@@ -21,6 +21,9 @@
     [super viewWillAppear:animated];
     
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleDefault;
+    if (ScreenHeight <= 568) {//解决OCR小屏版本bug
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    }
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     

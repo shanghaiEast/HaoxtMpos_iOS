@@ -21,6 +21,11 @@
     
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleDefault;
     
+    if (ScreenHeight <= 568) {//解决OCR小屏版本bug
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    }
+    
+    
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     [MyTools setViewController:self withNavigationBarColor:WHITECOLOR andItem:@"身份证信息" itemColor:BLACKCOLOR haveBackBtn:YES withBackImage:defaultBarBackImage_black withBackClickTarget:self BackClickAction:@selector(popViewClick)];

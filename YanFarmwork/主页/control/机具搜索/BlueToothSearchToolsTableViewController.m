@@ -127,10 +127,17 @@
         NSLog(@"myDevice:%@",myDevice);
         NSLog(@"snString:%@",snString);
         
-        BindToolsViewController *bindToolsVC = [[BindToolsViewController alloc] initWithNibName:@"BindToolsViewController" bundle:nil];
-        bindToolsVC.mySNString = [NSString stringWithFormat:@"%@",snString];
-        bindToolsVC.hidesBottomBarWhenPushed = YES;
-        [wSelf.navigationController pushViewController:bindToolsVC animated:YES];
+        [wSelf.tianYuView stopBlueLink];
+        
+        ConfirmSignViewController *confirmSignVC = [[ConfirmSignViewController alloc] initWithNibName:@"ConfirmSignViewController" bundle:nil];
+        confirmSignVC.payType = TYPE_TOOLS;
+        confirmSignVC.hidesBottomBarWhenPushed = YES;
+        [wSelf.navigationController pushViewController:confirmSignVC animated:YES];
+        
+//        BindToolsViewController *bindToolsVC = [[BindToolsViewController alloc] initWithNibName:@"BindToolsViewController" bundle:nil];
+//        bindToolsVC.mySNString = [NSString stringWithFormat:@"%@",snString];
+//        bindToolsVC.hidesBottomBarWhenPushed = YES;
+//        [wSelf.navigationController pushViewController:bindToolsVC animated:YES];
 
     };
     
