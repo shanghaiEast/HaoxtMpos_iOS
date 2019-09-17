@@ -162,6 +162,10 @@
  */
 - (void)onDisConnectedDevice:(BOOL)isSuccess {
     
+    if (_disConnectedDeviceBlock) {
+        _disConnectedDeviceBlock(YES);
+    }
+    
     [ToolsObject showMessageTitle:@"已断开连接" andDelay:1 andImage:nil];
 }
 

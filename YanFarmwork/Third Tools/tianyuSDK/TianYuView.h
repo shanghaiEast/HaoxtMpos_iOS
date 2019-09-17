@@ -17,6 +17,7 @@ typedef void(^ConnectedOnBlock)(BOOL connectedBool);//on connected
 typedef void(^ConnectedOffBlock)(BOOL connectedBool);//off connected
 typedef void(^GetMessageBlock)(CBPeripheral *myDevice , NSString *snString);//message connected
 typedef void(^TradSuccessBlock)(BOOL success);//trad success
+typedef void(^DisConnectedDeviceBlock)(BOOL success);//DisConnectedDevice
 
 
 
@@ -27,7 +28,7 @@ typedef void(^TradSuccessBlock)(BOOL success);//trad success
 @property (copy, nonatomic)  ConnectedOffBlock connectedOffBlock;
 @property (copy, nonatomic)  GetMessageBlock getMessageBlock;
 @property (copy, nonatomic)  TradSuccessBlock tradSuccessBlock;
-
+@property (copy, nonatomic)  DisConnectedDeviceBlock disConnectedDeviceBlock;
 
 
 

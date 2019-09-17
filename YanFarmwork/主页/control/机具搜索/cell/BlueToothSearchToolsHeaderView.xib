@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchTools.png" translatesAutoresizingMaskIntoConstraints="NO" id="wcd-JK-DcZ">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchTools.gif" translatesAutoresizingMaskIntoConstraints="NO" id="wcd-JK-DcZ">
                     <rect key="frame" x="60" y="20" width="200" height="200"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="wcd-JK-DcZ" secondAttribute="height" multiplier="1:1" id="PAJ-wx-kHZ"/>
@@ -42,10 +42,13 @@
                 <constraint firstItem="wcd-JK-DcZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="i6d-RO-1fC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="wcd-JK-DcZ" id="549-P3-bID"/>
+            </connections>
             <point key="canvasLocation" x="140.625" y="-18.485915492957748"/>
         </view>
     </objects>
     <resources>
-        <image name="searchTools.png" width="219" height="211"/>
+        <image name="searchTools.gif" width="671" height="665"/>
     </resources>
 </document>

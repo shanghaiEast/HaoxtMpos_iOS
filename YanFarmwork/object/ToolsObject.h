@@ -162,4 +162,7 @@
 #pragma mark 在第 n 位 插入新的字符串
 + (NSString *)insertString:(NSString *)insertStr fromString:(NSString *)fromStr withInsertIndex:(int)index;
 
+#pragma mark 使用UIImageView实现加载GIF图片
++ (void)playGIFWithNameL:(NSString *)gifName playTime:(int)time showImageView:(UIImageView *)imageView;
+
 @end

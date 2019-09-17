@@ -44,6 +44,7 @@
 		C701CCDC2320A961003F120E /* SetAppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C701CCDA2320A961003F120E /* SetAppTableViewCell.xib */; };
 		C701CCE02320AD7E003F120E /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C701CCDE2320AD7E003F120E /* ChangePasswordViewController.m */; };
 		C701CCE12320AD7E003F120E /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C701CCDF2320AD7E003F120E /* ChangePasswordViewController.xib */; };
+		C702B35E232F667A007A04DD /* searchTools.gif in Resources */ = {isa = PBXBuildFile; fileRef = C702B35D232F667A007A04DD /* searchTools.gif */; };
 		C70414C3232739AC009DEF79 /* EmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C70414C1232739AC009DEF79 /* EmptyTableViewCell.m */; };
 		C70414C4232739AC009DEF79 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70414C2232739AC009DEF79 /* EmptyTableViewCell.xib */; };
 		C70414C723273A34009DEF79 /* emptycell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C70414C523273A33009DEF79 /* emptycell@2x.png */; };
@@ -453,6 +454,7 @@
 		C701CCDD2320AD7E003F120E /* ChangePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		C701CCDE2320AD7E003F120E /* ChangePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		C701CCDF2320AD7E003F120E /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
+		C702B35D232F667A007A04DD /* searchTools.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = searchTools.gif; sourceTree = "<group>"; };
 		C70414C0232739AC009DEF79 /* EmptyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyTableViewCell.h; sourceTree = "<group>"; };
 		C70414C1232739AC009DEF79 /* EmptyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyTableViewCell.m; sourceTree = "<group>"; };
 		C70414C2232739AC009DEF79 /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
@@ -1596,6 +1598,7 @@
 				C75B70E32322412A00DC6AD3 /* toolsCollection@3x.png */,
 				C75B70DC23223EA500DC6AD3 /* toolsBG@2x.png */,
 				C75B70DB23223EA500DC6AD3 /* toolsBG@3x.png */,
+				C702B35D232F667A007A04DD /* searchTools.gif */,
 				C75B70D823223DB800DC6AD3 /* searchTools@2x.png */,
 				C75B70D723223DB800DC6AD3 /* searchTools@3x.png */,
 				C7FCCBCD231E37C000BCFE15 /* nextPage@2x.png */,
@@ -2252,6 +2255,7 @@
 				C75B70DA23223DB800DC6AD3 /* searchTools@2x.png in Resources */,
 				C7441A7F2320D5A5009736EF /* UserCenterHeaderView.xib in Resources */,
 				C72B11872326003200BE5672 /* scanLine.png in Resources */,
+				C702B35E232F667A007A04DD /* searchTools.gif in Resources */,
 				C78E93F923212219000D3F26 /* creditCardBG@2x.png in Resources */,
 				C7FF8B60231F50430046379B /* payCard@3x.png in Resources */,
 				C769998B231D3A9C00424AD3 /* passwordUnShow@3x.png in Resources */,

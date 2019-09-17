@@ -66,9 +66,9 @@
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
     
-//    POSCollectionViewController *cardCerVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
-//    cardCerVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:cardCerVC animated:YES];
+    POSCollectionViewController *cardCerVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
+    cardCerVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cardCerVC animated:YES];
     
 //    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 //    loginVC.hidesBottomBarWhenPushed = YES;

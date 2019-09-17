@@ -45,6 +45,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [_stateBGImageView stopAnimating];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -56,8 +63,10 @@
 }
 
 - (void)createView {
-    [_stateBGImageView setImage:[UIImage imageNamed:@"searchTools.png"]];
+//    [_stateBGImageView setImage:[UIImage imageNamed:@"searchTools.png"]];
     _stateLabel.text = @"请连接刷卡器";
+    
+    [ToolsObject playGIFWithNameL:@"searchTools" playTime:3 showImageView:_stateBGImageView];
     
     UITapGestureRecognizer *TapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tradAgain)];
     _toolsNameLabel.userInteractionEnabled = YES;
@@ -117,6 +126,8 @@
         NSLog(@"myDevice:%@",myDevice);
         NSLog(@"snString:%@",snString);
         
+        
+        [wSelf.stateBGImageView stopAnimating];
         [wSelf.stateBGImageView setImage:[UIImage imageNamed:@"toolsCollection.png"]];
         wSelf.stateLabel.text = @"连接成功，请刷卡";
         
@@ -126,6 +137,13 @@
     };
     _tianYuView.tradSuccessBlock = ^(BOOL success) {
       //交易成功
+    };
+    _tianYuView.disConnectedDeviceBlock = ^(BOOL success) {
+        //已断开连接
+        [wSelf.tianYuView startTianYu];
+        
+        wSelf.stateLabel.text = @"请连接刷卡器";
+        [ToolsObject playGIFWithNameL:@"searchTools" playTime:3 showImageView:wSelf.stateBGImageView];
     };
     
 }

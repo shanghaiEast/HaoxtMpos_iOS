@@ -89,6 +89,7 @@
     _headerView = [[[NSBundle mainBundle] loadNibNamed:@"BlueToothSearchToolsHeaderView" owner:self options:nil] lastObject];
     [_headerView setFrame:CGRectMake(0, 0, ScreenWidth, 290)];
     
+    [ToolsObject playGIFWithNameL:@"searchTools" playTime:3 showImageView:_headerView.imageView];
     
     return _headerView;
 }
@@ -148,12 +149,9 @@
 //    confirmSignVC.payType = TYPE_TOOLS;
 //    confirmSignVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:confirmSignVC animated:YES];
+    
+    
 }
-
-
-
-
-
 
 ///.........................天谕pos。。。。。。。。。。。。。。。。。。。
 - (void)createBooth{
