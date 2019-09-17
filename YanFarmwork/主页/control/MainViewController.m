@@ -222,8 +222,8 @@
             NSLog(@"点击collection");
             //[@"普通收款",@"超级收款",@"二维码收款",@"闪付优惠"]
             
-//            [self pushPayWay:tag];
-             [self createAlertView];
+            [self pushPayWay:tag];
+//             [self createAlertView];
             
             
 //            if (tag == 0) {
