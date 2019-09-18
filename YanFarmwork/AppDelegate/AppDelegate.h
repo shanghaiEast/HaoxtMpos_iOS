@@ -13,11 +13,15 @@
 //#import <IQKeyboardManager/IQKeyboardManager.h>
 
 
+
 #import "MyTabBarController.h"
 
 #import "MainViewController.h"
 #import "TradingViewController.h"
 #import "PersonCenterViewController.h"
+
+
+
 
 
 
@@ -33,6 +37,9 @@
 @property (retain, nonatomic) MainViewController *mainVC;
 @property (retain, nonatomic) TradingViewController *tradinVC;
 @property (retain, nonatomic) PersonCenterViewController *personCenterVC;
+
+
+
 
 @end
 

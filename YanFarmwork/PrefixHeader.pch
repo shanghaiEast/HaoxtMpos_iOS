@@ -31,8 +31,8 @@
 
 
 //baidu keys
-#define baiduKey @"oOb6rUHuoPMtWGxzfYS7RTjx8pTviwj8"
-#define myBundleID @"com.huaTong.one"
+#define baiduKey @"RwKqpGNsXdAQ86pcjeMOvDxyxCw9kGB4"
+#define myBundleID @"com.hg.pos"
 
 
 //JPush
@@ -179,7 +179,6 @@
 #define  LivessNumber  3
 
 //-----------------------------------OCR--------------------
-
 
 
 

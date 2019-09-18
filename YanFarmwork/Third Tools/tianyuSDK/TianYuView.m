@@ -85,7 +85,7 @@
     [dateFormatter setDateFormat:@"yyMMddHHmmss"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
     
-//    [_tySwiper setLimitAmount:@"10000"];
+    [_tySwiper setLimitAmount:@"10000"];
     [_tySwiper readCard:@"1000000" TerminalTime:dateString TradeType:0x00 timeout:10 Demote:nil inputPin:YES];
     
 #endif

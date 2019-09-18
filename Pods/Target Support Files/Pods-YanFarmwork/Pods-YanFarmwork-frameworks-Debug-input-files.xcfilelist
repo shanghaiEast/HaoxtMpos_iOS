@@ -2,6 +2,7 @@ ${PODS_ROOT}/Target Support Files/Pods-YanFarmwork/Pods-YanFarmwork-frameworks.s
 ${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
 ${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
 ${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework
+${BUILT_PRODUCTS_DIR}/HYBUnicodeReadable/HYBUnicodeReadable.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework
 ${BUILT_PRODUCTS_DIR}/JSONKit/JSONKit.framework
 ${BUILT_PRODUCTS_DIR}/JXCategoryView/JXCategoryView.framework

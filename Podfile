@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 use_frameworks!
-
 target 'YanFarmwork' do
 
+pod 'HYBUnicodeReadable', '~> 1.3'
 pod 'Masonry', '~> 1.1.0'  
 pod 'FMDB', '~> 2.7.2'
 pod 'AFNetworking', '~> 3.1.0'
@@ -20,6 +20,8 @@ pod 'JXCategoryView', '~> 1.2.9'
 pod 'IQKeyboardManager', '~> 6.4.0'
 pod 'QRCode', '~> 2.0'
 pod 'LYEmptyView', '~> 1.3.0'
+pod 'BMKLocationKit', '~> 1.7.0'
+
 
 
 

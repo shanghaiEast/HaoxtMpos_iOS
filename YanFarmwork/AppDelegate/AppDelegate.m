@@ -8,14 +8,14 @@
 
 #import "AppDelegate.h"
 
-
-
 #import "CWCommon.h"
 #import <mach/mach.h>
 
 
 
+
 @interface AppDelegate ()
+
 
 @end
 
@@ -25,44 +25,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    //云之眼服务器地址（参考默认的地址格式）
-    if ([CWCommon getValueForKey:@"ipAddress"] == nil) {
-        [CWCommon saveKey:@"ipAddress" withObject:DefaultIpAddress];
-    }
-    //app_id初始值
-    if ([CWCommon getValueForKey:@"app_id"] == nil) {
-        [CWCommon saveKey:@"app_id" withObject:DefaultApp_id];
-    }
-    //app_secret初始值
-    if ([CWCommon getValueForKey:@"app_secret"] == nil) {
-        [CWCommon saveKey:@"app_secret" withObject:DefaultApp_secret];
-    }
+    //屏蔽烦人的Masonry约束警告控制台输出
+    [[NSUserDefaults standardUserDefaults] setValue:@(NO) forKey:@"_UIConstraintBasedLayoutLogUnsatisfiable"];
     
-    //人脸阈值初始值
-    if ([CWCommon getValueForKey:@"ThresholdValue"] == nil ) {
-        [CWCommon saveKey:@"ThresholdValue" withObject:[NSNumber numberWithDouble:ThresholdValue]];
-    }
+    [self BaiDuLocation];
+    [self OCR];
+   
+#pragma mark   要使用百度地图，请先启动BaiduMapManager
+//    _mapManager = [BMKMapManager new];
+//    BOOL ret = [_mapManager start:baiduKey generalDelegate:nil];
+//    if (!ret){
+//        NSLog(@"百度地图启动失败");
+//    }else{
+//        NSLog(@"百度地图启动成功");
+//    }
+   
     
-    //活体动作个数初始值
-    if ([CWCommon getValueForKey:@"livessNumber"] == nil ) {
-        [CWCommon saveKey:@"livessNumber" withObject:[NSNumber numberWithDouble:LivessNumber]];
-    }
-    
-    //授权码初始值
-    if ([CWCommon getValueForKey:@"authCode"] == nil) {
-        [CWCommon saveKey:@"authCode" withObject:AuthCodeString];
-    }
-    
-    //授权码初始值
-    if ([CWCommon getValueForKey:@"isRandom"] == nil) {
-        [CWCommon saveKey:@"isRandom" withObject:[NSNumber numberWithBool:YES]];
-    }
-    
-    if ([CWCommon getValueForKey:@"livessTime"] == nil) {
-        
-        [CWCommon saveKey:@"livessTime" withObject:[NSNumber numberWithInteger:8]];
-    }
-    
+
     
     
 #pragma mark  IQKeyboardManager
@@ -174,6 +153,54 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+//------------------------------------------------
+
+- (void)OCR {
+    //云之眼服务器地址（参考默认的地址格式）
+    if ([CWCommon getValueForKey:@"ipAddress"] == nil) {
+        [CWCommon saveKey:@"ipAddress" withObject:DefaultIpAddress];
+    }
+    //app_id初始值
+    if ([CWCommon getValueForKey:@"app_id"] == nil) {
+        [CWCommon saveKey:@"app_id" withObject:DefaultApp_id];
+    }
+    //app_secret初始值
+    if ([CWCommon getValueForKey:@"app_secret"] == nil) {
+        [CWCommon saveKey:@"app_secret" withObject:DefaultApp_secret];
+    }
+    
+    //人脸阈值初始值
+    if ([CWCommon getValueForKey:@"ThresholdValue"] == nil ) {
+        [CWCommon saveKey:@"ThresholdValue" withObject:[NSNumber numberWithDouble:ThresholdValue]];
+    }
+    
+    //活体动作个数初始值
+    if ([CWCommon getValueForKey:@"livessNumber"] == nil ) {
+        [CWCommon saveKey:@"livessNumber" withObject:[NSNumber numberWithDouble:LivessNumber]];
+    }
+    
+    //授权码初始值
+    if ([CWCommon getValueForKey:@"authCode"] == nil) {
+        [CWCommon saveKey:@"authCode" withObject:AuthCodeString];
+    }
+    
+    //授权码初始值
+    if ([CWCommon getValueForKey:@"isRandom"] == nil) {
+        [CWCommon saveKey:@"isRandom" withObject:[NSNumber numberWithBool:YES]];
+    }
+    
+    if ([CWCommon getValueForKey:@"livessTime"] == nil) {
+        
+        [CWCommon saveKey:@"livessTime" withObject:[NSNumber numberWithInteger:8]];
+    }
+}
+
+
+- (void)BaiDuLocation {
+    
+
 }
 
 

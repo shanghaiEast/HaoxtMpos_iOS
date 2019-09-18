@@ -22,6 +22,9 @@
 #import "BlueToothSearchToolsTableViewController.h"
 #import "PayResultViewController.h"
 #import "UserCertificationTableViewController.h"
+#import "LocationObject.h"
+
+
 
 #import "Main1TableViewCell.h"
 #import "MainListTableViewCell.h"
@@ -38,6 +41,9 @@
 @property int page;
 
 
+
+
+
 @end
 
 @implementation MainViewController
@@ -48,6 +54,9 @@
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    
+    
     
 }
 
@@ -61,7 +70,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
+    LocationObject *locationOj = [[LocationObject alloc] init];
+    [locationOj locationView:self];
+    locationOj.locationMessageBlock = ^(NSArray *array) {
+        NSLog(@"%@",array);
+    };
     
 //    BlueToothSearchToolsTableViewController *cardCerVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
 //    cardCerVC.hidesBottomBarWhenPushed = YES;

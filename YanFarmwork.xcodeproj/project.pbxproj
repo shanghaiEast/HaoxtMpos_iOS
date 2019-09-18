@@ -117,6 +117,8 @@
 		C7441A992320E4F5009736EF /* idCardZM@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7441A972320E4F5009736EF /* idCardZM@2x.png */; };
 		C7441A9C2320E539009736EF /* idCardFM@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7441A9A2320E539009736EF /* idCardFM@3x.png */; };
 		C7441A9D2320E539009736EF /* idCardFM@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7441A9B2320E539009736EF /* idCardFM@2x.png */; };
+		C74715DE2331BF0400E01127 /* LocationObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = C74715DD2331BF0400E01127 /* LocationObject.mm */; };
+		C74715E02331E1D800E01127 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74715DF2331E1D700E01127 /* MapKit.framework */; };
 		C75B70D523223CF000DC6AD3 /* POSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75B70D323223CF000DC6AD3 /* POSCollectionViewController.m */; };
 		C75B70D623223CF000DC6AD3 /* POSCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75B70D423223CF000DC6AD3 /* POSCollectionViewController.xib */; };
 		C75B70D923223DB800DC6AD3 /* searchTools@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C75B70D723223DB800DC6AD3 /* searchTools@3x.png */; };
@@ -567,6 +569,9 @@
 		C7441A972320E4F5009736EF /* idCardZM@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idCardZM@2x.png"; sourceTree = "<group>"; };
 		C7441A9A2320E539009736EF /* idCardFM@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idCardFM@3x.png"; sourceTree = "<group>"; };
 		C7441A9B2320E539009736EF /* idCardFM@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idCardFM@2x.png"; sourceTree = "<group>"; };
+		C74715DC2331BF0400E01127 /* LocationObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationObject.h; sourceTree = "<group>"; };
+		C74715DD2331BF0400E01127 /* LocationObject.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LocationObject.mm; sourceTree = "<group>"; };
+		C74715DF2331E1D700E01127 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C75B70D223223CF000DC6AD3 /* POSCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = POSCollectionViewController.h; sourceTree = "<group>"; };
 		C75B70D323223CF000DC6AD3 /* POSCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = POSCollectionViewController.m; sourceTree = "<group>"; };
 		C75B70D423223CF000DC6AD3 /* POSCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = POSCollectionViewController.xib; sourceTree = "<group>"; };
@@ -852,6 +857,7 @@
 				C72B11D62326292B00BE5672 /* libopencv_world.a in Frameworks */,
 				C72B11D92326292B00BE5672 /* libzlib.a in Frameworks */,
 				C72B11D52326292B00BE5672 /* libCloudwalkFaceSDK.a in Frameworks */,
+				C74715E02331E1D800E01127 /* MapKit.framework in Frameworks */,
 				C7CDDA9A232285DD00FAC942 /* AVFoundation.framework in Frameworks */,
 				C7CDDA98232285D400FAC942 /* CoreMedia.framework in Frameworks */,
 				C7CDDA96232285C300FAC942 /* AssetsLibrary.framework in Frameworks */,
@@ -1439,6 +1445,15 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		C74C91592330E4D20035485A /* 定位功能 */ = {
+			isa = PBXGroup;
+			children = (
+				C74715DC2331BF0400E01127 /* LocationObject.h */,
+				C74715DD2331BF0400E01127 /* LocationObject.mm */,
+			);
+			path = "定位功能";
+			sourceTree = "<group>";
+		};
 		C75B70E72322417400DC6AD3 /* 机具搜索 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1901,6 +1916,7 @@
 		D51F3667226030DA009A30B5 /* Third Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C74C91592330E4D20035485A /* 定位功能 */,
 				C714D8202328939B008B48FD /* tianyuSDK */,
 				C70414BF23273948009DEF79 /* 空数组 */,
 				C72B118B2326292B00BE5672 /* CWFaceSDK */,
@@ -1974,6 +1990,7 @@
 		FFF7C8FE7F6BA5F2E474C1D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C74715DF2331E1D700E01127 /* MapKit.framework */,
 				C714D81E2328906C008B48FD /* MediaPlayer.framework */,
 				C714D81C23289059008B48FD /* AudioToolbox.framework */,
 				C714D81A2328903B008B48FD /* CoreBluetooth.framework */,
@@ -2074,6 +2091,11 @@
 					134093FA221E6974000B4B54 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					13409412221E6976000B4B54 = {
 						CreatedOnToolsVersion = 10.1;
@@ -2501,6 +2523,7 @@
 				D5AB052A22895A0600F33533 /* YanNetworkOBJ.m in Sources */,
 				C7FCCBB8231DFFCE00BCFE15 /* RegisterViewController.m in Sources */,
 				C7CDD9E1232277BB00FAC942 /* SDBezierPath.m in Sources */,
+				C74715DE2331BF0400E01127 /* LocationObject.mm in Sources */,
 				C72B11D42326292B00BE5672 /* CWLivessViewController.m in Sources */,
 				C72B11CD2326292B00BE5672 /* CWProgressView.m in Sources */,
 				C75B70F12322430500DC6AD3 /* BlueToothSearchToolsTableViewCell.m in Sources */,
@@ -2734,7 +2757,7 @@
 					"$(PROJECT_DIR)/YanFarmwork/Third\\ Tools/CWFaceSDK/lib/opencv310",
 					"$(PROJECT_DIR)/YanFarmwork/Third\\ Tools/tianyuSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hg.pos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haoxt.mpos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "YanFarmwork/swift桥接/YanFarmwork-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2767,7 +2790,7 @@
 					"$(PROJECT_DIR)/YanFarmwork/Third\\ Tools/CWFaceSDK/lib/opencv310",
 					"$(PROJECT_DIR)/YanFarmwork/Third\\ Tools/tianyuSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hg.pos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haoxt.mpos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "YanFarmwork/swift桥接/YanFarmwork-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

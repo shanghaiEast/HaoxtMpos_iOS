@@ -15,6 +15,9 @@
 #import <CoreBluetooth/CBPeripheral.h>
 
 
+#import "LocationObject.h"
+
+
 
 @interface POSCollectionViewController ()
 
@@ -65,6 +68,8 @@
     
     [self createView];
     [self createBooth];
+   
+    
 }
 
 - (void)createView {
