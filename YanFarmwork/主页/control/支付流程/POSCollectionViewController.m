@@ -8,7 +8,7 @@
 
 #import "POSCollectionViewController.h"
 
-#import "SignOrderTableViewController.h"
+#import "SignOrderViewController.h"
 
 
 #import "TianYuView.h"
@@ -84,7 +84,7 @@
     
     
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        SignOrderTableViewController *signVC = [[SignOrderTableViewController alloc] initWithNibName:@"SignOrderTableViewController" bundle:nil];
+//        SignOrderViewController *signVC = [[SignOrderViewController alloc] initWithNibName:@"SignOrderViewController" bundle:nil];
 //        signVC.hidesBottomBarWhenPushed = YES;
 //        signVC.processTag = _processTag;
 //        [self.navigationController pushViewController:signVC animated:YES];

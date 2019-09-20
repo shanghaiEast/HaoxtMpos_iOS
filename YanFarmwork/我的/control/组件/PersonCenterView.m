@@ -35,6 +35,12 @@
     _bottonImageView.layer.masksToBounds = YES;
     
     
+    _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_NM],[myData USR_OPR_MBL]];
+    
+    _shopNOLabel.text = [NSString stringWithFormat:@"商户编号   %@",@""];
+    
+    
+    
     UITapGestureRecognizer *headTouch = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(puchToUserMessage)];
     [_headImageView addGestureRecognizer:headTouch];
     

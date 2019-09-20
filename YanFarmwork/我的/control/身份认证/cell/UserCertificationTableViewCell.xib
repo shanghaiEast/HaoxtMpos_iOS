@@ -281,6 +281,9 @@
                         <state key="normal">
                             <color key="titleColor" red="0.60000586509999998" green="0.59999251369999995" blue="0.59999519589999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </state>
+                        <connections>
+                            <action selector="timeBtnSelect:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ix7-1G-Ix8"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn0-f9-iRO">
                         <rect key="frame" x="16" y="612" width="292" height="56"/>

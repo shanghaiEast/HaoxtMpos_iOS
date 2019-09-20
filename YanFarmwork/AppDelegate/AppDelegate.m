@@ -31,19 +31,6 @@
     [self BaiDuLocation];
     [self OCR];
    
-#pragma mark   要使用百度地图，请先启动BaiduMapManager
-//    _mapManager = [BMKMapManager new];
-//    BOOL ret = [_mapManager start:baiduKey generalDelegate:nil];
-//    if (!ret){
-//        NSLog(@"百度地图启动失败");
-//    }else{
-//        NSLog(@"百度地图启动成功");
-//    }
-   
-    
-
-    
-    
 #pragma mark  IQKeyboardManager
 //    _keyboardManager = [IQKeyboardManager sharedManager]; // 获取类库的单例变量
 //    _keyboardManager.enable = YES; // 控制整个功能是否启用
@@ -199,7 +186,14 @@
 
 
 - (void)BaiDuLocation {
-    
+#pragma mark   要使用百度地图，请先启动BaiduMapManager
+    //    _mapManager = [BMKMapManager new];
+    //    BOOL ret = [_mapManager start:baiduKey generalDelegate:nil];
+    //    if (!ret){
+    //        NSLog(@"百度地图启动失败");
+    //    }else{
+    //        NSLog(@"百度地图启动成功");
+    //    }
 
 }
 

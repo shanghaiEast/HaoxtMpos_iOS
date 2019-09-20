@@ -24,7 +24,7 @@
 
 @property (retain, nonatomic) NSArray *titleArrar, *picturArray;
 
-
+@property (retain, nonatomic) NSArray *merchantsArray;
 
 
 @end
@@ -34,6 +34,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    [self requestMerchantsMessage];
 }
 
 - (void)viewDidDisappear:(BOOL)animated:(BOOL)animated {
@@ -154,5 +156,32 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)requestMerchantsMessage {
+    
+//    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] init];
+    
+    [YanNetworkOBJ postWithURLString:usr_get parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            _merchantsArray = [[NSArray alloc] init];
+            
+            
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
 
 @end

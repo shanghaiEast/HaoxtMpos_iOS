@@ -22,6 +22,10 @@
 @property (nonatomic) int page;
 @property (retain, nonatomic) UIButton *leftBtn;
 
+@property (retain, nonatomic) NSMutableArray *tradListArray;
+@property (retain, nonatomic) NSString *startDateString, *endDataString;
+@property (retain, nonatomic) NSDictionary *typeDict;
+
 @property (retain, nonatomic) FilterView *filterView;
 @property (retain, nonatomic) TimeView *timeView;
 
@@ -45,7 +49,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    _startDateString = [self dateToday];
+    _endDataString = [self dateToday];
+    
     [self createTableView];
+    
+    [self requestForTradList];
 }
 
 - (void)createTableView {
@@ -59,7 +68,6 @@
     _myTableView.tableFooterView = [UIView new];
     [self.view addSubview:_myTableView];
     
-    
     if (@available(iOS 11.0, *)) {
         _myTableView.estimatedRowHeight = 0;
         _myTableView.estimatedSectionFooterHeight = 0;
@@ -69,8 +77,11 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
+    _myTableView.ly_emptyView = [LYEmptyView emptyViewWithImage:[UIImage imageNamed:@"emptycell.png"] titleStr:@"暂无消息…" detailStr:@""];
+    
 //    _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshHeader)];
     _myTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(upDown)];
+    
     
     [self refreshTableView];
     
@@ -105,15 +116,12 @@
         [wSelf.myTableView.mj_footer endRefreshing];
     });
 }
-
-
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 13;
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -220,30 +228,104 @@
 }
 
 - (void)selectTimeAndfilter:(UIButton *)button{
+    typeof(self) wSelf = self;
+    
     if (button.tag == 0) {
         //time
         AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        _timeView = [[[NSBundle mainBundle] loadNibNamed:@"TimeView" owner:self options:nil] lastObject];
-        [_timeView setFrame:app.window.bounds];
-        [_timeView createView];
-        [app.window addSubview:_timeView];
-        _timeView.timeBolck = ^(NSDictionary * _Nonnull dict) {
+         wSelf.timeView = [[[NSBundle mainBundle] loadNibNamed:@"TimeView" owner:self options:nil] lastObject];
+        [ wSelf.timeView setFrame:app.window.bounds];
+        [ wSelf.timeView createView];
+        [app.window addSubview: wSelf.timeView];
+        wSelf.timeView.timeBolck = ^(NSDictionary * _Nonnull dict) {
             NSLog(@"返回的数据：%@",dict);
             
-            [_leftBtn setTitle:[NSString stringWithFormat:@"%@  %@",[dict objectForKey:@"startTime"],[dict objectForKey:@"endTime"]] forState:UIControlStateNormal];
+            self.startDateString = [dict objectForKey:@"startTime"];
+            self.endDataString = [dict objectForKey:@"endTime"];
+            
+            [self.leftBtn setTitle:[NSString stringWithFormat:@"%@  %@",[dict objectForKey:@"startTime"],[dict objectForKey:@"endTime"]] forState:UIControlStateNormal];
+            
+            [self requestForTradList];
         };
         
     }else{
         //filter
         AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        _filterView = [[[NSBundle mainBundle] loadNibNamed:@"FilterView" owner:self options:nil] lastObject];
-        [_filterView setFrame:app.window.bounds];
-        [_filterView createView];
-        [app.window addSubview:_filterView];
-        _filterView.filtrBolck = ^(NSDictionary * _Nonnull dict) {
+         wSelf.filterView = [[[NSBundle mainBundle] loadNibNamed:@"FilterView" owner:self options:nil] lastObject];
+        [ wSelf.filterView setFrame:app.window.bounds];
+        [ wSelf.filterView createView];
+        [app.window addSubview: wSelf.filterView];
+         wSelf.filterView.filtrBolck = ^(NSDictionary * _Nonnull dict) {
             NSLog(@"返回的数据：%@",dict);
+//             {
+//                 maxPrice = "100.000000";
+//                 minPrice = "1.000000";
+//                 state = 1;
+//                 type = 1;
+//             }
+             self.typeDict = dict;
+             
+             [self requestForTradList];
         };
     }
+}
+
+
+
+
+- (void)requestForTradList {
+    
+//    PAGE_NUM    页码
+//    PAGE_SIZE    每页条数
+//    ORD_TIM_START    交易时间起始
+//    ORD_TIM_END    交易时间截止
+//    TXN_STS    订单状态
+//    ORD_AMT_START    订单金额起始
+//    ORD_AMT_END    订单金额截止
+//    TXN_CD    交易类型
+    
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 [NSString stringWithFormat:@"%d",_page],@"PAGE_NUM",
+                                 @"10",@"PAGE_SIZE",
+                                 _startDateString,@"ORD_TIM_START",
+                                 _endDataString,@"ORD_TIM_END",
+                                 [NSString stringWithFormat:@"%.2f",[[_typeDict objectForKey:@"minPrice"] floatValue]],@"ORD_AMT_START",
+                                 [NSString stringWithFormat:@"%.2f",[[_typeDict objectForKey:@"maxPrice"] floatValue]],@"ORD_AMT_END",
+                                [NSString stringWithFormat:@"%d",[[_typeDict objectForKey:@"state"] intValue]],@"TXN_STS",
+                                [NSString stringWithFormat:@"%d",[[_typeDict objectForKey:@"type"] intValue]],@"TXN_CD",
+                                 nil];
+    
+    [YanNetworkOBJ postWithURLString:ord_list parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            if (wSelf.page == 1) {
+                wSelf.tradListArray = [[NSMutableArray alloc] init];
+                wSelf.tradListArray = [responseObject objectForKey:@"rspData"];
+                
+            }else{
+                if ([[responseObject objectForKey:@"rspData"] count] == 0) {
+                    [ToolsObject showMessageTitle:@"没有更多了哦" andDelay:1.0f andImage:nil];
+                }
+                
+                [wSelf.tradListArray addObjectsFromArray:[responseObject objectForKey:@"rspData"]];
+            }
+            
+            [wSelf.myTableView reloadData];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
 }
 
 @end

@@ -49,6 +49,18 @@
 		C70414C4232739AC009DEF79 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70414C2232739AC009DEF79 /* EmptyTableViewCell.xib */; };
 		C70414C723273A34009DEF79 /* emptycell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C70414C523273A33009DEF79 /* emptycell@2x.png */; };
 		C70414C823273A34009DEF79 /* emptycell@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C70414C623273A34009DEF79 /* emptycell@3x.png */; };
+		C712CEF62334744C00D8DFE1 /* IDCardTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C712CEF32334744C00D8DFE1 /* IDCardTimeView.m */; };
+		C712CEF72334744C00D8DFE1 /* IDCardTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C712CEF52334744C00D8DFE1 /* IDCardTimeView.xib */; };
+		C712CF032334A1AB00D8DFE1 /* CityChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C712CF002334A1AB00D8DFE1 /* CityChooseView.m */; };
+		C712CF042334A1AB00D8DFE1 /* CityChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C712CF022334A1AB00D8DFE1 /* CityChooseView.xib */; };
+		C712CF082334A86C00D8DFE1 /* BankSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C712CF062334A86C00D8DFE1 /* BankSelectViewController.m */; };
+		C712CF092334A86C00D8DFE1 /* BankSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C712CF072334A86C00D8DFE1 /* BankSelectViewController.xib */; };
+		C712CF0E2334AB6A00D8DFE1 /* BankSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C712CF0C2334AB6A00D8DFE1 /* BankSelectTableViewCell.m */; };
+		C712CF0F2334AB6A00D8DFE1 /* BankSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C712CF0D2334AB6A00D8DFE1 /* BankSelectTableViewCell.xib */; };
+		C712CF122334BABE00D8DFE1 /* searchIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C712CF102334BABD00D8DFE1 /* searchIcon@2x.png */; };
+		C712CF132334BABE00D8DFE1 /* searchIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C712CF112334BABE00D8DFE1 /* searchIcon@3x.png */; };
+		C712CF192334CB5B00D8DFE1 /* GYNoticeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C712CF152334CB5B00D8DFE1 /* GYNoticeViewCell.m */; };
+		C712CF1A2334CB5B00D8DFE1 /* GYRollingNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C712CF162334CB5B00D8DFE1 /* GYRollingNoticeView.m */; };
 		C714D81B2328903B008B48FD /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714D81A2328903B008B48FD /* CoreBluetooth.framework */; };
 		C714D81D23289059008B48FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714D81C23289059008B48FD /* AudioToolbox.framework */; };
 		C714D81F2328906D008B48FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714D81E2328906C008B48FD /* MediaPlayer.framework */; };
@@ -167,60 +179,6 @@
 		C7699920231D0A0300424AD3 /* pinkIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C769991E231D0A0300424AD3 /* pinkIcon@2x.png */; };
 		C7699923231D0AE500424AD3 /* userLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7699921231D0AE500424AD3 /* userLogo@2x.png */; };
 		C7699924231D0AE500424AD3 /* userLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7699922231D0AE500424AD3 /* userLogo@3x.png */; };
-		C7699928231D12B400424AD3 /* UIImage+UIImage_GradientChange.m in Sources */ = {isa = PBXBuildFile; fileRef = D5FDB77E226078E20091DD1C /* UIImage+UIImage_GradientChange.m */; };
-		C7699929231D12B400424AD3 /* MainListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7AA4D92231CEAA9002437DF /* MainListTableViewCell.m */; };
-		C769992A231D12B400424AD3 /* UIImage+WFColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D51F366A226030F1009A30B5 /* UIImage+WFColorImage.m */; };
-		C769992B231D12B400424AD3 /* TradingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D501C8812260285B009179F6 /* TradingViewController.m */; };
-		C769992C231D12B400424AD3 /* GetXToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AB05252289584A00F33533 /* GetXToken.m */; };
-		C769992D231D12B400424AD3 /* UINavigationController+SXFullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D5FDB774226076300091DD1C /* UINavigationController+SXFullScreen.m */; };
-		C769992E231D12B400424AD3 /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 13409449221E79E0000B4B54 /* MyTabBar.m */; };
-		C7699930231D12B400424AD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1340940D221E6975000B4B54 /* main.m */; };
-		C7699931231D12B400424AD3 /* AESUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D5148FA522642A090090763D /* AESUtility.m */; };
-		C7699932231D12B400424AD3 /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13409443221E771B000B4B54 /* PersonCenterViewController.m */; };
-		C7699933231D12B400424AD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 134093FF221E6974000B4B54 /* AppDelegate.m */; };
-		C7699934231D12B400424AD3 /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1340944C221E7B25000B4B54 /* MyTabBarController.m */; };
-		C7699935231D12B400424AD3 /* ToolsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D5148F99226426C20090763D /* ToolsObject.m */; };
-		C7699936231D12B400424AD3 /* NSObject+SXRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = D5FDB776226076300091DD1C /* NSObject+SXRuntime.m */; };
-		C7699937231D12B400424AD3 /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 13409455221E7FAE000B4B54 /* UIView+Category.m */; };
-		C7699938231D12B400424AD3 /* UILabel+WFLable.m in Sources */ = {isa = PBXBuildFile; fileRef = D51F366E226030F1009A30B5 /* UILabel+WFLable.m */; };
-		C7699939231D12B400424AD3 /* MyWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5008E1C22B0C2F1002374C5 /* MyWebViewController.m */; };
-		C769993A231D12B400424AD3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13409436221E6CA2000B4B54 /* MainViewController.m */; };
-		C769993B231D12B400424AD3 /* UIBarButtonItem+SXCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = D5FDB775226076300091DD1C /* UIBarButtonItem+SXCreate.m */; };
-		C769993C231D12B400424AD3 /* UINavigationItem+SXFixSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = D5FDB76F226076300091DD1C /* UINavigationItem+SXFixSpace.m */; };
-		C769993D231D12B400424AD3 /* TTTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342B9D72224CE0F00002CA4 /* TTTest.swift */; };
-		C769993E231D12B400424AD3 /* YanNetworkOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AB052922895A0600F33533 /* YanNetworkOBJ.m */; };
-		C769993F231D12B400424AD3 /* MyTools.m in Sources */ = {isa = PBXBuildFile; fileRef = D5FDB777226076300091DD1C /* MyTools.m */; };
-		C7699940231D12B400424AD3 /* UIView+WFLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D51F366B226030F1009A30B5 /* UIView+WFLine.m */; };
-		C7699941231D12B400424AD3 /* UIColor+WFHex.m in Sources */ = {isa = PBXBuildFile; fileRef = D51F366C226030F1009A30B5 /* UIColor+WFHex.m */; };
-		C7699942231D12B400424AD3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D5148F9C226427250090763D /* Reachability.m */; };
-		C7699944231D12B400424AD3 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5148FA1226427EB0090763D /* AdSupport.framework */; };
-		C7699945231D12B400424AD3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5148F9F226427370090763D /* CoreTelephony.framework */; };
-		C7699948231D12B400424AD3 /* AddButtonIcon-Active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13409459221E8C4C000B4B54 /* AddButtonIcon-Active@3x.png */; };
-		C7699949231D12B400424AD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13409409221E6975000B4B54 /* LaunchScreen.storyboard */; };
-		C769994A231D12B400424AD3 /* MyWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5008E1D22B0C2F1002374C5 /* MyWebViewController.xib */; };
-		C769994B231D12B400424AD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7AA4D6A231CBC1E002437DF /* Images.xcassets */; };
-		C769994C231D12B400424AD3 /* userLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7699921231D0AE500424AD3 /* userLogo@2x.png */; };
-		C769994D231D12B400424AD3 /* MainListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7AA4D93231CEAA9002437DF /* MainListTableViewCell.xib */; };
-		C769994E231D12B400424AD3 /* 实时公告@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7699912231D047400424AD3 /* 实时公告@3x.png */; };
-		C769994F231D12B400424AD3 /* mainCellBG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7AA4D76231CE5FF002437DF /* mainCellBG@3x.png */; };
-		C7699950231D12B400424AD3 /* moreGG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7699915231D05B000424AD3 /* moreGG@2x.png */; };
-		C7699951231D12B400424AD3 /* pinkIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C769991D231D0A0200424AD3 /* pinkIcon@3x.png */; };
-		C7699953231D12B400424AD3 /* TradingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D501C8822260285B009179F6 /* TradingViewController.xib */; };
-		C7699954231D12B400424AD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13409407221E6975000B4B54 /* Assets.xcassets */; };
-		C7699955231D12B400424AD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13409404221E6974000B4B54 /* Main.storyboard */; };
-		C7699956231D12B400424AD3 /* pinkIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C769991E231D0A0300424AD3 /* pinkIcon@2x.png */; };
-		C7699957231D12B400424AD3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1340943B221E6D2D000B4B54 /* Default-568h@2x.png */; };
-		C7699958231D12B400424AD3 /* AddButtonIcon-Active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1340945B221E8C4C000B4B54 /* AddButtonIcon-Active@2x.png */; };
-		C7699959231D12B400424AD3 /* AddButtonIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1340945A221E8C4C000B4B54 /* AddButtonIcon@3x.png */; };
-		C769995A231D12B400424AD3 /* mainCellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7AA4D77231CE600002437DF /* mainCellBG@2x.png */; };
-		C769995B231D12B400424AD3 /* 实时公告@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7699911231D047300424AD3 /* 实时公告@2x.png */; };
-		C769995C231D12B400424AD3 /* mainLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C769991A231D074400424AD3 /* mainLine@3x.png */; };
-		C769995D231D12B400424AD3 /* PersonCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13409444221E771B000B4B54 /* PersonCenterViewController.xib */; };
-		C769995E231D12B400424AD3 /* AddButtonIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13409458221E8C4C000B4B54 /* AddButtonIcon@2x.png */; };
-		C769995F231D12B400424AD3 /* moreGG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7699916231D05B000424AD3 /* moreGG@3x.png */; };
-		C7699960231D12B400424AD3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13409437221E6CA2000B4B54 /* MainViewController.xib */; };
-		C7699961231D12B400424AD3 /* mainLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7699919231D074300424AD3 /* mainLine@2x.png */; };
-		C7699962231D12B400424AD3 /* userLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7699922231D0AE500424AD3 /* userLogo@3x.png */; };
 		C769996C231D166400424AD3 /* MainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C769996A231D166400424AD3 /* MainCollectionViewCell.m */; };
 		C769996D231D166400424AD3 /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769996B231D166400424AD3 /* MainCollectionViewCell.xib */; };
 		C7699976231D1D8000424AD3 /* row4@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C769996E231D1D7F00424AD3 /* row4@3x.png */; };
@@ -287,6 +245,8 @@
 		C7CDDA96232285C300FAC942 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CDDA95232285C300FAC942 /* AssetsLibrary.framework */; };
 		C7CDDA98232285D400FAC942 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CDDA97232285D400FAC942 /* CoreMedia.framework */; };
 		C7CDDA9A232285DD00FAC942 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CDDA99232285DC00FAC942 /* AVFoundation.framework */; };
+		C7CE05AE2333124A00AE587D /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CE05AD2333124A00AE587D /* libc++abi.tbd */; };
+		C7CE05B1233372C000AE587D /* LoginJsonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CE05B0233372C000AE587D /* LoginJsonModel.m */; };
 		C7D256DA23220BAE002A3569 /* linesListBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D256D823220BAD002A3569 /* linesListBG@2x.png */; };
 		C7D256DB23220BAE002A3569 /* linesListBG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D256D923220BAD002A3569 /* linesListBG@3x.png */; };
 		C7D256DE23220D11002A3569 /* ICCardLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D256DC23220D10002A3569 /* ICCardLogo@3x.png */; };
@@ -295,6 +255,10 @@
 		C7D256E323220D32002A3569 /* otherCardLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D256E123220D32002A3569 /* otherCardLogo@3x.png */; };
 		C7D256E8232233F7002A3569 /* ToolsClaimsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D256E6232233F7002A3569 /* ToolsClaimsViewController.m */; };
 		C7D256E9232233F7002A3569 /* ToolsClaimsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D256E7232233F7002A3569 /* ToolsClaimsViewController.xib */; };
+		C7F6B29123321D090053727B /* SignOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F6B28F23321D090053727B /* SignOrderViewController.m */; };
+		C7F6B29223321D090053727B /* SignOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F6B29023321D090053727B /* SignOrderViewController.xib */; };
+		C7F6B295233225C50053727B /* SignOrderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F6B294233225C50053727B /* SignOrderFooterView.m */; };
+		C7F6B297233225CE0053727B /* SignOrderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F6B296233225CE0053727B /* SignOrderFooterView.xib */; };
 		C7FCCBB8231DFFCE00BCFE15 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FCCBB6231DFFCE00BCFE15 /* RegisterViewController.m */; };
 		C7FCCBB9231DFFCE00BCFE15 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7FCCBB7231DFFCE00BCFE15 /* RegisterViewController.xib */; };
 		C7FCCBBE231E100E00BCFE15 /* ForgetPWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FCCBBB231E100D00BCFE15 /* ForgetPWViewController.m */; };
@@ -353,8 +317,6 @@
 		C7FF8BA0231FDCDC0046379B /* personGoods@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7FF8B9E231FDCDC0046379B /* personGoods@3x.png */; };
 		C7FF8BA3231FDCFB0046379B /* personCard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7FF8BA1231FDCFB0046379B /* personCard@3x.png */; };
 		C7FF8BA4231FDCFB0046379B /* personCard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7FF8BA2231FDCFB0046379B /* personCard@2x.png */; };
-		C7FFA15E231E8473003C5A88 /* SignOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FFA15C231E8473003C5A88 /* SignOrderTableViewController.m */; };
-		C7FFA15F231E8473003C5A88 /* SignOrderTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7FFA15D231E8473003C5A88 /* SignOrderTableViewController.xib */; };
 		C7FFA163231E8542003C5A88 /* SingOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FFA161231E8542003C5A88 /* SingOrderTableViewCell.m */; };
 		C7FFA164231E8542003C5A88 /* SingOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7FFA162231E8542003C5A88 /* SingOrderTableViewCell.xib */; };
 		C7FFA167231E86AD003C5A88 /* singOrderBG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7FFA165231E86AD003C5A88 /* singOrderBG@3x.png */; };
@@ -462,6 +424,24 @@
 		C70414C2232739AC009DEF79 /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		C70414C523273A33009DEF79 /* emptycell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emptycell@2x.png"; sourceTree = "<group>"; };
 		C70414C623273A34009DEF79 /* emptycell@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emptycell@3x.png"; sourceTree = "<group>"; };
+		C712CEF32334744C00D8DFE1 /* IDCardTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCardTimeView.m; sourceTree = "<group>"; };
+		C712CEF42334744C00D8DFE1 /* IDCardTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardTimeView.h; sourceTree = "<group>"; };
+		C712CEF52334744C00D8DFE1 /* IDCardTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDCardTimeView.xib; sourceTree = "<group>"; };
+		C712CF002334A1AB00D8DFE1 /* CityChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityChooseView.m; sourceTree = "<group>"; };
+		C712CF012334A1AB00D8DFE1 /* CityChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityChooseView.h; sourceTree = "<group>"; };
+		C712CF022334A1AB00D8DFE1 /* CityChooseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityChooseView.xib; sourceTree = "<group>"; };
+		C712CF052334A86C00D8DFE1 /* BankSelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankSelectViewController.h; sourceTree = "<group>"; };
+		C712CF062334A86C00D8DFE1 /* BankSelectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankSelectViewController.m; sourceTree = "<group>"; };
+		C712CF072334A86C00D8DFE1 /* BankSelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankSelectViewController.xib; sourceTree = "<group>"; };
+		C712CF0B2334AB6A00D8DFE1 /* BankSelectTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankSelectTableViewCell.h; sourceTree = "<group>"; };
+		C712CF0C2334AB6A00D8DFE1 /* BankSelectTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankSelectTableViewCell.m; sourceTree = "<group>"; };
+		C712CF0D2334AB6A00D8DFE1 /* BankSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankSelectTableViewCell.xib; sourceTree = "<group>"; };
+		C712CF102334BABD00D8DFE1 /* searchIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchIcon@2x.png"; sourceTree = "<group>"; };
+		C712CF112334BABE00D8DFE1 /* searchIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchIcon@3x.png"; sourceTree = "<group>"; };
+		C712CF152334CB5B00D8DFE1 /* GYNoticeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYNoticeViewCell.m; sourceTree = "<group>"; };
+		C712CF162334CB5B00D8DFE1 /* GYRollingNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYRollingNoticeView.m; sourceTree = "<group>"; };
+		C712CF172334CB5B00D8DFE1 /* GYRollingNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYRollingNoticeView.h; sourceTree = "<group>"; };
+		C712CF182334CB5B00D8DFE1 /* GYNoticeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYNoticeViewCell.h; sourceTree = "<group>"; };
 		C714D81A2328903B008B48FD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C714D81C23289059008B48FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C714D81E2328906C008B48FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -629,7 +609,6 @@
 		C769991E231D0A0300424AD3 /* pinkIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinkIcon@2x.png"; sourceTree = "<group>"; };
 		C7699921231D0AE500424AD3 /* userLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userLogo@2x.png"; sourceTree = "<group>"; };
 		C7699922231D0AE500424AD3 /* userLogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userLogo@3x.png"; sourceTree = "<group>"; };
-		C7699967231D12B400424AD3 /* YanFarmwork copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YanFarmwork copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7699968231D12B400424AD3 /* YanFarmwork copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "YanFarmwork copy-Info.plist"; path = "/Users/hg/Desktop/YanFarmwork/YanFarmwork copy-Info.plist"; sourceTree = "<absolute>"; };
 		C7699969231D166400424AD3 /* MainCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainCollectionViewCell.h; sourceTree = "<group>"; };
 		C769996A231D166400424AD3 /* MainCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainCollectionViewCell.m; sourceTree = "<group>"; };
@@ -709,6 +688,9 @@
 		C7CDDA95232285C300FAC942 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		C7CDDA97232285D400FAC942 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		C7CDDA99232285DC00FAC942 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C7CE05AD2333124A00AE587D /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		C7CE05AF233372C000AE587D /* LoginJsonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginJsonModel.h; sourceTree = "<group>"; };
+		C7CE05B0233372C000AE587D /* LoginJsonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginJsonModel.m; sourceTree = "<group>"; };
 		C7D256D823220BAD002A3569 /* linesListBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linesListBG@2x.png"; sourceTree = "<group>"; };
 		C7D256D923220BAD002A3569 /* linesListBG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linesListBG@3x.png"; sourceTree = "<group>"; };
 		C7D256DC23220D10002A3569 /* ICCardLogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ICCardLogo@3x.png"; sourceTree = "<group>"; };
@@ -718,6 +700,12 @@
 		C7D256E5232233F7002A3569 /* ToolsClaimsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolsClaimsViewController.h; sourceTree = "<group>"; };
 		C7D256E6232233F7002A3569 /* ToolsClaimsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolsClaimsViewController.m; sourceTree = "<group>"; };
 		C7D256E7232233F7002A3569 /* ToolsClaimsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolsClaimsViewController.xib; sourceTree = "<group>"; };
+		C7F6B28E23321D090053727B /* SignOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignOrderViewController.h; sourceTree = "<group>"; };
+		C7F6B28F23321D090053727B /* SignOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignOrderViewController.m; sourceTree = "<group>"; };
+		C7F6B29023321D090053727B /* SignOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignOrderViewController.xib; sourceTree = "<group>"; };
+		C7F6B293233225C50053727B /* SignOrderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignOrderFooterView.h; sourceTree = "<group>"; };
+		C7F6B294233225C50053727B /* SignOrderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignOrderFooterView.m; sourceTree = "<group>"; };
+		C7F6B296233225CE0053727B /* SignOrderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignOrderFooterView.xib; sourceTree = "<group>"; };
 		C7FCCBB5231DFFCE00BCFE15 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		C7FCCBB6231DFFCE00BCFE15 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		C7FCCBB7231DFFCE00BCFE15 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -792,9 +780,6 @@
 		C7FF8B9E231FDCDC0046379B /* personGoods@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personGoods@3x.png"; sourceTree = "<group>"; };
 		C7FF8BA1231FDCFB0046379B /* personCard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personCard@3x.png"; sourceTree = "<group>"; };
 		C7FF8BA2231FDCFB0046379B /* personCard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personCard@2x.png"; sourceTree = "<group>"; };
-		C7FFA15B231E8473003C5A88 /* SignOrderTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignOrderTableViewController.h; sourceTree = "<group>"; };
-		C7FFA15C231E8473003C5A88 /* SignOrderTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignOrderTableViewController.m; sourceTree = "<group>"; };
-		C7FFA15D231E8473003C5A88 /* SignOrderTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignOrderTableViewController.xib; sourceTree = "<group>"; };
 		C7FFA160231E8542003C5A88 /* SingOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingOrderTableViewCell.h; sourceTree = "<group>"; };
 		C7FFA161231E8542003C5A88 /* SingOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingOrderTableViewCell.m; sourceTree = "<group>"; };
 		C7FFA162231E8542003C5A88 /* SingOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -848,6 +833,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7CE05AE2333124A00AE587D /* libc++abi.tbd in Frameworks */,
 				C714D81F2328906D008B48FD /* MediaPlayer.framework in Frameworks */,
 				C714D81D23289059008B48FD /* AudioToolbox.framework in Frameworks */,
 				C714D81B2328903B008B48FD /* CoreBluetooth.framework in Frameworks */,
@@ -882,15 +868,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C7699943231D12B400424AD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C7699944231D12B400424AD3 /* AdSupport.framework in Frameworks */,
-				C7699945231D12B400424AD3 /* CoreTelephony.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -921,7 +898,6 @@
 				134093FB221E6974000B4B54 /* YanFarmwork.app */,
 				13409413221E6976000B4B54 /* YanFarmworkTests.xctest */,
 				1340941E221E6976000B4B54 /* YanFarmworkUITests.xctest */,
-				C7699967231D12B400424AD3 /* YanFarmwork copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1048,6 +1024,8 @@
 			isa = PBXGroup;
 			children = (
 				13409440221E76EF000B4B54 /* view */,
+				C7CE05AF233372C000AE587D /* LoginJsonModel.h */,
+				C7CE05B0233372C000AE587D /* LoginJsonModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1162,6 +1140,76 @@
 				C70414C2232739AC009DEF79 /* EmptyTableViewCell.xib */,
 			);
 			path = "空数组";
+			sourceTree = "<group>";
+		};
+		C712CEF22334739B00D8DFE1 /* 组件 */ = {
+			isa = PBXGroup;
+			children = (
+				C712CEFB23347F5900D8DFE1 /* 选择银行 */,
+				C712CEFA23347F5100D8DFE1 /* 选择行业 */,
+				C712CEF923347F0300D8DFE1 /* 选择省市 */,
+				C712CEF823347EA700D8DFE1 /* 选择身份证日期 */,
+			);
+			path = "组件";
+			sourceTree = "<group>";
+		};
+		C712CEF823347EA700D8DFE1 /* 选择身份证日期 */ = {
+			isa = PBXGroup;
+			children = (
+				C712CEF42334744C00D8DFE1 /* IDCardTimeView.h */,
+				C712CEF32334744C00D8DFE1 /* IDCardTimeView.m */,
+				C712CEF52334744C00D8DFE1 /* IDCardTimeView.xib */,
+			);
+			path = "选择身份证日期";
+			sourceTree = "<group>";
+		};
+		C712CEF923347F0300D8DFE1 /* 选择省市 */ = {
+			isa = PBXGroup;
+			children = (
+				C712CF012334A1AB00D8DFE1 /* CityChooseView.h */,
+				C712CF002334A1AB00D8DFE1 /* CityChooseView.m */,
+				C712CF022334A1AB00D8DFE1 /* CityChooseView.xib */,
+			);
+			path = "选择省市";
+			sourceTree = "<group>";
+		};
+		C712CEFA23347F5100D8DFE1 /* 选择行业 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "选择行业";
+			sourceTree = "<group>";
+		};
+		C712CEFB23347F5900D8DFE1 /* 选择银行 */ = {
+			isa = PBXGroup;
+			children = (
+				C712CF052334A86C00D8DFE1 /* BankSelectViewController.h */,
+				C712CF062334A86C00D8DFE1 /* BankSelectViewController.m */,
+				C712CF072334A86C00D8DFE1 /* BankSelectViewController.xib */,
+				C712CF0A2334AB5000D8DFE1 /* cell */,
+			);
+			path = "选择银行";
+			sourceTree = "<group>";
+		};
+		C712CF0A2334AB5000D8DFE1 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				C712CF0B2334AB6A00D8DFE1 /* BankSelectTableViewCell.h */,
+				C712CF0C2334AB6A00D8DFE1 /* BankSelectTableViewCell.m */,
+				C712CF0D2334AB6A00D8DFE1 /* BankSelectTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		C712CF142334CB5B00D8DFE1 /* GYRollingNoticeView滚动公告 */ = {
+			isa = PBXGroup;
+			children = (
+				C712CF152334CB5B00D8DFE1 /* GYNoticeViewCell.m */,
+				C712CF162334CB5B00D8DFE1 /* GYRollingNoticeView.m */,
+				C712CF172334CB5B00D8DFE1 /* GYRollingNoticeView.h */,
+				C712CF182334CB5B00D8DFE1 /* GYNoticeViewCell.h */,
+			);
+			path = "GYRollingNoticeView滚动公告";
 			sourceTree = "<group>";
 		};
 		C714D8202328939B008B48FD /* tianyuSDK */ = {
@@ -1409,6 +1457,7 @@
 		C7441A842320DE60009736EF /* 身份认证 */ = {
 			isa = PBXGroup;
 			children = (
+				C712CEF22334739B00D8DFE1 /* 组件 */,
 				C7441A852320DE9C009736EF /* UserCertificationTableViewController.h */,
 				C7441A862320DE9C009736EF /* UserCertificationTableViewController.m */,
 				C7441A872320DE9C009736EF /* UserCertificationTableViewController.xib */,
@@ -1604,6 +1653,8 @@
 		C7AA4D69231CBB88002437DF /* image */ = {
 			isa = PBXGroup;
 			children = (
+				C712CF102334BABD00D8DFE1 /* searchIcon@2x.png */,
+				C712CF112334BABE00D8DFE1 /* searchIcon@3x.png */,
 				C70414C523273A33009DEF79 /* emptycell@2x.png */,
 				C70414C623273A34009DEF79 /* emptycell@3x.png */,
 				C72B11822326003100BE5672 /* scanFlashlight@2x.png */,
@@ -1745,9 +1796,9 @@
 				C7FE55A6231E5DD100A44939 /* PayResultViewController.h */,
 				C7FE55A7231E5DD100A44939 /* PayResultViewController.m */,
 				C7FE55A8231E5DD100A44939 /* PayResultViewController.xib */,
-				C7FFA15B231E8473003C5A88 /* SignOrderTableViewController.h */,
-				C7FFA15C231E8473003C5A88 /* SignOrderTableViewController.m */,
-				C7FFA15D231E8473003C5A88 /* SignOrderTableViewController.xib */,
+				C7F6B28E23321D090053727B /* SignOrderViewController.h */,
+				C7F6B28F23321D090053727B /* SignOrderViewController.m */,
+				C7F6B29023321D090053727B /* SignOrderViewController.xib */,
 				C7ACE407231E93390033DF5F /* ConfirmSignViewController.h */,
 				C7ACE408231E93390033DF5F /* ConfirmSignViewController.m */,
 				C7ACE409231E93390033DF5F /* ConfirmSignViewController.xib */,
@@ -1786,6 +1837,9 @@
 				C7FE55AB231E661C00A44939 /* SignatureView.h */,
 				C7FE55AC231E661C00A44939 /* SignatureView.m */,
 				C7FE55AE231E662600A44939 /* SignatureView.xib */,
+				C7F6B293233225C50053727B /* SignOrderFooterView.h */,
+				C7F6B294233225C50053727B /* SignOrderFooterView.m */,
+				C7F6B296233225CE0053727B /* SignOrderFooterView.xib */,
 			);
 			path = "组件";
 			sourceTree = "<group>";
@@ -1916,6 +1970,7 @@
 		D51F3667226030DA009A30B5 /* Third Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C712CF142334CB5B00D8DFE1 /* GYRollingNoticeView滚动公告 */,
 				C74C91592330E4D20035485A /* 定位功能 */,
 				C714D8202328939B008B48FD /* tianyuSDK */,
 				C70414BF23273948009DEF79 /* 空数组 */,
@@ -1990,6 +2045,7 @@
 		FFF7C8FE7F6BA5F2E474C1D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7CE05AD2333124A00AE587D /* libc++abi.tbd */,
 				C74715DF2331E1D700E01127 /* MapKit.framework */,
 				C714D81E2328906C008B48FD /* MediaPlayer.framework */,
 				C714D81C23289059008B48FD /* AudioToolbox.framework */,
@@ -2062,23 +2118,6 @@
 			productReference = 1340941E221E6976000B4B54 /* YanFarmworkUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		C7699925231D12B400424AD3 /* YanFarmwork copy */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C7699964231D12B400424AD3 /* Build configuration list for PBXNativeTarget "YanFarmwork copy" */;
-			buildPhases = (
-				C7699927231D12B400424AD3 /* Sources */,
-				C7699943231D12B400424AD3 /* Frameworks */,
-				C7699947231D12B400424AD3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "YanFarmwork copy";
-			productName = YanFarmwork;
-			productReference = C7699967231D12B400424AD3 /* YanFarmwork copy.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2123,7 +2162,6 @@
 				134093FA221E6974000B4B54 /* YanFarmwork */,
 				13409412221E6976000B4B54 /* YanFarmworkTests */,
 				1340941D221E6976000B4B54 /* YanFarmworkUITests */,
-				C7699925231D12B400424AD3 /* YanFarmwork copy */,
 			);
 		};
 /* End PBXProject section */
@@ -2135,6 +2173,8 @@
 			files = (
 				C7441A992320E4F5009736EF /* idCardZM@2x.png in Resources */,
 				1340945D221E8C4C000B4B54 /* AddButtonIcon-Active@3x.png in Resources */,
+				C7F6B297233225CE0053727B /* SignOrderFooterView.xib in Resources */,
+				C712CF122334BABE00D8DFE1 /* searchIcon@2x.png in Resources */,
 				C7FCCBDF231E38E200BCFE15 /* payWX@3x.png in Resources */,
 				C7FCCBCF231E37C000BCFE15 /* nextPage@2x.png in Resources */,
 				1340940B221E6975000B4B54 /* LaunchScreen.storyboard in Resources */,
@@ -2151,6 +2191,7 @@
 				C7FFA16B231E883E003C5A88 /* 银联@3x.png in Resources */,
 				C7699977231D1D8000424AD3 /* row3@2x.png in Resources */,
 				C75B70EC2322423E00DC6AD3 /* BlueToothSearchToolsTableViewController.xib in Resources */,
+				C712CF0F2334AB6A00D8DFE1 /* BankSelectTableViewCell.xib in Resources */,
 				C7AA4D95231CEAA9002437DF /* MainListTableViewCell.xib in Resources */,
 				C764B2FA2320F4FA00FCA7D3 /* UserShopDetailTableViewCell.xib in Resources */,
 				C764B2E22320EE5400FCA7D3 /* UserStatementTableViewCell.xib in Resources */,
@@ -2176,6 +2217,7 @@
 				C7159BF62321FC3500AD9D21 /* 中信logo@3x.png in Resources */,
 				C7D256E323220D32002A3569 /* otherCardLogo@3x.png in Resources */,
 				C7699917231D05B000424AD3 /* moreGG@2x.png in Resources */,
+				C712CF132334BABE00D8DFE1 /* searchIcon@3x.png in Resources */,
 				C7159BEE2321F76000AD9D21 /* MyPOSViewController.xib in Resources */,
 				C769991F231D0A0300424AD3 /* pinkIcon@3x.png in Resources */,
 				C75B70DD23223EA500DC6AD3 /* toolsBG@3x.png in Resources */,
@@ -2232,6 +2274,7 @@
 				C7699979231D1D8000424AD3 /* row2@2x.png in Resources */,
 				C7699976231D1D8000424AD3 /* row4@3x.png in Resources */,
 				C78E93E523210741000D3F26 /* CheckRealNameTableViewController.xib in Resources */,
+				C712CF042334A1AB00D8DFE1 /* CityChooseView.xib in Resources */,
 				C75B70F22322430500DC6AD3 /* BlueToothSearchToolsTableViewCell.xib in Resources */,
 				C764B2DA2320E95600FCA7D3 /* yseRedio@3x.png in Resources */,
 				C7FF8B9F231FDCDC0046379B /* personGoods@2x.png in Resources */,
@@ -2242,7 +2285,6 @@
 				C7FF8BA4231FDCFB0046379B /* personCard@2x.png in Resources */,
 				C75B70E123223EF300DC6AD3 /* toolsImage@3x.png in Resources */,
 				C7159BF72321FC3500AD9D21 /* 中信logo@2x.png in Resources */,
-				C7FFA15F231E8473003C5A88 /* SignOrderTableViewController.xib in Resources */,
 				1340945E221E8C4C000B4B54 /* AddButtonIcon@3x.png in Resources */,
 				C75B70F7232243AB00DC6AD3 /* BlueToothSearchToolsHeaderView.xib in Resources */,
 				C7FF8B71231F64BF0046379B /* FilterView.xib in Resources */,
@@ -2255,6 +2297,7 @@
 				C7FF8B67231F51740046379B /* TradingTableViewCell.xib in Resources */,
 				C769998A231D3A9C00424AD3 /* passwordUnShow@2x.png in Resources */,
 				C7699993231D3B5D00424AD3 /* unAgreed@2x.png in Resources */,
+				C7F6B29223321D090053727B /* SignOrderViewController.xib in Resources */,
 				C7D256DF23220D11002A3569 /* ICCardLogo@2x.png in Resources */,
 				C7FF8B97231FDC9E0046379B /* personService@3x.png in Resources */,
 				C7699987231D37D300424AD3 /* loginLogo@3x.png in Resources */,
@@ -2280,6 +2323,7 @@
 				C702B35E232F667A007A04DD /* searchTools.gif in Resources */,
 				C78E93F923212219000D3F26 /* creditCardBG@2x.png in Resources */,
 				C7FF8B60231F50430046379B /* payCard@3x.png in Resources */,
+				C712CF092334A86C00D8DFE1 /* BankSelectViewController.xib in Resources */,
 				C769998B231D3A9C00424AD3 /* passwordUnShow@3x.png in Resources */,
 				C7ACE415231E99830033DF5F /* paySuccess@3x.png in Resources */,
 				C7441A982320E4F5009736EF /* idCardZM@3x.png in Resources */,
@@ -2304,6 +2348,7 @@
 				C7FF8B9B231FDCC00046379B /* personCenter@3x.png in Resources */,
 				C7FCCBD6231E38A600BCFE15 /* payZFB@2x.png in Resources */,
 				C7441A9D2320E539009736EF /* idCardFM@2x.png in Resources */,
+				C712CEF72334744C00D8DFE1 /* IDCardTimeView.xib in Resources */,
 				C764B2EF2320F05000FCA7D3 /* bankCard@3x.png in Resources */,
 				1340945C221E8C4C000B4B54 /* AddButtonIcon@2x.png in Resources */,
 				C78E93F0232110EB000D3F26 /* TCreditCardCerTableViewController.xib in Resources */,
@@ -2348,39 +2393,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C7699947231D12B400424AD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C7699948231D12B400424AD3 /* AddButtonIcon-Active@3x.png in Resources */,
-				C7699949231D12B400424AD3 /* LaunchScreen.storyboard in Resources */,
-				C769994A231D12B400424AD3 /* MyWebViewController.xib in Resources */,
-				C769994B231D12B400424AD3 /* Images.xcassets in Resources */,
-				C769994C231D12B400424AD3 /* userLogo@2x.png in Resources */,
-				C769994D231D12B400424AD3 /* MainListTableViewCell.xib in Resources */,
-				C769994E231D12B400424AD3 /* 实时公告@3x.png in Resources */,
-				C769994F231D12B400424AD3 /* mainCellBG@3x.png in Resources */,
-				C7699950231D12B400424AD3 /* moreGG@2x.png in Resources */,
-				C7699951231D12B400424AD3 /* pinkIcon@3x.png in Resources */,
-				C7699953231D12B400424AD3 /* TradingViewController.xib in Resources */,
-				C7699954231D12B400424AD3 /* Assets.xcassets in Resources */,
-				C7699955231D12B400424AD3 /* Main.storyboard in Resources */,
-				C7699956231D12B400424AD3 /* pinkIcon@2x.png in Resources */,
-				C7699957231D12B400424AD3 /* Default-568h@2x.png in Resources */,
-				C7699958231D12B400424AD3 /* AddButtonIcon-Active@2x.png in Resources */,
-				C7699959231D12B400424AD3 /* AddButtonIcon@3x.png in Resources */,
-				C769995A231D12B400424AD3 /* mainCellBG@2x.png in Resources */,
-				C769995B231D12B400424AD3 /* 实时公告@2x.png in Resources */,
-				C769995C231D12B400424AD3 /* mainLine@3x.png in Resources */,
-				C769995D231D12B400424AD3 /* PersonCenterViewController.xib in Resources */,
-				C769995E231D12B400424AD3 /* AddButtonIcon@2x.png in Resources */,
-				C769995F231D12B400424AD3 /* moreGG@3x.png in Resources */,
-				C7699960231D12B400424AD3 /* MainViewController.xib in Resources */,
-				C7699961231D12B400424AD3 /* mainLine@2x.png in Resources */,
-				C7699962231D12B400424AD3 /* userLogo@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2449,6 +2461,7 @@
 				C7FCCBC4231E1A0200BCFE15 /* WxAndZfbTableViewController.m in Sources */,
 				C72B11CE2326292B00BE5672 /* CWAnimationView.m in Sources */,
 				C7AA4D94231CEAA9002437DF /* MainListTableViewCell.m in Sources */,
+				C712CF082334A86C00D8DFE1 /* BankSelectViewController.m in Sources */,
 				C78E93F52321134C000D3F26 /* CreditCardCerTableViewCell.m in Sources */,
 				D51F3671226030F1009A30B5 /* UIImage+WFColorImage.m in Sources */,
 				D501C8832260285B009179F6 /* TradingViewController.m in Sources */,
@@ -2467,8 +2480,11 @@
 				C70414C3232739AC009DEF79 /* EmptyTableViewCell.m in Sources */,
 				C7441A8E2320E195009736EF /* UserCertificationTableViewCell.m in Sources */,
 				C75B70D523223CF000DC6AD3 /* POSCollectionViewController.m in Sources */,
+				C7F6B29123321D090053727B /* SignOrderViewController.m in Sources */,
 				C7FE55AD231E661C00A44939 /* SignatureView.m in Sources */,
 				C72B11D12326292B00BE5672 /* CWCommon.m in Sources */,
+				C7F6B295233225C50053727B /* SignOrderFooterView.m in Sources */,
+				C712CF0E2334AB6A00D8DFE1 /* BankSelectTableViewCell.m in Sources */,
 				C7441A882320DE9C009736EF /* UserCertificationTableViewController.m in Sources */,
 				C7159BED2321F76000AD9D21 /* MyPOSViewController.m in Sources */,
 				1340940E221E6975000B4B54 /* main.m in Sources */,
@@ -2488,11 +2504,11 @@
 				C7D256E8232233F7002A3569 /* ToolsClaimsViewController.m in Sources */,
 				C78E93EF232110EB000D3F26 /* TCreditCardCerTableViewController.m in Sources */,
 				C72B11C72326292B00BE5672 /* CWIDCardCaptureController.mm in Sources */,
-				C7FFA15E231E8473003C5A88 /* SignOrderTableViewController.m in Sources */,
 				C72B11CC2326292B00BE5672 /* FaceRectKeyPointView.m in Sources */,
 				D5148F9A226426C20090763D /* ToolsObject.m in Sources */,
 				C7FE559B231E4C4F00A44939 /* QrCodeTableViewController.m in Sources */,
 				C7159BF22321F78400AD9D21 /* DebitCardViewController.m in Sources */,
+				C7CE05B1233372C000AE587D /* LoginJsonModel.m in Sources */,
 				D5FDB77B226076300091DD1C /* NSObject+SXRuntime.m in Sources */,
 				C7441A642320B44A009736EF /* ChangePhoneStepOne.m in Sources */,
 				13409456221E7FAE000B4B54 /* UIView+Category.m in Sources */,
@@ -2508,14 +2524,17 @@
 				C72B11812325FDAB00BE5672 /* WSLNativeScanTool.m in Sources */,
 				C72B11D32326292B00BE5672 /* CWCamera.m in Sources */,
 				13409438221E6CA2000B4B54 /* MainViewController.m in Sources */,
+				C712CEF62334744C00D8DFE1 /* IDCardTimeView.m in Sources */,
 				C7159BFB2321FF4D00AD9D21 /* ChangeDebitCardViewController.m in Sources */,
 				D5FDB77A226076300091DD1C /* UIBarButtonItem+SXCreate.m in Sources */,
+				C712CF032334A1AB00D8DFE1 /* CityChooseView.m in Sources */,
 				C78E93E92321076D000D3F26 /* CheckRealNameTableViewCell.m in Sources */,
 				C72B11CB2326292B00BE5672 /* CWHackerCheckView.m in Sources */,
 				C72B11CF2326292B00BE5672 /* CWFinishedView.m in Sources */,
 				C72B11C82326292B00BE5672 /* CWCameraDrawView.m in Sources */,
 				C7FF8B6F231F64B30046379B /* FilterView.m in Sources */,
 				C78E93FE2321264A000D3F26 /* AddCreditCardViewController.m in Sources */,
+				C712CF192334CB5B00D8DFE1 /* GYNoticeViewCell.m in Sources */,
 				C7FF8B66231F51740046379B /* TradingTableViewCell.m in Sources */,
 				D5FDB778226076300091DD1C /* UINavigationItem+SXFixSpace.m in Sources */,
 				1342B9D82224CE0F00002CA4 /* TTTest.swift in Sources */,
@@ -2526,6 +2545,7 @@
 				C74715DE2331BF0400E01127 /* LocationObject.mm in Sources */,
 				C72B11D42326292B00BE5672 /* CWLivessViewController.m in Sources */,
 				C72B11CD2326292B00BE5672 /* CWProgressView.m in Sources */,
+				C712CF1A2334CB5B00D8DFE1 /* GYRollingNoticeView.m in Sources */,
 				C75B70F12322430500DC6AD3 /* BlueToothSearchToolsTableViewCell.m in Sources */,
 				D5FDB77C226076300091DD1C /* MyTools.m in Sources */,
 				D51F3672226030F1009A30B5 /* UIView+WFLine.m in Sources */,
@@ -2550,39 +2570,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				13409423221E6976000B4B54 /* YanFarmworkUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C7699927231D12B400424AD3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C7699928231D12B400424AD3 /* UIImage+UIImage_GradientChange.m in Sources */,
-				C7699929231D12B400424AD3 /* MainListTableViewCell.m in Sources */,
-				C769992A231D12B400424AD3 /* UIImage+WFColorImage.m in Sources */,
-				C769992B231D12B400424AD3 /* TradingViewController.m in Sources */,
-				C769992C231D12B400424AD3 /* GetXToken.m in Sources */,
-				C769992D231D12B400424AD3 /* UINavigationController+SXFullScreen.m in Sources */,
-				C769992E231D12B400424AD3 /* MyTabBar.m in Sources */,
-				C7699930231D12B400424AD3 /* main.m in Sources */,
-				C7699931231D12B400424AD3 /* AESUtility.m in Sources */,
-				C7699932231D12B400424AD3 /* PersonCenterViewController.m in Sources */,
-				C7699933231D12B400424AD3 /* AppDelegate.m in Sources */,
-				C7699934231D12B400424AD3 /* MyTabBarController.m in Sources */,
-				C7699935231D12B400424AD3 /* ToolsObject.m in Sources */,
-				C7699936231D12B400424AD3 /* NSObject+SXRuntime.m in Sources */,
-				C7699937231D12B400424AD3 /* UIView+Category.m in Sources */,
-				C7699938231D12B400424AD3 /* UILabel+WFLable.m in Sources */,
-				C7699939231D12B400424AD3 /* MyWebViewController.m in Sources */,
-				C769993A231D12B400424AD3 /* MainViewController.m in Sources */,
-				C769993B231D12B400424AD3 /* UIBarButtonItem+SXCreate.m in Sources */,
-				C769993C231D12B400424AD3 /* UINavigationItem+SXFixSpace.m in Sources */,
-				C769993D231D12B400424AD3 /* TTTest.swift in Sources */,
-				C769993E231D12B400424AD3 /* YanNetworkOBJ.m in Sources */,
-				C769993F231D12B400424AD3 /* MyTools.m in Sources */,
-				C7699940231D12B400424AD3 /* UIView+WFLine.m in Sources */,
-				C7699941231D12B400424AD3 /* UIColor+WFHex.m in Sources */,
-				C7699942231D12B400424AD3 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2872,55 +2859,6 @@
 			};
 			name = Release;
 		};
-		C7699965231D12B400424AD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/YanFarmwork/PrefixHeader.pch";
-				INFOPLIST_FILE = "YanFarmwork copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guoShi.TestDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "YanFarmwork/swift桥接/YanFarmwork-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		C7699966231D12B400424AD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/YanFarmwork/PrefixHeader.pch";
-				INFOPLIST_FILE = "YanFarmwork copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guoShi.TestDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "YanFarmwork/swift桥接/YanFarmwork-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2956,15 +2894,6 @@
 			buildConfigurations = (
 				1340942E221E6976000B4B54 /* Debug */,
 				1340942F221E6976000B4B54 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C7699964231D12B400424AD3 /* Build configuration list for PBXNativeTarget "YanFarmwork copy" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C7699965231D12B400424AD3 /* Debug */,
-				C7699966231D12B400424AD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

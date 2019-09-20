@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)moreAdvertisButton:(id)sender;
 
 
-
+@property (retain, nonatomic) NSArray *noticeArray;
 - (void)createCell;
 
 

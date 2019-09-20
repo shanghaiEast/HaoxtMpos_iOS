@@ -142,6 +142,13 @@
         
     }else{
         //确定
+        
+        if ([_maxPrice.text floatValue] < [_minPrice.text floatValue]) {
+            [ToolsObject showMessageTitle:@"最低价格不能高于最高价格" andDelay:1 andImage:nil];
+            return;
+        }
+        
+        
         self.hidden = YES;
         
         if (_filtrBolck) {

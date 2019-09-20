@@ -50,22 +50,55 @@
 
 - (IBAction)confirmBtnClick:(id)sender {
     
-//    if (_phoneNumber.text.length == 0) {
-//        [ToolsObject showMessageTitle:@"请先输入手机号" andDelay:1.0 andImage:nil];
-//
-//        return;
-//    }
-//
-//    if (_phoneNumber.text.length != 11) {
-//        [ToolsObject showMessageTitle:@"请先输入11位手机号" andDelay:1.0 andImage:nil];
-//
-//        return;
-//    }
-//
-//    if ([ToolsObject validateMobile:_phoneNumber.text] == NO) {
+    
+    if (_oldPassword.text.length == 0 && _myNewPassword.text.length == 0 && _againPassword.text.length == 0) {
+        [ToolsObject showMessageTitle:@"请先输入密码" andDelay:1.0 andImage:nil];
+
+        return;
+    }
+
+//    if ([ToolsObject validateMobile:_oldPassword.text] == NO && [ToolsObject validateMobile:_myNewPassword.text] == NO  && [ToolsObject validateMobile:_againPassword.text] == NO ) {
 //        [ToolsObject showMessageTitle:@"请先输入正确的手机号" andDelay:1.0 andImage:nil];
 //
 //        return;
 //    }
+    
+    if (![_myNewPassword.text isEqualToString:_againPassword.text]) {
+        [ToolsObject showMessageTitle:@"2次输入的密码不一致" andDelay:1.0 andImage:nil];
+        
+        return;
+    }
+    
+    
+    [self requestChangePwd];
+}
+
+
+- (void)requestChangePwd {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [ToolsObject md5:_oldPassword.text],@"OLD_USR_LOGIN_PWD",
+                                [ToolsObject md5:_againPassword.text],@"NEW_USR_LOGIN_PWD",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:password_update parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+          
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+            
+            [self popViewClick];
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
 }
 @end

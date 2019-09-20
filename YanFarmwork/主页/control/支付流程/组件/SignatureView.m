@@ -7,7 +7,7 @@
 //
 
 #import "SignatureView.h"
-#import "SignOrderTableViewController.h"
+#import "SignOrderViewController.h"
 
 @implementation SignatureView
 
@@ -75,7 +75,7 @@
         if (_processTag == 0) {
             
         }else{
-            SignOrderTableViewController *signVC = [[SignOrderTableViewController alloc] initWithNibName:@"SignOrderTableViewController" bundle:nil];
+            SignOrderViewController *signVC = [[SignOrderViewController alloc] initWithNibName:@"SignOrderViewController" bundle:nil];
             signVC.processTag = _processTag;
             signVC.hidesBottomBarWhenPushed = YES;
             [_rootVC.navigationController pushViewController:signVC animated:YES];

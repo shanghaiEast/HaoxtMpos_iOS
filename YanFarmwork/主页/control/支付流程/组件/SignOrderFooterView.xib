@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SignOrderFooterView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLine.png" translatesAutoresizingMaskIntoConstraints="NO" id="0kX-5B-yij">
+                    <rect key="frame" x="20" y="20" width="374" height="2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="BN5-8i-H5R"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLine.png" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-gp-6G7">
+                    <rect key="frame" x="20" y="133" width="374" height="2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="TK8-ef-XSa"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持卡人签名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n5-aN-CFy">
+                    <rect key="frame" x="27" y="30" width="140" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="SDT-bu-zNK"/>
+                        <constraint firstAttribute="height" constant="21" id="skm-fc-HuA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOI-nD-JaU">
+                    <rect key="frame" x="192" y="52" width="192" height="73"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ziP-kU-TdG">
+                            <rect key="frame" x="0.0" y="-1" width="192" height="73"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="192" id="5aC-t5-8eC"/>
+                        <constraint firstItem="ziP-kU-TdG" firstAttribute="top" secondItem="TOI-nD-JaU" secondAttribute="top" constant="-1" id="7Nr-39-y3F"/>
+                        <constraint firstItem="ziP-kU-TdG" firstAttribute="leading" secondItem="TOI-nD-JaU" secondAttribute="leading" id="94B-JG-moo"/>
+                        <constraint firstAttribute="height" constant="73" id="ejU-y3-o9p"/>
+                        <constraint firstAttribute="bottom" secondItem="ziP-kU-TdG" secondAttribute="bottom" constant="1" id="xha-G4-zx0"/>
+                        <constraint firstAttribute="trailing" secondItem="ziP-kU-TdG" secondAttribute="trailing" id="z01-g7-Zw7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="4n5-aN-CFy" firstAttribute="top" secondItem="0kX-5B-yij" secondAttribute="bottom" constant="8" id="1Ub-Ad-fyg"/>
+                <constraint firstAttribute="trailing" secondItem="TOI-nD-JaU" secondAttribute="trailing" constant="30" id="DdH-XI-nFZ"/>
+                <constraint firstAttribute="bottom" secondItem="jTU-gp-6G7" secondAttribute="bottom" id="Gbu-BG-gD9"/>
+                <constraint firstItem="jTU-gp-6G7" firstAttribute="top" secondItem="TOI-nD-JaU" secondAttribute="bottom" constant="8" id="KCI-rc-ydd"/>
+                <constraint firstItem="jTU-gp-6G7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Qr2-5G-XB6"/>
+                <constraint firstItem="0kX-5B-yij" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="TGV-TK-R8f"/>
+                <constraint firstAttribute="trailing" secondItem="jTU-gp-6G7" secondAttribute="trailing" constant="20" id="Y0t-Zf-VWf"/>
+                <constraint firstAttribute="trailing" secondItem="0kX-5B-yij" secondAttribute="trailing" constant="20" id="hqy-lY-nMZ"/>
+                <constraint firstItem="4n5-aN-CFy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="27" id="qmj-vY-VQf"/>
+                <constraint firstItem="0kX-5B-yij" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="saT-tr-v8G"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="signImageView" destination="ziP-kU-TdG" id="bXs-5Y-krI"/>
+                <outlet property="signView" destination="TOI-nD-JaU" id="pFf-3A-bOc"/>
+            </connections>
+            <point key="canvasLocation" x="131.25" y="-280.98591549295776"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mainLine.png" width="290" height="1"/>
+    </resources>
+</document>

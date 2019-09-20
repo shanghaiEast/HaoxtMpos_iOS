@@ -190,13 +190,14 @@
                         <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHM-FS-kJg">
-                        <rect key="frame" x="150" y="404" width="56" height="50"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHM-FS-kJg">
+                        <rect key="frame" x="147" y="404" width="88" height="50"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="62" id="Di0-bV-sOk"/>
                             <constraint firstAttribute="height" constant="50" id="h13-QE-xK8"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <state key="normal" title="河南省" image="downTriangle.png">
+                        <state key="normal" title="选择省" image="downTriangle.png">
                             <color key="titleColor" red="0.60000586509999998" green="0.59999251369999995" blue="0.59999519589999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </state>
                         <connections>
@@ -246,14 +247,14 @@
                         <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnK-Zt-CRD">
-                        <rect key="frame" x="218" y="404" width="85" height="50"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnK-Zt-CRD">
+                        <rect key="frame" x="228" y="404" width="75" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="7co-yF-6Bb"/>
-                            <constraint firstAttribute="width" constant="85" id="ACp-N6-waU"/>
+                            <constraint firstAttribute="width" constant="60" id="ACp-N6-waU"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <state key="normal" title="河南省" image="downTriangle.png">
+                        <state key="normal" title="选择市" image="downTriangle.png">
                             <color key="titleColor" red="0.60000586509999998" green="0.59999251369999995" blue="0.59999519589999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </state>
                         <connections>
@@ -304,7 +305,7 @@
                     <constraint firstItem="siz-1v-WCo" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Hko-CC-ckt"/>
                     <constraint firstItem="2ou-PR-aOr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HpR-VB-zQY"/>
                     <constraint firstItem="ySD-EB-q0y" firstAttribute="top" secondItem="zJk-H4-JzY" secondAttribute="bottom" constant="19" id="Iq1-2p-gmO"/>
-                    <constraint firstItem="wnK-Zt-CRD" firstAttribute="leading" secondItem="hHM-FS-kJg" secondAttribute="trailing" constant="12" id="J0i-FK-E2e"/>
+                    <constraint firstItem="wnK-Zt-CRD" firstAttribute="leading" secondItem="hHM-FS-kJg" secondAttribute="trailing" constant="8" id="J0i-FK-E2e"/>
                     <constraint firstAttribute="trailingMargin" secondItem="wnK-Zt-CRD" secondAttribute="trailing" constant="1" id="KC2-UO-LKi"/>
                     <constraint firstItem="6sh-av-ttT" firstAttribute="top" secondItem="zJk-H4-JzY" secondAttribute="bottom" constant="5" id="KqG-U9-Anx"/>
                     <constraint firstItem="BXE-9U-AoH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="MdR-wD-Seo"/>
@@ -348,7 +349,7 @@
                 <outlet property="headquartersBankBtn" destination="6sh-av-ttT" id="X4q-YS-1yi"/>
                 <outlet property="provinceAddresBtn" destination="hHM-FS-kJg" id="0Fs-AA-FIF"/>
             </connections>
-            <point key="canvasLocation" x="111.59420289855073" y="-68.303571428571431"/>
+            <point key="canvasLocation" x="-181.15942028985509" y="-13.392857142857142"/>
         </tableViewCell>
     </objects>
     <resources>

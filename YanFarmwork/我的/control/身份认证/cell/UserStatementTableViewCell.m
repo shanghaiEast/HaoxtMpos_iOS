@@ -14,10 +14,21 @@
 #import "CWBankCardModel.h"
 #import "CWBankCardCaptureController.h"
 
+#import "CityChooseView.h"
+
+#import "BankSelectViewController.h"
+
 
 @interface UserStatementTableViewCell ()<cwDetectCardEdgesDelegate>
 
 @property(nonatomic,strong)CWBankCardCaptureController * cvctrl;
+
+@property(nonatomic,retain) CityChooseView *cityChooseView;
+
+@property(nonatomic) BOOL bankCardPicBool;
+
+@property(nonatomic,retain) NSDictionary *proviceDict, *cityDict, *headBankDict, *footBankDict;
+
 
 @end
 
@@ -26,7 +37,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
+    _bankCardPicBool = NO;
     
     [self createHeaderView];
 }
@@ -65,27 +76,138 @@
 //总行
 - (IBAction)headquartersBankBtnClick:(id)sender {
     
-}
-//省份选择
-- (IBAction)provinceBtnClick:(id)sender {
+    if (_accountNoTextField.text.length != 0) {
+        [ToolsObject showMessageTitle:@"请先输入账户名称" andDelay:1 andImage:nil];
+        return;
+    }
     
-}
-//城市选择
-- (IBAction)cityBtnClick:(id)sender {
+    BankSelectViewController *bankVC = [[BankSelectViewController alloc] initWithNibName:@"BankSelectViewController" bundle:nil];
+    bankVC.showTag = 1;
+    bankVC.headBankName = @"AGTSTL_BNK_LIST";
+    bankVC.hidesBottomBarWhenPushed = YES;
+    [_rootVC.navigationController pushViewController:bankVC animated:YES];
+    bankVC.getHeadBankBlock = ^(NSDictionary * _Nonnull dict) {
+        NSLog(@"dict == %@",dict);
+//        {
+//            "fldVal" : "103100000026",
+//            "fldExp" : "中国农业银行股份有限公司",
+//            "agtSessionEntity" :"",
+//            "fldTyp" : "x",
+//            "fldNm" : "AGTSTL_BNK_LIST",
+//            "fldExpDesc" : "中国农业银行股份有限公司",
+//            "tmSmp" : "20180116121212",
+//            "fldOrder" : 2
+//        }
+        
+        _headBankDict = dict;
+        [_headquartersBankBtn setTitle:[_headBankDict objectForKey:@"fldExp"] forState:UIControlStateNormal];
+        
+         [_branchBankBtn setTitle:@"请查询开户支行" forState:UIControlStateNormal];
+    };
     
 }
 //支行
 - (IBAction)branchBankBtnClick:(id)sender {
     
+    if (_headquartersBankBtn.currentTitle.length == 0 || [_provinceAddresBtn.currentTitle isEqualToString:@"请查询开户总行"]) {
+        [ToolsObject showMessageTitle:@"请先选择开户总行" andDelay:1 andImage:nil];
+        return;
+    }
+    
+    if (_provinceAddresBtn.currentTitle.length == 0 || [_provinceAddresBtn.currentTitle isEqualToString:@"选择省"]) {
+        [ToolsObject showMessageTitle:@"请先选择省份" andDelay:1 andImage:nil];
+        return;
+    }
+    
+    if (_cityAddresBtn.currentTitle.length == 0 || [_cityAddresBtn.currentTitle isEqualToString:@"选择市"]) {
+        [ToolsObject showMessageTitle:@"请先选择市" andDelay:1 andImage:nil];
+        return;
+    }
+    
+    
+    BankSelectViewController *bankVC = [[BankSelectViewController alloc] initWithNibName:@"BankSelectViewController" bundle:nil];
+    bankVC.showTag = 2;
+    bankVC.headBankDict = _headBankDict;
+    bankVC.proviceDict = _proviceDict;
+    bankVC.cityDict = _cityDict;
+    bankVC.hidesBottomBarWhenPushed = YES;
+    [_rootVC.navigationController pushViewController:bankVC animated:YES];
+    bankVC.getFootBankBlock = ^(NSDictionary * _Nonnull dict) {
+        NSLog(@"dict == %@",dict);
+        
+    };
+}
+
+//省份选择
+- (IBAction)provinceBtnClick:(id)sender {
+    
+    _cityChooseView = [[[NSBundle mainBundle] loadNibNamed:@"CityChooseView" owner:_rootVC options:nil] lastObject];
+    [_cityChooseView setFrame:_rootVC.view.bounds];
+    _cityChooseView.showTag = 1;
+    [_cityChooseView createView];
+    [_rootVC.view addSubview:_cityChooseView];
+    _cityChooseView.getProviceBlock = ^(NSDictionary * _Nonnull dict) {
+        _proviceDict = dict;
+        
+//        {
+//            "LABEL" : "甘肃省",
+//            "VALUE" : "8200"
+//        }
+        
+        [_provinceAddresBtn setTitle:[_proviceDict objectForKey:@"LABEL"] forState:UIControlStateNormal];
+        [_cityAddresBtn setTitle:@"选择市" forState:UIControlStateNormal];
+        
+        _cityChooseView.hidden = YES;
+        [_cityChooseView removeFromSuperview];
+    };
+    
+}
+//城市选择
+- (IBAction)cityBtnClick:(id)sender {
+    if (_provinceAddresBtn.currentTitle.length == 0 || [_provinceAddresBtn.currentTitle isEqualToString:@"选择省"]) {
+        [ToolsObject showMessageTitle:@"请先选择省份" andDelay:1 andImage:nil];
+        return;
+    }
+     _cityChooseView = [[[NSBundle mainBundle] loadNibNamed:@"CityChooseView" owner:_rootVC options:nil] lastObject];
+    [_cityChooseView setFrame:_rootVC.view.bounds];
+    _cityChooseView.showTag = 2;
+    _cityChooseView.proviceDict = _proviceDict;
+    [_cityChooseView createView];
+    [_rootVC.view addSubview:_cityChooseView];
+    _cityChooseView.getCityBlock = ^(NSDictionary * _Nonnull dict) {
+         _cityDict = dict;
+        
+//        {
+//            "LABEL" : "西城区",
+//            "VALUE" : "1022"
+//        }
+        
+         [_cityAddresBtn setTitle:[_cityDict objectForKey:@"LABEL"] forState:UIControlStateNormal];
+        
+        
+        _cityChooseView.hidden = YES;
+        [_cityChooseView removeFromSuperview];
+    };
 }
 
 
 
 - (IBAction)nextBtnClick:(id)sender {
-    UserShopDetailTableViewController *usershopDetailVC = [[UserShopDetailTableViewController alloc] initWithNibName:@"UserShopDetailTableViewController" bundle:nil];
-    usershopDetailVC.hidesBottomBarWhenPushed = YES;
-    [_rootVC.navigationController pushViewController:usershopDetailVC animated:YES];
     
+    if (_bankCardPicBool == NO) {
+        [ToolsObject showMessageTitle:@"请先上传银行卡照片" andDelay:1 andImage:nil];
+    }
+    
+    if (_accountNameTextField.text.length == 0) {
+        [ToolsObject showMessageTitle:@"请先输入账号名称" andDelay:1 andImage:nil];
+    }
+    
+    if (_accountNoTextField.text.length == 0) {
+        [ToolsObject showMessageTitle:@"请先输入结算账户" andDelay:1 andImage:nil];
+    }
+    
+   
+    [self requestCommit];
 }
 
 
@@ -110,9 +232,9 @@
 
 -(void)cwBankCardDetectDeleagte:(CWBankCardModel *)cardModel {
     
-//    @property(nonatomic,strong) NSString   * cardNum;//银行卡号
+//    @property(nonatomic,strong) NSString   * cardNum;//银行卡号//6217560800027564300
 //
-//    @property(nonatomic,strong) NSString   * bankName;//银行名称
+//    @property(nonatomic,strong) NSString   * bankName;//银行名称//中国银行
 //    @property(nonatomic,strong) NSString   * cardName;//银行卡名称
 //    @property(nonatomic,strong) NSString   * cardType;//银行类型（借记卡/贷记卡/...)
 //
@@ -125,5 +247,88 @@
     _accountNameTextField.text = [NSString stringWithFormat:@"%@",cardModel.bankName];
     
     _accountNoTextField.text = [NSString stringWithFormat:@"%@",cardModel.cardNum];
+    
+    
+    [self requestCommitPic:@"3" withImage:cardModel.cardImage];
+}
+
+- (void)requestCommitPic:(NSString *)typeStr withImage:(UIImage *)image {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    
+    //UIImage转换为NSData
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0) ;
+    NSString *base64String = [ToolsObject dataWitbBase64ToStrimg:imageData];
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                base64String,@"file",
+                                typeStr,@"FILE_TYPE",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:pub_uploadFile parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            wSelf.bankCardPicBool = YES;
+    
+            
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
+
+- (void)requestCommit {
+    
+    /*                            nil];
+     STL_CARD_NO    结算卡
+     STL_BANK_NAME_HO    结算卡总行名称
+     STL_BANK_NUM_HO    结算卡总行联行号
+     STL_BANK_NAME_SUB    结算卡支行名称
+     STL_BANK_NUM_SUB    结算卡支行联行号
+     STL_BANK_PROV    结算卡归属省
+     STL_BANK_CITY    结算卡归属市
+     */
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+   
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                _accountNoTextField.text,@"STL_CARD_NO",
+                                [_headBankDict objectForKey:@"fldExp"],@"STL_BANK_NAME_HO",
+                                [_headBankDict objectForKey:@"fldVal"],@"STL_BANK_NUM_HO",
+                                @"",@"STL_BANK_NAME_SUB",
+                                @"",@"STL_BANK_NUM_SUB",
+                                [_proviceDict objectForKey:@"VALUE"],@"STL_BANK_PROV",
+                                [_cityDict objectForKey:@"VALUE"],@"STL_BANK_CITY",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:stl_addStlBankInfo parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            UserShopDetailTableViewController *usershopDetailVC = [[UserShopDetailTableViewController alloc] initWithNibName:@"UserShopDetailTableViewController" bundle:nil];
+            usershopDetailVC.hidesBottomBarWhenPushed = YES;
+            [wSelf.rootVC.navigationController pushViewController:usershopDetailVC animated:YES];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
 }
 @end

@@ -202,8 +202,6 @@
 }
 
 #pragma mark - Helper methods
-
-
 - (void)alertViewWithMessage {
     UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"定位服务未开启" message:@"请在系统设置中开启服务" delegate:self cancelButtonTitle:@"暂不" otherButtonTitles:@"去设置", nil];
     [alter show];

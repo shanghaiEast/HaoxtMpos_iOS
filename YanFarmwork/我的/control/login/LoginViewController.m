@@ -98,6 +98,11 @@
     RegisterViewController *registerVC = [[RegisterViewController alloc] initWithNibName:@"RegisterViewController" bundle:nil];
     registerVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:registerVC animated:YES];
+    registerVC.backPhoneAndPwdBlock = ^(NSString * _Nonnull phone, NSString * _Nonnull pwd) {
+        _phoneNumber.text = phone;
+        _passwordNumber.text = pwd;
+    };
+    
 }
 
 - (IBAction)forgetPasswordClick:(id)sender {
@@ -105,6 +110,10 @@
     ForgetPWViewController *forgetPWVC = [[ForgetPWViewController alloc] initWithNibName:@"ForgetPWViewController" bundle:nil];
     forgetPWVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:forgetPWVC animated:YES];
+    forgetPWVC.backPhoneAndPwdBlock = ^(NSString * _Nonnull phone, NSString * _Nonnull pwd) {
+        _phoneNumber.text = phone;
+        _passwordNumber.text = pwd;
+    };
     
 }
 - (IBAction)loginBtnClick:(id)sender {
@@ -133,22 +142,66 @@
         return;
     }
     
+    [self requestLogin];
     
-    
-    
-    
-    
-    if (_mindPasswordBool == YES) {
-        NSDictionary *dict = @{@"isMindPW":@"Y", @"password":_passwordNumber.text,@"phone":_phoneNumber.text};
-        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"mindPW"];
-        
-    }else{
-        NSDictionary *dict = @{@"isMindPW":@"N", @"password":@"",@"phone":_phoneNumber.text};
-        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"mindPW"];
-    }
-    
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark login
+- (void)requestLogin
+{
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [NSString stringWithFormat:@"%@",_phoneNumber.text],@"USR_LOGIN",
+                                 [NSString stringWithFormat:@"%@",[ToolsObject md5:_passwordNumber.text]],@"USR_LOGIN_PWD",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:usr_login parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+           
+            
+            [ToolsObject savaUserData:[responseObject objectForKey:@"rspMap"]];
+
+            LoginJsonModel *loginModel = [LoginJsonModel infoWithDictionary:USER_DATA];
+            
+            NSLog(@"%@",[[LoginJsonModel infoWithDictionary:USER_DATA] MD5_KEY]);
+            
+//            [ToolsObject deleteUserData];
+//            LoginJsonModel *loginModel1 = [LoginJsonModel infoWithDictionary:USER_DATA];
+//            NSLog(@"%@",loginModel1.MD5_KEY);
+//            NSLog(@"%@",TOKEN);
+            
+           
+            
+            if (_mindPasswordBool == YES) {
+                NSDictionary *dict = @{@"isMindPW":@"Y", @"password":_passwordNumber.text,@"phone":_phoneNumber.text};
+                [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"mindPW"];
+                
+            }else{
+                NSDictionary *dict = @{@"isMindPW":@"N", @"password":@"",@"phone":_phoneNumber.text};
+                [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"mindPW"];
+            }
+            
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+    
+ 
+    
+}
+
 
 @end

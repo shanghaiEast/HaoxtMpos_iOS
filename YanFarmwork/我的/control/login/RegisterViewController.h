@@ -10,15 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^BackPhoneAndPwdBlock)(NSString *phone, NSString *pwd);
+
+
 @interface RegisterViewController : UIViewController
+
+@property (copy, nonatomic) BackPhoneAndPwdBlock backPhoneAndPwdBlock;
+
+
+
+
 
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 
-
-
-
-
-@property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
+@property (weak, nonatomic) IBOutlet UITextField *myPhoneNumber;
 
 @property (weak, nonatomic) IBOutlet UITextField *yzmNumber;
 

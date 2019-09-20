@@ -36,10 +36,10 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCf-9R-h1h">
-                                <rect key="frame" x="79" y="409" width="198" height="17"/>
+                                <rect key="frame" x="79" y="407" width="198" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="XOd-Og-xrO"/>
+                                    <constraint firstAttribute="height" constant="20" id="XOd-Og-xrO"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xg8-mN-rV0">
@@ -262,7 +262,7 @@
                                     <constraint firstItem="KHX-cs-dce" firstAttribute="top" secondItem="XzP-sx-uoV" secondAttribute="top" id="yHr-Ut-psq"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="vwZ-4f-5oo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="vwZ-4f-5oo">
                                 <rect key="frame" x="26" y="33" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="LxE-zb-qKR"/>
@@ -304,7 +304,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="aaA-eS-MVu" secondAttribute="bottom" constant="7" id="0dE-6K-00r"/>
-                            <constraint firstItem="uCf-9R-h1h" firstAttribute="top" secondItem="xg8-mN-rV0" secondAttribute="bottom" constant="37" id="6KA-Jq-Uhj"/>
+                            <constraint firstItem="uCf-9R-h1h" firstAttribute="top" secondItem="xg8-mN-rV0" secondAttribute="bottom" constant="35" id="6KA-Jq-Uhj"/>
                             <constraint firstAttribute="trailing" secondItem="XyM-LZ-K52" secondAttribute="trailing" constant="14" id="7Xt-VO-LV3"/>
                             <constraint firstItem="XzP-sx-uoV" firstAttribute="leading" secondItem="0xf-9S-U58" secondAttribute="leading" constant="15" id="BSp-R2-cVU"/>
                             <constraint firstItem="sii-Lq-imT" firstAttribute="leading" secondItem="vwZ-4f-5oo" secondAttribute="trailing" constant="14" id="BZb-ep-MBh"/>

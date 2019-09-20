@@ -28,6 +28,9 @@
 #import "ToolsObject.h"
 #import <MJRefresh/MJRefresh.h>
 #import <UIImageView+WebCache.h>
+#import <LYEmptyView/LYEmptyViewHeader.h>//空白cell信息展示
+
+#import "LoginJsonModel.h"//登录信息
 
 
 //baidu keys
@@ -76,6 +79,8 @@
 
 #define checkNull(__X__)        (__X__) == [NSNull null] || (__X__) == nil ? @"" : [NSString stringWithFormat:@"%@", (__X__)]
 
+
+#define RGB(_red, _green, _blue, _alpha) [UIColor colorWithRed:(_red)/255.0f green:(_green)/255.0f blue:(_blue)/255.0f alpha:(_alpha)]
 
 //// 状态栏(statusbar)
 //#define StatusHeight [[UIApplication sharedApplication] statusBarFrame].size.height
@@ -186,33 +191,38 @@
 
 #ifdef DEBUG
 // Debug模式的代码...
-#define URL_BASE @"http://192.168.1.40:8822/app"
+#define URL_BASE @"http://47.100.34.183:8213/web-app-merc/appmer/"
 
 #else
 // Release模式的代码...
 #define URL_BASE @""
 #endif
 
+#define USER_DATA  [[NSUserDefaults standardUserDefaults] objectForKey:@"userData"]
+#define myData [LoginJsonModel infoWithDictionary:USER_DATA]
+
+//#define TOKEN [[LoginJsonModel infoWithDictionary:USER_DATA] TOKEN_ID]//或[[[NSUserDefaults standardUserDefaults] objectForKey:@"userData"] objectForKey:@"TOKEN_ID"]
 
 
 
 
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
+#define  usr_login @"usr/login"  //用户登录
+#define  vcode_get @"vcode/get"  //获取短信验证码;0-    注册短信验证;1-    密码找回或修改手机号时原手机号验证;2-    手机号更换或修改手机号时新手机号验证
+
+#define  register_add @"usr/register/add"  // 注册
+#define  password_find @"password/login/find"  //3.7.    用户登录密码找回
+#define  password_update @"password/login/update"  //3.6.    用户登录密码修改
+#define  upLogPhone_one @"usr/upLogPhone/one"  //3.8.    修改手机号(第一步)
+#define  upLogPhone_two @"usr/upLogPhone/two"  //3.9.    修改手机号(第二步)
+#define  usr_get @"usr/get"  //3.5.    商户信息查询
+#define  usr_updIdentityCard @"usr/updIdentityCard"  //3.14.    用户实名认证—缓存证件信息
+#define  stl_addStlBankInfo @"stl/addStlBankInfo"  //3.15.    用户实名认证—缓存结算卡信息
+#define  pubthlp_qryProvCity @"pubthlp/qryProvCity"  //3.32.    省市区查询
+#define  pubthlp_bankList @"pubthlp/bankList"  //3.27.    总行列表
+#define  pubthlp_openBankList @"pubthlp/openBankList"  //3.28.    支行列表
+#define  pub_uploadFile @"pub/uploadFile"  //3.19.    附件上传
+#define  pub_getNotices @"pub/getNotices"  //3.20.    系统公告
+#define  ord_list @"ord/list"  //3.26.    用户交易查询
 //#define   @""  //
 //#define   @""  //
 //#define   @""  //

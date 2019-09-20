@@ -19,11 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (retain, nonatomic) UIViewController *rootVC;
 
 
-@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UILabel *keyLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 
 
-
-- (IBAction)confirmBtnClick:(id)sender;
 
 
 

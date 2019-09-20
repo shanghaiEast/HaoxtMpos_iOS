@@ -15,6 +15,8 @@
 
 #import "sys/utsname.h"
 
+#import <AVFoundation/AVCaptureDevice.h>
+
 //iOS判断手机上是否安装微信或qq等应用
 //#import "WXApi.h"
 //#import <TencentOpenAPI/QQApiInterface.h>
@@ -185,24 +187,20 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
 #pragma mark 保存用户数据
 + (void)savaUserData:(NSDictionary *)dataDic
 {
-    NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
-    NSArray *keyArr = dataDic.allKeys;
-    for (int i = 0; i < keyArr.count; i ++) {
-        NSString *keyStr = [keyArr objectAtIndex:i];
-        NSString *valueStr = checkNull([dataDic objectForKey:keyStr]);
-        [tempDict setValue:valueStr forKey:keyStr];
-    }
+    [[NSUserDefaults standardUserDefaults] setObject:dataDic forKey:@"userData"];
     
-    
-    [[NSUserDefaults standardUserDefaults] setObject:tempDict forKey:@"userData"];
 }
 
 #pragma mark 删除用户数据
-+ (void)deleteUserData:(NSDictionary *)dataDic
++ (void)deleteUserData
 {
-   [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"myToken"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userData"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userDataDetail"];
+    NSArray *tempArray = [USER_DATA allKeys];
+    NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+    for (int a = 0 ; a < tempArray.count; a++) {
+        [tempDict setValue:@"" forKey:[NSString stringWithFormat:@"%@",[tempArray objectAtIndex:a]]];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:tempDict forKey:@"userData"];
 }
 
 //保存用户定位数据
@@ -550,7 +548,7 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
     }
 
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];//设置HUD的Style
-    [SVProgressHUD dismissWithDelay:10.0];
+    [SVProgressHUD dismissWithDelay:30.0];
 //    [SVProgressHUD setForegroundColor:[UIColor clearColor]];//设置HUD和文本的颜色
     [SVProgressHUD setBackgroundColor:[UIColor lightGrayColor]];//设置HUD的背景颜色
     
@@ -1026,6 +1024,8 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
 #pragma mark MBProgressHUD提示封装
 + (void)showMessageTitle:(NSString *)title andDelay:(int)timeInt andImage:(NSString *)imageStr{
     
+    [self SVProgressHUDDismiss];
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     
     hud.userInteractionEnabled = YES;
@@ -1441,5 +1441,68 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
 //    _searchButton.layer.mask = maskLayer;
 //
 //}
+
+//iOS访问相册、相机权限
++ (void)getAuthorizationStatus:(void(^)(void))authorizedBlock
+{
+    switch ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo]){
+        case AVAuthorizationStatusNotDetermined:{
+            
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted){
+                if (granted){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (authorizedBlock) {
+                            authorizedBlock();
+                        }
+                    });
+                }
+                NSLog(@"granted --- %d currentThread : %@",granted,NSThread.currentThread);
+            }];
+            NSLog(@"用户尚未授予或拒绝该权限:AVAuthorizationStatusNotDetermined");
+        }
+            break;
+        case AVAuthorizationStatusRestricted:
+            NSLog(@"不允许用户访问媒体捕获设备:AVAuthorizationStatusRestricted");
+            break;
+        case AVAuthorizationStatusDenied:
+        {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"没有权限" message:@"该功能需要授权使用你的相机" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"授权" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                NSURL *url= [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                
+                if (@available(iOS 10.0, *)){
+                    if( [[UIApplication sharedApplication]canOpenURL:url] ) {
+                        [[UIApplication sharedApplication]openURL:url options:@{}completionHandler:^(BOOL success) {
+                        }];
+                    }
+                }else{
+                    if( [[UIApplication sharedApplication]canOpenURL:url] ) {
+                        [[UIApplication sharedApplication]openURL:url];
+                    }
+                }
+            }];
+            [alertController addAction:cancelAction];
+            [alertController addAction:okAction];
+            [UIApplication.sharedApplication.keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+            NSLog(@"用户已经明确拒绝了应用访问捕获设备:AVAuthorizationStatusDenied");
+        }
+            break;
+        case AVAuthorizationStatusAuthorized:
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (authorizedBlock) {
+                    authorizedBlock();
+                }
+            });
+            NSLog(@"用户授予应用访问捕获设备的权限:AVAuthorizationStatusAuthorized");
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 
 @end

@@ -14,9 +14,9 @@
                 <outlet property="getYZMLabel" destination="ggQ-cp-h1V" id="yq6-2R-akv"/>
                 <outlet property="loginBtn" destination="nnd-Ow-KSF" id="JT3-Ew-nuH"/>
                 <outlet property="lookPassword" destination="afU-iO-bP7" id="V9i-nN-N8G"/>
+                <outlet property="myPhoneNumber" destination="bQN-hk-PlG" id="7Nq-Ug-TOw"/>
                 <outlet property="myScrollView" destination="Pqs-Vh-5lg" id="bex-Co-ah8"/>
                 <outlet property="passwordNumber" destination="DbJ-Md-1MN" id="zus-zZ-ddH"/>
-                <outlet property="phoneNumber" destination="bQN-hk-PlG" id="HS0-o0-6Vs"/>
                 <outlet property="registerAgreement" destination="hmr-Rd-gc4" id="Rlw-oJ-YvG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yzmNumber" destination="pfS-fq-7MC" id="avf-0O-MmK"/>
@@ -60,7 +60,7 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBh-WK-d4s">
                                     <rect key="frame" x="39" y="158" width="243" height="1"/>
@@ -156,7 +156,7 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64q-b2-qJs">
                                     <rect key="frame" x="40" y="258" width="242" height="1"/>

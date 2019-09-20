@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CityChooseView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WY4-ir-qio">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmF-y1-VS7">
+                    <rect key="frame" x="43" y="88" width="234" height="392"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gjB-XW-ySD">
+                            <rect key="frame" x="0.0" y="0.0" width="234" height="392"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="gjB-XW-ySD" firstAttribute="top" secondItem="qmF-y1-VS7" secondAttribute="top" id="7Xg-c6-Gop"/>
+                        <constraint firstAttribute="bottom" secondItem="gjB-XW-ySD" secondAttribute="bottom" id="PjC-vv-REC"/>
+                        <constraint firstItem="gjB-XW-ySD" firstAttribute="leading" secondItem="qmF-y1-VS7" secondAttribute="leading" id="Xfx-Le-U8E"/>
+                        <constraint firstAttribute="trailing" secondItem="gjB-XW-ySD" secondAttribute="trailing" id="ybX-l6-ivw"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="qmF-y1-VS7" firstAttribute="centerY" secondItem="WY4-ir-qio" secondAttribute="centerY" id="4BZ-Af-Phf"/>
+                <constraint firstItem="qmF-y1-VS7" firstAttribute="centerX" secondItem="WY4-ir-qio" secondAttribute="centerX" id="EAN-BH-IxC"/>
+                <constraint firstAttribute="bottom" secondItem="WY4-ir-qio" secondAttribute="bottom" id="Kbu-j8-s0t"/>
+                <constraint firstItem="qmF-y1-VS7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="88" id="Pdi-Au-zON"/>
+                <constraint firstItem="WY4-ir-qio" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Yua-G8-no9"/>
+                <constraint firstItem="WY4-ir-qio" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="r1y-Pc-74s"/>
+                <constraint firstItem="qmF-y1-VS7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="43" id="xGC-Km-4Bi"/>
+                <constraint firstAttribute="trailing" secondItem="WY4-ir-qio" secondAttribute="trailing" id="yZj-uW-iOl"/>
+            </constraints>
+            <connections>
+                <outlet property="BGView" destination="WY4-ir-qio" id="tna-Kz-ylq"/>
+                <outlet property="myTableView" destination="gjB-XW-ySD" id="JlQ-2q-Pbl"/>
+                <outlet property="whiteView" destination="qmF-y1-VS7" id="fQs-sB-C5c"/>
+            </connections>
+            <point key="canvasLocation" x="46.875" y="54.929577464788736"/>
+        </view>
+    </objects>
+</document>

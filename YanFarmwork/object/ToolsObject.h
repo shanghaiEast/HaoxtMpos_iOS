@@ -20,7 +20,7 @@
 //保存用户数据
 + (void)savaUserData:(NSDictionary *)dataDic;
 //删除用户数据
-+ (void)deleteUserData:(NSDictionary *)dataDic;
++ (void)deleteUserData;
 
 //保存用户定位数据
 + (void)savaUserLocationWithProvince:(NSString *)provinceStr withCity:(NSString *)cityStr withDistrict:(NSString *)districtStr withCityID:(NSString *)cityID withType:(NSString *)typeStr withAresID:(NSString *)areaIDStr;
@@ -167,5 +167,8 @@
 
 #pragma mark  禁用侧滑返回手势
 + (void)disableTheSideslip:(UIViewController *)rootView;
+
+#pragma mark iOS访问相册、相机权限
++ (void)getAuthorizationStatus:(void(^)(void))authorizedBlock;
 
 @end

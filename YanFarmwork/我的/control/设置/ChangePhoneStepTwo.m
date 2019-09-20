@@ -8,6 +8,8 @@
 
 #import "ChangePhoneStepTwo.h"
 
+#import "SetAppViewController.h"
+
 @interface ChangePhoneStepTwo ()
 
 @property (retain, nonatomic) NSTimer *codeTimer;//动态密码时间倒计时；
@@ -75,11 +77,11 @@
     _getYZMLabel.enabled = NO;
     
     
+    [self requestYZM];
     
-    
-    _timeNumber = 60;
-    _codeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeStart) userInfo:nil repeats:YES];
-    _getYZMLabel.userInteractionEnabled = NO;
+//    _timeNumber = 60;
+//    _codeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeStart) userInfo:nil repeats:YES];
+//    _getYZMLabel.userInteractionEnabled = NO;
     
 }
 
@@ -137,10 +139,85 @@
         return;
     }
     
-    
-    
-    
-    
+    [self requestCommit];
     
 }
+
+
+- (void)requestYZM {
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = @{
+                                 @"USR_LOGIN" : _phoneNumber.text,
+                                 @"BUS_TYPE" : @"2"
+                                 };
+    
+    //18817370409
+    [YanNetworkOBJ postWithURLString:vcode_get parameters:parametDic success:^(id  _Nonnull responseObject) {
+        
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            wSelf.timeNumber = 60;
+            wSelf.codeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeStart) userInfo:nil repeats:YES];
+            wSelf.getYZMLabel.userInteractionEnabled = NO;
+            
+        }else{
+            //filed
+            wSelf.getYZMLabel.enabled = YES;
+            
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        wSelf.getYZMLabel.enabled = YES;
+        
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
+
+- (void)requestCommit {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                _phoneNumber.text,@"USR_MOBILE",
+                                _yzmNumber.text,@"VCODE",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:upLogPhone_two parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            //方法一： 返回到制定界面  但不是根界面的某个界面
+            SetAppViewController *homeVC = [[SetAppViewController alloc] init];
+            UIViewController *target = nil;
+            for (UIViewController * controller in wSelf.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[homeVC class]]) {
+                    target = controller;
+                }
+            }
+            if (target) {
+                [wSelf.navigationController popToViewController:target animated:YES];
+            }
+            
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
+
+
+
 @end

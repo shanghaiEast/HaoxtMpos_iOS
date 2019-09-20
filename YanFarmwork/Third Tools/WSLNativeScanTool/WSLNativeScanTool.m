@@ -41,6 +41,8 @@
 //初始化采集配置信息
 - (void)configuredScanTool{
     
+
+    
     AVCaptureVideoPreviewLayer *layer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
     layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     layer.frame = self.preview.layer.bounds;
@@ -200,6 +202,7 @@
 #pragma mark - Getter
 - (AVCaptureSession *)session{
     
+    
     if (_session == nil){
         //获取摄像设备
         AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -241,6 +244,8 @@
     
     return _session;
 }
+
+
 
 
 @end

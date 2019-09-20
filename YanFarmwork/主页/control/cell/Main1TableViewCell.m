@@ -8,10 +8,15 @@
 
 #import "Main1TableViewCell.h"
 
+#import "GYRollingNoticeView.h"
+#import "GYNoticeViewCell.h"
+
 #import "MainCollectionViewCell.h"
 
 
-@interface Main1TableViewCell ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface Main1TableViewCell ()<UICollectionViewDelegate, UICollectionViewDataSource, GYRollingNoticeViewDelegate, GYRollingNoticeViewDataSource>
+
+@property (retain, nonatomic) GYRollingNoticeView *noticeView;
 
 @property (retain, nonatomic)NSArray *picArray, *nameArray;
 @property (retain, nonatomic)UICollectionView *myCollection;
@@ -62,8 +67,11 @@
     
 //    [self createCollectionViewFromView:_fourBtnView];
     
-    [_headImage sd_setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/pic/item/32fa828ba61ea8d3fcd2e9ce9e0a304e241f5803.jpg"] placeholderImage:[UIImage imageNamed:@"userLogo.png"] options:SDWebImageCacheMemoryOnly];
+//    [_headImage sd_setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/pic/item/32fa828ba61ea8d3fcd2e9ce9e0a304e241f5803.jpg"] placeholderImage:[UIImage imageNamed:@"userLogo.png"] options:SDWebImageRefreshCached];
     
+    NSLog(@"%@",[myData USR_NM]);
+    NSLog(@"%@",[myData USR_OPR_MBL]);
+    _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_NM],[myData USR_OPR_MBL]];
     
     
     UITapGestureRecognizer *viewOneTouch = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fourViewPress:)];
@@ -82,7 +90,51 @@
     _viewFour.tag = 3;
     [_viewFour addGestureRecognizer:viewFourTouch];
     
+    
+    _noticeArray = @[@"ccdcdcsdcsc",@"sdscdcsdcsdcsvrgbgsbfgng",@"234242423424324243423424424"];
+    
+    typeof(self)wSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        _advertisView
+        wSelf.noticeView = [[GYRollingNoticeView alloc]initWithFrame:wSelf.advertisView.bounds];
+        wSelf.noticeView.dataSource = self;
+        wSelf.noticeView.delegate = self;
+        [wSelf.advertisView addSubview:wSelf.noticeView];
+        
+        [wSelf.noticeView registerClass:[GYNoticeViewCell class] forCellReuseIdentifier:@"GYNoticeViewCell"];
+        
+        [wSelf.noticeView reloadDataAndStartRoll];
+    });
+    
 }
+
+- (NSInteger)numberOfRowsForRollingNoticeView:(GYRollingNoticeView *)rollingView
+{
+   return _noticeArray.count;
+    
+}
+- (__kindof GYNoticeViewCell *)rollingNoticeView:(GYRollingNoticeView *)rollingView cellAtIndex:(NSUInteger)index
+{
+    // 普通用法，只有一行label滚动显示文字
+    GYNoticeViewCell *cell = [rollingView dequeueReusableCellWithIdentifier:@"GYNoticeViewCell"];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", _noticeArray[index]];
+    cell.contentView.backgroundColor = [UIColor clearColor];
+   
+    return cell;
+}
+
+- (void)didClickRollingNoticeView:(GYRollingNoticeView *)rollingView forIndex:(NSUInteger)index
+{
+    NSLog(@"点击的index: %lu", (unsigned long)index);
+}
+
+
+
+
+
+
+
+
 
 //4个按钮点击
 - (void)fourViewPress:(UITapGestureRecognizer *)tapGestureRecognizer {

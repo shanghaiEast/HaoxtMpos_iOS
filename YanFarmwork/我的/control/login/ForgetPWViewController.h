@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^BackPhoneAndPwdBlock)(NSString *phone, NSString *pwd);
+
+
 @interface ForgetPWViewController : UIViewController
+
+@property (copy, nonatomic) BackPhoneAndPwdBlock backPhoneAndPwdBlock;
+
+
+
 
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 

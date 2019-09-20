@@ -78,11 +78,11 @@
     _getYZMLabel.enabled = NO;
     
     
+    [self requestYZM];
     
-    
-    _timeNumber = 60;
-    _codeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeStart) userInfo:nil repeats:YES];
-    _getYZMLabel.userInteractionEnabled = NO;
+//    _timeNumber = 60;
+//    _codeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeStart) userInfo:nil repeats:YES];
+//    _getYZMLabel.userInteractionEnabled = NO;
     
 }
 
@@ -115,12 +115,6 @@
 */
 
 - (IBAction)confirmBtnClick:(id)sender {
-    
-    if (_phoneNumber.text.length == 0) {
-        [ToolsObject showMessageTitle:@"请先输入手机号" andDelay:1.0 andImage:nil];
-
-        return;
-    }
 
     if (_phoneNumber.text.length != 11) {
         [ToolsObject showMessageTitle:@"请先输入11位手机号" andDelay:1.0 andImage:nil];
@@ -141,11 +135,77 @@
     }
     
     
-    
-    ChangePhoneStepTwo *changePhoneStepTwoVC = [[ChangePhoneStepTwo alloc] initWithNibName:@"ChangePhoneStepTwo" bundle:nil];
-    changePhoneStepTwoVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:changePhoneStepTwoVC animated:YES];
-    
+    [self requestCommit];
     
 }
+
+
+
+- (void)requestYZM {
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = @{
+                                 @"USR_LOGIN" : _phoneNumber.text,
+                                 @"BUS_TYPE" : @"2"
+                                 };
+    
+    //18817370409
+    [YanNetworkOBJ postWithURLString:vcode_get parameters:parametDic success:^(id  _Nonnull responseObject) {
+        
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            wSelf.timeNumber = 60;
+            wSelf.codeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeStart) userInfo:nil repeats:YES];
+            wSelf.getYZMLabel.userInteractionEnabled = NO;
+            
+        }else{
+            //filed
+            wSelf.getYZMLabel.enabled = YES;
+            
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        wSelf.getYZMLabel.enabled = YES;
+        
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
+
+- (void)requestCommit {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                _phoneNumber.text,@"USR_MOBILE",
+                                _yzmNumber.text,@"VCODE",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:upLogPhone_one parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            ChangePhoneStepTwo *changePhoneStepTwoVC = [[ChangePhoneStepTwo alloc] initWithNibName:@"ChangePhoneStepTwo" bundle:nil];
+            changePhoneStepTwoVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:changePhoneStepTwoVC animated:YES];
+            
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
+
+
 @end

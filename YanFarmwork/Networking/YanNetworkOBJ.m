@@ -13,6 +13,9 @@
 #import "AFNetworking.h"
 #import <SBJson/SBJson5Parser.h>
 
+#import <UIView+MJExtension.h>
+
+
 @interface YanNetworkOBJ ()
 {
     MBProgressHUD *_hud;
@@ -53,12 +56,12 @@
     NSString *_URLString = [NSString stringWithFormat:@"%@%@",URL_BASE,URLString];
     _URLString = [_URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSMutableDictionary *endDic = [parameters mutableCopy];
-    [endDic setValue:[ToolsObject getNowTimeTimestamp3] forKey:@"timestamp"];
-    NSString *signStr = [ToolsObject x_tokenJoint:endDic andPrivateKeys:companyKey];
-    [endDic setValue:signStr forKey:@"sign"];
-    
-    NSLog(@"endDic :%@", endDic);
+//    NSMutableDictionary *endDic = [parameters mutableCopy];
+//    [endDic setValue:[ToolsObject getNowTimeTimestamp3] forKey:@"timestamp"];
+//    NSString *signStr = [ToolsObject x_tokenJoint:endDic andPrivateKeys:companyKey];
+//    [endDic setValue:signStr forKey:@"sign"];
+//
+//    NSLog(@"endDic :%@", endDic);
     
     
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
@@ -70,21 +73,10 @@
     
     
     AFHTTPSessionManager *Manager = [AFHTTPSessionManager manager];
-    /*
-     App-Version 版本名称
-     App-Token Token
-     deviceType 设备类型
-     Os-Version 手机型号
-     Phone-Model 系统版本
-     */
-    [Manager.requestSerializer setValue:appVersion forHTTPHeaderField:@"AppVersion"];
-    [Manager.requestSerializer setValue:@"test" forHTTPHeaderField:@"AppToken"];
-    [Manager.requestSerializer setValue:@"iOS" forHTTPHeaderField:@"HostType"];
-    [Manager.requestSerializer setValue:@"iphone" forHTTPHeaderField:@"OsVersion"];
-    [Manager.requestSerializer setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"PhoneModel"];
     
     
-    [Manager GET:_URLString parameters:endDic progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    
+    [Manager GET:_URLString parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         if (success) {
             responseObject = [ToolsObject processDictionaryIsNSNull:responseObject];
@@ -92,13 +84,6 @@
 
             success(responseObject);
             
-            if ([[responseObject objectForKey:@"status"] intValue] == 1) {
-//                success(responseObject);
-                
-            }else{
-                //错误信息
-                 NSLog(@"错误原因：%@",[responseObject objectForKey:@"message"]);
-            }
         }
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -109,109 +94,197 @@
     
 }
 
-
++ (NSString *)convertToJsonData:(NSDictionary *)dict{
+    
+    NSError *error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSString *jsonString;
+    
+    if (!jsonData) {
+        
+        NSLog(@"%@",error);
+        
+    }else{
+        
+        jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
+    }
+    
+    NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
+    
+    NSRange range = {0,jsonString.length};
+    
+    //去掉字符串中的空格
+    
+    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
+    
+    NSRange range2 = {0,mutStr.length};
+    
+    //去掉字符串中的换行符
+    
+    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
+    
+    return mutStr;
+    
+}
 #pragma mark -- POST请求 --
 + (void)postWithURLString:(NSString *)URLString
                parameters:(id)parameters
                   success:(void (^)(id))success
                   failure:(void (^)(NSError *))failure {
     NSString *_URLString = [NSString stringWithFormat:@"%@%@",URL_BASE,URLString];
-//    NSString *_URLString = @"http://192.168.1.40:8822/app/publicFunds/attention";
-//    _URLString = [_URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    _URLString = [_URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
+    NSLog(@"_URLString :%@", _URLString);
+    NSLog(@"parameters :%@", parameters);
     
-    NSMutableDictionary *endDic = [parameters mutableCopy];
-    [endDic setValue:[ToolsObject getNowTimeTimestamp3] forKey:@"timestamp"];
-    NSString *signStr = [ToolsObject x_tokenJoint:endDic andPrivateKeys:companyKey];
-    [endDic setValue:signStr forKey:@"sign"];
+//    NSMutableDictionary *endDic = [parameters mutableCopy];
+//    [endDic setValue:[ToolsObject getNowTimeTimestamp3] forKey:@"timestamp"];
+//    NSString *signStr = [ToolsObject x_tokenJoint:endDic andPrivateKeys:companyKey];
+//    [endDic setValue:signStr forKey:@"sign"];
     
-    NSLog(@"endDic :%@", endDic);
+//    NSLog(@"endDic :%@", endDic);
+//
+//    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+//    // 获取App的版本号
+//    NSString *appVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
+//
+//    NSLog(@"%@",[[UIDevice currentDevice] systemVersion]);
+//    NSLog(@"%@", appVersion);
     
-    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
-    // 获取App的版本号
-    NSString *appVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
+
+    //初始化一个AFHTTPSessionManager
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //设置请求体数据为json类型
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //设置响应体数据为json类型
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    NSLog(@"%@",[[UIDevice currentDevice] systemVersion]);
-    NSLog(@"%@", appVersion);
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",nil];
     
-#pragma mark JSON传参数
-    AFHTTPSessionManager* Manager = [AFHTTPSessionManager manager];
-    Manager.requestSerializer  = [AFJSONRequestSerializer  serializer];
-    Manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    Manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",nil];
+    manager.requestSerializer.timeoutInterval = 120;
+    
+    [manager.requestSerializer setStringEncoding:NSUTF8StringEncoding];
+    
     /*设置客户端的响应格式*/
-    Manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-    
-    /*
-     App-Version 版本名称
-     App-Token Token
-     deviceType 设备类型
-     Os-Version 手机型号
-     Phone-Model 系统版本
-     */
-    [Manager.requestSerializer setValue:appVersion forHTTPHeaderField:@"AppVersion"];
-    [Manager.requestSerializer setValue:@"test" forHTTPHeaderField:@"AppToken"];
-    [Manager.requestSerializer setValue:@"iOS" forHTTPHeaderField:@"HostType"];
-    [Manager.requestSerializer setValue:@"iphone" forHTTPHeaderField:@"OsVersion"];
-    [Manager.requestSerializer setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"PhoneModel"];
-    
+//    Manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
 
-    [Manager POST:_URLString parameters:endDic progress:^(NSProgress * _Nonnull uploadProgress) {
-        NSLog(@"%@",uploadProgress);
-    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
+//    /*
+//     App-Version 版本名称
+//     App-Token Token
+//     deviceType 设备类型
+//     Os-Version 手机型号
+//     Phone-Model 系统版本
+//     */
+    [manager.requestSerializer setValue:[myData TOKEN_ID] forHTTPHeaderField:@"token"];
+//    [Manager.requestSerializer setValue:@"test" forHTTPHeaderField:@"AppToken"];
+//    [Manager.requestSerializer setValue:@"iOS" forHTTPHeaderField:@"HostType"];
+//    [Manager.requestSerializer setValue:@"iphone" forHTTPHeaderField:@"OsVersion"];
+//    [Manager.requestSerializer setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"PhoneModel"];
+    
+    [manager POST:_URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSData *data= [NSJSONSerialization dataWithJSONObject:parameters options:NSJSONWritingPrettyPrinted error:nil];
+       [formData appendPartWithFormData:data name:@"Data"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //NSLog(@"%@",uploadProgress);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         /*返回值已经是字典类型了*/
-        NSLog(@"%@", responseObject);
+//        NSLog(@"%@", responseObject);
+        
+        if (![[responseObject allKeys] containsObject:@"rspCd"]) {
+            NSLog(@"%@", responseObject);
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"message"] andDelay:1.0f andImage:nil];
+            return ;
+        }
+        
+        
         if (success) {
-            responseObject = [ToolsObject processDictionaryIsNSNull:responseObject];
-
             
-            success(responseObject);
+            //重新登录
+            if ([[responseObject objectForKey:@"rspCd"] isEqualToString:@"999998"]) {
+                NSLog(@"重新登录 == %@", responseObject);
+                
+                 [ToolsObject deleteUserData];
+                
+                AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                app.tabBarC.selectedIndex = 0;
+                
+                
+                return ;
+            }
             
-//            if ([[responseObject objectForKey:@"status"] intValue] == 1) {
-//
-//
-//            }else{
-//                //错误信息
-//                 NSLog(@"错误原因：%@",[responseObject objectForKey:@"message"]);
-//            }
+            
+            
+            //去除null 方法一
+            //            responseObject = [ToolsObject processDictionaryIsNSNull:responseObject];
+            //            success(responseObject);
+            
+            
+            
+            //去除null 方法二
+            NSData *data= [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+            //            NSDictionary *dictionary =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+            
+            NSString *aString = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
+            aString = [aString stringByReplacingOccurrencesOfString:@": null"withString:@":\"\""];
+            NSLog(@"aString : %@", aString);
+            NSData* xmlData = [aString dataUsingEncoding:NSUTF8StringEncoding];
+            id  ckdata = [NSJSONSerialization JSONObjectWithData:xmlData options:NSJSONReadingAllowFragments error:nil];
+            
+//            NSLog(@"ckdata ： %@", ckdata);
+            
+            success(ckdata);
+            
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Error: %@", error);
-         [ToolsObject SVProgressHUDDismiss];
+        [ToolsObject SVProgressHUDDismiss];
     }];
-   
     
-#pragma mark NSDictionary传参数
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json",@"text/html", @"text/plain",@"application/x-javascript",nil];
-//    [manager.requestSerializer setValue:[[NSUserDefaults standardUserDefaults] valueForKey:@"Authorization"] forHTTPHeaderField:@"Authorization"];
-////    [manager.requestSerializer setValue:@"1.0" forHTTPHeaderField:@"VERSION"];
-////    [manager.requestSerializer setValue:@"4556" forHTTPHeaderField:@"_EBaiYinT_"];
-//
-//    [manager POST:_URLString parameters:[endDic mutableCopy] success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//
+    
+    
+    
+    
+//    [manager POST:_URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+//        NSLog(@"%@",uploadProgress);
+//    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
+//        /*返回值已经是字典类型了*/
+//        NSLog(@"%@", responseObject);
 //        if (success) {
-//            NSLog(@"%@", responseObject);
-//            NSString *aString = [[NSString alloc] initWithData:responseObject  encoding:NSUTF8StringEncoding];
-//            aString = [aString stringByReplacingOccurrencesOfString:@":null"withString:@":\"\""];
-//            NSLog(@"success1 : %@", aString);
+//             //去除null 方法一
+////            responseObject = [ToolsObject processDictionaryIsNSNull:responseObject];
+////            success(responseObject);
+//
+//
+//
+//            //去除null 方法二
+//            NSData *data= [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+////            NSDictionary *dictionary =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+//
+//            NSString *aString = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
+//            aString = [aString stringByReplacingOccurrencesOfString:@": null"withString:@":\"\""];
+////            NSLog(@"%@", aString);
 //            NSData* xmlData = [aString dataUsingEncoding:NSUTF8StringEncoding];
 //
-//            id ckdata = [NSJSONSerialization JSONObjectWithData:xmlData options:NSJSONReadingAllowFragments error:nil];
-//            NSLog(@"success2 : %@", ckdata);
+//            id  ckdata = [NSJSONSerialization JSONObjectWithData:xmlData options:NSJSONReadingAllowFragments error:nil];
 //
-//            if ([[ckdata objectForKey:@"status"] intValue] == 1) {
-//                success([ckdata objectForKey:@"data"]);
-//            }
+//            NSLog(@"ckdata ： %@", ckdata);
+//
+//            success(ckdata);
+//
 //        }
 //
-//    }failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//
-//        [ToolsObject SVProgressHUDDismiss];
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"Error: %@", error);
+//         [ToolsObject SVProgressHUDDismiss];
 //    }];
-    
+   
+
 }
 
 @end

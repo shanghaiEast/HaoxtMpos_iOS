@@ -10,6 +10,7 @@
 
 #import "UserStatementTableViewController.h"
 
+#import "IDCardTimeView.h"
 
 #import "CWURLSession.h"
 #import "CWCommon.h"
@@ -20,6 +21,13 @@
 
 @property (retain,nonatomic) CWIDCardCaptureController  * cvctrl;
 
+@property (retain, nonatomic) IDCardTimeView *timeView;
+
+@property (nonatomic) BOOL cardZMBool, cardFMBool;
+
+@property (retain,nonatomic) NSString *dateStartString, *dateEndString;
+
+
 @end
 
 
@@ -28,6 +36,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    _cardZMBool = NO;
+    _cardFMBool = NO;
     
     _idcardQuality = 0.65;
     _authCode = AuthCodeString;
@@ -51,11 +61,67 @@
     [_idCardFMimageView addGestureRecognizer:touch_fm];
 }
 
+- (IBAction)timeBtnSelect:(id)sender {
+    typeof(self) wSelf = self;
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    _timeView = [[[NSBundle mainBundle] loadNibNamed:@"IDCardTimeView" owner:self options:nil] lastObject];
+    [_timeView setFrame:app.window.bounds];
+    [_timeView createView];
+    [app.window addSubview:_timeView];
+    _timeView.timeBolck = ^(NSDictionary * _Nonnull dict) {
+        NSLog(@"返回的数据：%@",dict);
+        /*
+         {
+         endTime = "2019-09-20";
+         startTime = "2019-09-20";
+         }
+         */
+        wSelf.dateStartString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"startTime"]];
+        wSelf.dateEndString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"endTime"]];
+        
+        wSelf.dateStartString = [wSelf.dateStartString stringByReplacingOccurrencesOfString:@"-" withString:@"/"];
+        wSelf.dateEndString = [wSelf.dateEndString stringByReplacingOccurrencesOfString:@"-" withString:@"/"];
+        
+         [wSelf.timeBtn setTitle:[NSString stringWithFormat:@"%@    %@",wSelf.dateStartString,wSelf.dateEndString] forState:UIControlStateNormal];
+       
+    };
+    
+}
+
 - (IBAction)nextBtnClick:(id)sender {
     
-    UserStatementTableViewController *userStatementVC = [[UserStatementTableViewController alloc] initWithNibName:@"UserStatementTableViewController" bundle:nil];
-    userStatementVC.hidesBottomBarWhenPushed = YES;
-    [_rootVC.navigationController pushViewController:userStatementVC animated:YES];
+    if (_cardZMBool == NO) {
+        [ToolsObject showMessageTitle:@"请先上传身份证正面" andDelay:1 andImage:nil];
+        
+        return;
+    }
+    
+    if (_cardFMBool == NO) {
+        [ToolsObject showMessageTitle:@"请先上传身份证反面" andDelay:1 andImage:nil];
+        
+        return;
+    }
+    
+    if (_nameTextField.text.length == 0) {
+        [ToolsObject showMessageTitle:@"请先输入姓名" andDelay:1 andImage:nil];
+        
+        return;
+    }
+    
+    if (_idNOTextField.text.length == 0) {
+        [ToolsObject showMessageTitle:@"请先输入身份证号码" andDelay:1 andImage:nil];
+        
+        return;
+    }
+    
+    if (_timeBtn.currentTitle.length == 0) {
+        [ToolsObject showMessageTitle:@"请先选择时间" andDelay:1 andImage:nil];
+        
+        return;
+    }
+    
+    
+    [self requestCommit];
 }
 - (IBAction)yesOrNoBtnClick:(id)sender {
     UIButton *button = (id)sender;
@@ -68,8 +134,6 @@
         _noBtn.selected = YES;
     }
 }
-
-
 
 
 
@@ -107,8 +171,14 @@
         
         _idNOTextField.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"idNumber"]];
         
+        
+        [self requestCommitPic:@"1" withImage:cardImage];
+        
     }else{
          _idCardFMimageView.image = cardImage;
+        
+        _dateStartString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"validdate1"]];
+        _dateEndString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"validdate2"]];
         
         NSString *date1Str = [NSString stringWithFormat:@"%@",[dict objectForKey:@"validdate1"]];
         date1Str = [ToolsObject insertString:@"/" fromString:date1Str withInsertIndex:4];
@@ -122,11 +192,90 @@
         [_timeBtn setTitle:[NSString stringWithFormat:@"%@    %@",date1Str,date2Str] forState:UIControlStateNormal];
         
          NSLog(@"date1Str: %@",date1Str);
+        
+        
+         [self requestCommitPic:@"2" withImage:cardImage];
     }
     
 }
 
+- (void)requestCommitPic:(NSString *)typeStr withImage:(UIImage *)image {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    
+    //UIImage转换为NSData
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0) ;
+    NSString *base64String = [ToolsObject dataWitbBase64ToStrimg:imageData];
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                base64String,@"file",
+                                typeStr,@"FILE_TYPE",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:pub_uploadFile parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+        
+            if ([typeStr isEqualToString:@"1"]) {
+                wSelf.cardZMBool = YES;
+            }
+            if ([typeStr isEqualToString:@"2"]) {
+                wSelf.cardFMBool = YES;
+            }
+            
+             [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
 
+
+- (void)requestCommit {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    int isLoginFloat = 0;
+    if (_yesBtn.selected == YES) {
+        isLoginFloat = 1;
+    }
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                _nameTextField.text,@"CARD_NAME",
+                                _idNOTextField.text,@"CARD_NO",
+                                [_dateStartString stringByReplacingOccurrencesOfString:@"/" withString:@""],@"CER_EXP_DT_START",
+                                [_dateEndString stringByReplacingOccurrencesOfString:@"/" withString:@""],@"CER_EXP_DT_END",
+                                [NSString stringWithFormat:@"%d",isLoginFloat],@"IS_LONG",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:usr_updIdentityCard parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            UserStatementTableViewController *userStatementVC = [[UserStatementTableViewController alloc] initWithNibName:@"UserStatementTableViewController" bundle:nil];
+            userStatementVC.hidesBottomBarWhenPushed = YES;
+            [wSelf.rootVC.navigationController pushViewController:userStatementVC animated:YES];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
 
 
 @end

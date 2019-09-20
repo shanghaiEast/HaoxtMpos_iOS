@@ -15,20 +15,24 @@
 #import "WxAndZfbTableViewController.h"
 #import "QrCodeTableViewController.h"
 #import "PayResultViewController.h"
-#import "SignOrderTableViewController.h"
 #import "ConfirmSignViewController.h"
 #import "TCreditCardCerTableViewController.h"
 #import "POSCollectionViewController.h"
 #import "BlueToothSearchToolsTableViewController.h"
 #import "PayResultViewController.h"
 #import "UserCertificationTableViewController.h"
+#import "SignOrderViewController.h"
+#import <AVFoundation/AVCaptureDevice.h>
+#import "UserStatementTableViewController.h"
+
+
 #import "LocationObject.h"
 
 
 
 #import "Main1TableViewCell.h"
 #import "MainListTableViewCell.h"
-#import <LYEmptyView/LYEmptyViewHeader.h>
+
 
 
 #pragma mark swift图标桥接文件
@@ -40,7 +44,7 @@
 
 @property int page;
 
-
+@property (retain, nonatomic) NSArray *noticesArray;
 
 
 
@@ -55,9 +59,13 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    
-    
-    
+    if ([myData TOKEN_ID].length == 0) {
+        LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        loginVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:loginVC animated:YES];
+
+    }
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -70,32 +78,40 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    LocationObject *locationOj = [[LocationObject alloc] init];
-    [locationOj locationView:self];
-    locationOj.locationMessageBlock = ^(NSArray *array) {
-        NSLog(@"%@",array);
-    };
-    
-//    BlueToothSearchToolsTableViewController *cardCerVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
+//    UserStatementTableViewController *cardCerVC = [[UserStatementTableViewController alloc] initWithNibName:@"UserStatementTableViewController" bundle:nil];
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
+    
+    
+    
+//    if ([[myData USR_REAL_STS] intValue] == 0) {
+//        [self createAlertView_trueName];
+//    }
+    
+//    LocationObject *locationOj = [[LocationObject alloc] init];
+//    [locationOj locationView:self];
+//    locationOj.locationMessageBlock = ^(NSArray *array) {
+//        NSLog(@"%@",array);
+//    };
+//
+    
+    
+    
+   
     
 //    POSCollectionViewController *cardCerVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
     
-//    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-//    loginVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:loginVC animated:YES];
+    
+    
     
     
     
     
     [self createTableView];
     
-    
-    
-   
+    [self requestGetNotices];
     
 }
 
@@ -237,15 +253,7 @@
             //[@"普通收款",@"超级收款",@"二维码收款",@"闪付优惠"]
             
             [self pushPayWay:tag];
-//             [self createAlertView];
-            
-            
-//            if (tag == 0) {
-//                
-//            }
-//            if (tag == 1) {
-//                [self createAlertView];
-//            }
+
         };
         
         
@@ -288,13 +296,19 @@
 }
 
 - (void)pushPayWay:(int)pushTag{
+    
+    if ([[myData USR_REAL_STS] intValue] == 0) {
+        [self createAlertView_trueName];
+        return;
+    }
+    
     WxAndZfbTableViewController *wxAndZfbVC = [[WxAndZfbTableViewController alloc] initWithNibName:@"WxAndZfbTableViewController" bundle:nil];
     wxAndZfbVC.hidesBottomBarWhenPushed = YES;
     wxAndZfbVC.processTag = pushTag;
     [self.navigationController pushViewController:wxAndZfbVC animated:YES];
 }
 
-- (void)createAlertView {
+- (void)createAlertView_machines {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"需要绑定机具" message:@"使用好享推APP需先绑定机具" preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"暂不绑定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -315,6 +329,59 @@
     [self presentViewController:alertController animated:YES completion:nil];
     
    
+}
+
+- (void)createAlertView_trueName {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"请确认是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"暂不认证" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"点击取消");
+        
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"前往认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"点击确认");
+        UserCertificationTableViewController *userCerVC = [[UserCertificationTableViewController alloc] initWithNibName:@"UserCertificationTableViewController" bundle:nil];
+        userCerVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:userCerVC animated:YES];
+    }]];
+    
+    
+    //    [cancel setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
+}
+
+
+
+#pragma mark 系统公告
+- (void)requestGetNotices {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] init];
+    
+    [YanNetworkOBJ postWithURLString:pub_getNotices parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            wSelf.noticesArray = [responseObject objectForKey:@"rspData"];
+            
+            [wSelf.myTableView reloadData];
+           
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
 }
 
 
