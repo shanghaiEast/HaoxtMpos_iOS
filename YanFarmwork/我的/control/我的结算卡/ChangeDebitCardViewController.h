@@ -10,7 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^BankChangeSuccessBlock)(NSDictionary *cardDict);
+
+
 @interface ChangeDebitCardViewController : UIViewController
+
+@property (copy, nonatomic) BankChangeSuccessBlock bankChangeSuccessBlock;
+
+
 
 @property (weak, nonatomic) IBOutlet UILabel *oldUserCardNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *oldUserCardIDLabel;
@@ -34,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)commitBtnClick:(id)sender;
 
+
+
+@property (retain, nonatomic) NSDictionary *detailDict;
 
 
 @end

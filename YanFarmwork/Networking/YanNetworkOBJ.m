@@ -16,6 +16,10 @@
 #import <UIView+MJExtension.h>
 
 
+
+#import "LoginViewController.h"
+
+
 @interface YanNetworkOBJ ()
 {
     MBProgressHUD *_hud;
@@ -137,7 +141,11 @@
     NSString *_URLString = [NSString stringWithFormat:@"%@%@",URL_BASE,URLString];
     _URLString = [_URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
+    
+    parameters = [[ToolsObject processDictionaryIsNSNull:parameters] mutableCopy];
+    
     NSLog(@"_URLString :%@", _URLString);
+//     NSLog(@"[ToolsObject checkNull:parameters] :%@", [ToolsObject checkNull:parameters]);
     NSLog(@"parameters :%@", parameters);
     
 //    NSMutableDictionary *endDic = [parameters mutableCopy];
@@ -171,19 +179,12 @@
     /*设置客户端的响应格式*/
 //    Manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
 
-//    /*
-//     App-Version 版本名称
-//     App-Token Token
-//     deviceType 设备类型
-//     Os-Version 手机型号
-//     Phone-Model 系统版本
-//     */
-    [manager.requestSerializer setValue:[myData TOKEN_ID] forHTTPHeaderField:@"token"];
-//    [Manager.requestSerializer setValue:@"test" forHTTPHeaderField:@"AppToken"];
-//    [Manager.requestSerializer setValue:@"iOS" forHTTPHeaderField:@"HostType"];
-//    [Manager.requestSerializer setValue:@"iphone" forHTTPHeaderField:@"OsVersion"];
-//    [Manager.requestSerializer setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"PhoneModel"];
     
+     if ([myData TOKEN_ID].length != 0) {
+         [manager.requestSerializer setValue:[myData TOKEN_ID] forHTTPHeaderField:@"token"];
+     }
+    
+
     [manager POST:_URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         NSData *data= [NSJSONSerialization dataWithJSONObject:parameters options:NSJSONWritingPrettyPrinted error:nil];
@@ -207,13 +208,22 @@
             //重新登录
             if ([[responseObject objectForKey:@"rspCd"] isEqualToString:@"999998"]) {
                 NSLog(@"重新登录 == %@", responseObject);
+                NSLog(@"重新登录view == %@", [[ToolsObject currentViewController] nibName]);
                 
+                [ToolsObject SVProgressHUDDismiss];
                  [ToolsObject deleteUserData];
                 
-                AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                app.tabBarC.selectedIndex = 0;
+                LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+                loginVC.hidesBottomBarWhenPushed = YES;
+                [[ToolsObject currentViewController].navigationController pushViewController:loginVC animated:YES];
                 
-                
+//                AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//
+//                if ([[[ToolsObject currentViewController] nibName]  isEqual: @"MainViewController"]) {
+//                    [app.mainVC checkLogin];
+//                }else{
+//                    app.tabBarC.selectedIndex = 0;
+//                }
                 return ;
             }
             

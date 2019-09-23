@@ -76,13 +76,18 @@
          startTime = "2019-09-20";
          }
          */
-        wSelf.dateStartString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"startTime"]];
-        wSelf.dateEndString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"endTime"]];
+        if (wSelf.dateStartString.length == 0) {
+            wSelf.dateStartString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"startTime"]];
+            wSelf.dateEndString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"endTime"]];
+            
+            wSelf.dateStartString = [wSelf.dateStartString stringByReplacingOccurrencesOfString:@"-" withString:@"/"];
+            wSelf.dateEndString = [wSelf.dateEndString stringByReplacingOccurrencesOfString:@"-" withString:@"/"];
+            
+            [wSelf.timeBtn setTitle:[NSString stringWithFormat:@"%@    %@",wSelf.dateStartString,wSelf.dateEndString] forState:UIControlStateNormal];
+        }
+       
         
-        wSelf.dateStartString = [wSelf.dateStartString stringByReplacingOccurrencesOfString:@"-" withString:@"/"];
-        wSelf.dateEndString = [wSelf.dateEndString stringByReplacingOccurrencesOfString:@"-" withString:@"/"];
-        
-         [wSelf.timeBtn setTitle:[NSString stringWithFormat:@"%@    %@",wSelf.dateStartString,wSelf.dateEndString] forState:UIControlStateNormal];
+       
        
     };
     
@@ -186,8 +191,8 @@
         
         
         NSString *date2Str = [NSString stringWithFormat:@"%@",[dict objectForKey:@"validdate2"]];
-        date2Str = [ToolsObject insertString:@"/" fromString:date1Str withInsertIndex:4];
-        date2Str = [ToolsObject insertString:@"/" fromString:date1Str withInsertIndex:7];
+        date2Str = [ToolsObject insertString:@"/" fromString:date2Str withInsertIndex:4];
+        date2Str = [ToolsObject insertString:@"/" fromString:date2Str withInsertIndex:7];
         
         [_timeBtn setTitle:[NSString stringWithFormat:@"%@    %@",date1Str,date2Str] forState:UIControlStateNormal];
         

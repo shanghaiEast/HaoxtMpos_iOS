@@ -25,6 +25,9 @@
     _headImageView.layer.cornerRadius = 24.0f;
     _headImageView.layer.masksToBounds = YES;
     
+    _shopNameLabel.text = [NSString stringWithFormat:@"商户名称：%@",[_detialDict objectForKey:@"MERC_NM"]];
+    
+    _addressLabel.text = [NSString stringWithFormat:@"%@",[_detialDict objectForKey:@"MERC_ADDR"]];
 }
 
 @end

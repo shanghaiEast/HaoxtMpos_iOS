@@ -24,7 +24,7 @@
 
 @property (retain, nonatomic) NSArray *titleArrar, *picturArray;
 
-@property (retain, nonatomic) NSArray *merchantsArray;
+@property (retain, nonatomic) NSDictionary *merchantsDict;
 
 
 @end
@@ -93,6 +93,9 @@
     
     _personCenterView = [[[NSBundle mainBundle] loadNibNamed:@"PersonCenterView" owner:self options:nil] lastObject];
     [_personCenterView setFrame:CGRectMake(0, 0, ScreenWidth, 270)];
+    if (_merchantsDict.count != 0) {
+        _personCenterView.detialDict = SHOP_DETAIL;
+    }
     _personCenterView.rootVC = self;
     [_personCenterView createView];
     
@@ -159,7 +162,10 @@
 
 - (void)requestMerchantsMessage {
     
-//    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    if ([SHOP_DETAIL count] == 0) {//第一次展示
+        [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    }
+
     typeof(self) wSelf = self;
     
     NSDictionary *parametDic = [[NSDictionary alloc] init];
@@ -168,9 +174,13 @@
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
             
-            _merchantsArray = [[NSArray alloc] init];
+            _merchantsDict = [responseObject objectForKey:@"rspMap"];
             
             
+            [[NSUserDefaults standardUserDefaults] setObject:_merchantsDict forKey:@"shopDetail"];
+            
+            
+            [wSelf.myTableView reloadData];
             
         }else{
             //filed

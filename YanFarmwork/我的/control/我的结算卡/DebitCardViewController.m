@@ -12,6 +12,8 @@
 
 @interface DebitCardViewController ()
 
+@property (retain, nonatomic) NSDictionary *bankDict;
+
 @end
 
 @implementation DebitCardViewController
@@ -41,19 +43,30 @@
 }
 //更换结算卡
 - (void)changeDebitCard{
-    ChangeDebitCardViewController *changeCardVC = [[ChangeDebitCardViewController alloc] initWithNibName:@"ChangeDebitCardViewController" bundle:nil];
-    changeCardVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:changeCardVC animated:YES];
+//    if (_bankDict.count != 0) {
+        ChangeDebitCardViewController *changeCardVC = [[ChangeDebitCardViewController alloc] initWithNibName:@"ChangeDebitCardViewController" bundle:nil];
+        changeCardVC.detailDict = _bankDict;
+        changeCardVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:changeCardVC animated:YES];
+//    }
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self createCardView];
+    
+    
+    [self requestCard];
 }
 
 - (void)createCardView {
+    _bankNameLabel.text = [_bankDict objectForKey:@"STL_BANK_NAME"];
+    
+//    _bankCardType.text = [_bankDict objectForKey:@"STL_BANK_NAME"];
+    
+    _bankCardID.text = [_bankDict objectForKey:@"STL_ACO_NO"];
     
 }
 
@@ -66,5 +79,34 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)requestCard {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    
+    
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] init];
+    
+    [YanNetworkOBJ postWithURLString:stl_get parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            wSelf.bankDict = [responseObject objectForKey:@"rspMap"];
+            
+            [self createCardView];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
 
 @end

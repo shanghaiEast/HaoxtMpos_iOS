@@ -10,6 +10,8 @@
 
 @interface ToolsClaimsViewController () <UITextViewDelegate>
 
+@property (retain, nonatomic) NSDictionary *hasAppliedDict;
+
 @end
 
 @implementation ToolsClaimsViewController
@@ -69,7 +71,65 @@
 */
 
 - (IBAction)recipientAddressBtnClick:(id)sender {
+
 }
+
 - (IBAction)commitBtnClick:(id)sender {
+    
+//    [self request];
+}
+
+- (void)request_HasNoAppliedFor{
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    
+    
+    typeof(self) wSelf = self;
+    
+//    NSDictionary *parametDic = [[NSDictionary alloc] init];
+//    
+//    [YanNetworkOBJ postWithURLString:term_getTmstapply parameters:parametDic success:^(id  _Nonnull responseObject) {
+//        [ToolsObject SVProgressHUDDismiss];
+//        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+//            
+//            //            wSelf.hasAppliedDict;
+//            
+//        }else{
+//            //filed
+//            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+//        }
+//        
+//    } failure:^(NSError * _Nonnull error) {
+//        NSLog(@"test filed ");
+//        [ToolsObject SVProgressHUDDismiss];
+//    }];
+    
+}
+
+- (void)request_HasAppliedFor{
+
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+
+
+    typeof(self) wSelf = self;
+
+    NSDictionary *parametDic = [[NSDictionary alloc] init];
+
+    [YanNetworkOBJ postWithURLString:term_getTmstapply parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+
+//            wSelf.hasAppliedDict;
+
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+
 }
 @end

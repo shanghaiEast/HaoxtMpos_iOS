@@ -150,6 +150,7 @@
 - (void)requestLogin
 {
     [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
     
     NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                 [NSString stringWithFormat:@"%@",_phoneNumber.text],@"USR_LOGIN",
@@ -173,6 +174,10 @@
 //            LoginJsonModel *loginModel1 = [LoginJsonModel infoWithDictionary:USER_DATA];
 //            NSLog(@"%@",loginModel1.MD5_KEY);
 //            NSLog(@"%@",TOKEN);
+            
+            if (wSelf.loginSuccessBlock) {
+                wSelf.loginSuccessBlock(YES);
+            }
             
            
             

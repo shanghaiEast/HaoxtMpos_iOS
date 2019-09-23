@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (retain, nonatomic)  UITableView *myTableView;
 
 
-
+- (void)checkLogin;
 
 @end
 

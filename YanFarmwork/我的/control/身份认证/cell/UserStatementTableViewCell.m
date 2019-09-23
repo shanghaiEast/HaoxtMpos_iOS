@@ -8,15 +8,17 @@
 
 #import "UserStatementTableViewCell.h"
 
-#import "CWCommon.h"
 #import "UserShopDetailTableViewController.h"
 
+#import "CWCommon.h"
 #import "CWBankCardModel.h"
 #import "CWBankCardCaptureController.h"
 
 #import "CityChooseView.h"
 
 #import "BankSelectViewController.h"
+
+#import "ConfirmSignViewController.h"
 
 
 @interface UserStatementTableViewCell ()<cwDetectCardEdgesDelegate>
@@ -43,6 +45,8 @@
 }
 
 - (void)createHeaderView {
+    
+     [self requestCommitAll];
     
     [_accountNameTextField setValue:[UIColor colorWithHexString:@"#9C9C9C"] forKeyPath:@"_placeholderLabel.textColor"];
     
@@ -76,11 +80,17 @@
 //总行
 - (IBAction)headquartersBankBtnClick:(id)sender {
     
-    if (_accountNoTextField.text.length != 0) {
+    if (_accountNameTextField.text.length == 0) {
         [ToolsObject showMessageTitle:@"请先输入账户名称" andDelay:1 andImage:nil];
         return;
     }
     
+    if (_accountNoTextField.text.length == 0) {
+        [ToolsObject showMessageTitle:@"请先输入结算账户" andDelay:1 andImage:nil];
+        return;
+    }
+    
+     typeof(self) wSelf = self;
     BankSelectViewController *bankVC = [[BankSelectViewController alloc] initWithNibName:@"BankSelectViewController" bundle:nil];
     bankVC.showTag = 1;
     bankVC.headBankName = @"AGTSTL_BNK_LIST";
@@ -99,10 +109,10 @@
 //            "fldOrder" : 2
 //        }
         
-        _headBankDict = dict;
-        [_headquartersBankBtn setTitle:[_headBankDict objectForKey:@"fldExp"] forState:UIControlStateNormal];
+        wSelf.headBankDict = dict;
+        [wSelf.headquartersBankBtn setTitle:[wSelf.headBankDict objectForKey:@"fldExp"] forState:UIControlStateNormal];
         
-         [_branchBankBtn setTitle:@"请查询开户支行" forState:UIControlStateNormal];
+         [wSelf.branchBankBtn setTitle:@"请查询开户支行" forState:UIControlStateNormal];
     };
     
 }
@@ -124,7 +134,7 @@
         return;
     }
     
-    
+     typeof(self) wSelf = self;
     BankSelectViewController *bankVC = [[BankSelectViewController alloc] initWithNibName:@"BankSelectViewController" bundle:nil];
     bankVC.showTag = 2;
     bankVC.headBankDict = _headBankDict;
@@ -135,6 +145,9 @@
     bankVC.getFootBankBlock = ^(NSDictionary * _Nonnull dict) {
         NSLog(@"dict == %@",dict);
         
+        wSelf.footBankDict = dict;
+        
+        [wSelf.branchBankBtn setTitle:[wSelf.footBankDict objectForKey:@"lbnkNm"] forState:UIControlStateNormal];
     };
 }
 
@@ -306,8 +319,8 @@
                                 _accountNoTextField.text,@"STL_CARD_NO",
                                 [_headBankDict objectForKey:@"fldExp"],@"STL_BANK_NAME_HO",
                                 [_headBankDict objectForKey:@"fldVal"],@"STL_BANK_NUM_HO",
-                                @"",@"STL_BANK_NAME_SUB",
-                                @"",@"STL_BANK_NUM_SUB",
+                                 [_footBankDict objectForKey:@"lbnkNm"],@"STL_BANK_NAME_SUB",
+                                [_footBankDict objectForKey:@"lbnkNo"],@"STL_BANK_NUM_SUB",
                                 [_proviceDict objectForKey:@"VALUE"],@"STL_BANK_PROV",
                                 [_cityDict objectForKey:@"VALUE"],@"STL_BANK_CITY",
                                 nil];
@@ -316,9 +329,7 @@
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
             
-            UserShopDetailTableViewController *usershopDetailVC = [[UserShopDetailTableViewController alloc] initWithNibName:@"UserShopDetailTableViewController" bundle:nil];
-            usershopDetailVC.hidesBottomBarWhenPushed = YES;
-            [wSelf.rootVC.navigationController pushViewController:usershopDetailVC animated:YES];
+            [self requestCommitAll];
             
         }else{
             //filed
@@ -331,4 +342,51 @@
     }];
     
 }
+
+
+- (void)requestCommitAll {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+//    MERC_NM    商户名称        N
+//    PARENT_MCC    所属行业-大类        Y    默认当日
+//    MCC_CD    所属行业-明细
+//    PROVINCE    省
+//    CITY    市
+//    STL_CYCLE    结算周期            0-D0 1-T1
+//    ACO_TYP_LIST    账户类型            0-对公，1-对私
+    
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [NSString stringWithFormat:@"%@",@""],@"MERC_NM",
+                                [NSString stringWithFormat:@"%@",@""],@"PARENT_MCC",
+                                [NSString stringWithFormat:@"%@",@""],@"MCC_CD",
+                                [NSString stringWithFormat:@"%@",@""],@"PROVINCE",
+                                [NSString stringWithFormat:@"%@",@""],@"CITY",
+                                [NSString stringWithFormat:@"%@",@""],@"STL_CYCLE",
+                                 [NSString stringWithFormat:@"%@",@""],@"ACO_TYP_LIST",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:usr_open parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            ConfirmSignViewController *confirmSignVC = [[ConfirmSignViewController alloc] initWithNibName:@"ConfirmSignViewController" bundle:nil];
+            confirmSignVC.payType = TYPE_REALNAME;
+            confirmSignVC.hidesBottomBarWhenPushed = YES;
+            [_rootVC.navigationController pushViewController:confirmSignVC animated:YES];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
+
 @end

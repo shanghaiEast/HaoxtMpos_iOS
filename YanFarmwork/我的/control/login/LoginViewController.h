@@ -10,7 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^LoginSuccessBlock)(BOOL success);
+
+
 @interface LoginViewController : UIViewController
+
+@property (copy, nonatomic) LoginSuccessBlock loginSuccessBlock;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 

@@ -16,6 +16,9 @@
 
 @interface TCreditCardCerTableViewController ()
 
+@property (nonatomic) int page;
+@property (retain, nonatomic) NSMutableArray *cardArray;
+
 @end
 
 @implementation TCreditCardCerTableViewController
@@ -54,8 +57,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     [self createTable];
+    
+    [self requestList];
 }
 
 - (void)createTable {
@@ -66,6 +70,45 @@
     self.tableView.dataSource = self;
 //    self.tableView.sectionFooterHeight = CGFLOAT_MIN;
 //    self.tableView.tableFooterView = [UIView new];
+    
+    self.tableView.ly_emptyView = [LYEmptyView emptyViewWithImage:[UIImage imageNamed:@"emptycell.png"] titleStr:@"暂无消息…" detailStr:@""];
+    
+    //    _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshHeader)];
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(upDown)];
+    
+    
+    [self refreshTableView];
+}
+
+#pragma mark  -----  Refresh
+-(void)refreshTableView
+{
+    [self refreshHeader];
+}
+- (void)refreshHeader
+{
+    _page = 1;
+    
+    [self mjRefreshStopWhenTen];
+}
+- (void)upDown
+{
+    _page ++;
+    
+    [self mjRefreshStopWhenTen];
+}
+- (void)tableEndRefresh
+{
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+}
+- (void)mjRefreshStopWhenTen
+{
+    typeof(self) wSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [wSelf.tableView.mj_header endRefreshing];
+        [wSelf.tableView.mj_footer endRefreshing];
+    });
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -125,6 +168,13 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    cell.bankNameLabel.text = [NSString stringWithFormat:@
+                               "%@",[[_cardArray objectAtIndex:indexPath.row] objectForKey:@"ACCT_NAME"]];
+    
+    cell.cardIDLabel.text = [NSString stringWithFormat:@
+                               "%@",[[_cardArray objectAtIndex:indexPath.row] objectForKey:@"ACCT_NO"]];
+    
+    
     
     return cell;
 }
@@ -141,5 +191,43 @@
     [self.navigationController pushViewController:addCardVC animated:YES];
 }
 
+- (void)requestList{
+
+//    PAGE_NUM    当前页数
+//    PAGE_SIZE    页面大小
+//    CARDNO    卡号
+
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [NSString stringWithFormat:@"%d",_page],@"PAGE_NUM",
+                                @"10",@"PAGE_SIZE",
+                                [NSString stringWithFormat:@"%@",[myData CER_NO]],@"",
+                                nil];
+
+    [YanNetworkOBJ postWithURLString:check_list parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+
+            if (wSelf.page == 1) {
+                 wSelf.cardArray = [responseObject objectForKey:@"rspData"];
+            }else{
+                [wSelf.cardArray addObjectsFromArray:[responseObject objectForKey:@"rspData"]];
+            }
+           
+            [wSelf.tableView reloadData];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+
+}
 
 @end

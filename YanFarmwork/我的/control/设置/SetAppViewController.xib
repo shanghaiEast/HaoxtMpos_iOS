@@ -18,7 +18,33 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEH-dw-NAa">
+                    <rect key="frame" x="16" y="452" width="288" height="50"/>
+                    <color key="backgroundColor" red="0.89736628529999996" green="0.34575632210000001" blue="0.3136770129" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Scf-pY-9Gn"/>
+                    </constraints>
+                    <state key="normal" title="退出">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="loginOutClick:" destination="-1" eventType="touchUpInside" id="eVz-xd-LpM"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="pEH-dw-NAa" secondAttribute="bottom" constant="66" id="m9n-gI-n8c"/>
+                <constraint firstAttribute="trailing" secondItem="pEH-dw-NAa" secondAttribute="trailing" constant="16" id="rmz-7a-oeX"/>
+                <constraint firstItem="pEH-dw-NAa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="tTt-jl-wqd"/>
+            </constraints>
+            <point key="canvasLocation" x="-279.375" y="58.098591549295776"/>
         </view>
     </objects>
 </document>

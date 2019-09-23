@@ -35,9 +35,9 @@
     _bottonImageView.layer.masksToBounds = YES;
     
     
-    _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_NM],[myData USR_OPR_MBL]];
+    _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_OPR_NM],[myData USR_OPR_MBL]];
     
-    _shopNOLabel.text = [NSString stringWithFormat:@"商户编号   %@",@""];
+    _shopNOLabel.text = [NSString stringWithFormat:@"商户编号   %@",checkNull([_detialDict objectForKey:@"MERC_ID"])];
     
     
     
@@ -77,6 +77,7 @@
 - (void)puchToUserMessage{
     NSLog(@"跳转个人资料");
     UserSenterTableViewController *userVC = [[UserSenterTableViewController alloc] initWithNibName:@"UserSenterTableViewController" bundle:nil];
+    userVC.detialDict = _detialDict;
     userVC.hidesBottomBarWhenPushed = YES;
     [_rootVC.navigationController pushViewController:userVC animated:YES];
 }
@@ -84,6 +85,10 @@
 - (void)fourViewPress:(UITapGestureRecognizer *)tapGestureRecognizer {
     NSLog(@"4个按钮点击: %ld",(long)tapGestureRecognizer.view.tag);
     if (tapGestureRecognizer.view.tag == 1) {
+        if ([[myData USR_STATUS] intValue] != 0) {
+            [ToolsObject showMessageTitle:@"您已经认证过了" andDelay:1 andImage:nil];
+            return;
+        }
         UserCertificationTableViewController *userCerVC = [[UserCertificationTableViewController alloc] initWithNibName:@"UserCertificationTableViewController" bundle:nil];
         userCerVC.hidesBottomBarWhenPushed = YES;
         [_rootVC.navigationController pushViewController:userCerVC animated:YES];

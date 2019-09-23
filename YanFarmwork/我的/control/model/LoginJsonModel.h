@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy)NSString *USR_NM;
 @property(nonatomic, copy)NSString *CER_NO;
 @property(nonatomic, copy)NSString *BLUE_TOOTH;
+@property(nonatomic, copy)NSString *USR_LOGIN_MBL;
 @property(nonatomic, copy)NSString *USR_OPR_LOG_ID;
 @property(nonatomic, copy)NSString *USR_NO;
 @property(nonatomic, copy)NSString *USR_OPR_MBL;
@@ -30,7 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy)NSString *FEE_VIP;
 @property(nonatomic, copy)NSString *MD5_KEY;
 @property(nonatomic, copy)NSString *USR_LOG_ID;
-@property(nonatomic, copy)NSString *USR_REAL_STS;
 
 @end
 

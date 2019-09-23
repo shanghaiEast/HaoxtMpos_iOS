@@ -43,63 +43,9 @@
 //    _keyboardManager.keyboardDistanceFromTextField = 10.0f; // 输入框距离键盘的距离
     
     
-    _mainVC = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
-    _mainVC.title = @"好享推";
-    UINavigationController *mainNav = [[UINavigationController alloc]initWithRootViewController:_mainVC];
-    
-    _tradinVC = [[TradingViewController alloc]initWithNibName:@"TradingViewController" bundle:nil];
-    _tradinVC.title = @"交易查询";
-    UINavigationController *optionalNav = [[UINavigationController alloc]initWithRootViewController:_tradinVC];
-    
-    _personCenterVC = [[PersonCenterViewController alloc]initWithNibName:@"PersonCenterViewController" bundle:nil];
-    _personCenterVC.title = @"我的";
-    UINavigationController *personCenterNav = [[UINavigationController alloc]initWithRootViewController:_personCenterVC];
-    
-    NSArray *bars = [[NSArray alloc]initWithObjects:mainNav,optionalNav,personCenterNav, nil];
+    [self initView];
     
     
-    
-    
-    
-#pragma mark 正常标签栏
-    _tabBarC = [[UITabBarController alloc]init];
-    [_tabBarC setViewControllers:bars];
-    
-    UITabBar *tabBar = _tabBarC.tabBar;
-    tabBar.backgroundColor = [UIColor colorWithHexString:@"#F7F7F7"];
-    NSArray *barName = [[NSArray alloc]initWithObjects:@"好享推",@"交易查询",@"我的", nil];
-    
-    NSArray *barColor = [[NSArray alloc]initWithObjects:
-                         MAINCOLOR,
-                         MAINCOLOR,
-                         MAINCOLOR,
-                         nil];
-    
-    NSArray *barPic = [[NSArray alloc]initWithObjects:
-                       @"tab_one_unSelect",
-                       @"tab_two_unSelect",
-                       @"tab_three_unSelect",
-                       nil];
-    NSArray *barSelectPic = [[NSArray alloc]initWithObjects:
-                             @"tab_one_Select",
-                             @"tab_two_Select",
-                             @"tab_three_Select",
-                             nil];
-    
-    for (int a = 0; a<barPic.count; a++) {
-        UITabBarItem *tabBarItem = [tabBar.items objectAtIndex:a];
-        tabBarItem.tag = a;
-        [tabBarItem setTitle:[barName objectAtIndex:a]];
-        [tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[barColor objectAtIndex:a], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
-        [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateNormal];
-        tabBarItem.image = [[UIImage imageNamed:[barPic objectAtIndex:a]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        tabBarItem.selectedImage = [[UIImage imageNamed:[barSelectPic objectAtIndex:a]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    }
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = _tabBarC;
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     return YES;
     
     
@@ -184,6 +130,66 @@
     }
 }
 
+
+- (void)initView{
+    _mainVC = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+    _mainVC.title = @"好享推";
+    UINavigationController *mainNav = [[UINavigationController alloc]initWithRootViewController:_mainVC];
+    
+    _tradinVC = [[TradingViewController alloc]initWithNibName:@"TradingViewController" bundle:nil];
+    _tradinVC.title = @"交易查询";
+    UINavigationController *optionalNav = [[UINavigationController alloc]initWithRootViewController:_tradinVC];
+    
+    _personCenterVC = [[PersonCenterViewController alloc]initWithNibName:@"PersonCenterViewController" bundle:nil];
+    _personCenterVC.title = @"我的";
+    UINavigationController *personCenterNav = [[UINavigationController alloc]initWithRootViewController:_personCenterVC];
+    
+    NSArray *bars = [[NSArray alloc]initWithObjects:mainNav,optionalNav,personCenterNav, nil];
+    
+    
+    
+    
+    
+#pragma mark 正常标签栏
+    _tabBarC = [[UITabBarController alloc]init];
+    [_tabBarC setViewControllers:bars];
+    
+    UITabBar *tabBar = _tabBarC.tabBar;
+    tabBar.backgroundColor = [UIColor colorWithHexString:@"#F7F7F7"];
+    NSArray *barName = [[NSArray alloc]initWithObjects:@"好享推",@"交易查询",@"我的", nil];
+    
+    NSArray *barColor = [[NSArray alloc]initWithObjects:
+                         MAINCOLOR,
+                         MAINCOLOR,
+                         MAINCOLOR,
+                         nil];
+    
+    NSArray *barPic = [[NSArray alloc]initWithObjects:
+                       @"tab_one_unSelect",
+                       @"tab_two_unSelect",
+                       @"tab_three_unSelect",
+                       nil];
+    NSArray *barSelectPic = [[NSArray alloc]initWithObjects:
+                             @"tab_one_Select",
+                             @"tab_two_Select",
+                             @"tab_three_Select",
+                             nil];
+    
+    for (int a = 0; a<barPic.count; a++) {
+        UITabBarItem *tabBarItem = [tabBar.items objectAtIndex:a];
+        tabBarItem.tag = a;
+        [tabBarItem setTitle:[barName objectAtIndex:a]];
+        [tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[barColor objectAtIndex:a], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
+        [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateNormal];
+        tabBarItem.image = [[UIImage imageNamed:[barPic objectAtIndex:a]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        tabBarItem.selectedImage = [[UIImage imageNamed:[barSelectPic objectAtIndex:a]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = _tabBarC;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+}
 
 - (void)BaiDuLocation {
 #pragma mark   要使用百度地图，请先启动BaiduMapManager

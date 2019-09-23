@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (retain, nonatomic) UIViewController *rootVC;
+@property (retain, nonatomic) NSDictionary *detialDict;
 - (void)createView;
 
 @end

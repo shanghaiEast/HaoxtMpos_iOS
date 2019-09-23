@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self requestMoney];
 }
 
 /*
@@ -45,5 +47,33 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (void)requestMoney{
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    
+    
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] init];
+    
+    [YanNetworkOBJ postWithURLString:stl_quota parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+           
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
 
 @end

@@ -24,6 +24,7 @@
 #import "SignOrderViewController.h"
 #import <AVFoundation/AVCaptureDevice.h>
 #import "UserStatementTableViewController.h"
+#import "UserShopDetailTableViewController.h"
 
 
 #import "LocationObject.h"
@@ -45,6 +46,7 @@
 @property int page;
 
 @property (retain, nonatomic) NSArray *noticesArray;
+@property (retain, nonatomic) NSDictionary *receiveDict;
 
 
 
@@ -59,13 +61,20 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
+    [self checkLogin];
+
+}
+
+- (void)checkLogin{
     if ([myData TOKEN_ID].length == 0) {
         LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         loginVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:loginVC animated:YES];
-
+        loginVC.loginSuccessBlock = ^(BOOL success) {
+            [_myTableView reloadData];
+        };
+        
     }
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -78,15 +87,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+//    、、15029267074      c123456
+    
 //    UserStatementTableViewController *cardCerVC = [[UserStatementTableViewController alloc] initWithNibName:@"UserStatementTableViewController" bundle:nil];
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
     
     
     
-//    if ([[myData USR_REAL_STS] intValue] == 0) {
-//        [self createAlertView_trueName];
-//    }
+    
+    if ([[myData USR_STATUS] intValue] == 0) {
+        [self createAlertView_trueName];
+    }
+    
+    if ([[myData USR_STATUS] intValue] != 0 && [[myData USR_TERM_STS] intValue] == 0) {
+        BlueToothSearchToolsTableViewController *blueVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
+        blueVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:blueVC animated:YES];
+        
+    }
+    
     
 //    LocationObject *locationOj = [[LocationObject alloc] init];
 //    [locationOj locationView:self];
@@ -112,6 +132,7 @@
     [self createTableView];
     
     [self requestGetNotices];
+    [self requestReceive];
     
 }
 
@@ -242,7 +263,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:topCell owner:self options:nil] lastObject];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell.receiveDict = _receiveDict;
         [cell createCell];
         
         cell.pressMoreAdvertis = ^(BOOL prsssBool) {
@@ -297,9 +318,11 @@
 
 - (void)pushPayWay:(int)pushTag{
     
-    if ([[myData USR_REAL_STS] intValue] == 0) {
+    if ([[myData USR_STATUS] intValue] == 0) {
         [self createAlertView_trueName];
         return;
+    }else{
+        
     }
     
     WxAndZfbTableViewController *wxAndZfbVC = [[WxAndZfbTableViewController alloc] initWithNibName:@"WxAndZfbTableViewController" bundle:nil];
@@ -384,5 +407,46 @@
     }];
 }
 
+#pragma mark 3.25.    用户收款查询
+- (void)requestReceive{
+    
+    //    PAGE_NUM    当前页数
+    //    PAGE_SIZE    页面大小
+    //    CARDNO    卡号
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    //将日期转换成需要的样式
+    NSDateFormatter* YMD = [[NSDateFormatter alloc]init];
+    [YMD setDateFormat:@"yyyy/MM/dd"];
+    NSDate *date = [NSDate date];
+    NSString *dateString = [YMD stringFromDate:date];
+    
+    NSLog(@"时间：%@",dateString);
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [NSString stringWithFormat:@"%@",dateString],@"TRANS_DAY",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:ord_account_receive parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            wSelf.receiveDict = [responseObject objectForKey:@"rspMap"];
+            
+            [wSelf.myTableView reloadData];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
 
 @end

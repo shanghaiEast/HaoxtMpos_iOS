@@ -196,7 +196,7 @@
     if (_showTag == 1) {
        cell.bankNameLabel.text = [[_headBankArray objectAtIndex:indexPath.row] objectForKey:@"fldExp"];
     }else{
-        cell.bankNameLabel.text = [[_footBankArray objectAtIndex:indexPath.row] objectForKey:@""];
+        cell.bankNameLabel.text = [[[_footBankArray objectAtIndex:indexPath.row] objectForKey:@"cmmtbkin"] objectForKey:@"lbnkNm"];
     }
     
     return cell;
@@ -213,7 +213,7 @@
         
     }else{
         if (_getFootBankBlock) {
-            _getFootBankBlock([_footBankArray objectAtIndex:indexPath.row]);
+            _getFootBankBlock([[_footBankArray objectAtIndex:indexPath.row] objectForKey:@"cmmtbkin"]);
         }
     }
     
@@ -238,17 +238,18 @@
     if (_showTag == 1) {
         urlString = pubthlp_bankList;
         parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      _headBankName,@"FLD_NM",
-                      _textField.text,@"SAERCH",
+                      [NSString stringWithFormat:@"%@",_headBankName],@"FLD_NM",
+                      [NSString stringWithFormat:@"%@",_textField.text],@"SAERCH",
                       nil];
     }else{
         urlString = pubthlp_openBankList;
         parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                        [NSString stringWithFormat:@"%@",[_headBankDict objectForKey:@"fldVal"]],@"blbnkNo",
-                      _textField.text,@"SEARCH",
                       [NSString stringWithFormat:@"%@",[_proviceDict objectForKey:@"VALUE"]],@"provCd",
-                      [NSString stringWithFormat:@"%@",[_cityDict objectForKey:@"VALUE"]],@"cityCd",
+//                      [NSString stringWithFormat:@"%@",_textField.text],@"SEARCH",
+//                      [NSString stringWithFormat:@"%@",@""],@"cityCd",
                       nil];
+ 
     }
     
     
@@ -257,18 +258,18 @@
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
             
             if (wSelf.showTag == 1) {
-                _headBankArray = [responseObject objectForKey:@"rspData"];
+                wSelf.headBankArray = [responseObject objectForKey:@"rspData"];
                 
             }else{
-                _footBankArray = [responseObject objectForKey:@"rspData"];
+                wSelf.footBankArray = [responseObject objectForKey:@"rspData"];
             }
             
-            _myTableView.delegate = self;
-            _myTableView.dataSource = self;
+            wSelf.myTableView.delegate = self;
+            wSelf.myTableView.dataSource = self;
             
             [wSelf.myTableView reloadData];
             
-             _myTableView.ly_emptyView = [LYEmptyView emptyViewWithImage:[UIImage imageNamed:@"emptycell.png"] titleStr:@"暂无消息…" detailStr:@""];
+             wSelf.myTableView.ly_emptyView = [LYEmptyView emptyViewWithImage:[UIImage imageNamed:@"emptycell.png"] titleStr:@"暂无消息…" detailStr:@""];
             
         }else{
             //filed

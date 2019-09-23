@@ -15,6 +15,8 @@
 
 @property (retain, nonatomic) UserCenterHeaderView *headerView;
 
+@property (retain, nonatomic) NSArray *listKeyArray, *listValueArray;
+
 @end
 
 @implementation UserSenterTableViewController
@@ -37,6 +39,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _listKeyArray = @[@"商户编号",
+                      @"联系人",
+                      @"电话号码",
+                      @"开通日期",
+                      @"商户状态",
+                      @"借记卡费率",
+                      @"贷记卡D0",
+                      @"二维码/闪付"
+                      ];
+    NSString *beginDateString = [_detialDict objectForKey:@"PIDBEGINDATE"];
+    beginDateString = [ToolsObject insertString:@"/" fromString:beginDateString withInsertIndex:4];
+    beginDateString = [ToolsObject insertString:@"/" fromString:beginDateString withInsertIndex:7];
+    
+    NSString *userStateString = @"未开通";
+    if ([[_detialDict objectForKey:@"MERC_STS"] intValue] != 0) {
+        userStateString = @"开通";
+    }
+    
+    _listValueArray = @[[_detialDict objectForKey:@"MERC_ID"],
+                        [_detialDict objectForKey:@"CORP_NM"],
+                        [_detialDict objectForKey:@"USR_OPR_MBL"],
+                        beginDateString,
+                        userStateString,
+                        [NSString stringWithFormat:@"%@%@",[_detialDict objectForKey:@"DCARD_TFEE"],@"%"],
+                        [NSString stringWithFormat:@"%@%@",[_detialDict objectForKey:@"CCARD_DFEE"],@"%"],
+                        [NSString stringWithFormat:@"%@%@",[_detialDict objectForKey:@"UN_FEE"],@"%"]
+                        ];
+    
+    
     
     [self createTable];
 }
@@ -62,7 +94,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return _listValueArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -79,6 +111,7 @@
     
     _headerView = [[[NSBundle mainBundle] loadNibNamed:@"UserCenterHeaderView" owner:self options:nil] lastObject];
     [_headerView setFrame:CGRectMake(0, 0, ScreenWidth, 160)];
+    _headerView.detialDict = _detialDict;
     [_headerView createHeaderView];
     _headerView.rootVC = self;
     
@@ -93,7 +126,8 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-   
+    cell.keyLabel.text = [_listKeyArray objectAtIndex:indexPath.row];
+    cell.valueLabel.text = [_listValueArray objectAtIndex:indexPath.row];
     
     
     return cell;

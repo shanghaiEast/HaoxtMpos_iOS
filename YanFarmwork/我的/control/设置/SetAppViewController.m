@@ -56,7 +56,7 @@
 //    view.backgroundColor = [UIColor colorWithHexString:@"#EF5F48"];
 //    [self.view addSubview:view];
     
-    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-kTabBarHeight-kNavBarHAbove7) style:UITableViewStylePlain];
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-kTabBarHeight-kNavBarHAbove7-200) style:UITableViewStylePlain];
     _myTableView.backgroundColor = [UIColor clearColor];
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _myTableView.delegate = self;
@@ -148,4 +148,34 @@
 }
 */
 
+- (IBAction)loginOutClick:(id)sender {
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] init];
+    
+    [YanNetworkOBJ postWithURLString:usr_logout parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            [ToolsObject deleteUserData];
+            LoginJsonModel *loginModel = [LoginJsonModel infoWithDictionary:USER_DATA];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            app.tabBarC.selectedIndex = 0;
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
 @end

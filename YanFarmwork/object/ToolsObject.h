@@ -92,8 +92,13 @@
 //NSString转NSData
 + (NSString *)stringToJsonData:(NSDictionary *)dict;
 
-//去除null
+//去除null 方法一
 + (id) processDictionaryIsNSNull:(id)obj;
+
+//去除null 方法二
++ (NSDictionary *) DictionaryIsNSNull:(NSDictionary *)responseObject;
+
++ (NSDictionary *)checkNull:(NSDictionary *)dict ;
 
 //获取当前时间戳 （以毫秒为单位）
 +(NSString *)getNowTimeTimestamp3;
@@ -170,5 +175,8 @@
 
 #pragma mark iOS访问相册、相机权限
 + (void)getAuthorizationStatus:(void(^)(void))authorizedBlock;
+
+#pragma mark 当编写代码时，不论是在TabbarController还是在Viewcontroller或者是NavagationController中任何一个页面写方法时，我们都可以使用以下方法获取程序正在展示的当前页
++ (UIViewController*) currentViewController;
 
 @end

@@ -201,6 +201,8 @@
 #define USER_DATA  [[NSUserDefaults standardUserDefaults] objectForKey:@"userData"]
 #define myData [LoginJsonModel infoWithDictionary:USER_DATA]
 
+#define SHOP_DETAIL  [[NSUserDefaults standardUserDefaults] objectForKey:@"shopDetail"]
+
 //#define TOKEN [[LoginJsonModel infoWithDictionary:USER_DATA] TOKEN_ID]//或[[[NSUserDefaults standardUserDefaults] objectForKey:@"userData"] objectForKey:@"TOKEN_ID"]
 
 
@@ -223,6 +225,16 @@
 #define  pub_uploadFile @"pub/uploadFile"  //3.19.    附件上传
 #define  pub_getNotices @"pub/getNotices"  //3.20.    系统公告
 #define  ord_list @"ord/list"  //3.26.    用户交易查询
+#define  usr_logout @"usr/logout"  //3.3.    用户退出
+#define  usr_open @"usr/open"  //3.16.    用户实名认证—提交
+#define  stl_get @"stl/list"  //3.21.    我的结算卡
+#define  stl_updStlBankInfo @"stl/updStlBankInfo"  //3.22.    结算卡修改
+#define  stl_quota @"stl/quota"  //3.36.    商户额度查询
+#define  term_getTmstapply @"term/getTmstapply"  //3.11.    机具申领查看
+#define  term_list @"term/list"  //3.12.    我的机具
+#define  term_add @"term/add"  //3.13.    机具绑定
+#define check_list  @"check/list"  //3.18.    认证记录
+#define ord_account_receive  @"ord/account/receive"  //3.25.    用户收款查询
 //#define   @""  //
 //#define   @""  //
 //#define   @""  //
@@ -232,3 +244,14 @@
 //#define   @""  //
 //#define   @""  //
 //#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+//#define   @""  //
+

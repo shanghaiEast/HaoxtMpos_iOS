@@ -59,6 +59,10 @@
                     <constraint firstItem="PZ4-VL-DZQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="pU2-DC-RFd"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="keyLabel" destination="nEd-om-vwB" id="7d0-rJ-Xpb"/>
+                <outlet property="valueLabel" destination="XZo-ST-zaf" id="l4m-gX-fes"/>
+            </connections>
             <point key="canvasLocation" x="115.94202898550725" y="65.959821428571431"/>
         </tableViewCell>
     </objects>

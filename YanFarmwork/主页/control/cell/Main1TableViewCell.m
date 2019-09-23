@@ -71,7 +71,10 @@
     
     NSLog(@"%@",[myData USR_NM]);
     NSLog(@"%@",[myData USR_OPR_MBL]);
-    _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_NM],[myData USR_OPR_MBL]];
+    _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_OPR_NM],[myData USR_LOGIN_MBL]];
+    
+    _todayMoneyLabel.text = [NSString stringWithFormat:@"%@",checkNull([_receiveDict objectForKey:@"BAL_AMT_DAY"])];
+     _allMoneyLabel.text = [NSString stringWithFormat:@"%@",checkNull([_receiveDict objectForKey:@"BAL_AMT_MON"])];
     
     
     UITapGestureRecognizer *viewOneTouch = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fourViewPress:)];

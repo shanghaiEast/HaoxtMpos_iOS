@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserCenterTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *keyLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -116,6 +116,7 @@
         [wSelf.myTableView.mj_footer endRefreshing];
     });
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }

@@ -49,6 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (retain, nonatomic) NSArray *noticeArray;
+@property (retain, nonatomic) NSDictionary *receiveDict;
 - (void)createCell;
 
 

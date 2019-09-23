@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UserSenterTableViewController : UITableViewController
 
 
-
+@property (retain, nonatomic) NSDictionary *detialDict;
 
 @end
 

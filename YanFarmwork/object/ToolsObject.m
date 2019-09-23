@@ -201,6 +201,7 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:tempDict forKey:@"userData"];
+     [[NSUserDefaults standardUserDefaults] setObject:tempDict forKey:@"shopDetail"];
 }
 
 //保存用户定位数据
@@ -945,7 +946,20 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
     
 }
 
-#pragma mark 去除null
+#pragma mark  去除null 方法二
++ (NSDictionary *) DictionaryIsNSNull:(NSDictionary *)responseObject{
+    NSData *data= [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+   
+    NSString *aString = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
+    aString = [aString stringByReplacingOccurrencesOfString:@": null"withString:@":\"\""];
+    NSLog(@"aString : %@", aString);
+    NSData* xmlData = [aString dataUsingEncoding:NSUTF8StringEncoding];
+    id  ckdata = [NSJSONSerialization JSONObjectWithData:xmlData options:NSJSONReadingAllowFragments error:nil];
+    
+    return ckdata;
+}
+
+#pragma mark 去除null 方法一
 + (id) processDictionaryIsNSNull:(id)obj{
     const NSString *blank = @"";
     
@@ -990,6 +1004,16 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
     else{
         return obj;
     }
+}
+
++ (NSDictionary *)checkNull:(NSDictionary *)dict {
+    NSMutableArray *keyArray = [[dict allKeys] mutableCopy];
+    NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+    for (int i = 0 ; i < keyArray.count; i++) {
+        [tempDict setValue:checkNull([dict objectForKey:[keyArray objectAtIndex:i]]) forKey:[keyArray objectAtIndex:i]];
+    }
+    
+    return tempDict;
 }
 
 #pragma mark 设置状态栏颜色
@@ -1502,6 +1526,58 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
         default:
             break;
     }
+}
+
+//当编写代码时，不论是在TabbarController还是在Viewcontroller或者是NavagationController中任何一个页面写方法时，我们都可以使用以下方法获取程序正在展示的当前页  第一步
++ (UIViewController*) findBestViewController:(UIViewController*)vc {
+    
+    if (vc.presentedViewController) {
+        
+        // Return presented view controller
+        return [self findBestViewController:vc.presentedViewController];
+        
+    } else if ([vc isKindOfClass:[UISplitViewController class]]) {
+        
+        // Return right hand side
+        UISplitViewController* svc = (UISplitViewController*) vc;
+        if (svc.viewControllers.count > 0)
+            return [self findBestViewController:svc.viewControllers.lastObject];
+        else
+            return vc;
+        
+    } else if ([vc isKindOfClass:[UINavigationController class]]) {
+        
+        // Return top view
+        UINavigationController* svc = (UINavigationController*) vc;
+        if (svc.viewControllers.count > 0)
+            return [self findBestViewController:svc.topViewController];
+        else
+            return vc;
+        
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        
+        // Return visible view
+        UITabBarController* svc = (UITabBarController*) vc;
+        if (svc.viewControllers.count > 0)
+            return [self findBestViewController:svc.selectedViewController];
+        else
+            return vc;
+        
+    } else {
+        
+        // Unknown view controller type, return last child view controller
+        return vc;
+        
+    }
+    
+}
+//第二步
++ (UIViewController*) currentViewController {
+    
+    // Find best view controller
+    UIViewController* viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    return [self findBestViewController:viewController];
+    
 }
 
 

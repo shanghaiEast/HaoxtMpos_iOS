@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (retain, nonatomic)  UITableView *myTableView;
 
 
+
+
+- (IBAction)loginOutClick:(id)sender;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

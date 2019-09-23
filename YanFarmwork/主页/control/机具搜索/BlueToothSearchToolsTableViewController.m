@@ -127,12 +127,10 @@
         NSLog(@"myDevice:%@",myDevice);
         NSLog(@"snString:%@",snString);
         
-        [wSelf.tianYuView stopBlueLink];
         
-        ConfirmSignViewController *confirmSignVC = [[ConfirmSignViewController alloc] initWithNibName:@"ConfirmSignViewController" bundle:nil];
-        confirmSignVC.payType = TYPE_TOOLS;
-        confirmSignVC.hidesBottomBarWhenPushed = YES;
-        [wSelf.navigationController pushViewController:confirmSignVC animated:YES];
+        NSDictionary *tempDict = @{@"sn":snString, @"name":myDevice.name};
+        [wSelf request_bindMechine:tempDict];
+        
         
 //        BindToolsViewController *bindToolsVC = [[BindToolsViewController alloc] initWithNibName:@"BindToolsViewController" bundle:nil];
 //        bindToolsVC.mySNString = [NSString stringWithFormat:@"%@",snString];
@@ -159,6 +157,43 @@
     
     
 }
+
+- (void)request_bindMechine:(NSDictionary *)dict{
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    
+    
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [NSString stringWithFormat:@"%@",[dict objectForKey:@"sn"]],@"USR_SN_NO",
+                                [NSString stringWithFormat:@"%@",[dict objectForKey:@"name"]],@"BLUE_TOOTH",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:term_add parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            
+            [wSelf.tianYuView stopBlueLink];
+            
+            ConfirmSignViewController *confirmSignVC = [[ConfirmSignViewController alloc] initWithNibName:@"ConfirmSignViewController" bundle:nil];
+            confirmSignVC.payType = TYPE_TOOLS;
+            confirmSignVC.hidesBottomBarWhenPushed = YES;
+            [wSelf.navigationController pushViewController:confirmSignVC animated:YES];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
+
 
 ///.........................天谕pos。。。。。。。。。。。。。。。。。。。
 - (void)createBooth{

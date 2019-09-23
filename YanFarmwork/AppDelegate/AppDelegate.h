@@ -41,5 +41,7 @@
 
 
 
+- (void)initView;
+
 @end
 

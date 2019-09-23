@@ -65,4 +65,41 @@
     [self.navigationController pushViewController:confirmSignVC animated:YES];
     
 }
+
+
+- (void)requestCommit{
+    
+//    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+//    typeof(self) wSelf = self;
+//
+//    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                [NSString stringWithFormat:@"%d",_page],@"PAGE_NUM",
+//                                @"10",@"PAGE_SIZE",
+//                                [NSString stringWithFormat:@"%@",[myData CER_NO]],@"",
+//                                nil];
+//
+//    [YanNetworkOBJ postWithURLString:check_list parameters:parametDic success:^(id  _Nonnull responseObject) {
+//        [ToolsObject SVProgressHUDDismiss];
+//        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+//
+//            if (wSelf.page == 1) {
+//                wSelf.cardArray = [responseObject objectForKey:@"rspData"];
+//            }else{
+//                [wSelf.cardArray addObjectsFromArray:[responseObject objectForKey:@"rspData"]];
+//            }
+//
+//            [wSelf.tableView reloadData];
+//
+//        }else{
+//            //filed
+//            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+//        }
+//
+//    } failure:^(NSError * _Nonnull error) {
+//        NSLog(@"test filed ");
+//        [ToolsObject SVProgressHUDDismiss];
+//    }];
+    
+}
+
 @end
