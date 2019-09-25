@@ -1579,6 +1579,13 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
     return [self findBestViewController:viewController];
     
 }
+//UIButton实现左边文字,右边图片
++ (void)buttonImageRight:(UIButton *)btn {
+    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, - btn.imageView.image.size.width, 0, btn.imageView.image.size.width)];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, btn.titleLabel.bounds.size.width, 0, -btn.titleLabel.bounds.size.width)];
+    
+//    UIButton默认是左图片，右文字。并且在设置edge insets之前, 位置已经有了设定。所以设置title的edge insets，真实的作用是在原来的边距值基础上增加或减少某个间距，负值便是减少。以title为例，设置右边距增加图片宽度，就使得自己的右边界距离按钮的右边界多了图片的宽度，正好放下图片。此时，titleLabel变小了，而titleLabel的左边界还在原来的位置上，所以label的左边界距离按钮的左边界减少图片的宽度，label就和原来一样大了，而且左侧起始位置和图片的左侧起始位置相同了。
+}
 
 
 @end

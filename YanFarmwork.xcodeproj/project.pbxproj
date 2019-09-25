@@ -106,6 +106,8 @@
 		C72B11D92326292B00BE5672 /* libzlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72B11C42326292B00BE5672 /* libzlib.a */; };
 		C72B11DE23264DC900BE5672 /* OrdinaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72B11DC23264DC900BE5672 /* OrdinaryTableViewCell.xib */; };
 		C72B11DF23264DC900BE5672 /* OrdinaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72B11DD23264DC900BE5672 /* OrdinaryTableViewCell.m */; };
+		C73ABACE233B161F003450AB /* AreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C73ABACC233B161F003450AB /* AreaPickerView.m */; };
+		C73ABAD0233B1859003450AB /* AreaPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73ABACF233B1859003450AB /* AreaPickerView.xib */; };
 		C7441A642320B44A009736EF /* ChangePhoneStepOne.m in Sources */ = {isa = PBXBuildFile; fileRef = C7441A622320B449009736EF /* ChangePhoneStepOne.m */; };
 		C7441A652320B44A009736EF /* ChangePhoneStepOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7441A632320B449009736EF /* ChangePhoneStepOne.xib */; };
 		C7441A692320B6D7009736EF /* ChangePhoneStepTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = C7441A662320B6D6009736EF /* ChangePhoneStepTwo.m */; };
@@ -519,6 +521,9 @@
 		C72B11DB23264DC800BE5672 /* OrdinaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdinaryTableViewCell.h; sourceTree = "<group>"; };
 		C72B11DC23264DC900BE5672 /* OrdinaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrdinaryTableViewCell.xib; sourceTree = "<group>"; };
 		C72B11DD23264DC900BE5672 /* OrdinaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdinaryTableViewCell.m; sourceTree = "<group>"; };
+		C73ABACA233B161E003450AB /* AreaPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaPickerView.h; sourceTree = "<group>"; };
+		C73ABACC233B161F003450AB /* AreaPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaPickerView.m; sourceTree = "<group>"; };
+		C73ABACF233B1859003450AB /* AreaPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AreaPickerView.xib; sourceTree = "<group>"; };
 		C7441A612320B449009736EF /* ChangePhoneStepOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePhoneStepOne.h; sourceTree = "<group>"; };
 		C7441A622320B449009736EF /* ChangePhoneStepOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneStepOne.m; sourceTree = "<group>"; };
 		C7441A632320B449009736EF /* ChangePhoneStepOne.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePhoneStepOne.xib; sourceTree = "<group>"; };
@@ -1006,6 +1011,9 @@
 		1340943D221E76EF000B4B54 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				C73ABACA233B161E003450AB /* AreaPickerView.h */,
+				C73ABACC233B161F003450AB /* AreaPickerView.m */,
+				C73ABACF233B1859003450AB /* AreaPickerView.xib */,
 				1340943E221E76EF000B4B54 /* otherData */,
 				13409441221E76EF000B4B54 /* control */,
 			);
@@ -2202,6 +2210,7 @@
 				C79FC5C2231FE438003E9991 /* logoInPerson@2x.png in Resources */,
 				C79FC5D3231FE9AE003E9991 /* myTool@3x.png in Resources */,
 				C769997D231D1D8000424AD3 /* row3@3x.png in Resources */,
+				C73ABAD0233B1859003450AB /* AreaPickerView.xib in Resources */,
 				C72B11852326003200BE5672 /* scanFlashlight@2x.png in Resources */,
 				C701CCCB2320A27E003F120E /* settlement@2x.png in Resources */,
 				C7441A6A2320B6D7009736EF /* ChangePhoneStepTwo.xib in Resources */,
@@ -2530,6 +2539,7 @@
 				C712CF032334A1AB00D8DFE1 /* CityChooseView.m in Sources */,
 				C78E93E92321076D000D3F26 /* CheckRealNameTableViewCell.m in Sources */,
 				C72B11CB2326292B00BE5672 /* CWHackerCheckView.m in Sources */,
+				C73ABACE233B161F003450AB /* AreaPickerView.m in Sources */,
 				C72B11CF2326292B00BE5672 /* CWFinishedView.m in Sources */,
 				C72B11C82326292B00BE5672 /* CWCameraDrawView.m in Sources */,
 				C7FF8B6F231F64B30046379B /* FilterView.m in Sources */,

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TCreditCardCerTableViewController : UITableViewController
 
+@property (nonatomic) int pushTag;//1 == pop root view
+
 @end
 
 NS_ASSUME_NONNULL_END

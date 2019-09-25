@@ -84,15 +84,23 @@
 //4个按钮点击
 - (void)fourViewPress:(UITapGestureRecognizer *)tapGestureRecognizer {
     NSLog(@"4个按钮点击: %ld",(long)tapGestureRecognizer.view.tag);
+    
+    if ([[myData USR_STATUS] intValue] == 0) {
+        [self createAlertView_trueName];
+        return;
+    }
+    
     if (tapGestureRecognizer.view.tag == 1) {
         if ([[myData USR_STATUS] intValue] != 0) {
-            [ToolsObject showMessageTitle:@"您已经认证过了" andDelay:1 andImage:nil];
+            [ToolsObject showMessageTitle:@"您已完成认证" andDelay:1 andImage:nil];
             return;
         }
         UserCertificationTableViewController *userCerVC = [[UserCertificationTableViewController alloc] initWithNibName:@"UserCertificationTableViewController" bundle:nil];
         userCerVC.hidesBottomBarWhenPushed = YES;
         [_rootVC.navigationController pushViewController:userCerVC animated:YES];
     }
+    
+    
     
     if (tapGestureRecognizer.view.tag == 2) {
         DebitCardViewController *debitCardVC = [[DebitCardViewController alloc] initWithNibName:@"DebitCardViewController" bundle:nil];
@@ -111,6 +119,30 @@
         myPosVC.hidesBottomBarWhenPushed = YES;
         [_rootVC.navigationController pushViewController:myPosVC animated:YES];
     }
+    
+}
+
+- (void)createAlertView_trueName {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"请确认是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"暂不认证" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"点击取消");
+        
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"前往认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"点击确认");
+        UserCertificationTableViewController *userCerVC = [[UserCertificationTableViewController alloc] initWithNibName:@"UserCertificationTableViewController" bundle:nil];
+        userCerVC.hidesBottomBarWhenPushed = YES;
+        [_rootVC.navigationController pushViewController:userCerVC animated:YES];
+    }]];
+    
+    
+    //    [cancel setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+    
+    [_rootVC presentViewController:alertController animated:YES completion:nil];
+    
     
 }
 

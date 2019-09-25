@@ -71,7 +71,7 @@
 //    self.tableView.sectionFooterHeight = CGFLOAT_MIN;
 //    self.tableView.tableFooterView = [UIView new];
     
-    self.tableView.ly_emptyView = [LYEmptyView emptyViewWithImage:[UIImage imageNamed:@"emptycell.png"] titleStr:@"暂无消息…" detailStr:@""];
+//    self.tableView.ly_emptyView = [LYEmptyView emptyViewWithImage:[UIImage imageNamed:@"emptycell.png"] titleStr:@"暂无消息…" detailStr:@""];
     
     //    _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshHeader)];
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(upDown)];
@@ -116,7 +116,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
+    return _cardArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -203,7 +203,7 @@
     NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                 [NSString stringWithFormat:@"%d",_page],@"PAGE_NUM",
                                 @"10",@"PAGE_SIZE",
-                                [NSString stringWithFormat:@"%@",[myData CER_NO]],@"",
+                                [NSString stringWithFormat:@"%@",@""],@"CARDNO",
                                 nil];
 
     [YanNetworkOBJ postWithURLString:check_list parameters:parametDic success:^(id  _Nonnull responseObject) {
@@ -220,6 +220,7 @@
             
         }else{
             //filed
+             [ToolsObject SVProgressHUDDismiss];
             [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
         }
 

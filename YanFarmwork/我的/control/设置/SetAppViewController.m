@@ -8,6 +8,8 @@
 
 #import "SetAppViewController.h"
 
+#import "LoginViewController.h"
+
 #import "SetAppTableViewCell.h"
 #import "ChangePasswordViewController.h"
 #import "ChangePhoneStepOne.h"
@@ -164,8 +166,12 @@
             
             [self.navigationController popToRootViewControllerAnimated:YES];
             
-            AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            app.tabBarC.selectedIndex = 0;
+//            AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//            app.tabBarC.selectedIndex = 0;
+            
+            LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [[ToolsObject currentViewController].navigationController pushViewController:loginVC animated:YES];
             
         }else{
             //filed

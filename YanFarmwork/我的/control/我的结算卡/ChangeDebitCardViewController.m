@@ -13,9 +13,13 @@
 #import "CWBankCardModel.h"
 #import "CWBankCardCaptureController.h"
 
+#import "AreaPickerView.h"
+
 @interface ChangeDebitCardViewController ()<cwDetectCardEdgesDelegate>
 
-@property(nonatomic,strong)CWBankCardCaptureController * cvctrl;
+@property(nonatomic,strong) CWBankCardCaptureController * cvctrl;
+
+@property(strong, nonatomic) AreaPickerView *areaPickerView;
 
 @property(nonatomic,retain) NSDictionary *proviceDict, *cityDict, *headBankDict, *footBankDict;
 
@@ -129,17 +133,45 @@
         //            "fldOrder" : 2
         //        }
         
-        wSelf.headBankDict = dict;
         
-        [wSelf.openCardBankBtn setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"fldExp"]] forState:UIControlStateNormal];
+        [self requestCheckCard:dict];
         
-        [wSelf.branchBankBtn setTitle:@"请选择开户行分行" forState:UIControlStateNormal];
+        
+        
+//        wSelf.headBankDict = dict;
+//
+//        [wSelf.openCardBankBtn setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"fldExp"]] forState:UIControlStateNormal];
+//
+//        [wSelf.branchBankBtn setTitle:@"请选择开户行分行" forState:UIControlStateNormal];
     };
     
 }
 
 - (IBAction)openCardAddressBtnClick:(id)sender {
     //开户行省市
+    typeof(self) wSelf = self;
+    _areaPickerView = [[[NSBundle mainBundle] loadNibNamed:@"AreaPickerView" owner:self options:nil] lastObject];
+    [_areaPickerView setFrame:self.view.bounds];
+    [_areaPickerView createPickerView];
+    [self.view addSubview:_areaPickerView];
+    _areaPickerView.selectProviceAndCityBlock = ^(NSDictionary * _Nonnull proviceDict, NSDictionary * _Nonnull cityDict) {
+        NSLog(@"proviceDict: %@\ncityDict: %@",proviceDict,cityDict);
+//    proviceDict: {
+//        LABEL = "\U6cb3\U5317\U7701";
+//        VALUE = 1200;
+//    }
+//    cityDict: {
+//        LABEL = "\U8861\U6c34\U5e02";
+//        VALUE = 1480;
+//    }
+        
+        wSelf.proviceDict = proviceDict;
+        wSelf.cityDict = cityDict;
+        
+        [wSelf.openCardAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",[proviceDict objectForKey:@"LABEL"],[cityDict objectForKey:@"LABEL"]] forState:UIControlStateNormal];
+    };
+    
+    
 }
 - (IBAction)branckBankBtnClick:(id)sender {
     //开户行分行
@@ -191,12 +223,9 @@
 
 - (IBAction)commitBtnClick:(id)sender {
     //提交
-#pragma warning 临时数据
-    [_openCardAddressBtn setTitle:@"北京朝阳区" forState:UIControlStateNormal];
     
-    if (_cardIdBtn.currentTitle.length == 0) {
+    if (_cardIdBtn.currentTitle.length == 0 || [_cardIdBtn.currentTitle isEqualToString:@"请填写储蓄卡号"]) {
         [ToolsObject showMessageTitle:@"请填写储蓄卡号" andDelay:1 andImage:nil];
-        
         return;
     }
     
@@ -223,6 +252,42 @@
 }
 
 
+- (void)requestCheckCard:(NSDictionary *)dict {
+    
+//    STL_CARD_NO    结算卡号        N
+//    STL_BANK_NUM_NO    结算卡总行联行号        Y
+//    STL_BANK_NAME    结算卡总行名称
+    
+    [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [NSString stringWithFormat:@"%@",_cardIdBtn.currentTitle],@"STL_CARD_NO",
+                                [NSString stringWithFormat:@"%@",[dict objectForKey:@"fldVal"]],@"STL_BANK_NUM_NO",
+                                [NSString stringWithFormat:@"%@",[dict objectForKey:@"fldExp"]],@"STL_BANK_NAME",
+                                nil];
+    
+    [YanNetworkOBJ postWithURLString:stl_checkStlCardNo parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            wSelf.headBankDict = dict;
+            
+            [wSelf.openCardBankBtn setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"fldExp"]] forState:UIControlStateNormal];
+            
+            [wSelf.branchBankBtn setTitle:@"请选择开户行分行" forState:UIControlStateNormal];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:2.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
 
 
 - (void)requestChange {
@@ -240,8 +305,8 @@
     typeof(self) wSelf = self;
     
     NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                [NSString stringWithFormat:@"%@",@"2900"],@"STL_BANK_PROV",
-                                [NSString stringWithFormat:@"%@",@"2916"],@"STL_BANK_CITY",
+                                [NSString stringWithFormat:@"%@",[_proviceDict objectForKey:@"VALUE"]],@"STL_BANK_PROV",
+                                [NSString stringWithFormat:@"%@",[_cityDict objectForKey:@"VALUE"]],@"STL_BANK_CITY",
                                 [NSString stringWithFormat:@"%@",[_footBankDict objectForKey:@"lbnkNo"]],@"STL_BNK_NO",
                                 [NSString stringWithFormat:@"%@",_branchBankBtn.currentTitle],@"STL_BNK_NM",
                                 [NSString stringWithFormat:@"%@",_cardIdBtn.currentTitle],@"STL_ACO_NO",
@@ -256,6 +321,10 @@
             if (_bankChangeSuccessBlock) {
                 _bankChangeSuccessBlock([NSDictionary new]);
             }
+            
+             [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+            
+            [self.navigationController popViewControllerAnimated:YES];
             
         }else{
             //filed

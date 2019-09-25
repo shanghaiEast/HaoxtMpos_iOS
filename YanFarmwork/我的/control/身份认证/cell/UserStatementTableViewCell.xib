@@ -190,14 +190,14 @@
                         <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHM-FS-kJg">
-                        <rect key="frame" x="147" y="404" width="88" height="50"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHM-FS-kJg">
+                        <rect key="frame" x="137" y="404" width="166" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="62" id="Di0-bV-sOk"/>
+                            <constraint firstAttribute="width" constant="166" id="Di0-bV-sOk"/>
                             <constraint firstAttribute="height" constant="50" id="h13-QE-xK8"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <state key="normal" title="选择省" image="downTriangle.png">
+                        <state key="normal" title="选择省市" image="downTriangle.png">
                             <color key="titleColor" red="0.60000586509999998" green="0.59999251369999995" blue="0.59999519589999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </state>
                         <connections>
@@ -247,20 +247,6 @@
                         <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnK-Zt-CRD">
-                        <rect key="frame" x="228" y="404" width="75" height="50"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="7co-yF-6Bb"/>
-                            <constraint firstAttribute="width" constant="60" id="ACp-N6-waU"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <state key="normal" title="选择市" image="downTriangle.png">
-                            <color key="titleColor" red="0.60000586509999998" green="0.59999251369999995" blue="0.59999519589999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </state>
-                        <connections>
-                            <action selector="cityBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZKa-QQ-kM0"/>
-                        </connections>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn0-f9-iRO">
                         <rect key="frame" x="17" y="581" width="292" height="56"/>
                         <color key="backgroundColor" red="0.89736628529999996" green="0.34575632210000001" blue="0.3136770129" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -305,8 +291,6 @@
                     <constraint firstItem="siz-1v-WCo" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Hko-CC-ckt"/>
                     <constraint firstItem="2ou-PR-aOr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HpR-VB-zQY"/>
                     <constraint firstItem="ySD-EB-q0y" firstAttribute="top" secondItem="zJk-H4-JzY" secondAttribute="bottom" constant="19" id="Iq1-2p-gmO"/>
-                    <constraint firstItem="wnK-Zt-CRD" firstAttribute="leading" secondItem="hHM-FS-kJg" secondAttribute="trailing" constant="8" id="J0i-FK-E2e"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="wnK-Zt-CRD" secondAttribute="trailing" constant="1" id="KC2-UO-LKi"/>
                     <constraint firstItem="6sh-av-ttT" firstAttribute="top" secondItem="zJk-H4-JzY" secondAttribute="bottom" constant="5" id="KqG-U9-Anx"/>
                     <constraint firstItem="BXE-9U-AoH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="MdR-wD-Seo"/>
                     <constraint firstAttribute="trailing" secondItem="QbQ-w1-v8Q" secondAttribute="trailing" constant="15" id="Ms7-Yu-vpf"/>
@@ -322,12 +306,12 @@
                     <constraint firstItem="zJk-H4-JzY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="d8A-Nn-gxX"/>
                     <constraint firstItem="siz-1v-WCo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="93" id="e4c-kl-sxc"/>
                     <constraint firstItem="sat-d0-adW" firstAttribute="top" secondItem="Sgr-WY-2rI" secondAttribute="bottom" constant="16" id="fPQ-pP-chI"/>
+                    <constraint firstItem="hHM-FS-kJg" firstAttribute="trailing" secondItem="6sh-av-ttT" secondAttribute="trailing" id="fPh-QJ-tFh"/>
                     <constraint firstAttribute="trailing" secondItem="2ou-PR-aOr" secondAttribute="trailing" constant="15" id="gRm-74-kXE"/>
                     <constraint firstItem="7Jr-Zh-36U" firstAttribute="top" secondItem="Acc-OS-MOh" secondAttribute="bottom" constant="13" id="gge-zd-d6D"/>
                     <constraint firstItem="Acc-OS-MOh" firstAttribute="top" secondItem="as0-hR-0x6" secondAttribute="bottom" constant="7" id="kYs-fS-rdL"/>
                     <constraint firstItem="6sh-av-ttT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="93" id="muu-6J-0Xm"/>
                     <constraint firstItem="CG6-Uh-hSS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oHu-nG-mpF"/>
-                    <constraint firstItem="wnK-Zt-CRD" firstAttribute="top" secondItem="deT-jd-Hpi" secondAttribute="bottom" constant="1" id="pR0-gb-Kv2"/>
                     <constraint firstItem="ehp-Tf-8FS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="qm4-7B-Gft"/>
                     <constraint firstItem="as0-hR-0x6" firstAttribute="leading" secondItem="ehp-Tf-8FS" secondAttribute="trailing" constant="2" id="rxO-Wr-PId"/>
                     <constraint firstAttribute="trailing" secondItem="zJk-H4-JzY" secondAttribute="trailing" id="skd-fp-Wsn"/>
@@ -345,7 +329,6 @@
                 <outlet property="accountNoTextField" destination="7Jr-Zh-36U" id="WPe-wk-xbo"/>
                 <outlet property="bankCardImageView" destination="egK-Y5-b6L" id="Dt2-Em-ftO"/>
                 <outlet property="branchBankBtn" destination="siz-1v-WCo" id="hOe-Rr-sRt"/>
-                <outlet property="cityAddresBtn" destination="wnK-Zt-CRD" id="DcG-6h-NoT"/>
                 <outlet property="headquartersBankBtn" destination="6sh-av-ttT" id="X4q-YS-1yi"/>
                 <outlet property="provinceAddresBtn" destination="hHM-FS-kJg" id="0Fs-AA-FIF"/>
             </connections>

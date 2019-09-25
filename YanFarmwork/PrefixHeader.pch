@@ -235,8 +235,8 @@
 #define  term_add @"term/add"  //3.13.    机具绑定
 #define check_list  @"check/list"  //3.18.    认证记录
 #define ord_account_receive  @"ord/account/receive"  //3.25.    用户收款查询
-//#define   @""  //
-//#define   @""  //
+#define  usr_authPromoteLimit @"usr/authPromoteLimit"  //3.17.    认证提额
+#define  stl_checkStlCardNo @"stl/checkStlCardNo"  //3.23.    结算卡号校验
 //#define   @""  //
 //#define   @""  //
 //#define   @""  //

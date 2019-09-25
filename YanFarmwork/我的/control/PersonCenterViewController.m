@@ -35,7 +35,11 @@
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    [self requestMerchantsMessage];
+    
+    if ([myData TOKEN_ID].length != 0) {
+        [self requestMerchantsMessage];
+    }
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated:(BOOL)animated {
@@ -174,10 +178,10 @@
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
             
-            _merchantsDict = [responseObject objectForKey:@"rspMap"];
+            wSelf.merchantsDict = [responseObject objectForKey:@"rspMap"];
             
             
-            [[NSUserDefaults standardUserDefaults] setObject:_merchantsDict forKey:@"shopDetail"];
+            [[NSUserDefaults standardUserDefaults] setObject:wSelf.merchantsDict forKey:@"shopDetail"];
             
             
             [wSelf.myTableView reloadData];

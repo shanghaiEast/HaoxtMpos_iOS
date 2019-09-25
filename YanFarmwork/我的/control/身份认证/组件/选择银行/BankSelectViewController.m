@@ -246,8 +246,8 @@
         parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                        [NSString stringWithFormat:@"%@",[_headBankDict objectForKey:@"fldVal"]],@"blbnkNo",
                       [NSString stringWithFormat:@"%@",[_proviceDict objectForKey:@"VALUE"]],@"provCd",
-//                      [NSString stringWithFormat:@"%@",_textField.text],@"SEARCH",
-//                      [NSString stringWithFormat:@"%@",@""],@"cityCd",
+                      [NSString stringWithFormat:@"%@",_textField.text],@"SEARCH",
+                      [NSString stringWithFormat:@"%@",[_cityDict objectForKey:@"VALUE"]],@"cityCd",
                       nil];
  
     }

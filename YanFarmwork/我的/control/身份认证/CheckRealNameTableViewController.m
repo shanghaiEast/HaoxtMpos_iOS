@@ -153,6 +153,7 @@
 
 - (void)pushToBankCade{
     TCreditCardCerTableViewController *cardCerVC = [[TCreditCardCerTableViewController alloc] initWithNibName:@"TCreditCardCerTableViewController" bundle:nil];
+    cardCerVC.pushTag = 1;
     cardCerVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:cardCerVC animated:YES];
 }

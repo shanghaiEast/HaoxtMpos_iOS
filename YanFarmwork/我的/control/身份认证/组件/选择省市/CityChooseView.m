@@ -120,7 +120,7 @@
                       nil];
     }else{
         parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      @"AREA",@"FLAG",
+                      @"CITY",@"FLAG",
                       @"",@"SEARCH",
                       [NSString stringWithFormat:@"%@",[_proviceDict objectForKey:@"VALUE"]],@"VALUE",
                       nil];

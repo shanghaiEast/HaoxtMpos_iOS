@@ -27,6 +27,12 @@
     
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+   
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -175,12 +181,6 @@
 //            NSLog(@"%@",loginModel1.MD5_KEY);
 //            NSLog(@"%@",TOKEN);
             
-            if (wSelf.loginSuccessBlock) {
-                wSelf.loginSuccessBlock(YES);
-            }
-            
-           
-            
             if (_mindPasswordBool == YES) {
                 NSDictionary *dict = @{@"isMindPW":@"Y", @"password":_passwordNumber.text,@"phone":_phoneNumber.text};
                 [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"mindPW"];
@@ -191,7 +191,12 @@
             }
             
             
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            
+            if (wSelf.loginSuccessBlock) {
+                wSelf.loginSuccessBlock(YES);
+            }
             
         }else{
             //filed

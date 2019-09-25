@@ -20,10 +20,14 @@
 
 #import "ConfirmSignViewController.h"
 
+#import "AreaPickerView.h"
+
 
 @interface UserStatementTableViewCell ()<cwDetectCardEdgesDelegate>
 
 @property(nonatomic,strong)CWBankCardCaptureController * cvctrl;
+
+@property(strong, nonatomic) AreaPickerView *areaPickerView;
 
 @property(nonatomic,retain) CityChooseView *cityChooseView;
 
@@ -64,11 +68,14 @@
     [_provinceAddresBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, - _provinceAddresBtn.imageView.image.size.width, 0, _provinceAddresBtn.imageView.image.size.width)];
     [_provinceAddresBtn setImageEdgeInsets:UIEdgeInsetsMake(0, _provinceAddresBtn.titleLabel.bounds.size.width, 0, -_provinceAddresBtn.titleLabel.bounds.size.width)];
     
-    [_cityAddresBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, - _cityAddresBtn.imageView.image.size.width, 0, _cityAddresBtn.imageView.image.size.width)];
-    [_cityAddresBtn setImageEdgeInsets:UIEdgeInsetsMake(0, _cityAddresBtn.titleLabel.bounds.size.width, 0, -_cityAddresBtn.titleLabel.bounds.size.width)];
-    
     [_branchBankBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, - _branchBankBtn.imageView.image.size.width, 0, _branchBankBtn.imageView.image.size.width)];
     [_branchBankBtn setImageEdgeInsets:UIEdgeInsetsMake(0, _branchBankBtn.titleLabel.bounds.size.width, 0, -_branchBankBtn.titleLabel.bounds.size.width)];
+}
+
+- (void)viewEdgeInsetsMake {
+    [ToolsObject buttonImageRight:self.headquartersBankBtn];
+    [ToolsObject buttonImageRight:self.branchBankBtn];
+    [ToolsObject buttonImageRight:self.provinceAddresBtn];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -113,6 +120,8 @@
         [wSelf.headquartersBankBtn setTitle:[wSelf.headBankDict objectForKey:@"fldExp"] forState:UIControlStateNormal];
         
          [wSelf.branchBankBtn setTitle:@"请查询开户支行" forState:UIControlStateNormal];
+        
+        [self viewEdgeInsetsMake];
     };
     
 }
@@ -124,15 +133,15 @@
         return;
     }
     
-    if (_provinceAddresBtn.currentTitle.length == 0 || [_provinceAddresBtn.currentTitle isEqualToString:@"选择省"]) {
+    if (_provinceAddresBtn.currentTitle.length == 0 || [_provinceAddresBtn.currentTitle isEqualToString:@"选择省市"]) {
         [ToolsObject showMessageTitle:@"请先选择省份" andDelay:1 andImage:nil];
         return;
     }
     
-    if (_cityAddresBtn.currentTitle.length == 0 || [_cityAddresBtn.currentTitle isEqualToString:@"选择市"]) {
-        [ToolsObject showMessageTitle:@"请先选择市" andDelay:1 andImage:nil];
-        return;
-    }
+//    if (_cityAddresBtn.currentTitle.length == 0 || [_cityAddresBtn.currentTitle isEqualToString:@"选择市"]) {
+//        [ToolsObject showMessageTitle:@"请先选择市" andDelay:1 andImage:nil];
+//        return;
+//    }
     
      typeof(self) wSelf = self;
     BankSelectViewController *bankVC = [[BankSelectViewController alloc] initWithNibName:@"BankSelectViewController" bundle:nil];
@@ -148,60 +157,91 @@
         wSelf.footBankDict = dict;
         
         [wSelf.branchBankBtn setTitle:[wSelf.footBankDict objectForKey:@"lbnkNm"] forState:UIControlStateNormal];
+        
+        [self viewEdgeInsetsMake];
     };
 }
 
 //省份选择
 - (IBAction)provinceBtnClick:(id)sender {
     
-    _cityChooseView = [[[NSBundle mainBundle] loadNibNamed:@"CityChooseView" owner:_rootVC options:nil] lastObject];
-    [_cityChooseView setFrame:_rootVC.view.bounds];
-    _cityChooseView.showTag = 1;
-    [_cityChooseView createView];
-    [_rootVC.view addSubview:_cityChooseView];
-    _cityChooseView.getProviceBlock = ^(NSDictionary * _Nonnull dict) {
-        _proviceDict = dict;
+    typeof(self) wSelf = self;
+    _areaPickerView = [[[NSBundle mainBundle] loadNibNamed:@"AreaPickerView" owner:self options:nil] lastObject];
+    [_areaPickerView setFrame:_rootVC.view.bounds];
+    [_areaPickerView createPickerView];
+    [_rootVC.view addSubview:_areaPickerView];
+    _areaPickerView.selectProviceAndCityBlock = ^(NSDictionary * _Nonnull proviceDict, NSDictionary * _Nonnull cityDict) {
+        NSLog(@"proviceDict: %@\ncityDict: %@",proviceDict,cityDict);
+        //    proviceDict: {
+        //        LABEL = "\U6cb3\U5317\U7701";
+        //        VALUE = 1200;
+        //    }
+        //    cityDict: {
+        //        LABEL = "\U8861\U6c34\U5e02";
+        //        VALUE = 1480;
+        //    }
         
-//        {
-//            "LABEL" : "甘肃省",
-//            "VALUE" : "8200"
-//        }
+        wSelf.proviceDict = proviceDict;
+        wSelf.cityDict = cityDict;
         
-        [_provinceAddresBtn setTitle:[_proviceDict objectForKey:@"LABEL"] forState:UIControlStateNormal];
-        [_cityAddresBtn setTitle:@"选择市" forState:UIControlStateNormal];
+        [wSelf.provinceAddresBtn setTitle:[NSString stringWithFormat:@"%@%@",[proviceDict objectForKey:@"LABEL"],[cityDict objectForKey:@"LABEL"]] forState:UIControlStateNormal];
         
-        _cityChooseView.hidden = YES;
-        [_cityChooseView removeFromSuperview];
+        [wSelf viewEdgeInsetsMake];
     };
     
+    
+//    _cityChooseView = [[[NSBundle mainBundle] loadNibNamed:@"CityChooseView" owner:_rootVC options:nil] lastObject];
+//    [_cityChooseView setFrame:_rootVC.view.bounds];
+//    _cityChooseView.showTag = 1;
+//    [_cityChooseView createView];
+//    [_rootVC.view addSubview:_cityChooseView];
+//    _cityChooseView.getProviceBlock = ^(NSDictionary * _Nonnull dict) {
+//        _proviceDict = dict;
+//
+////        {
+////            "LABEL" : "甘肃省",
+////            "VALUE" : "8200"
+////        }
+//
+//        [_provinceAddresBtn setTitle:[_proviceDict objectForKey:@"LABEL"] forState:UIControlStateNormal];
+//        [_cityAddresBtn setTitle:@"选择市" forState:UIControlStateNormal];
+//
+//        _cityChooseView.hidden = YES;
+//        [_cityChooseView removeFromSuperview];
+//
+//        [self viewEdgeInsetsMake];
+//    };
+    
 }
-//城市选择
-- (IBAction)cityBtnClick:(id)sender {
-    if (_provinceAddresBtn.currentTitle.length == 0 || [_provinceAddresBtn.currentTitle isEqualToString:@"选择省"]) {
-        [ToolsObject showMessageTitle:@"请先选择省份" andDelay:1 andImage:nil];
-        return;
-    }
-     _cityChooseView = [[[NSBundle mainBundle] loadNibNamed:@"CityChooseView" owner:_rootVC options:nil] lastObject];
-    [_cityChooseView setFrame:_rootVC.view.bounds];
-    _cityChooseView.showTag = 2;
-    _cityChooseView.proviceDict = _proviceDict;
-    [_cityChooseView createView];
-    [_rootVC.view addSubview:_cityChooseView];
-    _cityChooseView.getCityBlock = ^(NSDictionary * _Nonnull dict) {
-         _cityDict = dict;
-        
-//        {
-//            "LABEL" : "西城区",
-//            "VALUE" : "1022"
-//        }
-        
-         [_cityAddresBtn setTitle:[_cityDict objectForKey:@"LABEL"] forState:UIControlStateNormal];
-        
-        
-        _cityChooseView.hidden = YES;
-        [_cityChooseView removeFromSuperview];
-    };
-}
+////城市选择
+//- (IBAction)cityBtnClick:(id)sender {
+//    if (_provinceAddresBtn.currentTitle.length == 0 || [_provinceAddresBtn.currentTitle isEqualToString:@"选择省市"]) {
+//        [ToolsObject showMessageTitle:@"请先选择省份" andDelay:1 andImage:nil];
+//        return;
+//    }
+//     _cityChooseView = [[[NSBundle mainBundle] loadNibNamed:@"CityChooseView" owner:_rootVC options:nil] lastObject];
+//    [_cityChooseView setFrame:_rootVC.view.bounds];
+//    _cityChooseView.showTag = 2;
+//    _cityChooseView.proviceDict = _proviceDict;
+//    [_cityChooseView createView];
+//    [_rootVC.view addSubview:_cityChooseView];
+//    _cityChooseView.getCityBlock = ^(NSDictionary * _Nonnull dict) {
+//         _cityDict = dict;
+//
+////        {
+////            "LABEL" : "西城区",
+////            "VALUE" : "1022"
+////        }
+//
+//         [_cityAddresBtn setTitle:[_cityDict objectForKey:@"LABEL"] forState:UIControlStateNormal];
+//
+//
+//        _cityChooseView.hidden = YES;
+//        [_cityChooseView removeFromSuperview];
+//
+//        [self viewEdgeInsetsMake];
+//    };
+//}
 
 
 
@@ -358,15 +398,7 @@
 //    ACO_TYP_LIST    账户类型            0-对公，1-对私
     
     
-    NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                [NSString stringWithFormat:@"%@",@""],@"MERC_NM",
-                                [NSString stringWithFormat:@"%@",@""],@"PARENT_MCC",
-                                [NSString stringWithFormat:@"%@",@""],@"MCC_CD",
-                                [NSString stringWithFormat:@"%@",@""],@"PROVINCE",
-                                [NSString stringWithFormat:@"%@",@""],@"CITY",
-                                [NSString stringWithFormat:@"%@",@""],@"STL_CYCLE",
-                                 [NSString stringWithFormat:@"%@",@""],@"ACO_TYP_LIST",
-                                nil];
+    NSDictionary *parametDic = [[NSDictionary alloc] init];
     
     [YanNetworkOBJ postWithURLString:usr_open parameters:parametDic success:^(id  _Nonnull responseObject) {
         [ToolsObject SVProgressHUDDismiss];

@@ -10,6 +10,8 @@
 
 @interface LinesViewController ()
 
+@property (retain, nonatomic) NSDictionary *detailDict;
+
 @end
 
 @implementation LinesViewController
@@ -38,6 +40,18 @@
     [self requestMoney];
 }
 
+- (void)createView {
+    
+    _remainingAmountLabel.text = [NSString stringWithFormat:@"￥ %@",[_detailDict objectForKey:@"dayBal"]];
+    
+    _otherCardDayMoneyLabel.text = [NSString stringWithFormat:@"%@",[_detailDict objectForKey:@"magDay"]];
+    _otherCardSingleMoneyLabel.text = [NSString stringWithFormat:@"%@",[_detailDict objectForKey:@"magSingle"]];
+    
+    _ICCardDayMoneyLabel.text = [NSString stringWithFormat:@"%@",[_detailDict objectForKey:@"icDay"]];
+    _ICCardSingleMoneyLabel.text = [NSString stringWithFormat:@"%@",[_detailDict objectForKey:@"icSingle"]];
+    
+}
+
 /*
 #pragma mark - Navigation
 
@@ -58,11 +72,13 @@
     
     NSDictionary *parametDic = [[NSDictionary alloc] init];
     
-    [YanNetworkOBJ postWithURLString:stl_quota parameters:parametDic success:^(id  _Nonnull responseObject) {
+    [YanNetworkOBJ getWithURLString:stl_quota parameters:parametDic success:^(id  _Nonnull responseObject) {
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
             
-           
+            wSelf.detailDict = [responseObject objectForKey:@"rspMap"];
+            
+            [self createView];
             
         }else{
             //filed
@@ -70,9 +86,24 @@
         }
         
     } failure:^(NSError * _Nonnull error) {
-        NSLog(@"test filed ");
         [ToolsObject SVProgressHUDDismiss];
     }];
+    
+//    [YanNetworkOBJ postWithURLString:stl_quota parameters:parametDic success:^(id  _Nonnull responseObject) {
+//        [ToolsObject SVProgressHUDDismiss];
+//        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+//            
+//           
+//            
+//        }else{
+//            //filed
+//            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+//        }
+//        
+//    } failure:^(NSError * _Nonnull error) {
+//        NSLog(@"test filed ");
+//        [ToolsObject SVProgressHUDDismiss];
+//    }];
     
 }
 

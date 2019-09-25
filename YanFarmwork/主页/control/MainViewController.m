@@ -25,6 +25,7 @@
 #import <AVFoundation/AVCaptureDevice.h>
 #import "UserStatementTableViewController.h"
 #import "UserShopDetailTableViewController.h"
+#import "ChangeDebitCardViewController.h"
 
 
 #import "LocationObject.h"
@@ -61,20 +62,24 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    [self checkLogin];
+    if ([myData TOKEN_ID].length == 0) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:loginVC animated:YES];
+            loginVC.loginSuccessBlock = ^(BOOL success) {
+                [_myTableView reloadData];
+                
+            };
+        });
+       
+    }else{
+    }
 
 }
 
 - (void)checkLogin{
-    if ([myData TOKEN_ID].length == 0) {
-        LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-        loginVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:loginVC animated:YES];
-        loginVC.loginSuccessBlock = ^(BOOL success) {
-            [_myTableView reloadData];
-        };
-        
-    }
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -88,24 +93,39 @@
     // Do any additional setup after loading the view from its nib.
     
 //    、、15029267074      c123456
+//    15512345678    z123456
+    
+//
+    
+//    ChangeDebitCardViewController *cardCerVC = [[ChangeDebitCardViewController alloc] initWithNibName:@"ChangeDebitCardViewController" bundle:nil];
+//    cardCerVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:cardCerVC animated:YES];
     
 //    UserStatementTableViewController *cardCerVC = [[UserStatementTableViewController alloc] initWithNibName:@"UserStatementTableViewController" bundle:nil];
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
+//
     
     
-    
-    
-    if ([[myData USR_STATUS] intValue] == 0) {
-        [self createAlertView_trueName];
-    }
-    
-    if ([[myData USR_STATUS] intValue] != 0 && [[myData USR_TERM_STS] intValue] == 0) {
-        BlueToothSearchToolsTableViewController *blueVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
-        blueVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:blueVC animated:YES];
+    if ([myData TOKEN_ID].length == 0) {
+      
         
+    }else{
+        //实名认证
+        if ([myData TOKEN_ID].length != 0 && [[myData USR_STATUS] intValue] == 0) {
+            [self createAlertView_trueName];
+            
+        }else{
+            //n绑定机具
+            if ([myData TOKEN_ID].length != 0 && [[myData USR_STATUS] intValue] != 0 && [[myData USR_TERM_STS] intValue] == 0) {
+
+                [self createAlertView_machines];
+            }
+        }
     }
+    
+    
+    
     
     
 //    LocationObject *locationOj = [[LocationObject alloc] init];
@@ -131,8 +151,11 @@
     
     [self createTableView];
     
-    [self requestGetNotices];
-    [self requestReceive];
+    if ([myData TOKEN_ID].length != 0) {
+        [self requestGetNotices];
+        [self requestReceive];
+    }
+    
     
 }
 
@@ -332,24 +355,27 @@
 }
 
 - (void)createAlertView_machines {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"需要绑定机具" message:@"使用好享推APP需先绑定机具" preferredStyle:UIAlertControllerStyleAlert];
-    
-    [alertController addAction:[UIAlertAction actionWithTitle:@"暂不绑定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-
-        NSLog(@"点击取消");
-
-    }]];
-
-    [alertController addAction:[UIAlertAction actionWithTitle:@"前往绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
-        NSLog(@"点击确认");
-
-    }]];
-    
-    
-//    [cancel setValue:[UIColor redColor] forKey:@"_titleTextColor"];
-
-    [self presentViewController:alertController animated:YES completion:nil];
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"需要绑定机具" message:@"使用好享推APP需先绑定机具" preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    [alertController addAction:[UIAlertAction actionWithTitle:@"暂不绑定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//
+//        NSLog(@"点击取消");
+//
+//    }]];
+//
+//    [alertController addAction:[UIAlertAction actionWithTitle:@"前往绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//        NSLog(@"点击确认");
+//        BlueToothSearchToolsTableViewController *blueVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
+//        blueVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:blueVC animated:YES];
+//
+//    }]];
+//    
+//    
+////    [cancel setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+//
+//    [self presentViewController:alertController animated:YES completion:nil];
     
    
 }

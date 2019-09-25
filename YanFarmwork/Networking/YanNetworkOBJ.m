@@ -76,21 +76,72 @@
     NSLog(@"%@", appVersion);
     
     
-    AFHTTPSessionManager *Manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
+    if ([myData TOKEN_ID].length != 0) {
+        [manager.requestSerializer setValue:[myData TOKEN_ID] forHTTPHeaderField:@"token"];
+    }
     
-    
-    [Manager GET:_URLString parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+    [manager GET:_URLString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (![[responseObject allKeys] containsObject:@"rspCd"]) {
+            NSLog(@"%@", responseObject);
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"message"] andDelay:1.0f andImage:nil];
+            return ;
+        }
+        
+        
         if (success) {
-            responseObject = [ToolsObject processDictionaryIsNSNull:responseObject];
             
-
-            success(responseObject);
+            //重新登录
+            if ([[responseObject objectForKey:@"rspCd"] isEqualToString:@"999998"]) {
+                NSLog(@"重新登录 == %@", responseObject);
+                NSLog(@"重新登录view == %@", [[ToolsObject currentViewController] nibName]);
+                
+                [ToolsObject SVProgressHUDDismiss];
+                [ToolsObject deleteUserData];
+                
+                LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+                loginVC.hidesBottomBarWhenPushed = YES;
+                [[ToolsObject currentViewController].navigationController pushViewController:loginVC animated:YES];
+                
+                //                AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                //
+                //                if ([[[ToolsObject currentViewController] nibName]  isEqual: @"MainViewController"]) {
+                //                    [app.mainVC checkLogin];
+                //                }else{
+                //                    app.tabBarC.selectedIndex = 0;
+                //                }
+                return ;
+            }
+            
+            
+            
+            //去除null 方法一
+            //            responseObject = [ToolsObject processDictionaryIsNSNull:responseObject];
+            //            success(responseObject);
+            
+            
+            
+            //去除null 方法二
+            NSData *data= [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+            //            NSDictionary *dictionary =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+            
+            NSString *aString = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
+            aString = [aString stringByReplacingOccurrencesOfString:@": null"withString:@":\"\""];
+            NSLog(@"aString : %@", aString);
+            NSData* xmlData = [aString dataUsingEncoding:NSUTF8StringEncoding];
+            id  ckdata = [NSJSONSerialization JSONObjectWithData:xmlData options:NSJSONReadingAllowFragments error:nil];
+            
+            //            NSLog(@"ckdata ： %@", ckdata);
+            
+            success(ckdata);
             
         }
         
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Error: %@", error);
         [ToolsObject SVProgressHUDDismiss];
     }];
@@ -148,13 +199,6 @@
 //     NSLog(@"[ToolsObject checkNull:parameters] :%@", [ToolsObject checkNull:parameters]);
     NSLog(@"parameters :%@", parameters);
     
-//    NSMutableDictionary *endDic = [parameters mutableCopy];
-//    [endDic setValue:[ToolsObject getNowTimeTimestamp3] forKey:@"timestamp"];
-//    NSString *signStr = [ToolsObject x_tokenJoint:endDic andPrivateKeys:companyKey];
-//    [endDic setValue:signStr forKey:@"sign"];
-    
-//    NSLog(@"endDic :%@", endDic);
-//
 //    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
 //    // 获取App的版本号
 //    NSString *appVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];

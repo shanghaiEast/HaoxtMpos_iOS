@@ -31,7 +31,7 @@
                         <constraint firstAttribute="height" constant="129" id="bUw-dw-feD"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥34,345.36" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEN-R0-l3K">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEN-R0-l3K">
                     <rect key="frame" x="29" y="67" width="258" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="1Ff-zv-fAd"/>
@@ -66,7 +66,7 @@
                                 <constraint firstAttribute="width" secondItem="1k6-dM-64N" secondAttribute="height" multiplier="29:10" constant="14" id="dbT-Yq-Q2z"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4,345.36" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmn-lM-cu7">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmn-lM-cu7">
                             <rect key="frame" x="152.5" y="51" width="75" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="Jm2-nf-7Wm"/>
@@ -86,7 +86,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4,345.36" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWy-sT-XP1">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWy-sT-XP1">
                             <rect key="frame" x="75" y="51" width="68" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Cnw-Fm-s8o"/>
@@ -156,7 +156,7 @@
                                 <constraint firstAttribute="height" constant="100" id="xnt-FW-KZD"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4,345.36" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kV9-VO-wbZ">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kV9-VO-wbZ">
                             <rect key="frame" x="156" y="51" width="76" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="76" id="073-ee-kXd"/>
@@ -176,7 +176,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4,345.36" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMP-Au-Y4R">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMP-Au-Y4R">
                             <rect key="frame" x="70" y="51" width="68" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="68" id="79m-MU-Gnb"/>
@@ -268,7 +268,7 @@
                 <constraint firstItem="Jra-EI-9hs" firstAttribute="top" secondItem="lEN-R0-l3K" secondAttribute="bottom" constant="14" id="qgQ-Qn-TcF"/>
                 <constraint firstAttribute="trailing" secondItem="9Bb-aA-DHB" secondAttribute="trailing" constant="15" id="uiY-xw-W5Y"/>
             </constraints>
-            <point key="canvasLocation" x="292.5" y="115.14084507042254"/>
+            <point key="canvasLocation" x="-158" y="119"/>
         </view>
     </objects>
     <resources>

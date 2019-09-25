@@ -179,4 +179,7 @@
 #pragma mark 当编写代码时，不论是在TabbarController还是在Viewcontroller或者是NavagationController中任何一个页面写方法时，我们都可以使用以下方法获取程序正在展示的当前页
 + (UIViewController*) currentViewController;
 
+#pragma mark UIButton实现左边文字,右边图片
++ (void)buttonImageRight:(UIButton *)button;
+
 @end

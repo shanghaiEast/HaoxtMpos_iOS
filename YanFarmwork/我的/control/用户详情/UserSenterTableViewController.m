@@ -54,7 +54,7 @@
     beginDateString = [ToolsObject insertString:@"/" fromString:beginDateString withInsertIndex:7];
     
     NSString *userStateString = @"未开通";
-    if ([[_detialDict objectForKey:@"MERC_STS"] intValue] != 0) {
+    if ([[_detialDict objectForKey:@"MERC_STS"] intValue] == 0) {
         userStateString = @"开通";
     }
     

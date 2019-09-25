@@ -37,6 +37,8 @@
     // Do any additional setup after loading the view from its nib.
     
     [self createView];
+    
+    [self request_HasAppliedFor];
 }
 
 - (void)createView{

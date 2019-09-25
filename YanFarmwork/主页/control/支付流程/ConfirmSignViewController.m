@@ -127,6 +127,7 @@
     }
     if ([button.currentTitle isEqualToString:@"前去认证信用卡"]) {
         TCreditCardCerTableViewController *cardCerVC = [[TCreditCardCerTableViewController alloc] initWithNibName:@"TCreditCardCerTableViewController" bundle:nil];
+        cardCerVC.pushTag = 1;
         cardCerVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:cardCerVC animated:YES];
     }

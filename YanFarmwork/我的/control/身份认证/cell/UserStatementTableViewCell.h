@@ -24,8 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *provinceAddresBtn;
 - (IBAction)provinceBtnClick:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIButton *cityAddresBtn;
-- (IBAction)cityBtnClick:(id)sender;
+//@property (weak, nonatomic) IBOutlet UIButton *cityAddresBtn;
+//- (IBAction)cityBtnClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *branchBankBtn;
 - (IBAction)branchBankBtnClick:(id)sender;

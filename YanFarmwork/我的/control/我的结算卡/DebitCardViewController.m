@@ -43,12 +43,17 @@
 }
 //更换结算卡
 - (void)changeDebitCard{
-//    if (_bankDict.count != 0) {
+    if (_bankDict.count != 0) {
         ChangeDebitCardViewController *changeCardVC = [[ChangeDebitCardViewController alloc] initWithNibName:@"ChangeDebitCardViewController" bundle:nil];
         changeCardVC.detailDict = _bankDict;
         changeCardVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:changeCardVC animated:YES];
-//    }
+        changeCardVC.bankChangeSuccessBlock = ^(NSDictionary * _Nonnull cardDict) {
+            NSLog(@"cardDict === %@",cardDict);
+            
+            [self requestCard];
+        };
+    }
     
 }
 

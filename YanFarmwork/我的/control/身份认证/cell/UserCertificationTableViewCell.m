@@ -60,7 +60,6 @@
     UITapGestureRecognizer *touch_fm = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectPhoto:)];
     [_idCardFMimageView addGestureRecognizer:touch_fm];
 }
-
 - (IBAction)timeBtnSelect:(id)sender {
     typeof(self) wSelf = self;
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
