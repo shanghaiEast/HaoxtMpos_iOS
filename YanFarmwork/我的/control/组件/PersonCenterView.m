@@ -115,6 +115,11 @@
     }
     
     if (tapGestureRecognizer.view.tag == 4) {
+        if ([myData TOKEN_ID].length != 0 && [[myData USR_STATUS] intValue] != 0 && [[myData USR_TERM_STS] intValue] == 0) {
+
+            AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [app.mainVC createAlertView_machines];
+        }
         MyPOSViewController *myPosVC = [[MyPOSViewController alloc] initWithNibName:@"MyPOSViewController" bundle:nil];
         myPosVC.hidesBottomBarWhenPushed = YES;
         [_rootVC.navigationController pushViewController:myPosVC animated:YES];

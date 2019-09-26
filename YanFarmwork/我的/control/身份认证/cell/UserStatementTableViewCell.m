@@ -50,8 +50,6 @@
 
 - (void)createHeaderView {
     
-     [self requestCommitAll];
-    
     [_accountNameTextField setValue:[UIColor colorWithHexString:@"#9C9C9C"] forKeyPath:@"_placeholderLabel.textColor"];
     
      [_accountNoTextField setValue:[UIColor colorWithHexString:@"#9C9C9C"] forKeyPath:@"_placeholderLabel.textColor"];

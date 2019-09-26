@@ -182,4 +182,6 @@
 #pragma mark UIButton实现左边文字,右边图片
 + (void)buttonImageRight:(UIButton *)button;
 
++ (NSDictionary *)modelToDictionary;
+
 @end

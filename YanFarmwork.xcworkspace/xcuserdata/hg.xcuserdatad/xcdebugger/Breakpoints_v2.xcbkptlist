@@ -57,38 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YanFarmwork/Third Tools/tianyuSDK/TianYuView.m"
-            timestampString = "590482823.237332"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "-onReadCard:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YanFarmwork/Third Tools/tianyuSDK/TianYuView.m"
-            timestampString = "590482823.237394"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-onReadCardData:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "YanFarmwork/Third Tools/&#x5b9a;&#x4f4d;&#x529f;&#x80fd;/LocationObject.m"
             timestampString = "590464502.166714"
             startingColumnNumber = "9223372036854775807"
@@ -121,24 +89,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YanFarmwork/&#x6211;&#x7684;/control/&#x8eab;&#x4efd;&#x8ba4;&#x8bc1;/cell/UserStatementTableViewCell.m"
-            timestampString = "591084728.2774611"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "-nextBtnClick:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "YanFarmwork/&#x6211;&#x7684;/control/&#x8eab;&#x4efd;&#x8ba4;&#x8bc1;/cell/UserCertificationTableViewCell.m"
-            timestampString = "591084728.277625"
+            timestampString = "591182769.2381409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -154,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YanFarmwork/&#x6211;&#x7684;/control/&#x6211;&#x7684;&#x7ed3;&#x7b97;&#x5361;/ChangeDebitCardViewController.m"
-            timestampString = "591084728.277701"
+            timestampString = "591098152.736208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "198"
@@ -170,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YanFarmwork/&#x4e3b;&#x9875;/control/&#x673a;&#x5177;&#x641c;&#x7d22;/BlueToothSearchToolsTableViewController.m"
-            timestampString = "590932809.425684"
+            timestampString = "591189678.734182"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "-request_bindMechine:"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,27 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YanFarmwork/&#x4e3b;&#x9875;/control/&#x673a;&#x5177;&#x641c;&#x7d22;/BlueToothSearchToolsTableViewController.m"
-            timestampString = "590932809.425774"
+            timestampString = "591189678.7344871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YanFarmwork/&#x4e3b;&#x9875;/control/&#x673a;&#x5177;&#x641c;&#x7d22;/BlueToothSearchToolsTableViewController.m"
-            timestampString = "590932809.425856"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-request_bindMechine:"
             landmarkType = "7">
             <Locations>
@@ -218,12 +154,12 @@
                   moduleName = "YanFarmwork"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hg/Desktop/HaoxtMpos_iOS/YanFarmwork/%E4%B8%BB%E9%A1%B5/control/%E6%9C%BA%E5%85%B7%E6%90%9C%E7%B4%A2/BlueToothSearchToolsTableViewController.m"
-                  timestampString = "591084728.4231091"
+                  timestampString = "591189679.052037"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "511">
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "528">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -233,12 +169,12 @@
                   moduleName = "YanFarmwork"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hg/Desktop/HaoxtMpos_iOS/YanFarmwork/%E4%B8%BB%E9%A1%B5/control/%E6%9C%BA%E5%85%B7%E6%90%9C%E7%B4%A2/BlueToothSearchToolsTableViewController.m"
-                  timestampString = "591084728.425289"
+                  timestampString = "591189679.053915"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "174"
-                  endingLineNumber = "174"
-                  offsetFromSymbolStart = "44">
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "64">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -250,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YanFarmwork/&#x6211;&#x7684;/control/&#x4fe1;&#x7528;&#x5361;&#x8ba4;&#x8bc1;/TCreditCardCerTableViewController.m"
-            timestampString = "591084728.2783639"
+            timestampString = "591098152.736367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "211"
@@ -294,75 +230,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YanFarmwork/&#x6211;&#x7684;/control/&#x8eab;&#x4efd;&#x8ba4;&#x8bc1;/cell/UserStatementTableViewCell.m"
-            timestampString = "591084728.278481"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
-            landmarkName = "-requestCommitAll"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YanFarmwork/&#x6211;&#x7684;/control/&#x8eab;&#x4efd;&#x8ba4;&#x8bc1;/cell/UserStatementTableViewCell.m"
-            timestampString = "591084728.278549"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
-            landmarkName = "-requestCommit"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[UserStatementTableViewCell requestCommit]"
-                  moduleName = "YanFarmwork"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hg/Desktop/HaoxtMpos_iOS/YanFarmwork/%E6%88%91%E7%9A%84/control/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/cell/UserStatementTableViewCell.m"
-                  timestampString = "591084728.444302"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "368"
-                  endingLineNumber = "368"
-                  offsetFromSymbolStart = "972">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__43-[UserStatementTableViewCell requestCommit]_block_invoke"
-                  moduleName = "YanFarmwork"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hg/Desktop/HaoxtMpos_iOS/YanFarmwork/%E6%88%91%E7%9A%84/control/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/cell/UserStatementTableViewCell.m"
-                  timestampString = "591084728.446565"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "369"
-                  endingLineNumber = "369"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YanFarmwork/&#x6211;&#x7684;/AreaPickerView.m"
-            timestampString = "591084728.278633"
+            timestampString = "591098152.736536"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -378,12 +250,140 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YanFarmwork/&#x6211;&#x7684;/control/&#x6211;&#x7684;&#x7ed3;&#x7b97;&#x5361;/ChangeDebitCardViewController.m"
-            timestampString = "591084728.278721"
+            timestampString = "591098152.736586"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
             endingLineNumber = "158"
             landmarkName = "-openCardAddressBtnClick:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YanFarmwork/&#x4e3b;&#x9875;/control/&#x673a;&#x5177;&#x641c;&#x7d22;/BlueToothSearchToolsTableViewController.m"
+            timestampString = "591189678.734635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "-request_bindMain_1:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YanFarmwork/&#x4e3b;&#x9875;/control/&#x673a;&#x5177;&#x641c;&#x7d22;/BlueToothSearchToolsTableViewController.m"
+            timestampString = "591189678.734696"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "-request_bindMain_1:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BlueToothSearchToolsTableViewController request_bindMain_1:]"
+                  moduleName = "YanFarmwork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hg/Desktop/HaoxtMpos_iOS/YanFarmwork/%E4%B8%BB%E9%A1%B5/control/%E6%9C%BA%E5%85%B7%E6%90%9C%E7%B4%A2/BlueToothSearchToolsTableViewController.m"
+                  timestampString = "591189679.070056"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "263"
+                  endingLineNumber = "263"
+                  offsetFromSymbolStart = "964">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__62-[BlueToothSearchToolsTableViewController request_bindMain_1:]_block_invoke"
+                  moduleName = "YanFarmwork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hg/Desktop/HaoxtMpos_iOS/YanFarmwork/%E4%B8%BB%E9%A1%B5/control/%E6%9C%BA%E5%85%B7%E6%90%9C%E7%B4%A2/BlueToothSearchToolsTableViewController.m"
+                  timestampString = "591189679.07149"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "264"
+                  endingLineNumber = "264"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YanFarmwork/&#x4e3b;&#x9875;/control/&#x673a;&#x5177;&#x641c;&#x7d22;/BlueToothSearchToolsTableViewController.m"
+            timestampString = "591189678.734751"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "-request_bindMain_2:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__62-[BlueToothSearchToolsTableViewController request_bindMain_2:]_block_invoke"
+                  moduleName = "YanFarmwork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hg/Desktop/HaoxtMpos_iOS/YanFarmwork/%E4%B8%BB%E9%A1%B5/control/%E6%9C%BA%E5%85%B7%E6%90%9C%E7%B4%A2/BlueToothSearchToolsTableViewController.m"
+                  timestampString = "591189679.075101"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "406"
+                  endingLineNumber = "406"
+                  offsetFromSymbolStart = "1396">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__62-[BlueToothSearchToolsTableViewController request_bindMain_2:]_block_invoke_2"
+                  moduleName = "YanFarmwork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hg/Desktop/HaoxtMpos_iOS/YanFarmwork/%E4%B8%BB%E9%A1%B5/control/%E6%9C%BA%E5%85%B7%E6%90%9C%E7%B4%A2/BlueToothSearchToolsTableViewController.m"
+                  timestampString = "591189679.076681"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "407"
+                  endingLineNumber = "407"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YanFarmwork/&#x4e3b;&#x9875;/control/&#x673a;&#x5177;&#x641c;&#x7d22;/BlueToothSearchToolsTableViewController.m"
+            timestampString = "591189678.734804"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
+            landmarkName = "-request_bindMain_2:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

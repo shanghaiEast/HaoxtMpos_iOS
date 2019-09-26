@@ -30,7 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (retain, nonatomic) UIViewController *rootVC;
 @property (nonatomic) int processTag;//支付流程
+@property (retain, nonatomic) NSString *moneyString;
 @property (retain, nonatomic) NSDictionary *detailDict;
+@property (nonatomic) int payWayTag;//传值，判断微信还是支付宝,0=支付宝,1=微信
 - (void)createView;
 - (void)createScan:(CGRect)rect;//二维码
 

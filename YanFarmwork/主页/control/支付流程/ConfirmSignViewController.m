@@ -117,10 +117,10 @@
 - (IBAction)nextBtnClick:(id)sender {
     UIButton *button = (id)sender;
     if ([button.currentTitle isEqualToString:@"继续交易"]) {
-        
+         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     if ([button.currentTitle isEqualToString:@"重新交易"]) {
-        
+         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     if ([button.currentTitle isEqualToString:@"返回首页"]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
@@ -132,7 +132,9 @@
         [self.navigationController pushViewController:cardCerVC animated:YES];
     }
     if ([button.currentTitle isEqualToString:@"查看实名信息"]) {
-        
+        CheckRealNameTableViewController *checkRealNameVC = [[CheckRealNameTableViewController alloc] initWithNibName:@"CheckRealNameTableViewController" bundle:nil];
+        checkRealNameVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:checkRealNameVC animated:YES];
     }
 }
 - (IBAction)cancelBtnClick:(id)sender {

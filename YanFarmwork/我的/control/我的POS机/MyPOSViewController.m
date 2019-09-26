@@ -27,7 +27,7 @@
 }
 
 - (void)popViewClick{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad {
@@ -35,6 +35,14 @@
     // Do any additional setup after loading the view from its nib.
     
     [self requestMyMachine];
+}
+
+- (void)createView:(NSDictionary *)dict{
+    _typeNameLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"TERM_TYPE"]];
+    
+    _typeNoLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"TRM_NO"]];
+    
+    _SNLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"SN_NO"]];
 }
 
 /*
@@ -62,6 +70,8 @@
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
             
             //            wSelf.hasAppliedDict;
+            
+            [self createView:[[responseObject objectForKey:@"rspData"] objectAtIndex:0]];
             
         }else{
             //filed

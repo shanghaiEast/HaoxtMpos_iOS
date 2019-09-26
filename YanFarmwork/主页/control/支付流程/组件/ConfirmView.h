@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic) int payType;//1-微信，0-支付宝，2-POS机
-
+@property (retain, nonatomic) NSString *moneyString;
 
 @end
 

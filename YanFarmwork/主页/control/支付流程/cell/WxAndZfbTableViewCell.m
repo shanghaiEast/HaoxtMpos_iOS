@@ -15,6 +15,11 @@
     // Initialization code
     _loginBtn.layer.cornerRadius = 1.0f;
     _loginBtn.layer.masksToBounds = YES;
+    
+    NSString *numStr = [SHOP_DETAIL objectForKey:@"STL_ACO_NO"];
+    numStr = [numStr substringFromIndex:numStr.length-4];
+    NSString *bankStr = [NSString stringWithFormat:@"%@(%@)",[SHOP_DETAIL objectForKey:@"STL_BANK_NAME"],numStr];
+    [_chooseBankBtn setTitle:bankStr forState:UIControlStateNormal];
 }
 
 - (void)createCell{
@@ -50,6 +55,9 @@
     }
 }
 - (IBAction)loginBtnClick:(id)sender {
+    
+     [self.moneyNumber resignFirstResponder];
+    
     if (_saveMoneyBlock) {
         _saveMoneyBlock([NSDictionary new]);
     }

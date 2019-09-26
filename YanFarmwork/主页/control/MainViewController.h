@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)checkLogin;
 
+- (void)createAlertView_trueName;
+- (void)createAlertView_machines;
+
 @end
 
 NS_ASSUME_NONNULL_END

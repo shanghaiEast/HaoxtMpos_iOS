@@ -116,10 +116,16 @@
         };
         cell.saveMoneyBlock = ^(NSDictionary *dict) {
             NSLog(@"确定收款");
+            if ([cell.moneyNumber.text floatValue] == 0) {
+                [ToolsObject showMessageTitle:@"请输入付款金额" andDelay:1 andImage:nil];
+                
+                return ;
+            }
             if (wSelf.confirmView == nil) {
                 wSelf.confirmView = [[[NSBundle mainBundle] loadNibNamed:@"ConfirmView" owner:self options:nil] lastObject];
                 [wSelf.confirmView setFrame:self.tableView.bounds];
                 wSelf.confirmView.payType = wSelf.payWayTag;
+                wSelf.confirmView.moneyString = [NSString stringWithFormat:@"%@",cell.moneyNumber.text];
                 [wSelf.confirmView createView];
                 [tableView addSubview:wSelf.confirmView];
                 
@@ -128,8 +134,9 @@
                     if (btnTag == 1) {
                         QrCodeTableViewController *qrCodeVC = [[QrCodeTableViewController alloc] initWithNibName:@"QrCodeTableViewController" bundle:nil];
                         qrCodeVC.hidesBottomBarWhenPushed = YES;
-                        qrCodeVC.payWayTag = _payWayTag;
-                        qrCodeVC.processTag = _processTag;
+                        qrCodeVC.payWayTag = wSelf.payWayTag;
+                        qrCodeVC.processTag = wSelf.processTag;
+                        qrCodeVC.moneyString = cell.moneyNumber.text;
                         [self.navigationController pushViewController:qrCodeVC animated:YES];
                     }else{
                         //取消
@@ -168,10 +175,16 @@
         };
         cell.saveMoneyBlock = ^(NSDictionary *dict) {
             NSLog(@"确定收款");
+            if ([cell.moneyNumber.text floatValue] == 0) {
+                [ToolsObject showMessageTitle:@"请输入付款金额" andDelay:1 andImage:nil];
+                
+                return ;
+            }
             if (wSelf.confirmView == nil) {
                 wSelf.confirmView = [[[NSBundle mainBundle] loadNibNamed:@"ConfirmView" owner:self options:nil] lastObject];
                 [wSelf.confirmView setFrame:self.tableView.bounds];
                 wSelf.confirmView.payType = wSelf.payWayTag;
+                wSelf.confirmView.moneyString = [NSString stringWithFormat:@"%@",cell.moneyNumber.text];
                 [wSelf.confirmView createView];
                 [tableView addSubview:wSelf.confirmView];
                 
@@ -181,6 +194,7 @@
                         POSCollectionViewController *posVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
                         posVC.hidesBottomBarWhenPushed = YES;
                         posVC.processTag = _processTag;
+                        posVC.moneyString = cell.moneyNumber.text;
                         [self.navigationController pushViewController:posVC animated:YES];
                     }else{
                         //取消

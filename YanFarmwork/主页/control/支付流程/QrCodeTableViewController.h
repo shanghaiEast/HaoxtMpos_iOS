@@ -13,8 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface QrCodeTableViewController : UITableViewController
 
 @property (nonatomic) int payWayTag;//传值，判断微信还是支付宝,0=支付宝,1=微信
+@property (retain, nonatomic) NSString *moneyString;
 
 @property (nonatomic) int processTag;//支付流程
+
 
 @end
 

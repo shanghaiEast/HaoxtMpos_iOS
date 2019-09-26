@@ -202,6 +202,67 @@
 #define myData [LoginJsonModel infoWithDictionary:USER_DATA]
 
 #define SHOP_DETAIL  [[NSUserDefaults standardUserDefaults] objectForKey:@"shopDetail"]
+//{
+//    "TM_SMP" : "20190924164802",
+//    "USR_OPR_MBL" : "1881***0409",
+//    "BUS_ADDR" : "北京北京市",
+//    "STL_ACO_NO" : "621226****8888",
+//    "UN_FEE" : "0.6",
+//    "POS_MER_ID" : "84310008651000A",
+//    "CER_TYP" : "00",
+//    "UP_FILE_URL13" : "\/app\/posp\/data\/file\/\/image\/20190924\/33088119910315415X\/A383297629243322368.png",
+//    "DCARD_MAX" : "999999",
+//    "CRE_TM" : "20190924164802",
+//    "CCARD_TFEE" : "0.6",
+//    "UP_FILE_URL5" : "\/app\/posp\/data\/file\/\/20190924\/USR227099838850928640\/488A6C9DB9CA14A289825B0B20593874.jpg",
+//    "PARENT_MCC" : "4",
+//    "FEE_SET_FLG" : "0",
+//    "COMPANY_TYP" : "4",
+//    "MERC_ADDR" : "北京北京市",
+//    "DCARD_TFEE" : "0.6",
+//    "ALI_FEE" : "0.38",
+//    "MERC_LVL" : "3",
+//    "MERC_TYP" : "1",
+//    "MERC_CITY" : "1000",
+//    "FIXED_AMOUNT" : "0",
+//    "WX_FEE" : "0.38",
+//    "PIDBEGINDATE" : "20170929",
+//    "AC_TYP" : "800",
+//    "BENEFIT_CER_NO" : "33088119910315415X",
+//    "FEE_VIP" : "0",
+//    "STL_BANK_NAME" : "中国工商银行",
+//    "PIDENDDATE" : "20370929",
+//    "UP_FILE_URL6" : "\/app\/posp\/data\/file\/\/20190923\/USR227099838850928640\/0A94BCCBF4F7D49C27BD52C9FA3B6D7E.jpg",
+//    "STL_TYP" : "0",
+//    "STL_BNK_NM" : "测试银行",
+//    "MERC_ID" : "810008651000001",
+//    "UP_FILE_URL14" : "\/app\/posp\/data\/file\/\/image\/20190924\/33088119910315415X\/M383297636956647424.png",
+//    "BENEFIT_CER_TYP" : "00",
+//    "CCARD_DFEE" : "0.6",
+//    "MERC_PROV" : "1000",
+//    "XESM_FEE" : "0.38",
+//    "ADD_FLG" : "2",
+//    "DCARD_DFEE" : "0.6",
+//    "MERC_AREA" : "1000",
+//    "MCC_CD" : "8651",
+//    "CCARD_VALID_STS" : "0",
+//    "CER_NO" : "330881****415X",
+//    "PAY_AMT" : "",
+//    "UP_FILE_URL7" : "\/app\/posp\/data\/file\/\/20190923\/USR227099838850928640\/92E6172D94FCDD7EA83F5C042EA1FFE6.jpg",
+//    "STL_BNK_CODE" : "102100099996",
+//    "POS_NUM" : 0,
+//    "USR_NO" : "810008651000001",
+//    "YSF_FEE" : "0.38",
+//    "MERC_STS" : "0",
+//    "TYPE_LEGAL" : "2",
+//    "VIP_AMT_SRC" : "0",
+//    "MERC_CNM" : "个体户严华强",
+//    "CORP_NM" : "严*强",
+//    "MERC_NM" : "个体户严华强",
+//    "AC_NO" : "228920425667756032",
+//    "INTO_SOURCE" : "1",
+//    "SN_NO" : ""
+//}
 
 //#define TOKEN [[LoginJsonModel infoWithDictionary:USER_DATA] TOKEN_ID]//或[[[NSUserDefaults standardUserDefaults] objectForKey:@"userData"] objectForKey:@"TOKEN_ID"]
 
@@ -239,9 +300,9 @@
 #define  stl_checkStlCardNo @"stl/checkStlCardNo"  //3.23.    结算卡号校验
 //#define   @""  //
 //#define   @""  //
-//#define   @""  //
-//#define   @""  //
-//#define   @""  //
+#define  apptrans_trans @"apptrans/trans"  //交易接口
+#define  sign_upLoadSign @"sign/upLoadSign"  //上传签名
+#define  sign_qrySignBillDtl @"sign/qrySignBillDtl"  //获取签购单
 //#define   @""  //
 //#define   @""  //
 //#define   @""  //

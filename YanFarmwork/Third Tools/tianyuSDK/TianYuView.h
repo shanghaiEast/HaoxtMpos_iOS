@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^ConnectedSearchBlock)(NSArray *array);//search pos
 typedef void(^ConnectedOnBlock)(BOOL connectedBool);//on connected
 typedef void(^ConnectedOffBlock)(BOOL connectedBool);//off connected
-typedef void(^GetMessageBlock)(CBPeripheral *myDevice , NSString *snString);//message connected
+typedef void(^GetMessageBlock)(CBPeripheral *myDevice , NSString *snString, NSDictionary *ksnDic);//message connected
 typedef void(^TradSuccessBlock)(BOOL success);//trad success
 typedef void(^DisConnectedDeviceBlock)(BOOL success);//DisConnectedDevice
-
+typedef void(^UpdateWorkingKeySuccessBlock)(BOOL success);//Update Working Key
 
 
 @interface TianYuView : UIView
@@ -29,6 +29,7 @@ typedef void(^DisConnectedDeviceBlock)(BOOL success);//DisConnectedDevice
 @property (copy, nonatomic)  GetMessageBlock getMessageBlock;
 @property (copy, nonatomic)  TradSuccessBlock tradSuccessBlock;
 @property (copy, nonatomic)  DisConnectedDeviceBlock disConnectedDeviceBlock;
+@property (copy, nonatomic)  UpdateWorkingKeySuccessBlock updateWorkingKeySuccessBlock;
 
 
 
@@ -36,8 +37,13 @@ typedef void(^DisConnectedDeviceBlock)(BOOL success);//DisConnectedDevice
 - (void)startTianYu;
 - (void)clickedIndexDict:(CBPeripheral *)dict;
 - (void)stopSearchPOS;
-- (void)startTrading;//开始交易
-- (void)stopBlueLink;//开始交易
+
+//  更新工作密钥(磁道密钥、密码密钥、mac 密钥三组密钥)
+- (void)updateWorkingKey:(NSString *)TDK PIK:(NSString *)PIK MAK:(NSString *)MAK;
+//开始交易
+- (void)startTrading;
+//断开蓝牙连接
+- (void)stopBlueLink;
 
 @end
 

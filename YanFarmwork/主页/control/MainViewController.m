@@ -74,6 +74,8 @@
         });
        
     }else{
+        
+        [self requestMerchantsMessage];
     }
 
 }
@@ -94,17 +96,27 @@
     
 //    、、15029267074      c123456
 //    15512345678    z123456
+
     
-//
-    
-//    ChangeDebitCardViewController *cardCerVC = [[ChangeDebitCardViewController alloc] initWithNibName:@"ChangeDebitCardViewController" bundle:nil];
+//    BlueToothSearchToolsTableViewController *cardCerVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
     
-//    UserStatementTableViewController *cardCerVC = [[UserStatementTableViewController alloc] initWithNibName:@"UserStatementTableViewController" bundle:nil];
-//    cardCerVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:cardCerVC animated:YES];
-//
+    SignOrderViewController *cardCerVC = [[SignOrderViewController alloc] initWithNibName:@"SignOrderViewController" bundle:nil];
+    cardCerVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cardCerVC animated:YES];
+
+    
+    
+    
+//    model修改参数
+//    NSLog(@"%@",[myData USR_TERM_STS]);
+//    NSMutableDictionary *tempDict = [USER_DATA mutableCopy];
+//    [tempDict setObject:@"0" forKey:@"USR_TERM_STS"];
+//    [ToolsObject savaUserData:tempDict];
+//    [LoginJsonModel infoWithDictionary:USER_DATA];
+//    NSLog(@"%@",[myData USR_TERM_STS]);
+    
     
     
     if ([myData TOKEN_ID].length == 0) {
@@ -133,20 +145,8 @@
 //    locationOj.locationMessageBlock = ^(NSArray *array) {
 //        NSLog(@"%@",array);
 //    };
-//
-    
-    
-    
-   
-    
-//    POSCollectionViewController *cardCerVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
-//    cardCerVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:cardCerVC animated:YES];
-    
-    
-    
-    
-    
+
+
     
     
     [self createTableView];
@@ -345,7 +345,12 @@
         [self createAlertView_trueName];
         return;
     }else{
-        
+        if ([myData TOKEN_ID].length != 0 && [[myData USR_STATUS] intValue] != 0 && [[myData USR_TERM_STS] intValue] == 0) {
+            
+            [self createAlertView_machines];
+            
+            return;
+        }
     }
     
     WxAndZfbTableViewController *wxAndZfbVC = [[WxAndZfbTableViewController alloc] initWithNibName:@"WxAndZfbTableViewController" bundle:nil];
@@ -355,27 +360,27 @@
 }
 
 - (void)createAlertView_machines {
-//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"需要绑定机具" message:@"使用好享推APP需先绑定机具" preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    [alertController addAction:[UIAlertAction actionWithTitle:@"暂不绑定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//
-//        NSLog(@"点击取消");
-//
-//    }]];
-//
-//    [alertController addAction:[UIAlertAction actionWithTitle:@"前往绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//
-//        NSLog(@"点击确认");
-//        BlueToothSearchToolsTableViewController *blueVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
-//        blueVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:blueVC animated:YES];
-//
-//    }]];
-//    
-//    
-////    [cancel setValue:[UIColor redColor] forKey:@"_titleTextColor"];
-//
-//    [self presentViewController:alertController animated:YES completion:nil];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"需要绑定机具" message:@"使用好享推APP需先绑定机具" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"暂不绑定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+        NSLog(@"点击取消");
+
+    }]];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"前往绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        NSLog(@"点击确认");
+        BlueToothSearchToolsTableViewController *blueVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
+        blueVC.hidesBottomBarWhenPushed = YES;
+        [[ToolsObject currentViewController].navigationController pushViewController:blueVC animated:YES];
+
+    }]];
+    
+    
+//    [cancel setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+
+    [self presentViewController:alertController animated:YES completion:nil];
     
    
 }
@@ -460,6 +465,37 @@
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
             
             wSelf.receiveDict = [responseObject objectForKey:@"rspMap"];
+            
+            [wSelf.myTableView reloadData];
+            
+        }else{
+            //filed
+            [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"test filed ");
+        [ToolsObject SVProgressHUDDismiss];
+    }];
+    
+}
+
+#pragma mark 获取商户信息
+- (void)requestMerchantsMessage {
+    
+    if ([SHOP_DETAIL count] == 0) {//第一次展示
+        [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
+    }
+    
+    typeof(self) wSelf = self;
+    
+    NSDictionary *parametDic = [[NSDictionary alloc] init];
+    
+    [YanNetworkOBJ postWithURLString:usr_get parameters:parametDic success:^(id  _Nonnull responseObject) {
+        [ToolsObject SVProgressHUDDismiss];
+        if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            [[NSUserDefaults standardUserDefaults] setObject:[responseObject objectForKey:@"rspMap"] forKey:@"shopDetail"];
             
             [wSelf.myTableView reloadData];
             

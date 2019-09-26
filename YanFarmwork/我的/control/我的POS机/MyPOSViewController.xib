@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyPOSViewController">
             <connections>
+                <outlet property="SNLabel" destination="mbH-Qq-KTR" id="nOv-Yf-uts"/>
+                <outlet property="typeNameLabel" destination="Lnz-uy-NFj" id="Gkh-zn-3O3"/>
+                <outlet property="typeNoLabel" destination="Zok-73-M4e" id="HPb-po-wF9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

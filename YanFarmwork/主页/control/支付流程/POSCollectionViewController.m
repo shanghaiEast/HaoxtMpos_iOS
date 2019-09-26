@@ -131,10 +131,11 @@
             }
         }
     };
-    _tianYuView.getMessageBlock = ^(CBPeripheral * _Nonnull myDevice, NSString * _Nonnull snString) {
+    _tianYuView.getMessageBlock = ^(CBPeripheral * _Nonnull myDevice, NSString * _Nonnull snString, NSDictionary * _Nonnull ksnDic) {
         
         NSLog(@"myDevice:%@",myDevice);
         NSLog(@"snString:%@",snString);
+         NSLog(@"snString:%@",ksnDic);
         
         
         [wSelf.stateBGImageView stopAnimating];
@@ -142,7 +143,8 @@
         wSelf.stateLabel.text = @"连接成功，请刷卡";
         
         
-        [wSelf.tianYuView startTrading];
+//        NSDictionary *tempDict = @{@"sn":snString, @"name":myDevice.name, @"typeNo":[ksnDic objectForKey:@"deviceType"]};
+//        [wSelf request_bindMechine:tempDict];
 
     };
     _tianYuView.tradSuccessBlock = ^(BOOL success) {

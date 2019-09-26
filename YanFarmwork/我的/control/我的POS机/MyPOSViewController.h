@@ -21,6 +21,12 @@ typedef enum : NSInteger {
 
 @property (nonatomic) int showType;
 
+@property (weak, nonatomic) IBOutlet UILabel *typeNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeNoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *SNLabel;
+
+
+
 
 @end
 

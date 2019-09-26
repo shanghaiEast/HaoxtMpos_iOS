@@ -64,12 +64,12 @@
     self.tableView.tableHeaderView = [UIView new];
     self.tableView.bounces = NO;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
-        resultVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:resultVC animated:YES];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//        PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
+//        resultVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:resultVC animated:YES];
+//    });
    
 }
 
@@ -126,6 +126,8 @@
     _qrCodeView = [[[NSBundle mainBundle] loadNibNamed:@"QrCodeView" owner:self options:nil] lastObject];
     [_qrCodeView setFrame:myView.bounds];
     _qrCodeView.processTag = _processTag;
+    _qrCodeView.moneyString = _moneyString;
+    _qrCodeView.payWayTag = _payWayTag;
     _qrCodeView.rootVC = self;
     [myView addSubview:_qrCodeView];
      [_qrCodeView createView];

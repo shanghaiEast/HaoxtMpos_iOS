@@ -14,6 +14,8 @@
 @interface TianYuView ()<TYSwiperControllerDelegate>
 
 @property (retain, nonatomic) CBPeripheral *myDevice;
+@property (retain, nonatomic) NSDictionary *ksnDict;
+@property (retain, nonatomic) NSString *snString;
 #if TARGET_IPHONE_SIMULATOR
 
 #else
@@ -75,6 +77,13 @@
 #endif
 
 }
+
+//  更新工作密钥(磁道密钥、密码密钥、mac 密钥三组密钥)
+- (void)updateWorkingKey:(NSString *)TDK PIK:(NSString *)PIK MAK:(NSString *)MAK{
+    [_tySwiper updateWorkingKey:TDK PIK:PIK MAK:MAK];
+}
+
+
 
 //开始交易
 - (void)startTrading {
@@ -158,6 +167,10 @@
     if (isSuccess == YES) {
         [ToolsObject showMessageTitle:@"连接成功" andDelay:1 andImage:nil];
         [_tySwiper getDeviceSN];
+        [_tySwiper getDeviceIdentifyInfo];
+        [_tySwiper getDeviceCSN];
+        [_tySwiper getPosInfo];
+        
         
     }else{
         [ToolsObject showMessageTitle:@"连接失败" andDelay:1 andImage:nil];
@@ -187,23 +200,72 @@
 - (void)onReceiveDeviceSN:(NSString *)sn {
     NSLog(@"sn:%@",sn);
     
-    NSLog(@"_myDevice:%@",_myDevice);
-    
     //字条串是否包含有某字符串
     if ([sn rangeOfString:@"失败"].location == NSNotFound) {
         NSLog(@"string 不存在 失败");
-        if (_getMessageBlock) {
-            _getMessageBlock (_myDevice, sn);
-        }
+        
+        _snString = sn;
+        [_tySwiper getDeviceKSNInfo];
+        
         
     } else {
         NSLog(@"string 包含 失败");
         [ToolsObject showMessageTitle:@"获取设备SN失败" andDelay:1 andImage:nil];
     }
+}
+//返回设备唯一标识认证等相关信息
+- (void)onReceiveDeviceIdentifyInfo:(NSDictionary *)IdInfoDic
+{
+    NSLog(@"IdInfoDic:%@",IdInfoDic);
+}
+// 获取pos/reader设备信息
+- (void)onReceivePosInfo:(NSDictionary *)info{
+     NSLog(@"info:%@",info);
+}
+/**
+ *  是否成功更新密钥
+ *
+ *  @param isSuccess 成功/失败
+ */
+-(void)onUpdateWorkingKeyResult:(BOOL)TDK result:(BOOL)PIK result:(BOOL)MAK {
+    NSLog(@"\n TDK:%d\n PIK:%d\n MAK:%d",TDK,PIK,MAK);
     
+    if (TDK == 1 && PIK == 1 && MAK == 1) {
+        if (_updateWorkingKeySuccessBlock) {
+            _updateWorkingKeySuccessBlock(YES);
+        }
+    }else{
+        [ToolsObject showMessageTitle:@"秘钥更新失败" andDelay:1 andImage:nil];
+        return;
+    }
     
 }
 
+/**
+ *  返回设备ID
+ *
+ *  @param deviceID 设备ID
+ */
+- (void)onReceiveDeviceCSN:(NSString *)csn {
+    NSLog(@"csn:%@",csn);
+}
+/**
+ *  返回银联21号文报备信息
+ *  @param ksnDic 银联21号文报备信息
+ ksn:KSN明文(终端序列号)
+ deviceType:终端类型
+ deviceModel：终端产品型号
+ company:终端生产企业名称
+ isOldDevice: 00表示新设备，01表示老设备
+ */
+-(void)onReceiveDeviceKSNInfo:(NSDictionary *)ksnDic {
+    NSLog(@"ksnDic:%@",ksnDic);
+    _ksnDict = ksnDic;
+    
+    if (_getMessageBlock) {
+        _getMessageBlock (_myDevice, _snString, _ksnDict);
+    }
+}
 /**
  *  提示已经获取到卡片信息
  */

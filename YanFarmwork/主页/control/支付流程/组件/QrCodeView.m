@@ -10,6 +10,10 @@
 
 #import "PayResultViewController.h"
 
+#import "LocationObject.h"
+
+#import "ConfirmSignViewController.h"
+
 //qrcode
 #import "WSLScanView.h"
 #import "WSLNativeScanTool.h"
@@ -17,6 +21,9 @@
 @interface QrCodeView ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong)  WSLNativeScanTool * scanTool;
 @property (nonatomic, strong)  WSLScanView * scanView;
+
+//接口查询次数
+@property (nonatomic) int searchCount;
 
 
 @end
@@ -37,9 +44,16 @@
     _payView.layer.cornerRadius = 16.0f;
     _payView.layer.masksToBounds = YES;
     
-    _payLogoImageView.image = [UIImage imageNamed:@"payWX.png"];//payZFB.png
     
-    _payTitleLabel.text = @"微信扫一扫，向我付款";//支付宝扫一扫，向我付款
+    //传值，判断微信还是支付宝,0=支付宝,1=微信
+    if (_payWayTag == 0) {
+        _payLogoImageView.image = [UIImage imageNamed:@"payZFB.png"];//payZFB.png
+        _payTitleLabel.text = @"支付宝扫一扫，向我付款";//支付宝扫一扫，向我付
+    }else{
+        _payLogoImageView.image = [UIImage imageNamed:@"payWX.png"];//payZFB.png
+        _payTitleLabel.text = @"微信扫一扫，向我付款";//支付宝扫一扫，向我付款
+    }
+    
     
     _payMoneyLabel.text = [NSString stringWithFormat:@"￥ %@",@"1233"];
 
@@ -53,6 +67,8 @@
     [self layoutIfNeeded];
     
     typeof(self) wSelf = self;
+    
+    _payMoneyLabel.text = [NSString stringWithFormat:@"￥ %@",_moneyString];
     
     //输出流视图
 //    UIView *preview  = [[UIView alloc] initWithFrame:_qrCodeView.bounds];
@@ -81,26 +97,23 @@
     //初始化扫描工具
     _scanTool = [[WSLNativeScanTool alloc] initWithPreview:_qrCodeView andScanFrame:_scanView.scanRetangleRect];
     _scanTool.scanFinishedBlock = ^(NSString *scanString) {
-        NSLog(@"扫描结果 %@",scanString);
-        [wSelf.scanView handlingResultsOfScan];
         
-        if (_processTag == 0) {
-            
-        }else{
-            PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
-            resultVC.hidesBottomBarWhenPushed = YES;
-            resultVC.processTag = _processTag;
-            [_rootVC.navigationController pushViewController:resultVC animated:YES];
-        }
+        NSLog(@"扫描结果 %@",scanString);//280191565026249368
         
+        PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
+        resultVC.hidesBottomBarWhenPushed = YES;
+        resultVC.processTag = wSelf.processTag;
+        resultVC.payWayTag = wSelf.payWayTag;
+        resultVC.scanString = scanString;
+        resultVC.moneyString = wSelf.moneyString;
+        [wSelf.rootVC.navigationController pushViewController:resultVC animated:YES];
+        
+//        [wSelf requestTrading:scanString];
+        
+        [wSelf.scanTool sessionStopRunning];
 
-        
-        
-        
-        
     };
     
-    /*
     _scanTool.monitorLightBlock = ^(float brightness) {
 //        NSLog(@"环境光感 ： %f",brightness);
         if (brightness < 0) {
@@ -113,7 +126,6 @@
             }
         }
     };
-     */
     
     [_scanTool sessionStartRunning];
     [_scanView startScanAnimation];
@@ -146,6 +158,7 @@
     [_rootVC dismissViewControllerAnimated:YES completion:nil];
     [_scanTool scanImageQRCode:image];
 }
+
 
 
 @end

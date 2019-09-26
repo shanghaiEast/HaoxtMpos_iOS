@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (retain, nonatomic)  UITableView *myTableView;
 
+@property (nonatomic,retain) NSDictionary *requestDict;//请求数据
+
 @end
 
 NS_ASSUME_NONNULL_END

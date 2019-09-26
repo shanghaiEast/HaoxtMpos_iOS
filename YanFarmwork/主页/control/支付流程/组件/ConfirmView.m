@@ -28,6 +28,8 @@
     _payBtn.layer.cornerRadius = 7.0f;
     _payBtn.layer.masksToBounds = YES;
     
+    _priceLabel.text = _moneyString;
+    
     if (_payType == 0) {
         _goodsNameLabel.text = @"支付宝";
         [_payBtn setTitle:@"支付宝支付" forState:UIControlStateNormal];

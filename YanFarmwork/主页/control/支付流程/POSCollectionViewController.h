@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic) int processTag;//支付流程
+@property (retain, nonatomic) NSString *moneyString;
 
 @end
 
