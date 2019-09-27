@@ -102,7 +102,7 @@
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
     
-    SignOrderViewController *cardCerVC = [[SignOrderViewController alloc] initWithNibName:@"SignOrderViewController" bundle:nil];
+    POSCollectionViewController *cardCerVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
     cardCerVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:cardCerVC animated:YES];
 

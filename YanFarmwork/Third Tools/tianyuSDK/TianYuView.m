@@ -80,13 +80,18 @@
 
 //  更新工作密钥(磁道密钥、密码密钥、mac 密钥三组密钥)
 - (void)updateWorkingKey:(NSString *)TDK PIK:(NSString *)PIK MAK:(NSString *)MAK{
+#if TARGET_IPHONE_SIMULATOR
+    
+#else
     [_tySwiper updateWorkingKey:TDK PIK:PIK MAK:MAK];
+#endif
+    
 }
 
 
 
 //开始交易
-- (void)startTrading {
+- (void)startTrading:(NSString *)moneyStr {
 #if TARGET_IPHONE_SIMULATOR
     
 #else
@@ -94,8 +99,11 @@
     [dateFormatter setDateFormat:@"yyMMddHHmmss"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
     
+    
+    moneyStr = [NSString stringWithFormat:@"%.0f",[moneyStr floatValue]*100];
+    
     [_tySwiper setLimitAmount:@"10000"];
-    [_tySwiper readCard:@"1000000" TerminalTime:dateString TradeType:0x00 timeout:10 Demote:nil inputPin:YES];
+    [_tySwiper readCard:moneyStr TerminalTime:dateString TradeType:0x00 timeout:20 Demote:nil inputPin:YES];
     
 #endif
    
@@ -167,9 +175,11 @@
     if (isSuccess == YES) {
         [ToolsObject showMessageTitle:@"连接成功" andDelay:1 andImage:nil];
         [_tySwiper getDeviceSN];
-        [_tySwiper getDeviceIdentifyInfo];
         [_tySwiper getDeviceCSN];
         [_tySwiper getPosInfo];
+       
+//        [_tySwiper recei];
+      
         
         
     }else{
@@ -205,7 +215,13 @@
         NSLog(@"string 不存在 失败");
         
         _snString = sn;
+#if TARGET_IPHONE_SIMULATOR
+        
+#else
         [_tySwiper getDeviceKSNInfo];
+        [_tySwiper getDeviceIdentifyInfo];
+#endif
+        
         
         
     } else {
@@ -213,10 +229,29 @@
         [ToolsObject showMessageTitle:@"获取设备SN失败" andDelay:1 andImage:nil];
     }
 }
-//返回设备唯一标识认证等相关信息
+
+/**
+ *  返回设备唯一标识认证等相关信息
+ *  @param IdInfoDic 设备唯一标识认证信息
+ ksn:KSN明文(终端序列号)
+ factor:加密随机因子明文
+ cipher:8字节密文数据
+ sappVer:应用程序版本号
+ */
 - (void)onReceiveDeviceIdentifyInfo:(NSDictionary *)IdInfoDic
 {
     NSLog(@"IdInfoDic:%@",IdInfoDic);
+    
+    /**
+     
+     **/
+//    if (IdInfoDic.count == 0) {
+//        return;
+//    }
+    
+    if (_deviceIdentifyInfoBlock) {
+        _deviceIdentifyInfoBlock(IdInfoDic);
+    }
 }
 // 获取pos/reader设备信息
 - (void)onReceivePosInfo:(NSDictionary *)info{
@@ -315,40 +350,62 @@
     NSLog(@"data:%@",data);
     //swipeMode : 刷卡方式（@"00":刷卡，@"01":插卡，@"02":挥卡）
     if ([[data allKeys] containsObject:@"errorDescription"]) {
+        [_tySwiper confirmTransaction:NO andMsg:[data objectForKey:@"errorDescription"]];
         [ToolsObject showMessageTitle:[NSString stringWithFormat:@"%@",[data objectForKey:@"errorDescription"]] andDelay:1 andImage:nil];
-        
-        //        [_tySwiper confirmTransaction:NO andMsg:nil];
         
     }else{
         /*
          {
-         cardNumber = 6217560800027564300;
-         cardSeqNum = 01;
-         cardType = 1;
-         cardValidDate = 2906;
-         encTrack2Ex = 556116D07442357C85265A03D490B20A6DEAAD1F58EEF46C;
+         cardNumber = 6200850608156983;
+         cardType = 0;
+         demote = 0;
+         encTrack2Ex = A416DADD492658BB184D4D5367D97D8637A305A152A896C7;
          errorCode = 9000;
-         icData = 9F2608572E973BC54B5A0E9F2701809F1013070B0103A0B002010A01000000000077C741A09F370469D70A009F36020007950500000008009A031909119C01009F02060000010000005F2A02015682027C009F1A0201569F03060000000000009F3303E0E1C09F34033F00009F3501229F1E0831323334353637388408A0000003330101019F090200209F410400000005;
-         isApplePay = 00;
+         expiryDate = 4912;
          isNoPinAndNoSign = 00;
-         pin = 874DAABC757C37CA;
-         swipeMode = 01;
+         pin = "";
+         serviceCode = 120F;
+         swipeMode = 00;
          }
          */
+
+            [_tySwiper confirmTransaction:NO andMsg:@"交易完成"];
+        
+            if (_tradSuccessBlock) {
+                _tradSuccessBlock(data);
+            }
+    //后面获取流水号
         
     }
     
-    if ([_tySwiper confirmTransaction] == YES) {
-        [_tySwiper confirmTransaction:NO andMsg:@"success"];
-        [ToolsObject showMessageTitle:[data objectForKey:@"交易完成"] andDelay:1 andImage:nil];
-        
-        if (_tradSuccessBlock) {
-            _tradSuccessBlock(YES);
-        }
-    }
+    
     
 #endif
     
+}
+//交易成功回调
+- (void)onConfirmTransaction:(BOOL)isSuccess{
+     NSLog(@"isSuccess:%d",isSuccess);
+    [_tySwiper readBatchIDAndSerialID];
+}
+
+/**
+ 读批次号、流水号结果
+ @param IDdata
+ *  @return batchID  批次号
+ *  @return serialID 流水号
+ */
+- (void)onReadBatchIDSerialID:(NSDictionary *)IDdata {
+    NSLog(@"读批次号、流水号结果 : %@",IDdata);
+    /**
+     {
+     batchID = FFFFFF;//批次号
+     serialID = FFFFFF;//流水号
+     }
+     **/
+    if (_tradOrderBackBlock) {
+        _tradOrderBackBlock(IDdata);
+    }
     
 }
 

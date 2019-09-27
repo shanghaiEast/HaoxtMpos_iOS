@@ -57,8 +57,7 @@
     
     _keyArray = [[NSMutableArray alloc] init];
     _valueArray = [[NSMutableArray alloc] init];
-    _keyArray = @[@"终端机号", @"商户名称", @"商户编号", @"金额"];
-    _valueArray = @[@"SL21323234", @"大雷子", @"3223423434", @"1323"];
+   
     
     [ToolsObject disableTheSideslip:self];
     
@@ -215,14 +214,6 @@
     [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
     typeof(self) wSelf = self;
     
-    
-    _requestDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             [NSString stringWithFormat:@"%@",@"001514"],@"cseqNo",
-                             [NSString stringWithFormat:@"%@",@"000001"],@"batchNo",
-                             [NSString stringWithFormat:@"%@",@"00000005"],@"trmNo",
-                             [NSString stringWithFormat:@"%@",@"20190926"],@"actDt",
-                             nil];
-    
     [YanNetworkOBJ postWithURLString:sign_qrySignBillDtl parameters:_requestDict success:^(id  _Nonnull responseObject) {
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
@@ -237,16 +228,27 @@
              "CRD_EXP_DT" = "";
              "CRD_FLG" = "";
              "CRD_NO" = "";
-             "FILE_NO" = "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a\nHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy\nMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABaAGkDASIA\nAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA\nAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3\nODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm\np6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA\nAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx\nBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK\nU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3\nuLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD32iii\ngAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiio5zMtvK1vHHJOEJjSRyis2OAWAJAz\n3wcehoAkqvfX9nplnJeX93BaWseN808gjRckAZY8DJIH41n3Ok6jf7lutbngh818R6fEsPmQnGEd\nm3vuAB+eNoz82RggEFj4V0LT7yO9h0yBr9M4vpwZrk5BHMz5kPB28twOOnFAFf8A4S23uONK03Vd\nUbqDb2pjjZP76TTGOJ1PGNrnIOQCMkWJv+EjuPtCQf2VYbJR5Ez+ZeebH82dyDytjfdPDOOo9DWx\nRQBz/wDwjEs/y6h4j1y9hHIj89LXDeu62SJzxngsV5zjIBGhpmi2WkeabVZ2klwHlubmS4kYDOF3\nyMzbRliFzgFmIGSc6FFABRRRQAUUUUAFFFFABRRRQBn6zLcW2nPe2zTlrTM7wQQCZ7lFB3RBcgli\nPu4I+YLnIypuQTLc28U6CQJIgdRJGyMARnlWAKn2IBHeq97py3jxyi5u7eeJJFikgnZQpdcbinKO\nR1G9WAPOKp2uk6lZ+e//AAkd9eSNEyRLfQW5jRz0ciKONmxjpuGQT3wQAbFFRwCZbeJbiSOScIBI\n8aFFZsckKSSBntk49TUlABRVe+v7PTLOS8v7uC0tY8b5p5BGi5IAyx4GSQPxrDmhvvFSBHOpaPpa\nur/JJ5F1d4YMOVJaGIjqPllJJB8vaQ4BYnnm124lsbGWSHT4nMd3eRMVaRgcNDCw5BByHkH3eVX5\n9zRblRwQQ2tvFb28UcMESBI441CqigYAAHAAHGKkoAKKKKACiiigAooooAKKK4y58YarqNxc2fh7\nQNS3wIHNzqFhJCsgJX/VJIYw5GSCHkiI6rvwRQB1888Nrby3FxLHDBEheSSRgqooGSSTwABzmsP+\n3bzVfk8PWXmwnj+0rsGO2A/vRj783BVhtAjcZxKDWRaaD4g1GU3esRWLXa7ZrSa9ma5S2kDBgBaI\nEjRgN+HEsjrnHmOOa6Oztda+z3UWpapaO8ibYZbGyMDQnBy37ySUMehGRjjkHNAEdj4et4byPUr9\nvt+qrki6mBIhJBDCBCSIVIO3C8sAN5c/MdisPw7c3by6xYXd1JdnTr0W6XEqoskitBFLl9gVcgyk\nDCjgDqck7lABRRRQAUUUUAFFFFABRRRQAUUUUAFU9V1KHSNLuL+dZHSFMiOIAvK3RUQEjc7MQqju\nSB3o1XVbHRNLuNT1O5jtrO3TfLK/RR/MknAAHJJAHJrD0GHUdcvIvEWsW09iqbxp2mSlSYY2CgTS\nrjKzkbxgNhEcr1LkgGxo9pcWtm7Xpga+uJXnnaFABkn5VyAN+xAkYcgFggJA6DQoooAKKKKACiii\ngAooooAKKKKACo554bW3luLiWOGCJC8kkjBVRQMkkngADnNSVz/iP59V8MQN80MuqnzIzyr7LW4k\nXI74dEYejKp6gUAFtaXGuaiup35nj01NjWemyoFy6kkXEoxuDHI2xsfl2qxAk4j6CiigAooooAKK\nKKAP/9k=";
+             "FILE_NO" = yggkKFhcYGRolJicoKSo0NTY3\
              ORGA = CUP;
              "TXN_AMT" = "0.01";
              "TXN_CD" = "\U6d88\U8d39";
              "TXN_TM" = 20190926183411;
              };
              **/
-            _resultDict = [responseObject objectForKey:@"rspMap"];
+            
+            wSelf.resultDict = [responseObject objectForKey:@"rspMap"];
+            
+            
+            [self getSourceArray];
             
             [wSelf.myTableView reloadData];
+            
+            
+            
+            
+            
+            
+           
             
         }else{
             //filed
@@ -258,6 +260,46 @@
         [ToolsObject SVProgressHUDDismiss];
     }];
     
+}
+
+- (void)getSourceArray{
+    NSArray *tempKeyArray = @[
+                              @"终端机号",
+                              @"商户名称",
+                              @"商户编号",
+                              @"有 效 期",
+                              @"卡 组 织",
+                              @"发 卡 行",
+                              @"卡 类 别",
+                              @"卡   号",
+                              @"交易类型",
+                              @"交易日期",
+                              @"授 权 码",
+                              @"金   额"
+                              ];
+    
+    NSArray *tempValueArray = [[NSArray alloc] initWithObjects:
+                               [_resultDict objectForKey:@"CORG_TRM_NO"],
+                               [_resultDict objectForKey:@"CORG_MERC_NM"],
+                               [_resultDict objectForKey:@"CORG_MERC_ID"],
+                               [_resultDict objectForKey:@"CRD_EXP_DT"],
+                               [_resultDict objectForKey:@"ORGA"],
+                               [_resultDict objectForKey:@"BANK_NAME"],
+                               [_resultDict objectForKey:@"CRD_FLG"],
+                               [_resultDict objectForKey:@"CRD_NO"],
+                               [_resultDict objectForKey:@"TXN_CD"],
+                               [_resultDict objectForKey:@"TXN_TM"],
+                               [_resultDict objectForKey:@"AUT_CD"],
+                               [_resultDict objectForKey:@"TXN_AMT"], nil];
+    
+    for (int a = 0; a < tempValueArray.count; a ++) {
+        if ([checkNull([tempValueArray objectAtIndex:a]) length] != 0) {
+            [_keyArray addObject:checkNull([tempKeyArray objectAtIndex:a])];
+            [_valueArray addObject:checkNull([tempValueArray objectAtIndex:a])];
+        }
+    }
+    
+    NSLog(@"_keyArray == %@",_keyArray);
 }
 
 @end

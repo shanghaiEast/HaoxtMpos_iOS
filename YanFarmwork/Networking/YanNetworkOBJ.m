@@ -60,6 +60,8 @@
     NSString *_URLString = [NSString stringWithFormat:@"%@%@",URL_BASE,URLString];
     _URLString = [_URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
+    parameters = [[ToolsObject processDictionaryIsNSNull:parameters] mutableCopy];
+    
 //    NSMutableDictionary *endDic = [parameters mutableCopy];
 //    [endDic setValue:[ToolsObject getNowTimeTimestamp3] forKey:@"timestamp"];
 //    NSString *signStr = [ToolsObject x_tokenJoint:endDic andPrivateKeys:companyKey];
