@@ -25,9 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic) int processTag;//支付流程
-@property (nonatomic) int payWayTag;//传值，判断微信还是支付宝,0=支付宝,1=微信
+@property (nonatomic) int payWayTag;//传值，判断微信还是支付宝,0=支付宝,1=微信,2=pos机
 @property (nonatomic,retain) NSString *scanString;//扫描的数据
 @property (nonatomic,retain) NSString *moneyString;//支付金额
+@property (retain, nonatomic) NSDictionary *resultDict;
 
 
 @end

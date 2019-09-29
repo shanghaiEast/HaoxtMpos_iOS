@@ -158,6 +158,8 @@
         wSelf.stateLabel.text = @"连接成功，请刷卡";
         
         
+        [wSelf startTrading];
+        
         //        NSDictionary *tempDict = @{@"sn":snString, @"name":myDevice.name, @"typeNo":[ksnDic objectForKey:@"deviceType"]};
         //        [wSelf request_bindMechine:tempDict];
         
@@ -168,9 +170,18 @@
         wSelf.deviceIdentifyInfoDict = infoDict;
         
         NSLog(@"返回设备唯一认证 : %@",wSelf.deviceIdentifyInfoDict);
+    
+        /**
+         {
+         cipher = 3031453038464543;
+         factor = 313536393833;
+         ksn = 303030303234303339393931383130313030303030323036;
+         sappVer = 56332E3020202020;
+         }
+         **/
         
         
-        [wSelf startTrading];
+        
         /**
          
          **/
@@ -208,7 +219,7 @@
          serialID = FFFFFF;//流水号
          }
          **/
-        [self requestCommit];
+        [wSelf requestCommit];
         
     };
     _tianYuView.disConnectedDeviceBlock = ^(BOOL success) {
@@ -233,7 +244,7 @@
         NSString *transTypeString = @"purchase";
         NSString *actPayTypeString = @"1";
         if (wSelf.processTag == 0 || wSelf.processTag == 1) {
-            transTypeString = @"deposit";
+//            transTypeString = @"deposit";
             actPayTypeString = @"0";
         }
         
@@ -242,29 +253,38 @@
             isFreePwString = @"1";
         }
         
+        NSString *swipeModeString =  [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"swipeMode"]];
+        if ([swipeModeString isEqualToString:@"00"]) {
+            swipeModeString = @"1";
+        }else if ([swipeModeString isEqualToString:@"01"]) {
+            swipeModeString = @"2";
+        }else if ([swipeModeString isEqualToString:@"02"]) {
+            swipeModeString = @"3";
+        }
+        
         [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
         
         NSDictionary *parametDic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    [NSString stringWithFormat:@"%@",transTypeString],@"transType",
-                                    [NSString stringWithFormat:@"%@",[SHOP_DETAIL objectForKey:@"SN_NO"]],@"snNo",
-                                    [NSString stringWithFormat:@"%@",[wSelf.ksnDict objectForKey:@"deviceType"]],@"snTypNo",
+                                    [NSString stringWithFormat:@"%@",transTypeString],@"transType", // 交易类型purchase   快提 deposit
+                                    [NSString stringWithFormat:@"%@",[SHOP_DETAIL objectForKey:@"SN_NO"]],@"snNo", // SN号码
+                                    [NSString stringWithFormat:@"%@",[wSelf.ksnDict objectForKey:@"deviceType"]],@"snTypNo",// 终端类型
                                     [NSString stringWithFormat:@"%@",[SHOP_DETAIL objectForKey:@"AGT_MERC_ID"]],@"mercId",
-                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"cardNumber"]],@"pan",
-                                    [NSString stringWithFormat:@"%@",wSelf.moneyString],@"amount",
-                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"expiryDate"]],@"dateExpiration",
-                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"swipeMode"]],@"posEntryModeCode",
-                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"cardSeqNum"]],@"cardSequenceNumber",
-                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"encTrack2Ex"]],@"track2",
-                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"encTrack3Ex"]],@"track3",
-                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"pin"]],@"pin",
+                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"cardNumber"]],@"pan",// 卡号
+                                    [NSString stringWithFormat:@"%@",wSelf.moneyString],@"amount",// 金额
+                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"expiryDate"]],@"dateExpiration",// 信用卡有效期YYMM
+                                    [NSString stringWithFormat:@"%@",swipeModeString],@"posEntryModeCode",// 服务点输入方式码
+                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"cardSeqNum"]],@"cardSequenceNumber",// 卡片序列号，当POS能够获得该值时存在
+                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"encTrack2Ex"]],@"track2",// 二磁道
+                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"encTrack3Ex"]],@"track3",// 三磁道
+                                    [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"pin"]],@"pin",// FLD 52 个人标识码数据
                                     [NSString stringWithFormat:@"%@",[wSelf.tradDict objectForKey:@"icData"]],@"ICSystemRelated",// IC卡数据域
                                     [NSString stringWithFormat:@"%@",[wSelf.orderBackDict objectForKey:@"serialID"]],@"systemsTraceAuditNumber",// 流水号
                                     [NSString stringWithFormat:@"%@",@"03"],@"deviceType",// 设备类型 01：ATM 02：传统 POS 03：mPOS  04：智能 POS
-                                    [NSString stringWithFormat:@"%@",[wSelf.ksnDict objectForKey:@"ksn"]],@"snSeq",
+                                    [NSString stringWithFormat:@"%@",[wSelf.ksnDict objectForKey:@"ksn"]],@"snSeq",// 终端序列号
                                     [NSString stringWithFormat:@"%@",[wSelf.deviceIdentifyInfoDict objectForKey:@"factor"]],@"randomKey",// 加密随机因子
                                     [NSString stringWithFormat:@"%@",[wSelf.deviceIdentifyInfoDict objectForKey:@"cipher"]],@"hdSeqData",// 硬件序列号密文编码
-                                    [NSString stringWithFormat:@"%@",@"V1.1.9 "],@"version",
-                                    [NSString stringWithFormat:@"%@",@""],@"snNetWorkNo",
+                                    [NSString stringWithFormat:@"%@",@"V1.1.9 "],@"version",// 应用程序版本号
+                                    [NSString stringWithFormat:@"%@",@""],@"snNetWorkNo",// 终端入网认证编号
                                     [NSString stringWithFormat:@"%@",isFreePwString],@"secretFree",//// 是否小额免密  1 是 0 不是 默认0
                                     [NSString stringWithFormat:@"%@",actPayTypeString],@"actPayType",//// 缴费类型 0 押金激活 1 购买流量优惠包 （交易0 快提1）
                                     [NSString stringWithFormat:@"%@",[array objectAtIndex:1]],@"longitude",
@@ -281,7 +301,13 @@
                 //
                 
                 /**
-                 
+                 PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
+                 resultVC.hidesBottomBarWhenPushed = YES;
+                 resultVC.processTag = wSelf.processTag;
+                 resultVC.payWayTag = 2;
+                 resultVC.scanString = scanString;
+                 resultVC.moneyString = wSelf.moneyString;
+                 [wSelf.rootVC.navigationController pushViewController:resultVC animated:YES];
                  **/
                 
             }else{

@@ -18,7 +18,7 @@
 
 @property (retain, nonatomic) SignatureView *signatureView;
 
-@property (retain, nonatomic) NSDictionary *resultDict;
+
 
 //接口查询次数
 @property (nonatomic) int searchCount;
@@ -43,14 +43,18 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     [ToolsObject disableTheSideslip:self];
     
-    [self requestTrading:_scanString];
+    if (_payWayTag == 2) {
+        [self showDrawView];
+    }else{
+        [self requestTrading:_scanString];
+    }
+    
 }
 
 - (void)createView{
@@ -265,6 +269,11 @@
             }else{
                 //filed
                 [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+                
+                ConfirmSignViewController *confirmSignVC = [[ConfirmSignViewController alloc] initWithNibName:@"ConfirmSignViewController" bundle:nil];
+                confirmSignVC.payType = PAY_FIELD;
+                confirmSignVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:confirmSignVC animated:YES];
             }
             
         } failure:^(NSError * _Nonnull error) {
@@ -333,6 +342,11 @@
             
         }else{
             //filed
+            ConfirmSignViewController *confirmSignVC = [[ConfirmSignViewController alloc] initWithNibName:@"ConfirmSignViewController" bundle:nil];
+            confirmSignVC.payType = PAY_FIELD;
+            confirmSignVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:confirmSignVC animated:YES];
+            
             [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
         }
         

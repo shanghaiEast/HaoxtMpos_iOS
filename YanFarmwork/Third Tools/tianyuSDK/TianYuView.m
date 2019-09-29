@@ -33,12 +33,12 @@
 @implementation TianYuView
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 - (void)stopBlueLink {
     
@@ -75,7 +75,7 @@
     [_tySwiper connectDevice:_myDevice.name];
     
 #endif
-
+    
 }
 
 //  更新工作密钥(磁道密钥、密码密钥、mac 密钥三组密钥)
@@ -87,8 +87,6 @@
 #endif
     
 }
-
-
 
 //开始交易
 - (void)startTrading:(NSString *)moneyStr {
@@ -106,7 +104,7 @@
     [_tySwiper readCard:moneyStr TerminalTime:dateString TradeType:0x00 timeout:20 Demote:nil inputPin:YES];
     
 #endif
-   
+    
 }
 
 
@@ -177,9 +175,9 @@
         [_tySwiper getDeviceSN];
         [_tySwiper getDeviceCSN];
         [_tySwiper getPosInfo];
-       
-//        [_tySwiper recei];
-      
+        
+        //        [_tySwiper recei];
+        
         
         
     }else{
@@ -219,7 +217,6 @@
         
 #else
         [_tySwiper getDeviceKSNInfo];
-        [_tySwiper getDeviceIdentifyInfo];
 #endif
         
         
@@ -229,33 +226,9 @@
         [ToolsObject showMessageTitle:@"获取设备SN失败" andDelay:1 andImage:nil];
     }
 }
-
-/**
- *  返回设备唯一标识认证等相关信息
- *  @param IdInfoDic 设备唯一标识认证信息
- ksn:KSN明文(终端序列号)
- factor:加密随机因子明文
- cipher:8字节密文数据
- sappVer:应用程序版本号
- */
-- (void)onReceiveDeviceIdentifyInfo:(NSDictionary *)IdInfoDic
-{
-    NSLog(@"IdInfoDic:%@",IdInfoDic);
-    
-    /**
-     
-     **/
-//    if (IdInfoDic.count == 0) {
-//        return;
-//    }
-    
-    if (_deviceIdentifyInfoBlock) {
-        _deviceIdentifyInfoBlock(IdInfoDic);
-    }
-}
 // 获取pos/reader设备信息
 - (void)onReceivePosInfo:(NSDictionary *)info{
-     NSLog(@"info:%@",info);
+    NSLog(@"info:%@",info);
 }
 /**
  *  是否成功更新密钥
@@ -301,26 +274,63 @@
         _getMessageBlock (_myDevice, _snString, _ksnDict);
     }
 }
+
 /**
- *  提示已经获取到卡片信息
+ *  返回设备唯一标识认证等相关信息
+ *  @param IdInfoDic 设备唯一标识认证信息
+ ksn:KSN明文(终端序列号)
+ factor:加密随机因子明文
+ cipher:8字节密文数据
+ sappVer:应用程序版本号
  */
-- (void)onReadCardData:(NSDictionary *)cardInfo {
-    NSLog(@"cardInfo:%@",cardInfo);
-    /* 芯片交易数据
-     {
-     cardNumber = 6217560800027564300;
-     cardSeqNum = 01;
-     cardType = 1;
-     cardValidDate = 2906;
-     encTrack2Ex = 556116D07442357C85265A03D490B20A6DEAAD1F58EEF46C;
-     errorCode = 9000;
-     icData = 9F26089C1039A1C959154A9F2701809F1013070B0103A0B002010A0100000000003AC6C8959F3704E86409009F36020006950500000008009A031909119C01009F02060000010000005F2A02015682027C009F1A0201569F03060000000000009F3303E0E1C09F34033F00009F3501229F1E0831323334353637388408A0000003330101019F090200209F410400000004;
-     isApplePay = 00;
-     swipeMode = 01;
-     }
-     */
+- (void)onReceiveDeviceIdentifyInfo:(NSDictionary *)IdInfoDic
+{
+    NSLog(@"IdInfoDic:%@",IdInfoDic);
     
+    /**
+     {
+     cipher = 3031453038464543;
+     factor = 313536393833;
+     ksn = 303030303234303339393931383130313030303030323036;
+     sappVer = 56332E3020202020;
+     }
+     **/
+    if (IdInfoDic.count == 0) {
+        return;
+    }
+    
+    if (_deviceIdentifyInfoBlock) {
+        _deviceIdentifyInfoBlock(IdInfoDic);
+    }
+    
+    //后面获取流水号
+#if TARGET_IPHONE_SIMULATOR
+    
+#else
+    [_tySwiper readBatchIDAndSerialID];
+#endif
 }
+
+///**
+// *  提示已经获取到卡片信息
+// */
+//- (void)onReadCardData:(NSDictionary *)cardInfo {
+//    NSLog(@"cardInfo:%@",cardInfo);
+//    /* 芯片交易数据
+//     {
+//     cardNumber = 6217560800027564300;
+//     cardSeqNum = 01;
+//     cardType = 1;
+//     cardValidDate = 2906;
+//     encTrack2Ex = 556116D07442357C85265A03D490B20A6DEAAD1F58EEF46C;
+//     errorCode = 9000;
+//     icData = 9F26089C1039A1C959154A9F2701809F1013070B0103A0B002010A0100000000003AC6C8959F3704E86409009F36020006950500000008009A031909119C01009F02060000010000005F2A02015682027C009F1A0201569F03060000000000009F3303E0E1C09F34033F00009F3501229F1E0831323334353637388408A0000003330101019F090200209F410400000004;
+//     isApplePay = 00;
+//     swipeMode = 01;
+//     }
+//     */
+//
+//}
 
 /**
  获取刷卡后返回的数据
@@ -368,13 +378,20 @@
          swipeMode = 00;
          }
          */
-
-            [_tySwiper confirmTransaction:NO andMsg:@"交易完成"];
         
-            if (_tradSuccessBlock) {
-                _tradSuccessBlock(data);
-            }
-    //后面获取流水号
+        if (_tradSuccessBlock) {
+            _tradSuccessBlock(data);
+        }
+        
+        // 获取认证信息
+#if TARGET_IPHONE_SIMULATOR
+        
+#else
+        [_tySwiper getDeviceIdentifyInfo];
+#endif
+        
+        
+        
         
     }
     
@@ -385,8 +402,9 @@
 }
 //交易成功回调
 - (void)onConfirmTransaction:(BOOL)isSuccess{
-     NSLog(@"isSuccess:%d",isSuccess);
-    [_tySwiper readBatchIDAndSerialID];
+    NSLog(@"isSuccess:%d",isSuccess);
+    
+    
 }
 
 /**
@@ -407,8 +425,17 @@
         _tradOrderBackBlock(IDdata);
     }
     
+#if TARGET_IPHONE_SIMULATOR
+    
+#else
+    //最后一步
+    [_tySwiper confirmTransaction:NO andMsg:@"交易完成"];
+#endif
+    
+    
 }
 
 
 
 @end
+
