@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,retain) NSDictionary *requestDict;//请求数据
 
+@property (nonatomic,retain) NSString *testImageString;//测试图片base64
+
 @end
 
 NS_ASSUME_NONNULL_END

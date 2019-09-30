@@ -98,6 +98,13 @@
 //    15512345678    z123456
 
     
+//    PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
+//    resultVC.hidesBottomBarWhenPushed = YES;
+//    resultVC.processTag = 0;
+//    resultVC.payWayTag = 2;
+//    [self.navigationController pushViewController:resultVC animated:YES];
+    
+    
 //    BlueToothSearchToolsTableViewController *cardCerVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];

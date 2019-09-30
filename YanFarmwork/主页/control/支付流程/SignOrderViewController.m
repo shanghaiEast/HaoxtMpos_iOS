@@ -77,7 +77,7 @@
     [bgImageView addSubview:confirmButton];
     
    
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, bgImageView.frame.size.width, bgImageView.frame.size.height-65) style:UITableViewStylePlain];
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, bgImageView.frame.size.width, bgImageView.frame.size.height-65) style:UITableViewStyleGrouped];
     self.myTableView.backgroundColor = [UIColor clearColor];
     self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.myTableView.delegate = self;
@@ -113,6 +113,10 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 60)];
     view.backgroundColor = [UIColor clearColor];
     
+//    UIView *headColor = [[UIView alloc] initWithFrame:CGRectMake(20, 7, tableView.frame.size.width-40, 60-7)];
+//    headColor.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
+//    [view addSubview:headColor];
+    
     UIImageView *logoImage = [[UIImageView alloc] init];
     logoImage.frame = CGRectMake(29,23,22,18);
     logoImage.image = [UIImage imageNamed:@"银联.png"];
@@ -146,6 +150,19 @@
         NSData *imageData = [[NSData alloc] initWithBase64EncodedString:[_resultDict objectForKey:@"FILE_NO"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
         UIImage *image = [UIImage imageWithData:imageData];
         _footerView.signImageView.image = image;
+        
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:_footerView.signImageView.bounds];
+            imageView.backgroundColor = [UIColor orangeColor];
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            [self.view addSubview:imageView];
+            
+            NSData  *decodedImageData = [[NSData alloc] initWithBase64Encoding:_testImageString];
+            UIImage *decodedImage = [UIImage imageWithData:decodedImageData];
+            
+            imageView.image = decodedImage;
+        });
     }
     
     

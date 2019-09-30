@@ -57,22 +57,34 @@
 
 - (UIImage *)saveScreen:(SDDrawView *)view {
     
-    UIGraphicsBeginImageContext(view.bounds.size);
+CGSize size = CGSizeMake(ScreenWidth, 193);
+    UIGraphicsBeginImageContext(size);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    //    UIImage *image = [[UIImage alloc]init];
-    //    image = UIGraphicsGetImageFromCurrentImageContext();
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+//    UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
     
-    //不保存签名图片到本地
-    //    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
-    CGSize imagesize = image.size;
-    imagesize.height =50;
-    imagesize.width =100;
-    //    self.image = ;
+    return viewImage;
     
-
-    return image;
+    
+//    CGSize size = CGSizeMake(ScreenWidth, 193);
+//
+//    UIGraphicsBeginImageContext(size);
+//    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    //    UIImage *image = [[UIImage alloc]init];
+//    //    image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//
+//    //不保存签名图片到本地
+//    //    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
+////    CGSize imagesize = image.size;
+////    imagesize.height =193;
+////    imagesize.width =ScreenWidth;
+//    //    self.image = ;
+//
+//
+//    return image;
 }
 
 
@@ -88,8 +100,11 @@
         
         self.hidden = YES;
         
+//        [self testView];
+//        return;
+        
         if (_processTag == 0) {
-            
+            [self requestCommitImage];
         }else{
             
             [self requestCommitImage];
@@ -99,22 +114,47 @@
     }
 }
 
+- (void )testView{
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 100, ScreenWidth, 198)];
+    imageView.backgroundColor = [UIColor orangeColor];
+    [_rootVC.view addSubview:imageView];
+    imageView.image = [self saveScreen:_drawView];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //一、图片转换成字符串
+        NSData *imageData = UIImageJPEGRepresentation([self saveScreen:_drawView], 1.0f);
+        NSString *base64String = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        //二、字符串转换成图片
+        NSData  *decodedImageData = [[NSData alloc] initWithBase64Encoding:base64String];
+        UIImage *decodedImage = [UIImage imageWithData:decodedImageData];
+        
+        imageView.image = decodedImage;
+        
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //一、图片转换成字符串
+     
+        
+        [self requestCommitImage];
+    });
+}
 
 
 - (void)requestCommitImage {
     
-//    if (_image == nil) {
-//        [ToolsObject showMessageTitle:@"请先上传图片" andDelay:1 andImage:nil];
-//        
-//        return;
-//    }
+    if ([self saveScreen:_drawView] == nil) {
+        [ToolsObject showMessageTitle:@"请先上传图片" andDelay:1 andImage:nil];
+        
+        return;
+    }
     
     [ToolsObject SVProgressHUDShowStatus:nil WithMask:YES];
     typeof(self) wSelf = self;
     
-    NSData *imageData = UIImageJPEGRepresentation([self saveScreen:_drawView], 1.0) ;
-    NSString *base64String = [ToolsObject dataWitbBase64ToStrimg:imageData];
-    
+    NSData *imageData = UIImageJPEGRepresentation([self saveScreen:_drawView], 1.0f);
+    NSString *base64String = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+
 //    NSString *actDtString = [_detailDict objectForKey:@"dateLocalTransaction"];
 //    actDtString = [NSString stringWithFormat:@"%@%@",[self getCurrentTimes],actDtString];
     NSString *actDtString = [self getCurrentTimes];
@@ -143,6 +183,7 @@
             SignOrderViewController *signVC = [[SignOrderViewController alloc] initWithNibName:@"SignOrderViewController" bundle:nil];
             signVC.processTag = wSelf.processTag;
             signVC.requestDict = pushDic;
+            signVC.testImageString = base64String;
             signVC.hidesBottomBarWhenPushed = YES;
             [_rootVC.navigationController pushViewController:signVC animated:YES];
 

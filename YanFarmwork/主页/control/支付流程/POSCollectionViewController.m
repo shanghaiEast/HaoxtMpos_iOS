@@ -10,6 +10,10 @@
 
 #import "SignOrderViewController.h"
 
+#import "PayResultViewController.h"
+
+#import "ConfirmSignViewController.h"
+
 
 #import "TianYuView.h"
 #import <CoreBluetooth/CBPeripheral.h>
@@ -299,20 +303,148 @@
             [ToolsObject SVProgressHUDDismiss];
             if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
                 //
+                /**
+                 "rspMap" : {
+                 "data" : {
+                 "scanAuthCode" :"",
+                 "retrievalReferenceNumber" :"",
+                 "softVersion" :"",
+                 "detailInqrng" :"",
+                 "amount" : "000000000001",
+                 "updateFlag" :"",
+                 "sourceTranDate" :"",
+                 "posConditionCode" : "00",
+                 "tranDate" :"",
+                 "mac" : "F7E3EFB2",
+                 "additionalResponseData" :"",
+                 "track2" :"",
+                 "tdKey" :"",
+                 "authorizationCode" :"",
+                 "msgTypeCode" : "22",
+                 "noUse40" :"",
+                 "switchingData" :"",
+                 "cardAcceptorTerminalId" : "00000005",
+                 "netMngInfoCode" : "000",
+                 "platFormCode" :"",
+                 "ICSystemRelated" :"",
+                 "conversionRateSettlement" :"",
+                 "noUse46" :"",
+                 "cardAcceptorId" :"",
+                 "icpbocDate" :"",
+                 "finaclNetData" :"",
+                 "processCode" : "000000",
+                 "timeLocalTransaction" : "175243",
+                 "terminalReadAbility" : "2",
+                 "posPinCaptureCode" :"",
+                 "pin" :"",
+                 "billNo" :"",
+                 "icsystemRelated" :"",
+                 "noUse607" :"",
+                 "panExtendCountryCode" :"",
+                 "amountCardholderBilling" :"",
+                 "additionalAmount" :"",
+                 "operator" : "CUP",
+                 "securityControlInfo" :"",
+                 "pan" : "6200850608156983",
+                 "cardSequenceNumber" :"",
+                 "currencyCodeSettle" :"",
+                 "noUse6010" :"",
+                 "track3" :"",
+                 "mti" : "0210",
+                 "transmissionDateAndTime" :"",
+                 "responseCode" : "M5",
+                 "dateExpiration" : "4912",
+                 "amountSettlement" :"",
+                 "systemsTraceAuditNumber" : "004465",
+                 "cardholderAuthInfo" :"",
+                 "settlementProcessFee" :"",
+                 "noUse30" :"",
+                 "dateSettlement" : "0929",
+                 "batchNo" : "000001",
+                 "transType" :"",
+                 "posLogNo" :"",
+                 "dateLocalTransaction" : "0929",
+                 "aquiringInstitutionCountryCode" :"",
+                 "settlementFee" :"",
+                 "posEntryModeCode" :"",
+                 "noUse608" :"",
+                 "orgIso8583Msg" :"",
+                 "amountCardholderDocument" :"",
+                 "aquiringInstitutionId" : "000001",
+                 "merchantType" : "上海市|上海市|徐汇区",
+                 "noUse21" :"",
+                 "sourceBatchNo" :"",
+                 "paramVersion" :"",
+                 "noUse24" :"",
+                 "noUse27" :"",
+                 "icConditionCode" : "0",
+                 "dateConversion" :"",
+                 "track1" :"",
+                 "noUse56" : "M5+商户数据错误",
+                 "additionalData48" :"",
+                 "dateCapture" :"",
+                 "cardAcceptorName" :"",
+                 "sourcePosRequestId" :"",
+                 "sourceAuthorizationCode" :"",
+                 "noUse47" :"",
+                 "panExtend" :"",
+                 "forwardInstitutionId" :"",
+                 "currencyCodeCardholder" :"",
+                 "makeMacContent" :"",
+                 "conversionRateCardholderBilling" :"",
+                 "additionalData57" :"",
+                 "reserved" :"",
+                 "currencyCode" : "156",
+                 "noUse606" :"",
+                 "noUseTemp" :"",
+                 "noUse609" :"",
+                 "transactionFee" :""
+                 }
+                 },
+                 **/
                 
                 /**
-                 PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
-                 resultVC.hidesBottomBarWhenPushed = YES;
-                 resultVC.processTag = wSelf.processTag;
-                 resultVC.payWayTag = 2;
-                 resultVC.scanString = scanString;
-                 resultVC.moneyString = wSelf.moneyString;
-                 [wSelf.rootVC.navigationController pushViewController:resultVC animated:YES];
+                 
                  **/
+                
+                
+                NSString *msgTypeCodeString = [NSString stringWithFormat:@"%@",[[[responseObject objectForKey:@"rspMap"] objectForKey:@"data"] objectForKey:@"responseCode"]];
+                
+                if ([msgTypeCodeString isEqualToString:@"00"]) { //成功
+                    PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
+                    resultVC.hidesBottomBarWhenPushed = YES;
+                    resultVC.processTag = wSelf.processTag;
+                    resultVC.payWayTag = 2;
+                    resultVC.resultDict = [[responseObject objectForKey:@"rspMap"] objectForKey:@"data"];
+                    resultVC.moneyString = wSelf.moneyString;
+                    [wSelf.navigationController pushViewController:resultVC animated:YES];
+                    
+                    return ;
+                    
+                }
+//                if ([msgTypeCodeString isEqualToString:@"P0"]) {//查询5次
+//                    [self requestSearch:[[responseObject objectForKey:@"rspMap"] objectForKey:@"data"]];
+//                    return ;
+//
+//                }
+                else{//错误
+                    ConfirmSignViewController *confirmSignVC = [[ConfirmSignViewController alloc] initWithNibName:@"ConfirmSignViewController" bundle:nil];
+                    confirmSignVC.payType = PAY_FIELD;
+                    confirmSignVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:confirmSignVC animated:YES];
+                    return ;
+                }
+                
+                
                 
             }else{
                 //filed
                 [ToolsObject showMessageTitle:[responseObject objectForKey:@"rspInf"] andDelay:1.0f andImage:nil];
+                
+                ConfirmSignViewController *confirmSignVC = [[ConfirmSignViewController alloc] initWithNibName:@"ConfirmSignViewController" bundle:nil];
+                confirmSignVC.payType = PAY_FIELD;
+                confirmSignVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:confirmSignVC animated:YES];
             }
             
         } failure:^(NSError * _Nonnull error) {
