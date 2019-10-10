@@ -32,8 +32,8 @@
                                 <constraint firstAttribute="height" constant="21" id="0oW-qQ-GOs"/>
                                 <constraint firstAttribute="width" constant="71" id="y0g-sL-2wP"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OOk-0c-fX2">
@@ -41,8 +41,8 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="bjY-DF-G5J"/>
                             </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qP-Sw-QvC">
@@ -78,8 +78,8 @@
                                 <constraint firstAttribute="height" constant="21" id="JNw-eU-YJk"/>
                                 <constraint firstAttribute="width" constant="71" id="tPt-SW-DzT"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P00-e4-zj9">
@@ -87,8 +87,8 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="qnf-wA-7Qx"/>
                             </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XM-vk-633">
@@ -108,7 +108,7 @@
                                 <constraint firstAttribute="height" constant="56" id="J24-iu-Y59"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.40000396970000002" green="0.39999473089999998" blue="0.39999657869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -128,12 +128,12 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhu-4v-Cdi">
-                    <rect key="frame" x="24" y="170" width="272" height="56"/>
+                    <rect key="frame" x="15" y="170" width="289" height="56"/>
                     <color key="backgroundColor" red="0.89736628529999996" green="0.34575632210000001" blue="0.3136770129" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="dub-gS-Isu"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                     <state key="normal" title="下一步">
                         <color key="titleColor" red="0.93334203959999995" green="0.93332201240000001" blue="0.93332594629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </state>
@@ -147,9 +147,9 @@
                 <constraint firstItem="xhu-4v-Cdi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="170" id="0Tb-u3-rsc"/>
                 <constraint firstItem="nXw-ef-0rd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AyA-4J-eYo"/>
                 <constraint firstItem="oyW-0M-pfg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CQw-s5-R4T"/>
-                <constraint firstItem="xhu-4v-Cdi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="CTz-C1-XDI"/>
+                <constraint firstItem="xhu-4v-Cdi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="CTz-C1-XDI"/>
                 <constraint firstItem="oyW-0M-pfg" firstAttribute="top" secondItem="nXw-ef-0rd" secondAttribute="bottom" id="DeF-9M-icV"/>
-                <constraint firstAttribute="trailing" secondItem="xhu-4v-Cdi" secondAttribute="trailing" constant="24" id="QfF-nt-J5Z"/>
+                <constraint firstAttribute="trailing" secondItem="xhu-4v-Cdi" secondAttribute="trailing" constant="16" id="QfF-nt-J5Z"/>
                 <constraint firstAttribute="trailing" secondItem="oyW-0M-pfg" secondAttribute="trailing" id="ctO-j8-zV6"/>
                 <constraint firstItem="xhu-4v-Cdi" firstAttribute="top" secondItem="oyW-0M-pfg" secondAttribute="bottom" constant="50" id="gI0-Ha-RZM"/>
                 <constraint firstAttribute="trailing" secondItem="nXw-ef-0rd" secondAttribute="trailing" id="yYA-VM-ddL"/>

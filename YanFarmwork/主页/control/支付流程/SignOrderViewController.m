@@ -152,17 +152,17 @@
         _footerView.signImageView.image = image;
         
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:_footerView.signImageView.bounds];
-            imageView.backgroundColor = [UIColor orangeColor];
-            imageView.contentMode = UIViewContentModeScaleAspectFit;
-            [self.view addSubview:imageView];
-            
-            NSData  *decodedImageData = [[NSData alloc] initWithBase64Encoding:_testImageString];
-            UIImage *decodedImage = [UIImage imageWithData:decodedImageData];
-            
-            imageView.image = decodedImage;
-        });
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            UIImageView *imageView = [[UIImageView alloc] initWithFrame:_footerView.signImageView.bounds];
+//            imageView.backgroundColor = [UIColor orangeColor];
+//            imageView.contentMode = UIViewContentModeScaleAspectFit;
+//            [self.view addSubview:imageView];
+//            
+//            NSData  *decodedImageData = [[NSData alloc] initWithBase64Encoding:_testImageString];
+//            UIImage *decodedImage = [UIImage imageWithData:decodedImageData];
+//            
+//            imageView.image = decodedImage;
+//        });
     }
     
     

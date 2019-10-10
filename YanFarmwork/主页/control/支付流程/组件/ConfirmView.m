@@ -22,6 +22,16 @@
 
 
 - (void)createView{
+    
+    if (_btnClickBlock) {
+        _btnClickBlock(1);
+    }
+    
+    
+    return;
+    
+    
+    
     _bottomView.layer.cornerRadius = 7.0f;
     _bottomView.layer.masksToBounds = YES;
     

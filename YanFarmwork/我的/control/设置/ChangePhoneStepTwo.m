@@ -47,6 +47,8 @@
     _confirmBtn.layer.cornerRadius = 2.0f;
     _confirmBtn.layer.masksToBounds = YES;
     
+    [_phoneNumber setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
+    [_yzmNumber setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
 
     _getYZMLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *getCodeLoginLabelClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getCodeTouchClick:)];
@@ -90,9 +92,9 @@
 {
     _timeNumber --;
     if (_timeNumber == 0) {
-        //        _getCodeLabel.enabled = YES;
-        //        _getCodeLabel.userInteractionEnabled = YES;
-        _getYZMLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+        _getYZMLabel.enabled = YES;
+        _getYZMLabel.userInteractionEnabled = YES;
+        _getYZMLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         _getYZMLabel.text = @"获取验证码";
         [_codeTimer invalidate];
         _codeTimer = nil;
@@ -192,6 +194,16 @@
     [YanNetworkOBJ postWithURLString:upLogPhone_two parameters:parametDic success:^(id  _Nonnull responseObject) {
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            
+            
+            NSMutableDictionary *tempDict = [USER_DATA mutableCopy];
+            [tempDict setObject:_phoneNumber.text forKey:@"USR_LOGIN_MBL"];
+            [ToolsObject savaUserData:tempDict];
+            [LoginJsonModel infoWithDictionary:USER_DATA];
+            NSLog(@"%@",[myData USR_TERM_STS]);
+            
+            
             
             //方法一： 返回到制定界面  但不是根界面的某个界面
             SetAppViewController *homeVC = [[SetAppViewController alloc] init];

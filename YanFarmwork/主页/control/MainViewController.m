@@ -12,18 +12,18 @@
 #import "RegisterViewController.h"
 
 //test
-#import "WxAndZfbTableViewController.h"
+#import "WxAndZfbViewController.h"
 #import "QrCodeTableViewController.h"
 #import "PayResultViewController.h"
 #import "ConfirmSignViewController.h"
 #import "TCreditCardCerTableViewController.h"
 #import "POSCollectionViewController.h"
-#import "BlueToothSearchToolsTableViewController.h"
+#import "BlueToothSearchToolsViewController.h"
 #import "PayResultViewController.h"
-#import "UserCertificationTableViewController.h"
+#import "UserCertificationViewController.h"
 #import "SignOrderViewController.h"
 #import <AVFoundation/AVCaptureDevice.h>
-#import "UserStatementTableViewController.h"
+#import "UserStatementViewController.h"
 #import "UserShopDetailTableViewController.h"
 #import "ChangeDebitCardViewController.h"
 
@@ -75,7 +75,14 @@
        
     }else{
         
-        [self requestMerchantsMessage];
+        
+        if (([[myData USR_STATUS] intValue] == 0 && [MY_USR_REAL_STS intValue] != 2)) {
+            [self createAlertView_trueName];
+            return;
+        }else{
+           [self requestMerchantsMessage];
+        }
+        
     }
 
 }
@@ -98,14 +105,12 @@
 //    15512345678    z123456
 
     
-//    PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
+//    UserStatementViewController *resultVC = [[UserStatementViewController alloc] initWithNibName:@"UserStatementViewController" bundle:nil];
 //    resultVC.hidesBottomBarWhenPushed = YES;
-//    resultVC.processTag = 0;
-//    resultVC.payWayTag = 2;
 //    [self.navigationController pushViewController:resultVC animated:YES];
     
     
-//    BlueToothSearchToolsTableViewController *cardCerVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
+//    BlueToothSearchToolsViewController *cardCerVC = [[BlueToothSearchToolsViewController alloc] initWithNibName:@"BlueToothSearchToolsViewController" bundle:nil];
 //    cardCerVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:cardCerVC animated:YES];
     
@@ -131,12 +136,19 @@
         
     }else{
         //实名认证
-        if ([myData TOKEN_ID].length != 0 && [[myData USR_STATUS] intValue] == 0) {
+        if ([myData TOKEN_ID].length != 0 && ([[myData USR_STATUS] intValue] == 0 && [MY_USR_REAL_STS intValue] != 2)) {
             [self createAlertView_trueName];
             
         }else{
+            
+            //信用卡认证
+            if ([myData TOKEN_ID].length != 0 && ([[myData USR_STATUS] intValue] != 0 || [MY_USR_REAL_STS intValue] == 2) && [[myData CCARD_VALID_STS] intValue] == 0) {
+                
+                [self createAlertView_cards];
+            }
+            
             //n绑定机具
-            if ([myData TOKEN_ID].length != 0 && [[myData USR_STATUS] intValue] != 0 && [[myData USR_TERM_STS] intValue] == 0) {
+            if ([myData TOKEN_ID].length != 0 && ([[myData USR_STATUS] intValue] != 0 || [MY_USR_REAL_STS intValue] == 2) && [[myData USR_TERM_STS] intValue] == 0) {
 
                 [self createAlertView_machines];
             }
@@ -274,7 +286,7 @@
         UILabel *label = [[UILabel alloc] init];
         label.frame = CGRectMake(15,0,100,40);
         label.numberOfLines = 0;
-        label.font = [UIFont systemFontOfSize:20 weight:UIFontWeightMedium];
+        label.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
         label.textColor = [UIColor colorWithHexString:@"#333333"];
         label.text = @"最近交易";
         [tradView addSubview:label];
@@ -293,6 +305,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:topCell owner:self options:nil] lastObject];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.noticeArray = _noticesArray;
         cell.receiveDict = _receiveDict;
         [cell createCell];
         
@@ -347,23 +360,60 @@
 }
 
 - (void)pushPayWay:(int)pushTag{
+    NSLog(@"pushTag : %d",pushTag);
     
-    if ([[myData USR_STATUS] intValue] == 0) {
+    if (([[myData USR_STATUS] intValue] == 0 && [MY_USR_REAL_STS intValue] != 2)) {
         [self createAlertView_trueName];
         return;
     }else{
-        if ([myData TOKEN_ID].length != 0 && [[myData USR_STATUS] intValue] != 0 && [[myData USR_TERM_STS] intValue] == 0) {
-            
+
+
+        //信用卡认证
+        if ([myData TOKEN_ID].length != 0 && ([[myData USR_STATUS] intValue] != 0 || [MY_USR_REAL_STS intValue] == 2) && [[myData CCARD_VALID_STS] intValue] == 0) {
+
+            [self createAlertView_cards];
+        }
+
+       //机具申领
+        if ([myData TOKEN_ID].length != 0 && ([[myData USR_STATUS] intValue] != 0 || [MY_USR_REAL_STS intValue] == 2) && [[myData USR_TERM_STS] intValue] == 0) {
+
             [self createAlertView_machines];
-            
+
             return;
         }
     }
     
-    WxAndZfbTableViewController *wxAndZfbVC = [[WxAndZfbTableViewController alloc] initWithNibName:@"WxAndZfbTableViewController" bundle:nil];
+    WxAndZfbViewController *wxAndZfbVC = [[WxAndZfbViewController alloc] initWithNibName:@"WxAndZfbViewController" bundle:nil];
     wxAndZfbVC.hidesBottomBarWhenPushed = YES;
     wxAndZfbVC.processTag = pushTag;
     [self.navigationController pushViewController:wxAndZfbVC animated:YES];
+}
+
+- (void)createAlertView_cards {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"需要绑定信用卡" message:@"使用好享推APP需先绑定信用卡" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"暂不绑定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"点击取消");
+        
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"前往绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"点击确认");
+        TCreditCardCerTableViewController *cardCerVC = [[TCreditCardCerTableViewController alloc] initWithNibName:@"TCreditCardCerTableViewController" bundle:nil];
+        cardCerVC.hidesBottomBarWhenPushed = YES;
+        [[ToolsObject currentViewController].navigationController pushViewController:cardCerVC animated:YES];
+        
+    }]];
+    
+    
+    //    [cancel setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
 }
 
 - (void)createAlertView_machines {
@@ -378,7 +428,7 @@
     [alertController addAction:[UIAlertAction actionWithTitle:@"前往绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
         NSLog(@"点击确认");
-        BlueToothSearchToolsTableViewController *blueVC = [[BlueToothSearchToolsTableViewController alloc] initWithNibName:@"BlueToothSearchToolsTableViewController" bundle:nil];
+        BlueToothSearchToolsViewController *blueVC = [[BlueToothSearchToolsViewController alloc] initWithNibName:@"BlueToothSearchToolsViewController" bundle:nil];
         blueVC.hidesBottomBarWhenPushed = YES;
         [[ToolsObject currentViewController].navigationController pushViewController:blueVC animated:YES];
 
@@ -403,7 +453,7 @@
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"前往认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"点击确认");
-        UserCertificationTableViewController *userCerVC = [[UserCertificationTableViewController alloc] initWithNibName:@"UserCertificationTableViewController" bundle:nil];
+        UserCertificationViewController *userCerVC = [[UserCertificationViewController alloc] initWithNibName:@"UserCertificationViewController" bundle:nil];
         userCerVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:userCerVC animated:YES];
     }]];

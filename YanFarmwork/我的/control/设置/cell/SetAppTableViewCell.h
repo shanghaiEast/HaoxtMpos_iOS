@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *goNextPng;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

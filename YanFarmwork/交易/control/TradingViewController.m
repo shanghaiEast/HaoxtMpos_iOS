@@ -157,6 +157,9 @@
     _leftBtn.tag = 0;
     [_leftBtn addTarget:self action:@selector(selectTimeAndfilter:) forControlEvents:UIControlEventTouchUpInside];
     [headView addSubview:_leftBtn];
+    if (self.startDateString.length != 0) {
+        [self.leftBtn setTitle:[NSString stringWithFormat:@"%@  %@",self.startDateString,self.endDataString] forState:UIControlStateNormal];
+    }
     
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -252,10 +255,13 @@
     }else{
         //filter
         AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        app.tabBarC.tabBar.hidden = YES;
+        
          wSelf.filterView = [[[NSBundle mainBundle] loadNibNamed:@"FilterView" owner:self options:nil] lastObject];
-        [ wSelf.filterView setFrame:app.window.bounds];
+        [ wSelf.filterView setFrame:self.view.bounds];
         [ wSelf.filterView createView];
-        [app.window addSubview: wSelf.filterView];
+        [self.view addSubview: wSelf.filterView];
+        
          wSelf.filterView.filtrBolck = ^(NSDictionary * _Nonnull dict) {
             NSLog(@"返回的数据：%@",dict);
 //             {

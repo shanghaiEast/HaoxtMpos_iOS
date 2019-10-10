@@ -24,6 +24,15 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleDefault;
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+//    [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
+    
 }
 
 - (void)viewDidLoad {
@@ -34,6 +43,12 @@
         
         _myScrollView.userInteractionEnabled = YES;
         [_myScrollView setContentSize:CGSizeMake(0, 560)];
+        
+        if (kNavBarHAbove7 == 64) {
+            [_myScrollView setFrame:CGRectMake(0, kNavBarHAbove7, ScreenWidth, ScreenHeight-kNavBarHAbove7)];
+        }else {
+            [_myScrollView setFrame:CGRectMake(0, kNavBarHAbove7+20, ScreenWidth, ScreenHeight-kNavBarHAbove7-20)];
+        }
     });
     
     [self createBackBtn];
@@ -42,7 +57,8 @@
 
 - (void)createBackBtn {
 
-    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, kStatusBarHeight, 44, 44)];
+    UIImageView *backImageView = [[UIImageView alloc] init];
+    [backImageView setFrame:CGRectMake(15, kNavBarHAbove7-44, 50, 50)];
     backImageView.image = [UIImage imageNamed:@"backBtnImage"];
     backImageView.contentMode = UIViewContentModeLeft;
     backImageView.userInteractionEnabled = YES;
@@ -62,14 +78,32 @@
     _lookPasswordBool = NO;
     _lookPassword.hidden = YES;
     
-    _loginBtn.layer.cornerRadius = 25.0;
-    _loginBtn.layer.masksToBounds = YES;
+//    _loginBtn.layer.cornerRadius = 25.0;
+//    _loginBtn.layer.masksToBounds = YES;
+    
+    
+    [_phoneNumber setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
+    
+    [_yzmNumber setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
+    
+    [_passwordNumber setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
+    
+    [_passwordNumber addTarget:self action:@selector(textFieldDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
     
     
     _getYZMLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *getCodeLoginLabelClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getCodeTouchClick:)];
     [_getYZMLabel addGestureRecognizer:getCodeLoginLabelClick];
     
+}
+
+//UITextFieldDelegate
+- (void)textFieldDidEnd:(UITextField *)textField {
+    NSLog(@"textField.text :%@",_passwordNumber.text);
+    
+    if ([ToolsObject judgePassWordLegal:textField.text] == NO) {
+        [ToolsObject showMessageTitle:@"请输入8-16字母数字组合密码" andDelay:1 andImage:nil];
+    }
 }
 
 /*
@@ -116,9 +150,9 @@
 {
     _timeNumber --;
     if (_timeNumber == 0) {
-        //        _getCodeLabel.enabled = YES;
-        //        _getCodeLabel.userInteractionEnabled = YES;
-        _getYZMLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+        _getYZMLabel.enabled = YES;
+        _getYZMLabel.userInteractionEnabled = YES;
+        _getYZMLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         _getYZMLabel.text = @"获取验证码";
         [_codeTimer invalidate];
         _codeTimer = nil;
@@ -163,6 +197,10 @@
         return;
     }
     
+    if ([ToolsObject judgePassWordLegal:_passwordNumber.text] == NO) {
+        [ToolsObject showMessageTitle:@"请输入8-16字母数字组合密码" andDelay:1 andImage:nil];
+    }
+    
     
     [self requestChangePwd];
 }
@@ -182,7 +220,7 @@
                                  };
     
     //18817370409
-    [YanNetworkOBJ postWithURLString:vcode_get parameters:parametDic success:^(id  _Nonnull responseObject) {
+    [YanNetworkOBJ postWithURLString_normal:vcode_get parameters:parametDic success:^(id  _Nonnull responseObject) {
         
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
@@ -218,7 +256,7 @@
                                 [ToolsObject md5:_passwordNumber.text],@"NEW_USR_LOGIN_PWD",
                                 nil];
     
-    [YanNetworkOBJ postWithURLString:password_find parameters:parametDic success:^(id  _Nonnull responseObject) {
+    [YanNetworkOBJ postWithURLString_normal:password_find parameters:parametDic success:^(id  _Nonnull responseObject) {
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
             

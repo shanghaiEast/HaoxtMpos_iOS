@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCC-64-tz1">
-                        <rect key="frame" x="30" y="27" width="25" height="16"/>
+                        <rect key="frame" x="15" y="27" width="25" height="16"/>
                         <color key="backgroundColor" red="0.96459382772445679" green="0.9176899790763855" blue="0.89802736043930054" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.86601585149765015" green="0.49070835113525391" blue="0.29796162247657776" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -38,29 +38,29 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝尾号 (2234)交易 236.00元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVN-Tt-Zvh">
-                        <rect key="frame" x="68" y="15" width="222" height="21"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <rect key="frame" x="48" y="15" width="256" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                         <color key="textColor" red="0.20000222325325012" green="0.19999706745147705" blue="0.19999805092811584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易日期：2019/12/13 15:23:11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWe-g4-L1n">
-                        <rect key="frame" x="68" y="36" width="221" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="48" y="39.5" width="251" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.6000058650970459" green="0.59999251365661621" blue="0.5999951958656311" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="mVN-Tt-Zvh" secondAttribute="trailing" constant="30" id="1qh-Xh-Fha"/>
+                    <constraint firstAttribute="trailing" secondItem="mVN-Tt-Zvh" secondAttribute="trailing" constant="16" id="1qh-Xh-Fha"/>
                     <constraint firstItem="tCC-64-tz1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="27" id="2RQ-eO-eqL"/>
-                    <constraint firstItem="VWe-g4-L1n" firstAttribute="top" secondItem="mVN-Tt-Zvh" secondAttribute="bottom" id="8MC-q0-uWj"/>
-                    <constraint firstAttribute="trailing" secondItem="VWe-g4-L1n" secondAttribute="trailing" constant="31" id="JIm-f9-B0j"/>
+                    <constraint firstItem="VWe-g4-L1n" firstAttribute="top" secondItem="mVN-Tt-Zvh" secondAttribute="bottom" constant="5" id="8MC-q0-uWj"/>
+                    <constraint firstAttribute="trailing" secondItem="VWe-g4-L1n" secondAttribute="trailing" constant="21" id="JIm-f9-B0j"/>
                     <constraint firstItem="mVN-Tt-Zvh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="L8h-L2-7FC"/>
-                    <constraint firstItem="mVN-Tt-Zvh" firstAttribute="leading" secondItem="tCC-64-tz1" secondAttribute="trailing" constant="13" id="VYl-Xr-1no"/>
-                    <constraint firstItem="tCC-64-tz1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Y80-pj-vk3"/>
+                    <constraint firstItem="mVN-Tt-Zvh" firstAttribute="leading" secondItem="tCC-64-tz1" secondAttribute="trailing" constant="8" id="VYl-Xr-1no"/>
+                    <constraint firstItem="tCC-64-tz1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Y80-pj-vk3"/>
                     <constraint firstAttribute="bottom" secondItem="Z2a-hl-ibv" secondAttribute="bottom" constant="0.5" id="f7c-pl-8MZ"/>
                     <constraint firstItem="Z2a-hl-ibv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="q5D-O9-LsS"/>
-                    <constraint firstItem="VWe-g4-L1n" firstAttribute="leading" secondItem="tCC-64-tz1" secondAttribute="trailing" constant="13" id="tRy-6F-lC6"/>
+                    <constraint firstItem="VWe-g4-L1n" firstAttribute="leading" secondItem="tCC-64-tz1" secondAttribute="trailing" constant="8" id="tRy-6F-lC6"/>
                     <constraint firstAttribute="trailing" secondItem="Z2a-hl-ibv" secondAttribute="trailing" constant="16" id="unj-OF-psg"/>
                     <constraint firstItem="Z2a-hl-ibv" firstAttribute="top" secondItem="tCC-64-tz1" secondAttribute="bottom" constant="26" id="yqA-xf-VzH"/>
                 </constraints>

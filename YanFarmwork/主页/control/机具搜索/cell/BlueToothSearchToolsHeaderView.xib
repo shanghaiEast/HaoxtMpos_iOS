@@ -21,6 +21,7 @@
                         <constraint firstAttribute="width" secondItem="wcd-JK-DcZ" secondAttribute="height" multiplier="1:1" id="PAJ-wx-kHZ"/>
                         <constraint firstAttribute="height" constant="200" id="QBz-Jl-6Z8"/>
                         <constraint firstAttribute="width" constant="200" id="ZcX-Hf-wnh"/>
+                        <constraint firstAttribute="width" secondItem="wcd-JK-DcZ" secondAttribute="height" multiplier="1:1" id="aad-q6-iaB"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请连接刷卡器" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oay-N0-RfP">

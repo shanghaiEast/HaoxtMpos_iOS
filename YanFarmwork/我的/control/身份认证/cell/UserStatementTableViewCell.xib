@@ -19,36 +19,36 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progressStepTwo.png" translatesAutoresizingMaskIntoConstraints="NO" id="BXE-9U-AoH">
-                        <rect key="frame" x="40" y="12" width="241" height="39"/>
+                        <rect key="frame" x="40" y="12" width="241" height="0.0"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="39" id="4mc-5b-eu2"/>
+                            <constraint firstAttribute="height" id="4mc-5b-eu2"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lineSharder.png" translatesAutoresizingMaskIntoConstraints="NO" id="qbD-m8-lDZ">
-                        <rect key="frame" x="0.0" y="58" width="320" height="13"/>
+                        <rect key="frame" x="0.0" y="19" width="320" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="3Py-kz-7ux"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请扫描银行卡的照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ou-PR-aOr">
-                        <rect key="frame" x="16" y="79" width="289" height="21"/>
+                        <rect key="frame" x="16" y="40" width="289" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="2qt-LH-vfx"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                         <color key="textColor" red="0.20000222325325012" green="0.19999706745147705" blue="0.19999805092811584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbQ-w1-v8Q">
-                        <rect key="frame" x="16" y="116" width="289" height="112"/>
+                        <rect key="frame" x="16" y="77" width="289" height="112"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传您银行卡照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E43-O1-hr0">
-                                <rect key="frame" x="11" y="37" width="90" height="14"/>
+                                <rect key="frame" x="11" y="37" width="124" height="14"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="gaD-gh-lEY"/>
+                                    <constraint firstAttribute="width" constant="124" id="gaD-gh-lEY"/>
                                     <constraint firstAttribute="height" constant="14" id="uQ6-al-hNK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.36470955610275269" green="0.3647010326385498" blue="0.36470270156860352" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -66,7 +66,7 @@
                                     <constraint firstAttribute="height" constant="22" id="9Wd-aa-TgZ"/>
                                     <constraint firstAttribute="width" constant="92" id="pJh-f4-bbY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" red="0.20000222325325012" green="0.19999706745147705" blue="0.19999805092811584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -90,17 +90,17 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-Tf-8FS">
-                        <rect key="frame" x="15" y="256" width="101" height="21"/>
+                        <rect key="frame" x="15" y="217" width="101" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="cf9-8S-qPl"/>
                             <constraint firstAttribute="width" constant="101" id="pxo-Hs-d5e"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.20000222325325012" green="0.19999706745147705" blue="0.19999805092811584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acc-OS-MOh">
-                        <rect key="frame" x="15" y="288" width="290" height="1"/>
+                        <rect key="frame" x="15" y="249" width="290" height="1"/>
                         <color key="backgroundColor" red="0.93334203958511353" green="0.93332201242446899" blue="0.93332594633102417" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="9Vr-vv-hz2"/>
@@ -110,7 +110,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="账户名称" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="as0-hR-0x6">
-                        <rect key="frame" x="118" y="251" width="186" height="30"/>
+                        <rect key="frame" x="118" y="212" width="186" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="EvD-Xs-OiE"/>
                         </constraints>
@@ -119,17 +119,17 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结算账户" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJx-VO-a5J">
-                        <rect key="frame" x="14" y="302" width="70" height="21"/>
+                        <rect key="frame" x="14" y="263" width="70" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="21Y-Ss-X9C"/>
                             <constraint firstAttribute="width" constant="70" id="K2R-9R-07q"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJk-H4-JzY">
-                        <rect key="frame" x="0.0" y="335" width="320" height="10"/>
+                        <rect key="frame" x="0.0" y="296" width="320" height="10"/>
                         <color key="backgroundColor" red="0.98040133714675903" green="0.98038023710250854" blue="0.98038440942764282" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="Myo-ny-qb2"/>
@@ -139,7 +139,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="结算账户" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Jr-Zh-36U">
-                        <rect key="frame" x="117" y="302" width="186" height="21"/>
+                        <rect key="frame" x="117" y="263" width="186" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="qsC-SV-Pus"/>
                         </constraints>
@@ -148,17 +148,17 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开户总行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySD-EB-q0y">
-                        <rect key="frame" x="14" y="364" width="101" height="21"/>
+                        <rect key="frame" x="14" y="325" width="101" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="101" id="lqN-nb-tHF"/>
                             <constraint firstAttribute="height" constant="21" id="ml9-nx-Bp0"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sh-av-ttT">
-                        <rect key="frame" x="109" y="350" width="194" height="49"/>
+                        <rect key="frame" x="109" y="311" width="194" height="49"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="49" id="zrW-mC-yIU"/>
                         </constraints>
@@ -171,7 +171,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deT-jd-Hpi">
-                        <rect key="frame" x="15" y="402" width="290" height="1"/>
+                        <rect key="frame" x="15" y="363" width="290" height="1"/>
                         <color key="backgroundColor" red="0.93334203959999995" green="0.93332201240000001" blue="0.93332594629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="R9C-95-TeY"/>
@@ -181,17 +181,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开户地区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGx-oD-Fqc">
-                        <rect key="frame" x="13" y="419" width="101" height="21"/>
+                        <rect key="frame" x="13" y="380" width="101" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="101" id="art-wV-mbh"/>
                             <constraint firstAttribute="height" constant="21" id="lIo-CW-e3a"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHM-FS-kJg">
-                        <rect key="frame" x="137" y="404" width="166" height="50"/>
+                        <rect key="frame" x="137" y="365" width="166" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="166" id="Di0-bV-sOk"/>
                             <constraint firstAttribute="height" constant="50" id="h13-QE-xK8"/>
@@ -205,7 +205,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgr-WY-2rI">
-                        <rect key="frame" x="14" y="457" width="290" height="1"/>
+                        <rect key="frame" x="14" y="418" width="290" height="1"/>
                         <color key="backgroundColor" red="0.93334203959999995" green="0.93332201240000001" blue="0.93332594629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="Nmg-aX-Oft"/>
@@ -215,17 +215,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开户支行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sat-d0-adW">
-                        <rect key="frame" x="15" y="474" width="101" height="21"/>
+                        <rect key="frame" x="15" y="435" width="101" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="0jg-du-zH5"/>
                             <constraint firstAttribute="width" constant="101" id="ay6-VZ-b2F"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siz-1v-WCo">
-                        <rect key="frame" x="109" y="465" width="195" height="40"/>
+                        <rect key="frame" x="109" y="426" width="195" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="LhP-e3-sHD"/>
                         </constraints>
@@ -238,7 +238,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CG6-Uh-hSS">
-                        <rect key="frame" x="16" y="512" width="290" height="1"/>
+                        <rect key="frame" x="16" y="473" width="290" height="1"/>
                         <color key="backgroundColor" red="0.93334203959999995" green="0.93332201240000001" blue="0.93332594629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="HNN-dN-Cgz"/>
@@ -248,7 +248,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn0-f9-iRO">
-                        <rect key="frame" x="17" y="581" width="292" height="56"/>
+                        <rect key="frame" x="17" y="542" width="292" height="56"/>
                         <color key="backgroundColor" red="0.89736628529999996" green="0.34575632210000001" blue="0.3136770129" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="56" id="w2l-zd-mqk"/>

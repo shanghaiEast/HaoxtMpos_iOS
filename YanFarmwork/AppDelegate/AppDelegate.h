@@ -10,7 +10,7 @@
 
 
 
-//#import <IQKeyboardManager/IQKeyboardManager.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 
 
@@ -29,7 +29,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-//@property (retain, nonatomic) IQKeyboardManager *keyboardManager;
 
 @property (retain, nonatomic) MyTabBarController *myTabBarC;
 @property (retain, nonatomic) UITabBarController *tabBarC;
@@ -37,6 +36,8 @@
 @property (retain, nonatomic) MainViewController *mainVC;
 @property (retain, nonatomic) TradingViewController *tradinVC;
 @property (retain, nonatomic) PersonCenterViewController *personCenterVC;
+
+@property (copy, nonatomic) IQKeyboardManager *keyboardManager;
 
 
 

@@ -20,6 +20,8 @@
     numStr = [numStr substringFromIndex:numStr.length-4];
     NSString *bankStr = [NSString stringWithFormat:@"%@(%@)",[SHOP_DETAIL objectForKey:@"STL_BANK_NAME"],numStr];
     [_chooseBankBtn setTitle:bankStr forState:UIControlStateNormal];
+    
+    
 }
 
 - (void)createCell{

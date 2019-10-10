@@ -19,9 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toolsBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="uLE-SE-RYW">
-                        <rect key="frame" x="15" y="8" width="290" height="76"/>
+                        <rect key="frame" x="15" y="17" width="290" height="58"/>
+                        <color key="backgroundColor" red="0.98420125246047974" green="0.91767293214797974" blue="0.91763764619827271" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="76" id="4p4-08-n1E"/>
+                            <constraint firstAttribute="height" constant="58" id="4p4-08-n1E"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toolsImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="IxZ-Iq-I4j">
@@ -37,7 +38,7 @@
                             <constraint firstAttribute="height" constant="21" id="Id1-g9-6YQ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                        <color key="textColor" red="0.25882631540000001" green="0.25881996750000003" blue="0.25882121920000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="textColor" red="0.20000222325325012" green="0.19999706745147705" blue="0.19999805092811584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -47,10 +48,10 @@
                     <constraint firstItem="uLE-SE-RYW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="5uQ-2c-pci"/>
                     <constraint firstItem="IxZ-Iq-I4j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="33" id="GVB-sC-lj1"/>
                     <constraint firstItem="fgI-ed-DfV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="37" id="Kfi-Gz-jnh"/>
-                    <constraint firstAttribute="bottom" secondItem="uLE-SE-RYW" secondAttribute="bottom" constant="0.5" id="MwP-04-Lb1"/>
+                    <constraint firstAttribute="bottom" secondItem="uLE-SE-RYW" secondAttribute="bottom" constant="9.5" id="MwP-04-Lb1"/>
                     <constraint firstItem="IxZ-Iq-I4j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="31" id="Por-Mb-DKg"/>
                     <constraint firstItem="fgI-ed-DfV" firstAttribute="leading" secondItem="IxZ-Iq-I4j" secondAttribute="trailing" constant="11" id="hcl-LL-Akb"/>
-                    <constraint firstItem="uLE-SE-RYW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="mw7-qb-y9s"/>
+                    <constraint firstItem="uLE-SE-RYW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="mw7-qb-y9s"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

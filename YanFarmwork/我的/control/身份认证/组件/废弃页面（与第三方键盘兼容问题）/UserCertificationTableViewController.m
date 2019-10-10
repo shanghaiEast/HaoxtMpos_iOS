@@ -25,7 +25,7 @@
     
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleDefault;
     
-    if (ScreenHeight <= 568) {//解决OCR小屏版本bug
+    if (kNavBarHAbove7 == 64) {//解决OCR小屏版本bug
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
     }
     

@@ -20,6 +20,19 @@
     numStr = [numStr substringFromIndex:numStr.length-4];
     NSString *bankStr = [NSString stringWithFormat:@"%@(%@)",[SHOP_DETAIL objectForKey:@"STL_BANK_NAME"],numStr];
     [_chooseBankBtn setTitle:bankStr forState:UIControlStateNormal];
+    
+
+}
+
+- (void)createView{
+    
+    if (_processTag == 0) {
+        _titleLabel.text = @"普通收款";
+    }else if (_processTag == 1) {
+        _titleLabel.text = @"超级收款";
+    }else if (_processTag == 3) {
+        _titleLabel.text = @"闪付优惠";
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

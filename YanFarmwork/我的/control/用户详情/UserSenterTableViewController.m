@@ -60,7 +60,7 @@
     
     _listValueArray = @[[_detialDict objectForKey:@"MERC_ID"],
                         [_detialDict objectForKey:@"CORP_NM"],
-                        [_detialDict objectForKey:@"USR_OPR_MBL"],
+                        [_detialDict objectForKey:@"USR_LOGIN_MBL"],
                         beginDateString,
                         userStateString,
                         [NSString stringWithFormat:@"%@%@",[_detialDict objectForKey:@"DCARD_TFEE"],@"%"],

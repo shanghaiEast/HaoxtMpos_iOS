@@ -19,9 +19,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="普通收款(超级收款)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBW-be-Y79">
-                        <rect key="frame" x="19" y="29" width="285" height="34"/>
+                        <rect key="frame" x="15" y="29" width="291" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="285" id="iwD-qC-CUB"/>
+                            <constraint firstAttribute="width" constant="291" id="iwD-qC-CUB"/>
                             <constraint firstAttribute="height" constant="34" id="tmS-xN-UUs"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
@@ -43,7 +43,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="39" id="6uO-27-Ufy"/>
                         </constraints>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                     </textField>
@@ -67,7 +67,7 @@
                         <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nextPage.png" translatesAutoresizingMaskIntoConstraints="NO" id="fMA-nx-92o">
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nextPage.png" translatesAutoresizingMaskIntoConstraints="NO" id="fMA-nx-92o">
                         <rect key="frame" x="291" y="182" width="15" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="czo-Ki-ENa"/>
@@ -98,7 +98,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bnu-oo-m23">
-                        <rect key="frame" x="21" y="350" width="281" height="56"/>
+                        <rect key="frame" x="15" y="350" width="291" height="56"/>
                         <color key="backgroundColor" red="0.89736628529999996" green="0.34575632210000001" blue="0.3136770129" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="56" id="Ws9-Dx-XAx"/>
@@ -114,7 +114,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="OBW-be-Y79" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="29" id="0ei-oB-M0Z"/>
-                    <constraint firstItem="Bnu-oo-m23" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="2dh-9u-OjR"/>
+                    <constraint firstItem="Bnu-oo-m23" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="2dh-9u-OjR"/>
                     <constraint firstItem="ihh-JF-uYy" firstAttribute="leading" secondItem="1Vo-hy-Ep0" secondAttribute="trailing" constant="15" id="8SH-ku-egT"/>
                     <constraint firstItem="7DH-ft-zkq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Bh0-Wg-dKe"/>
                     <constraint firstItem="Bnu-oo-m23" firstAttribute="top" secondItem="kU6-fn-dbW" secondAttribute="bottom" constant="132" id="EXR-sV-ePW"/>
@@ -125,10 +125,10 @@
                     <constraint firstItem="kU6-fn-dbW" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="ZZr-XY-h8W"/>
                     <constraint firstItem="1Vo-hy-Ep0" firstAttribute="top" secondItem="7DH-ft-zkq" secondAttribute="bottom" constant="15" id="eHJ-TM-w35"/>
                     <constraint firstItem="1Vo-hy-Ep0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="fFc-kp-lxF"/>
-                    <constraint firstAttribute="trailing" secondItem="Bnu-oo-m23" secondAttribute="trailing" constant="18" id="fKG-oF-AdW"/>
+                    <constraint firstAttribute="trailing" secondItem="Bnu-oo-m23" secondAttribute="trailing" constant="14" id="fKG-oF-AdW"/>
                     <constraint firstItem="zmU-9n-V1Y" firstAttribute="top" secondItem="OBW-be-Y79" secondAttribute="bottom" constant="31" id="g5w-Oz-7fc"/>
                     <constraint firstItem="fMA-nx-92o" firstAttribute="top" secondItem="7DH-ft-zkq" secondAttribute="bottom" constant="18" id="gu7-Ps-15X"/>
-                    <constraint firstItem="OBW-be-Y79" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="lP7-aO-v05"/>
+                    <constraint firstItem="OBW-be-Y79" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="lP7-aO-v05"/>
                     <constraint firstItem="fMA-nx-92o" firstAttribute="leading" secondItem="ihh-JF-uYy" secondAttribute="trailing" constant="8" id="ldb-j3-5lH"/>
                     <constraint firstAttribute="trailing" secondItem="fMA-nx-92o" secondAttribute="trailing" constant="14" id="p6v-9Q-jXv"/>
                     <constraint firstAttribute="trailingMargin" secondItem="zmU-9n-V1Y" secondAttribute="trailing" constant="2" id="pEA-WC-XAa"/>
@@ -142,8 +142,9 @@
                 <outlet property="chooseBankBtn" destination="ihh-JF-uYy" id="cMs-aG-CdH"/>
                 <outlet property="loginBtn" destination="Bnu-oo-m23" id="dMZ-k0-WRd"/>
                 <outlet property="moneyNumber" destination="zmU-9n-V1Y" id="pTZ-JM-jr5"/>
+                <outlet property="titleLabel" destination="OBW-be-Y79" id="wBX-Vx-yhJ"/>
             </connections>
-            <point key="canvasLocation" x="200" y="170"/>
+            <point key="canvasLocation" x="200.00000000000003" y="169.75446428571428"/>
         </tableViewCell>
     </objects>
     <resources>

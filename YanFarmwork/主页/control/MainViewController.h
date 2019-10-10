@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)checkLogin;
 
+- (void)createAlertView_cards;
 - (void)createAlertView_trueName;
 - (void)createAlertView_machines;
 

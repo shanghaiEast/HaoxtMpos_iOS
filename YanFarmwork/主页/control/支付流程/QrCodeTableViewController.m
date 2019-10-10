@@ -10,9 +10,6 @@
 
 
 
-
-
-
 #import "PayResultViewController.h"
 
 #import "WxAndZfbTableViewCell.h"
@@ -36,7 +33,15 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    [MyTools setViewController:self withNavigationBarColor:MAINCOLOR andItem:@"微信/支付宝" itemColor:WHITECOLOR haveBackBtn:NO withBackImage:defaultBarBackImage_White withBackClickTarget:self BackClickAction:@selector(popViewClick)];
+    //传值，判断微信还是支付宝,0=支付宝,1=微信
+    NSString *titleString;
+    if (_payWayTag == 0) {
+        titleString = @"支付宝";//支付宝
+    }else{
+        titleString = @"微信";//微信
+    }
+    
+    [MyTools setViewController:self withNavigationBarColor:MAINCOLOR andItem:titleString itemColor:WHITECOLOR haveBackBtn:NO withBackImage:defaultBarBackImage_White withBackClickTarget:self BackClickAction:@selector(popViewClick)];
     
 
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];

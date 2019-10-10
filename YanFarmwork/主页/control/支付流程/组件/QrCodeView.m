@@ -100,7 +100,8 @@
         
         NSLog(@"扫描结果 %@",scanString);//280191565026249368
         
-        PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
+        PayResultViewController *resultVC =
+        [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
         resultVC.hidesBottomBarWhenPushed = YES;
         resultVC.processTag = wSelf.processTag;
         resultVC.payWayTag = wSelf.payWayTag;

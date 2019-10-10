@@ -35,11 +35,17 @@
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES animated:NO];
     
+    [self showMerchin];
+    [_myTableView reloadData];
+    
     
     if ([myData TOKEN_ID].length != 0) {
-        [self requestMerchantsMessage];
+        if (([[myData USR_STATUS] intValue] == 0 && [MY_USR_REAL_STS intValue] != 2)) {
+            
+        }else{
+            [self requestMerchantsMessage];
+        }
     }
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated:(BOOL)animated {
@@ -51,10 +57,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _titleArrar = @[@"信用卡认证", @"机具申领", @"在线客服", @"帮助中心"];
-    _picturArray = @[@"personCard.png", @"personGoods.png", @"personService.png", @"personCenter.png"];
+   
+    
+//    _titleArrar = @[@"信用卡认证", @"机具申领", @"在线客服", @"帮助中心"];
+//    _picturArray = @[@"personCard.png", @"personGoods.png", @"personService.png", @"personCenter.png"];
+    
+    [self showMerchin];
     
     [self createTableView];
+}
+
+- (void)showMerchin{
+    
+    //机具申领([[myData USR_STATUS] intValue] == 0 && [MY_USR_REAL_STS intValue] != 2)
+    if ([myData TOKEN_ID].length != 0 && [[myData USR_TERM_STS] intValue] == 0) {
+        _titleArrar = @[@"信用卡认证", @"机具申领"];
+        _picturArray = @[@"personCard.png", @"personGoods.png"];
+       
+    }else{
+        _titleArrar = @[@"信用卡认证"];
+        _picturArray = @[@"personCard.png"];
+    }
 }
 
 - (void)createTableView {
@@ -73,6 +96,7 @@
     _myTableView.sectionFooterHeight = CGFLOAT_MIN;
     _myTableView.tableFooterView = [UIView new];
     [self.view addSubview:_myTableView];
+    _myTableView.bounces = NO;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -125,6 +149,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    if ([myData TOKEN_ID].length != 0) {
+        if (([[myData USR_STATUS] intValue] == 0 && [MY_USR_REAL_STS intValue] != 2)) {
+            
+            [self requestMerchantsMessage];
+            
+            return;
+        }
+    }
+    
     
     if (indexPath.row == 0) {
         //信用卡认证

@@ -103,6 +103,7 @@
     
     if (indexPath.row == 2) {
         cell.versionLabel.text = APP_VERSION;
+        cell.goNextPng.hidden = YES;
     }
     
     

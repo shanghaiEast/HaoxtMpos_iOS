@@ -1,12 +1,12 @@
 //
-//  WxAndZfbTableViewController.m
+//  WxAndZfbViewController.m
 //  YanFarmwork
 //
-//  Created by HG on 2019/9/3.
+//  Created by HG on 2019/10/8.
 //  Copyright © 2019 Yanhuaqiang. All rights reserved.
 //
 
-#import "WxAndZfbTableViewController.h"
+#import "WxAndZfbViewController.h"
 
 #import "POSCollectionViewController.h"
 
@@ -15,17 +15,20 @@
 #import "ConfirmView.h"
 #import "QrCodeTableViewController.h"
 
-@interface WxAndZfbTableViewController ()
+@interface WxAndZfbViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) int payWayTag;
-@property (retain, nonatomic) ConfirmView *confirmView;
 
 @end
 
-@implementation WxAndZfbTableViewController
+@implementation WxAndZfbViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+//    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    app.keyboardManager.enableAutoToolbar = NO;
+//    app.keyboardManager.enable = NO;
     
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleDefault;
     
@@ -37,37 +40,45 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
 - (void)popViewClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
     
-
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.sectionFooterHeight = CGFLOAT_MIN;
-    self.tableView.tableFooterView = [UIView new];
-    self.tableView.sectionHeaderHeight = CGFLOAT_MIN;
-    self.tableView.tableHeaderView = [UIView new];
-    self.tableView.bounces = NO;
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-kNavBarHAbove7) style:UITableViewStylePlain];
+    _myTableView.backgroundColor = [UIColor clearColor];
+    _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _myTableView.delegate = self;
+    _myTableView.dataSource = self;
+    _myTableView.sectionFooterHeight = CGFLOAT_MIN;
+    _myTableView.tableFooterView = [UIView new];
+    [self.view addSubview:_myTableView];
+    
+    if (@available(iOS 11.0, *)) {
+        _myTableView.estimatedRowHeight = 0;
+        _myTableView.estimatedSectionFooterHeight = 0;
+        _myTableView.estimatedSectionHeaderHeight = 0;
+        _myTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
 }
-
-
-
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return 1;
 }
 
@@ -93,7 +104,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     //确定
     if (_processTag == 2) {
         static NSString *cellStr = @"WxAndZfbTableViewCell";
@@ -121,33 +132,15 @@
                 
                 return ;
             }
-            if (wSelf.confirmView == nil) {
-                wSelf.confirmView = [[[NSBundle mainBundle] loadNibNamed:@"ConfirmView" owner:self options:nil] lastObject];
-                [wSelf.confirmView setFrame:self.tableView.bounds];
-                wSelf.confirmView.payType = wSelf.payWayTag;
-                wSelf.confirmView.moneyString = [NSString stringWithFormat:@"%@",cell.moneyNumber.text];
-                [wSelf.confirmView createView];
-                [tableView addSubview:wSelf.confirmView];
-                
-                wSelf.confirmView.btnClickBlock = ^(int btnTag) {
-                    wSelf.confirmView.hidden = YES;
-                    if (btnTag == 1) {
-                        QrCodeTableViewController *qrCodeVC = [[QrCodeTableViewController alloc] initWithNibName:@"QrCodeTableViewController" bundle:nil];
-                        qrCodeVC.hidesBottomBarWhenPushed = YES;
-                        qrCodeVC.payWayTag = wSelf.payWayTag;
-                        qrCodeVC.processTag = wSelf.processTag;
-                        qrCodeVC.moneyString = cell.moneyNumber.text;
-                        [self.navigationController pushViewController:qrCodeVC animated:YES];
-                    }else{
-                        //取消
-                    }
-                };
-            }else{
-                wSelf.confirmView.payType = wSelf.payWayTag;
-                [wSelf.confirmView createView];
-                wSelf.confirmView.hidden = NO;
-            }
             
+            QrCodeTableViewController *qrCodeVC = [[QrCodeTableViewController alloc] initWithNibName:@"QrCodeTableViewController" bundle:nil];
+            qrCodeVC.hidesBottomBarWhenPushed = YES;
+            qrCodeVC.payWayTag = wSelf.payWayTag;
+            qrCodeVC.processTag = wSelf.processTag;
+            qrCodeVC.moneyString = cell.moneyNumber.text;
+            [self.navigationController pushViewController:qrCodeVC animated:YES];
+            
+          
             
             
         };
@@ -162,7 +155,9 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-//        [cell createCell];
+        cell.processTag = _processTag;
+        
+        [cell createView];
         
         
         __weak typeof(self) wSelf = self;
@@ -180,42 +175,35 @@
                 
                 return ;
             }
-            if (wSelf.confirmView == nil) {
-                wSelf.confirmView = [[[NSBundle mainBundle] loadNibNamed:@"ConfirmView" owner:self options:nil] lastObject];
-                [wSelf.confirmView setFrame:self.tableView.bounds];
-                wSelf.confirmView.payType = wSelf.payWayTag;
-                wSelf.confirmView.moneyString = [NSString stringWithFormat:@"%@",cell.moneyNumber.text];
-                [wSelf.confirmView createView];
-                [tableView addSubview:wSelf.confirmView];
-                
-                wSelf.confirmView.btnClickBlock = ^(int btnTag) {
-                    wSelf.confirmView.hidden = YES;
-                    if (btnTag == 1) {
-                        POSCollectionViewController *posVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
-                        posVC.hidesBottomBarWhenPushed = YES;
-                        posVC.processTag = _processTag;
-                        posVC.moneyString = cell.moneyNumber.text;
-                        [self.navigationController pushViewController:posVC animated:YES];
-                    }else{
-                        //取消
-                    }
-                };
-            }else{
-                wSelf.confirmView.payType = wSelf.payWayTag;
-                [wSelf.confirmView createView];
-                wSelf.confirmView.hidden = NO;
-            }
             
+            POSCollectionViewController *posVC = [[POSCollectionViewController alloc] initWithNibName:@"POSCollectionViewController" bundle:nil];
+            posVC.hidesBottomBarWhenPushed = YES;
+            posVC.processTag = _processTag;
+            posVC.moneyString = cell.moneyNumber.text;
+            [self.navigationController pushViewController:posVC animated:YES];
             
-            
+           
         };
         
         return cell;
     }
-   
+    
     return [UITableViewCell new];
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

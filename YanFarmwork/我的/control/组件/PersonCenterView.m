@@ -10,7 +10,7 @@
 
 #import "SetAppViewController.h"
 #import "UserSenterTableViewController.h"
-#import "UserCertificationTableViewController.h"
+#import "UserCertificationViewController.h"
 #import "LinesViewController.h"
 #import "DebitCardViewController.h"
 #import "MyPOSViewController.h"
@@ -34,8 +34,12 @@
     _bottonImageView.layer.cornerRadius = 10.0f;
     _bottonImageView.layer.masksToBounds = YES;
     
+    if ([[myData USR_OPR_NM] length] == 0) {
+        _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@",[myData USR_LOGIN_MBL]];
+    }else{
+        _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_OPR_NM],[myData USR_LOGIN_MBL]];
+    }
     
-    _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_OPR_NM],[myData USR_OPR_MBL]];
     
     _shopNOLabel.text = [NSString stringWithFormat:@"商户编号   %@",checkNull([_detialDict objectForKey:@"MERC_ID"])];
     
@@ -76,6 +80,13 @@
 //跳转个人资料
 - (void)puchToUserMessage{
     NSLog(@"跳转个人资料");
+    
+    if (([[myData USR_STATUS] intValue] == 0 && [MY_USR_REAL_STS intValue] != 2)) {
+        [self createAlertView_trueName];
+        
+        return;
+    }
+    
     UserSenterTableViewController *userVC = [[UserSenterTableViewController alloc] initWithNibName:@"UserSenterTableViewController" bundle:nil];
     userVC.detialDict = _detialDict;
     userVC.hidesBottomBarWhenPushed = YES;
@@ -85,8 +96,21 @@
 - (void)fourViewPress:(UITapGestureRecognizer *)tapGestureRecognizer {
     NSLog(@"4个按钮点击: %ld",(long)tapGestureRecognizer.view.tag);
     
-    if ([[myData USR_STATUS] intValue] == 0) {
+    //未认证下可以进入
+    if ([[myData USR_STATUS] intValue] == 0 && [MY_USR_REAL_STS intValue] != 2 && tapGestureRecognizer.view.tag == 1) {
+        
+        UserCertificationViewController *userCerVC = [[UserCertificationViewController alloc] initWithNibName:@"UserCertificationViewController" bundle:nil];
+        userCerVC.hidesBottomBarWhenPushed = YES;
+        [_rootVC.navigationController pushViewController:userCerVC animated:YES];
+        
+        return;
+    }
+    
+   
+    
+    if (([[myData USR_STATUS] intValue] == 0 && [MY_USR_REAL_STS intValue] != 2)) {
         [self createAlertView_trueName];
+        
         return;
     }
     
@@ -95,7 +119,7 @@
             [ToolsObject showMessageTitle:@"您已完成认证" andDelay:1 andImage:nil];
             return;
         }
-        UserCertificationTableViewController *userCerVC = [[UserCertificationTableViewController alloc] initWithNibName:@"UserCertificationTableViewController" bundle:nil];
+        UserCertificationViewController *userCerVC = [[UserCertificationViewController alloc] initWithNibName:@"UserCertificationViewController" bundle:nil];
         userCerVC.hidesBottomBarWhenPushed = YES;
         [_rootVC.navigationController pushViewController:userCerVC animated:YES];
     }
@@ -138,7 +162,7 @@
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"前往认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"点击确认");
-        UserCertificationTableViewController *userCerVC = [[UserCertificationTableViewController alloc] initWithNibName:@"UserCertificationTableViewController" bundle:nil];
+        UserCertificationViewController *userCerVC = [[UserCertificationViewController alloc] initWithNibName:@"UserCertificationViewController" bundle:nil];
         userCerVC.hidesBottomBarWhenPushed = YES;
         [_rootVC.navigationController pushViewController:userCerVC animated:YES];
     }]];

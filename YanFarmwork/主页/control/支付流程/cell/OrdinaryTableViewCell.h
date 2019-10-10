@@ -21,11 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) PayWayBlock payWayBlock;
 @property (copy, nonatomic) SaveMoneyBlock saveMoneyBlock;
 
-@property (nonatomic) int payWayTag;
-//@property (retain, nonatomic)
 
-
-
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyNumber;
 
@@ -37,9 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
+@property (nonatomic) int payWayTag;
+@property (nonatomic) int processTag;//支付流程
+//@property (retain, nonatomic)
 
-
-//- (void)createCell;
+- (void)createView;
 
 @end
 

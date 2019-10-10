@@ -1117,8 +1117,8 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
 #pragma mark 判断仅输入字母和数字：
 +(BOOL)judgePassWordLegal:(NSString *)pass{
     BOOL result = false;
-    if ([pass length] >= 6 && [pass length] <= 16){
-        // 判断长度大于6位后再接着判断是否同时包含数字和字符
+    if ([pass length] >= 8 && [pass length] <= 16){
+        // 判断长度大于8位后再接着判断是否同时包含数字和字符
         NSString * regex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$";
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
         result = [pred evaluateWithObject:pass];

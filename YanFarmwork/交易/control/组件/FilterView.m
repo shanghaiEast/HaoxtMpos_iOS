@@ -8,7 +8,7 @@
 
 #import "FilterView.h"
 
-@interface FilterView ()
+@interface FilterView ()<UITextFieldDelegate>
 
 //@property (retain, nonatomic) NSArray *stateArray, *typeArray;
 
@@ -40,6 +40,8 @@
     _minPrice.layer.borderWidth = 1.0f;
     _minPrice.layer.borderColor = [[UIColor colorWithHexString:@"#C1C1C1"] CGColor];
     _minPrice.layer.masksToBounds = YES;
+    _minPrice.delegate = self;
+    [_minPrice addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
 
     
     UIImageView *rightImageView2 = [[UIImageView alloc]init];
@@ -51,10 +53,20 @@
     _maxPrice.layer.borderWidth = 1.0f;
     _maxPrice.layer.borderColor = [[UIColor colorWithHexString:@"#C1C1C1"] CGColor];
     _maxPrice.layer.masksToBounds = YES;
-    
+    _maxPrice.delegate = self;
+    [_maxPrice addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
     
     [self createStateBtn];
     [self createTypeBtn];
+}
+
+//UITextFieldDelegate
+- (void)textFieldChange:(UITextField *)textField {
+    if (textField == _minPrice) {
+        
+    }else if (textField == _maxPrice) {
+        
+    }
 }
 
 //靠边等距排列一行
@@ -112,7 +124,7 @@
             [stateBtn setTitleColor:[UIColor colorWithHexString:@"#FFFFFF"] forState:UIControlStateNormal];
             [stateBtn setBackgroundColor:[UIColor colorWithHexString:@"#FE4049"]];
         }else{
-            [stateBtn setTitleColor:[UIColor colorWithHexString:@"#555555"] forState:UIControlStateNormal];
+            [stateBtn setTitleColor:[UIColor colorWithHexString:@"#666666"] forState:UIControlStateNormal];
             [stateBtn setBackgroundColor:[UIColor colorWithHexString:@"#F5F5F5"]];
         }
         [stateBtn addTarget:self action:@selector(typeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -135,10 +147,13 @@
 
 
 - (IBAction)cancelOrConfirmBtnClick:(id)sender {
+     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     UIButton *button = (id)sender;
     if (button.tag == 0) {
         // 取消
         self.hidden = YES;
+        app.tabBarC.tabBar.hidden = NO;
         
     }else{
         //确定
@@ -150,6 +165,8 @@
         
         
         self.hidden = YES;
+        
+         app.tabBarC.tabBar.hidden = NO;
         
         if (_filtrBolck) {
             NSDictionary *dict = @{

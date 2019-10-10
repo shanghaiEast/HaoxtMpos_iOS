@@ -19,17 +19,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifC-8K-yWR">
-                        <rect key="frame" x="27" y="7" width="83" height="21"/>
+                        <rect key="frame" x="15" y="7" width="75" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="GyL-GA-RmU"/>
-                            <constraint firstAttribute="width" constant="83" id="i4T-Td-4GF"/>
+                            <constraint firstAttribute="width" constant="75" id="i4T-Td-4GF"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <color key="textColor" red="0.4823576807975769" green="0.48234677314758301" blue="0.48234891891479492" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wif-ac-h1q">
-                        <rect key="frame" x="108" y="7" width="196" height="21"/>
+                        <rect key="frame" x="89" y="7" width="215" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="ror-0b-lLR"/>
                         </constraints>
@@ -40,10 +40,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="wif-ac-h1q" secondAttribute="trailing" constant="16" id="Anw-L7-Lgz"/>
-                    <constraint firstItem="ifC-8K-yWR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="27" id="Hhn-ev-rFg"/>
+                    <constraint firstItem="ifC-8K-yWR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Hhn-ev-rFg"/>
                     <constraint firstItem="wif-ac-h1q" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gAl-Eu-xxd"/>
                     <constraint firstItem="ifC-8K-yWR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gol-lH-3q5"/>
-                    <constraint firstItem="wif-ac-h1q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="108" id="rjF-zf-1p9"/>
+                    <constraint firstItem="wif-ac-h1q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="89" id="rjF-zf-1p9"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

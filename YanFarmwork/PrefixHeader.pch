@@ -127,6 +127,24 @@
 #define WHITECOLOR [UIColor colorWithHexString:@"#ffffff"]
 #define BLACKCOLOR [UIColor colorWithHexString:@"#333333"]
 
+//重要
+#define IMPORTANT_BACKGROUND [UIColor colorWithHexString:@"#FE4049"]
+#define IMPORTANT_TEXT [UIColor colorWithHexString:@"#333333"]
+//一般
+//#define NORMAL_BACKGROUND [UIColor colorWithHexString:@"#FE4049"]
+#define NORMAL_TEXT_LEVEL_1 [UIColor colorWithHexString:@"#666666"]
+#define NORMAL_TEXT_LEVEL_2 [UIColor colorWithHexString:@"#999999"]
+//较弱
+#define WEAKER_TEXT_LEVEL_1 [UIColor colorWithHexString:@"#cccccc"]
+
+
+
+
+
+
+
+
+
 //NSLog(...)提交状态下注释；
 #ifdef DEBUG
 #define NSLog(...) NSLog(__VA_ARGS__)
@@ -202,6 +220,9 @@
 #define myData [LoginJsonModel infoWithDictionary:USER_DATA]
 
 #define SHOP_DETAIL  [[NSUserDefaults standardUserDefaults] objectForKey:@"shopDetail"]
+
+#define MY_USR_REAL_STS [[NSUserDefaults standardUserDefaults] objectForKey:@"USR_REAL_STS"]
+
 //{
 //    "TM_SMP" : "20190924164802",
 //    "USR_OPR_MBL" : "1881***0409",
@@ -303,7 +324,7 @@
 #define  apptrans_trans @"apptrans/trans"  //交易接口
 #define  sign_upLoadSign @"sign/upLoadSign"  //上传签名
 #define  sign_qrySignBillDtl @"sign/qrySignBillDtl"  //获取签购单
-//#define   @""  //
+#define  usr_chkRealSts @"usr/chkRealSts"  //验证实名状态
 //#define   @""  //
 //#define   @""  //
 //#define   @""  //

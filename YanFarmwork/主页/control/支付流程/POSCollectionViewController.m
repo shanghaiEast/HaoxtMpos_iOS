@@ -234,6 +234,10 @@
         [ToolsObject playGIFWithNameL:@"searchTools" playTime:3 showImageView:wSelf.stateBGImageView];
     };
     
+    _tianYuView.tradFailureBlock = ^(BOOL TradFailureBool) {
+        [self popViewClick];
+    };
+    
 }
 
 - (void)requestCommit {
@@ -248,7 +252,7 @@
         NSString *transTypeString = @"purchase";
         NSString *actPayTypeString = @"1";
         if (wSelf.processTag == 0 || wSelf.processTag == 1) {
-//            transTypeString = @"deposit";
+            transTypeString = @"deposit";
             actPayTypeString = @"0";
         }
         

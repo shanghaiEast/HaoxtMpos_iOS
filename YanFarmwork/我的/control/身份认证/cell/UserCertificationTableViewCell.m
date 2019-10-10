@@ -8,7 +8,7 @@
 
 #import "UserCertificationTableViewCell.h"
 
-#import "UserStatementTableViewController.h"
+#import "UserStatementViewController.h"
 
 #import "IDCardTimeView.h"
 
@@ -265,7 +265,7 @@
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
             
-            UserStatementTableViewController *userStatementVC = [[UserStatementTableViewController alloc] initWithNibName:@"UserStatementTableViewController" bundle:nil];
+            UserStatementViewController *userStatementVC = [[UserStatementViewController alloc] initWithNibName:@"UserStatementViewController" bundle:nil];
             userStatementVC.hidesBottomBarWhenPushed = YES;
             [wSelf.rootVC.navigationController pushViewController:userStatementVC animated:YES];
             

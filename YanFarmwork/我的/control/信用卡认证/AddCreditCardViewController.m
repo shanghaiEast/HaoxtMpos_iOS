@@ -29,7 +29,7 @@
     
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleDefault;
     
-    if (ScreenHeight <= 568) {//解决OCR小屏版本bug
+    if (kNavBarHAbove7 == 64) {//解决OCR小屏版本bug
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
     }
     
@@ -170,6 +170,13 @@
     [YanNetworkOBJ postWithURLString:usr_authPromoteLimit parameters:parametDic success:^(id  _Nonnull responseObject) {
         [ToolsObject SVProgressHUDDismiss];
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {
+            
+            NSMutableDictionary *tempDict = [USER_DATA mutableCopy];
+            [tempDict setObject:@"1" forKey:@"CCARD_VALID_STS"];
+            [ToolsObject savaUserData:tempDict];
+            [LoginJsonModel infoWithDictionary:USER_DATA];
+            
+            
             
             ConfirmSignViewController *confirmSignVC = [[ConfirmSignViewController alloc] initWithNibName:@"ConfirmSignViewController" bundle:nil];
             confirmSignVC.payType = TYPE_CARDCER;

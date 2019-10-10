@@ -38,7 +38,7 @@
                         <constraint firstAttribute="height" constant="21" id="skm-fc-HuA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.2000022233" green="0.19999706749999999" blue="0.1999980509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOI-nD-JaU">
@@ -84,7 +84,7 @@
                 <outlet property="signImageView" destination="ziP-kU-TdG" id="bXs-5Y-krI"/>
                 <outlet property="signView" destination="TOI-nD-JaU" id="pFf-3A-bOc"/>
             </connections>
-            <point key="canvasLocation" x="131.25" y="-281.51408450704224"/>
+            <point key="canvasLocation" x="503" y="-295"/>
         </view>
     </objects>
     <resources>

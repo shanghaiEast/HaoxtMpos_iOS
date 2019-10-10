@@ -25,6 +25,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Scf-pY-9Gn"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <state key="normal" title="退出">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>

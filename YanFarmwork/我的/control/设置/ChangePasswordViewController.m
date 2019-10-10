@@ -36,6 +36,31 @@
     // Do any additional setup after loading the view from its nib.
     _confirmBtn.layer.cornerRadius = 2.0f;
     _confirmBtn.layer.masksToBounds = YES;
+    
+    
+    [_oldPassword setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
+    [_myNewPassword setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
+    [_againPassword setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
+    
+        [_myNewPassword addTarget:self action:@selector(textFieldDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
+        [_againPassword addTarget:self action:@selector(textFieldDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
+}
+
+//UITextFieldDelegate
+- (void)textFieldDidEnd:(UITextField *)textField {
+    NSLog(@"textField.text :%@",textField.text);
+    
+//    if (textField == _myNewPassword) {
+        if ([ToolsObject judgePassWordLegal:textField.text] == NO) {
+            [ToolsObject showMessageTitle:@"请输入8-16字母数字组合密码" andDelay:1 andImage:nil];
+        }
+        
+//    }else if (textField == _againPassword) {
+//        if ([ToolsObject judgePassWordLegal:textField.text] == NO) {
+//            [ToolsObject showMessageTitle:@"请输入8-16字母数字组合密码" andDelay:1 andImage:nil];
+//        }
+//    }
+    
 }
 
 /*
@@ -63,11 +88,16 @@
 //        return;
 //    }
     
+    if ([ToolsObject judgePassWordLegal:_againPassword.text] == NO) {
+        [ToolsObject showMessageTitle:@"请输入8-16字母数字组合密码" andDelay:1 andImage:nil];
+    }
+    
     if (![_myNewPassword.text isEqualToString:_againPassword.text]) {
         [ToolsObject showMessageTitle:@"2次输入的密码不一致" andDelay:1.0 andImage:nil];
         
         return;
     }
+    
     
     
     [self requestChangePwd];

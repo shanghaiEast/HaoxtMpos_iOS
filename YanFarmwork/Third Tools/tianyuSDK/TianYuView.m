@@ -363,6 +363,10 @@
         [_tySwiper confirmTransaction:NO andMsg:[data objectForKey:@"errorDescription"]];
         [ToolsObject showMessageTitle:[NSString stringWithFormat:@"%@",[data objectForKey:@"errorDescription"]] andDelay:1 andImage:nil];
         
+        if (_tradFailureBlock) {
+            _tradFailureBlock(YES);
+        }
+        
     }else{
         /*
          {
@@ -390,12 +394,7 @@
         [_tySwiper getDeviceIdentifyInfo];
 #endif
         
-        
-        
-        
     }
-    
-    
     
 #endif
     
@@ -403,7 +402,6 @@
 //交易成功回调
 - (void)onConfirmTransaction:(BOOL)isSuccess{
     NSLog(@"isSuccess:%d",isSuccess);
-    
     
 }
 

@@ -70,8 +70,15 @@
 //    [_headImage sd_setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/pic/item/32fa828ba61ea8d3fcd2e9ce9e0a304e241f5803.jpg"] placeholderImage:[UIImage imageNamed:@"userLogo.png"] options:SDWebImageRefreshCached];
     
     NSLog(@"%@",[myData USR_NM]);
-    NSLog(@"%@",[myData USR_OPR_MBL]);
-    _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_OPR_NM],[myData USR_LOGIN_MBL]];
+    NSLog(@"%@",[myData USR_LOGIN_MBL]);
+    
+    if ([[myData USR_OPR_NM] length] == 0) {
+        _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@",[myData USR_LOGIN_MBL]];
+    }else{
+        _nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@  %@",[myData USR_OPR_NM],[myData USR_LOGIN_MBL]];
+    }
+    
+    
     
     _todayMoneyLabel.text = [NSString stringWithFormat:@"%@",checkNull([_receiveDict objectForKey:@"BAL_AMT_DAY"])];
      _allMoneyLabel.text = [NSString stringWithFormat:@"%@",checkNull([_receiveDict objectForKey:@"BAL_AMT_MON"])];
@@ -94,19 +101,22 @@
     [_viewFour addGestureRecognizer:viewFourTouch];
     
     
-    _noticeArray = @[@"ccdcdcsdcsc",@"sdscdcsdcsdcsvrgbgsbfgng",@"234242423424324243423424424"];
+//    _noticeArray = @[@"ccdcdcsdcsc",@"sdscdcsdcsdcsvrgbgsbfgng",@"234242423424324243423424424"];
     
     typeof(self)wSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        _advertisView
-        wSelf.noticeView = [[GYRollingNoticeView alloc]initWithFrame:wSelf.advertisView.bounds];
-        wSelf.noticeView.dataSource = self;
-        wSelf.noticeView.delegate = self;
-        [wSelf.advertisView addSubview:wSelf.noticeView];
+        if (_noticeArray.count != 0) {
+            wSelf.noticeView = [[GYRollingNoticeView alloc]initWithFrame:wSelf.advertisView.bounds];
+            wSelf.noticeView.dataSource = self;
+            wSelf.noticeView.delegate = self;
+            [wSelf.advertisView addSubview:wSelf.noticeView];
+            
+            [wSelf.noticeView registerClass:[GYNoticeViewCell class] forCellReuseIdentifier:@"GYNoticeViewCell"];
+            
+            [wSelf.noticeView reloadDataAndStartRoll];
+        }
         
-        [wSelf.noticeView registerClass:[GYNoticeViewCell class] forCellReuseIdentifier:@"GYNoticeViewCell"];
-        
-        [wSelf.noticeView reloadDataAndStartRoll];
     });
     
 }
@@ -120,7 +130,7 @@
 {
     // 普通用法，只有一行label滚动显示文字
     GYNoticeViewCell *cell = [rollingView dequeueReusableCellWithIdentifier:@"GYNoticeViewCell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", _noticeArray[index]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [_noticeArray[index] objectForKey:@"TITLE_NM"]];
     cell.contentView.backgroundColor = [UIColor clearColor];
    
     return cell;

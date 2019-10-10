@@ -48,6 +48,9 @@
     _confirmBtn.layer.cornerRadius = 2.0f;
     _confirmBtn.layer.masksToBounds = YES;
     
+    [_phoneNumber setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
+    [_yzmNumber setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
+    
 
     _getYZMLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *getCodeLoginLabelClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getCodeTouchClick:)];
@@ -91,9 +94,9 @@
 {
     _timeNumber --;
     if (_timeNumber == 0) {
-        //        _getCodeLabel.enabled = YES;
-        //        _getCodeLabel.userInteractionEnabled = YES;
-        _getYZMLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+        _getYZMLabel.enabled = YES;
+        _getYZMLabel.userInteractionEnabled = YES;
+        _getYZMLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         _getYZMLabel.text = @"获取验证码";
         [_codeTimer invalidate];
         _codeTimer = nil;
@@ -147,7 +150,7 @@
     
     NSDictionary *parametDic = @{
                                  @"USR_LOGIN" : _phoneNumber.text,
-                                 @"BUS_TYPE" : @"2"
+                                 @"BUS_TYPE" : @"1"
                                  };
     
     //18817370409

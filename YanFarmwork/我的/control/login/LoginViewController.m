@@ -25,17 +25,24 @@
  
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
+    [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleDefault;
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     
+//    [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [ToolsObject disableTheSideslip:self];
+    
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [self.view.superview setFrame:CGRectMake(0, 0, ScreenWidth, 700)];
@@ -49,9 +56,10 @@
     _mindPasswordBool = NO;
     _lookPasswordBool = NO;
     
-    _loginBtn.layer.cornerRadius = 25.0;
-    _loginBtn.layer.masksToBounds = YES;
+   
+    [_phoneNumber setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
     
+    [_passwordNumber setValue:WEAKER_TEXT_LEVEL_1 forKeyPath:@"_placeholderLabel.textColor"];
     
     if ([ISMINDPW isEqualToString:@"Y"]) {
         _phoneNumber.text = PHONE;
@@ -163,7 +171,7 @@
                                  [NSString stringWithFormat:@"%@",[ToolsObject md5:_passwordNumber.text]],@"USR_LOGIN_PWD",
                                 nil];
     
-    [YanNetworkOBJ postWithURLString:usr_login parameters:parametDic success:^(id  _Nonnull responseObject) {
+    [YanNetworkOBJ postWithURLString_normal:usr_login parameters:parametDic success:^(id  _Nonnull responseObject) {
         [ToolsObject SVProgressHUDDismiss];
         
         if ([[responseObject objectForKey:@"rspCd"] intValue] == 000000) {

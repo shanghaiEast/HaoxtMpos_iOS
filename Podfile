@@ -16,10 +16,11 @@ pod 'Charts', '~> 3.0.4'
 pod 'ReactiveCocoa', '~> 8.0.2'
 pod 'SBJson', '~> 5.0.0'
 pod 'JXCategoryView', '~> 1.2.9'
-pod 'IQKeyboardManager', '~> 6.4.0'
 pod 'QRCode', '~> 2.0'
 pod 'LYEmptyView', '~> 1.3.0'
 pod 'BMKLocationKit', '~> 1.7.0'
+pod 'IQKeyboardManager', '~> 6.4.0'
+
 
 
 

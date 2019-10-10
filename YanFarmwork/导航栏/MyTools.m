@@ -32,7 +32,7 @@
     UIColor *color = itemColor;
     NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     viewController.navigationController.navigationBar.titleTextAttributes = dict;
-    [viewController.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20],NSForegroundColorAttributeName:color}];
+    [viewController.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17 weight:UIFontWeightMedium],NSForegroundColorAttributeName:color}];
     viewController.navigationItem.title = itemString;
   
     

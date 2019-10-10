@@ -65,7 +65,11 @@ typedef void(^UploadImageWait)(float waitTime);
                   success:(void (^)(id responseObject))success
                   failure:(void (^)(NSError *error))failure;
 
-
+#pragma mark -- POST请求 --
++ (void)postWithURLString_normal:(NSString *)URLString
+                      parameters:(id)parameters
+                         success:(void (^)(id))success
+                         failure:(void (^)(NSError *))failure;
 /**
  *  发送网络请求
  *

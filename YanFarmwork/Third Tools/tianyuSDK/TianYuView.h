@@ -17,6 +17,7 @@ typedef void(^ConnectedOnBlock)(BOOL connectedBool);//on connected
 typedef void(^ConnectedOffBlock)(BOOL connectedBool);//off connected
 typedef void(^GetMessageBlock)(CBPeripheral *myDevice , NSString *snString, NSDictionary *ksnDic);//message connected
 typedef void(^TradSuccessBlock)(NSDictionary *successDict);//trad success
+typedef void(^TradFailureBlock)(BOOL TradFailureBool);//trad success
 typedef void(^DisConnectedDeviceBlock)(BOOL success);//DisConnectedDevice
 typedef void(^UpdateWorkingKeySuccessBlock)(BOOL success);//Update Working Key
 typedef void(^TradOrderBackBlock)(NSDictionary *orderDict);//读批次号、流水号结果
@@ -30,6 +31,7 @@ typedef void(^DeviceIdentifyInfoBlock)(NSDictionary *infoDict);//功能描述   
 @property (copy, nonatomic)  ConnectedOffBlock connectedOffBlock;
 @property (copy, nonatomic)  GetMessageBlock getMessageBlock;
 @property (copy, nonatomic)  TradSuccessBlock tradSuccessBlock;
+@property (copy, nonatomic)  TradFailureBlock tradFailureBlock;
 @property (copy, nonatomic)  DisConnectedDeviceBlock disConnectedDeviceBlock;
 @property (copy, nonatomic)  UpdateWorkingKeySuccessBlock updateWorkingKeySuccessBlock;
 @property (copy, nonatomic)  TradOrderBackBlock tradOrderBackBlock;

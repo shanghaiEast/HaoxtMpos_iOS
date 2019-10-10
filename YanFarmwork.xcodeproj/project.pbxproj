@@ -61,6 +61,10 @@
 		C712CF132334BABE00D8DFE1 /* searchIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C712CF112334BABE00D8DFE1 /* searchIcon@3x.png */; };
 		C712CF192334CB5B00D8DFE1 /* GYNoticeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C712CF152334CB5B00D8DFE1 /* GYNoticeViewCell.m */; };
 		C712CF1A2334CB5B00D8DFE1 /* GYRollingNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C712CF162334CB5B00D8DFE1 /* GYRollingNoticeView.m */; };
+		C713E6C7234C768500852889 /* WxAndZfbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C713E6C5234C768500852889 /* WxAndZfbViewController.m */; };
+		C713E6C8234C768500852889 /* WxAndZfbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C713E6C6234C768500852889 /* WxAndZfbViewController.xib */; };
+		C7140D37234EE2E90041E7D0 /* BlueToothSearchToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7140D35234EE2E90041E7D0 /* BlueToothSearchToolsViewController.m */; };
+		C7140D38234EE2E90041E7D0 /* BlueToothSearchToolsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7140D36234EE2E90041E7D0 /* BlueToothSearchToolsViewController.xib */; };
 		C714D81B2328903B008B48FD /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714D81A2328903B008B48FD /* CoreBluetooth.framework */; };
 		C714D81D23289059008B48FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714D81C23289059008B48FD /* AudioToolbox.framework */; };
 		C714D81F2328906D008B48FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714D81E2328906C008B48FD /* MediaPlayer.framework */; };
@@ -106,6 +110,10 @@
 		C72B11D92326292B00BE5672 /* libzlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72B11C42326292B00BE5672 /* libzlib.a */; };
 		C72B11DE23264DC900BE5672 /* OrdinaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72B11DC23264DC900BE5672 /* OrdinaryTableViewCell.xib */; };
 		C72B11DF23264DC900BE5672 /* OrdinaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72B11DD23264DC900BE5672 /* OrdinaryTableViewCell.m */; };
+		C738F452234DCA37003006E6 /* UserCertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C738F450234DCA37003006E6 /* UserCertificationViewController.m */; };
+		C738F453234DCA37003006E6 /* UserCertificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C738F451234DCA37003006E6 /* UserCertificationViewController.xib */; };
+		C738F457234DCAE1003006E6 /* UserStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C738F455234DCAE1003006E6 /* UserStatementViewController.m */; };
+		C738F458234DCAE1003006E6 /* UserStatementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C738F456234DCAE1003006E6 /* UserStatementViewController.xib */; };
 		C73ABACE233B161F003450AB /* AreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C73ABACC233B161F003450AB /* AreaPickerView.m */; };
 		C73ABAD0233B1859003450AB /* AreaPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73ABACF233B1859003450AB /* AreaPickerView.xib */; };
 		C7441A642320B44A009736EF /* ChangePhoneStepOne.m in Sources */ = {isa = PBXBuildFile; fileRef = C7441A622320B449009736EF /* ChangePhoneStepOne.m */; };
@@ -444,6 +452,12 @@
 		C712CF162334CB5B00D8DFE1 /* GYRollingNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYRollingNoticeView.m; sourceTree = "<group>"; };
 		C712CF172334CB5B00D8DFE1 /* GYRollingNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYRollingNoticeView.h; sourceTree = "<group>"; };
 		C712CF182334CB5B00D8DFE1 /* GYNoticeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYNoticeViewCell.h; sourceTree = "<group>"; };
+		C713E6C4234C768500852889 /* WxAndZfbViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WxAndZfbViewController.h; sourceTree = "<group>"; };
+		C713E6C5234C768500852889 /* WxAndZfbViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WxAndZfbViewController.m; sourceTree = "<group>"; };
+		C713E6C6234C768500852889 /* WxAndZfbViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WxAndZfbViewController.xib; sourceTree = "<group>"; };
+		C7140D34234EE2E90041E7D0 /* BlueToothSearchToolsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueToothSearchToolsViewController.h; sourceTree = "<group>"; };
+		C7140D35234EE2E90041E7D0 /* BlueToothSearchToolsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueToothSearchToolsViewController.m; sourceTree = "<group>"; };
+		C7140D36234EE2E90041E7D0 /* BlueToothSearchToolsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlueToothSearchToolsViewController.xib; sourceTree = "<group>"; };
 		C714D81A2328903B008B48FD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C714D81C23289059008B48FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C714D81E2328906C008B48FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -521,6 +535,12 @@
 		C72B11DB23264DC800BE5672 /* OrdinaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdinaryTableViewCell.h; sourceTree = "<group>"; };
 		C72B11DC23264DC900BE5672 /* OrdinaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrdinaryTableViewCell.xib; sourceTree = "<group>"; };
 		C72B11DD23264DC900BE5672 /* OrdinaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdinaryTableViewCell.m; sourceTree = "<group>"; };
+		C738F44F234DCA37003006E6 /* UserCertificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCertificationViewController.h; sourceTree = "<group>"; };
+		C738F450234DCA37003006E6 /* UserCertificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCertificationViewController.m; sourceTree = "<group>"; };
+		C738F451234DCA37003006E6 /* UserCertificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCertificationViewController.xib; sourceTree = "<group>"; };
+		C738F454234DCAE1003006E6 /* UserStatementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserStatementViewController.h; sourceTree = "<group>"; };
+		C738F455234DCAE1003006E6 /* UserStatementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserStatementViewController.m; sourceTree = "<group>"; };
+		C738F456234DCAE1003006E6 /* UserStatementViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserStatementViewController.xib; sourceTree = "<group>"; };
 		C73ABACA233B161E003450AB /* AreaPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaPickerView.h; sourceTree = "<group>"; };
 		C73ABACC233B161F003450AB /* AreaPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaPickerView.m; sourceTree = "<group>"; };
 		C73ABACF233B1859003450AB /* AreaPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AreaPickerView.xib; sourceTree = "<group>"; };
@@ -718,7 +738,7 @@
 		C7FCCBBC231E100D00BCFE15 /* ForgetPWViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPWViewController.xib; sourceTree = "<group>"; };
 		C7FCCBBD231E100E00BCFE15 /* ForgetPWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPWViewController.h; sourceTree = "<group>"; };
 		C7FCCBC1231E1A0200BCFE15 /* WxAndZfbTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WxAndZfbTableViewController.h; sourceTree = "<group>"; };
-		C7FCCBC2231E1A0200BCFE15 /* WxAndZfbTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WxAndZfbTableViewController.m; sourceTree = "<group>"; };
+		C7FCCBC2231E1A0200BCFE15 /* WxAndZfbTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WxAndZfbTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		C7FCCBC3231E1A0200BCFE15 /* WxAndZfbTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WxAndZfbTableViewController.xib; sourceTree = "<group>"; };
 		C7FCCBC7231E322400BCFE15 /* WxAndZfbTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WxAndZfbTableViewCell.h; sourceTree = "<group>"; };
 		C7FCCBC8231E322400BCFE15 /* WxAndZfbTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WxAndZfbTableViewCell.m; sourceTree = "<group>"; };
@@ -1153,6 +1173,7 @@
 		C712CEF22334739B00D8DFE1 /* 组件 */ = {
 			isa = PBXGroup;
 			children = (
+				C738F459234DCD4F003006E6 /* 废弃页面（与第三方键盘兼容问题） */,
 				C712CEFB23347F5900D8DFE1 /* 选择银行 */,
 				C712CEFA23347F5100D8DFE1 /* 选择行业 */,
 				C712CEF923347F0300D8DFE1 /* 选择省市 */,
@@ -1218,6 +1239,26 @@
 				C712CF182334CB5B00D8DFE1 /* GYNoticeViewCell.h */,
 			);
 			path = "GYRollingNoticeView滚动公告";
+			sourceTree = "<group>";
+		};
+		C713E6C9234C79D500852889 /* 废弃（与第三方键盘兼容问题） */ = {
+			isa = PBXGroup;
+			children = (
+				C7FCCBC1231E1A0200BCFE15 /* WxAndZfbTableViewController.h */,
+				C7FCCBC2231E1A0200BCFE15 /* WxAndZfbTableViewController.m */,
+				C7FCCBC3231E1A0200BCFE15 /* WxAndZfbTableViewController.xib */,
+			);
+			path = "废弃（与第三方键盘兼容问题）";
+			sourceTree = "<group>";
+		};
+		C7140D39234EE3E60041E7D0 /* 废弃 */ = {
+			isa = PBXGroup;
+			children = (
+				C75B70E82322423E00DC6AD3 /* BlueToothSearchToolsTableViewController.h */,
+				C75B70E92322423E00DC6AD3 /* BlueToothSearchToolsTableViewController.m */,
+				C75B70EA2322423E00DC6AD3 /* BlueToothSearchToolsTableViewController.xib */,
+			);
+			path = "废弃";
 			sourceTree = "<group>";
 		};
 		C714D8202328939B008B48FD /* tianyuSDK */ = {
@@ -1438,6 +1479,19 @@
 			path = opencv310;
 			sourceTree = "<group>";
 		};
+		C738F459234DCD4F003006E6 /* 废弃页面（与第三方键盘兼容问题） */ = {
+			isa = PBXGroup;
+			children = (
+				C7441A852320DE9C009736EF /* UserCertificationTableViewController.h */,
+				C7441A862320DE9C009736EF /* UserCertificationTableViewController.m */,
+				C7441A872320DE9C009736EF /* UserCertificationTableViewController.xib */,
+				C764B2E62320EE6000FCA7D3 /* UserStatementTableViewController.h */,
+				C764B2E42320EE6000FCA7D3 /* UserStatementTableViewController.m */,
+				C764B2E52320EE6000FCA7D3 /* UserStatementTableViewController.xib */,
+			);
+			path = "废弃页面（与第三方键盘兼容问题）";
+			sourceTree = "<group>";
+		};
 		C7441A6F2320B91B009736EF /* 用户详情 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1466,12 +1520,12 @@
 			isa = PBXGroup;
 			children = (
 				C712CEF22334739B00D8DFE1 /* 组件 */,
-				C7441A852320DE9C009736EF /* UserCertificationTableViewController.h */,
-				C7441A862320DE9C009736EF /* UserCertificationTableViewController.m */,
-				C7441A872320DE9C009736EF /* UserCertificationTableViewController.xib */,
-				C764B2E62320EE6000FCA7D3 /* UserStatementTableViewController.h */,
-				C764B2E42320EE6000FCA7D3 /* UserStatementTableViewController.m */,
-				C764B2E52320EE6000FCA7D3 /* UserStatementTableViewController.xib */,
+				C738F44F234DCA37003006E6 /* UserCertificationViewController.h */,
+				C738F450234DCA37003006E6 /* UserCertificationViewController.m */,
+				C738F451234DCA37003006E6 /* UserCertificationViewController.xib */,
+				C738F454234DCAE1003006E6 /* UserStatementViewController.h */,
+				C738F455234DCAE1003006E6 /* UserStatementViewController.m */,
+				C738F456234DCAE1003006E6 /* UserStatementViewController.xib */,
 				C764B2F12320F4E500FCA7D3 /* UserShopDetailTableViewController.h */,
 				C764B2F22320F4E500FCA7D3 /* UserShopDetailTableViewController.m */,
 				C764B2F32320F4E500FCA7D3 /* UserShopDetailTableViewController.xib */,
@@ -1514,9 +1568,10 @@
 		C75B70E72322417400DC6AD3 /* 机具搜索 */ = {
 			isa = PBXGroup;
 			children = (
-				C75B70E82322423E00DC6AD3 /* BlueToothSearchToolsTableViewController.h */,
-				C75B70E92322423E00DC6AD3 /* BlueToothSearchToolsTableViewController.m */,
-				C75B70EA2322423E00DC6AD3 /* BlueToothSearchToolsTableViewController.xib */,
+				C7140D39234EE3E60041E7D0 /* 废弃 */,
+				C7140D34234EE2E90041E7D0 /* BlueToothSearchToolsViewController.h */,
+				C7140D35234EE2E90041E7D0 /* BlueToothSearchToolsViewController.m */,
+				C7140D36234EE2E90041E7D0 /* BlueToothSearchToolsViewController.xib */,
 				C75B70F823224A8900DC6AD3 /* BindToolsViewController.h */,
 				C75B70F923224A8900DC6AD3 /* BindToolsViewController.m */,
 				C75B70FA23224A8900DC6AD3 /* BindToolsViewController.xib */,
@@ -1791,13 +1846,14 @@
 		C7FCCBC0231E199F00BCFE15 /* 支付流程 */ = {
 			isa = PBXGroup;
 			children = (
+				C713E6C9234C79D500852889 /* 废弃（与第三方键盘兼容问题） */,
 				C7FE5592231E405A00A44939 /* 组件 */,
 				C75B70D223223CF000DC6AD3 /* POSCollectionViewController.h */,
 				C75B70D323223CF000DC6AD3 /* POSCollectionViewController.m */,
 				C75B70D423223CF000DC6AD3 /* POSCollectionViewController.xib */,
-				C7FCCBC1231E1A0200BCFE15 /* WxAndZfbTableViewController.h */,
-				C7FCCBC2231E1A0200BCFE15 /* WxAndZfbTableViewController.m */,
-				C7FCCBC3231E1A0200BCFE15 /* WxAndZfbTableViewController.xib */,
+				C713E6C4234C768500852889 /* WxAndZfbViewController.h */,
+				C713E6C5234C768500852889 /* WxAndZfbViewController.m */,
+				C713E6C6234C768500852889 /* WxAndZfbViewController.xib */,
 				C7FE5598231E4C4F00A44939 /* QrCodeTableViewController.h */,
 				C7FE5599231E4C4F00A44939 /* QrCodeTableViewController.m */,
 				C7FE559A231E4C4F00A44939 /* QrCodeTableViewController.xib */,
@@ -2229,6 +2285,7 @@
 				C712CF132334BABE00D8DFE1 /* searchIcon@3x.png in Resources */,
 				C7159BEE2321F76000AD9D21 /* MyPOSViewController.xib in Resources */,
 				C769991F231D0A0300424AD3 /* pinkIcon@3x.png in Resources */,
+				C7140D38234EE2E90041E7D0 /* BlueToothSearchToolsViewController.xib in Resources */,
 				C75B70DD23223EA500DC6AD3 /* toolsBG@3x.png in Resources */,
 				C79FC5C7231FE4C0003E9991 /* setPerson@3x.png in Resources */,
 				C701CCCF2320A27E003F120E /* lines@3x.png in Resources */,
@@ -2254,6 +2311,7 @@
 				C7FE55A5231E52DE00A44939 /* qrCodeArea@2x.png in Resources */,
 				C7699978231D1D8000424AD3 /* row4@2x.png in Resources */,
 				C764B2F52320F4E600FCA7D3 /* UserShopDetailTableViewController.xib in Resources */,
+				C738F453234DCA37003006E6 /* UserCertificationViewController.xib in Resources */,
 				C79FC5C3231FE438003E9991 /* logoInPerson@3x.png in Resources */,
 				C764B2EC2320EFC600FCA7D3 /* progressStepTwo@2x.png in Resources */,
 				C75B710023224C8100DC6AD3 /* waringBind@2x.png in Resources */,
@@ -2321,6 +2379,7 @@
 				C7441A952320E3AA009736EF /* lineSharder.png in Resources */,
 				C7ACE40B231E93390033DF5F /* ConfirmSignViewController.xib in Resources */,
 				C7159BF32321F78400AD9D21 /* DebitCardViewController.xib in Resources */,
+				C713E6C8234C768500852889 /* WxAndZfbViewController.xib in Resources */,
 				C764B2DD2320E98200FCA7D3 /* noRedio@3x.png in Resources */,
 				C7FCCBCB231E322400BCFE15 /* WxAndZfbTableViewCell.xib in Resources */,
 				C75B70FC23224A8900DC6AD3 /* BindToolsViewController.xib in Resources */,
@@ -2368,6 +2427,7 @@
 				13409439221E6CA2000B4B54 /* MainViewController.xib in Resources */,
 				C7441A7A2320BADF009736EF /* UserCenterTableViewCell.xib in Resources */,
 				C7441A892320DE9C009736EF /* UserCertificationTableViewController.xib in Resources */,
+				C738F458234DCAE1003006E6 /* UserStatementViewController.xib in Resources */,
 				C79FC5CA231FE60D003E9991 /* morUserInfo@3x.png in Resources */,
 				C764B2EB2320EFC600FCA7D3 /* progressStepTwo@3x.png in Resources */,
 				C764B2FE2320F61E00FCA7D3 /* progressStepThree@3x.png in Resources */,
@@ -2462,6 +2522,7 @@
 				C764B2F42320F4E600FCA7D3 /* UserShopDetailTableViewController.m in Sources */,
 				C72B11802325FDAB00BE5672 /* WSLScanView.m in Sources */,
 				C7FF8B7E231FA23A0046379B /* TimeView.m in Sources */,
+				C7140D37234EE2E90041E7D0 /* BlueToothSearchToolsViewController.m in Sources */,
 				D5FDB77F226078E20091DD1C /* UIImage+UIImage_GradientChange.m in Sources */,
 				C7FCCBBE231E100E00BCFE15 /* ForgetPWViewController.m in Sources */,
 				C7FF8B75231F66740046379B /* Main1TableViewCell.m in Sources */,
@@ -2476,6 +2537,7 @@
 				D501C8832260285B009179F6 /* TradingViewController.m in Sources */,
 				C7FF8B8D231FD1CB0046379B /* TradDetailTableViewCell.m in Sources */,
 				D5AB05272289584A00F33533 /* GetXToken.m in Sources */,
+				C713E6C7234C768500852889 /* WxAndZfbViewController.m in Sources */,
 				C764B2F92320F4FA00FCA7D3 /* UserShopDetailTableViewCell.m in Sources */,
 				C7FCCBCA231E322400BCFE15 /* WxAndZfbTableViewCell.m in Sources */,
 				D5FDB779226076300091DD1C /* UINavigationController+SXFullScreen.m in Sources */,
@@ -2496,6 +2558,7 @@
 				C712CF0E2334AB6A00D8DFE1 /* BankSelectTableViewCell.m in Sources */,
 				C7441A882320DE9C009736EF /* UserCertificationTableViewController.m in Sources */,
 				C7159BED2321F76000AD9D21 /* MyPOSViewController.m in Sources */,
+				C738F457234DCAE1003006E6 /* UserStatementViewController.m in Sources */,
 				1340940E221E6975000B4B54 /* main.m in Sources */,
 				C7441A792320BADF009736EF /* UserCenterTableViewCell.m in Sources */,
 				C7FE55A9231E5DD100A44939 /* PayResultViewController.m in Sources */,
@@ -2558,6 +2621,7 @@
 				C712CF1A2334CB5B00D8DFE1 /* GYRollingNoticeView.m in Sources */,
 				C75B70F12322430500DC6AD3 /* BlueToothSearchToolsTableViewCell.m in Sources */,
 				D5FDB77C226076300091DD1C /* MyTools.m in Sources */,
+				C738F452234DCA37003006E6 /* UserCertificationViewController.m in Sources */,
 				D51F3672226030F1009A30B5 /* UIView+WFLine.m in Sources */,
 				D51F3673226030F1009A30B5 /* UIColor+WFHex.m in Sources */,
 				C7441A732320B972009736EF /* UserSenterTableViewController.m in Sources */,
