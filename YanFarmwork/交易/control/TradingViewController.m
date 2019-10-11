@@ -54,7 +54,7 @@
     
     [self createTableView];
     
-    [self requestForTradList];
+   
 }
 
 - (void)createTableView {
@@ -95,11 +95,15 @@
 {
     _page = 1;
     
+     [self requestForTradList];
+    
     [self mjRefreshStopWhenTen];
 }
 - (void)upDown
 {
     _page ++;
+    
+     [self requestForTradList];
     
     [self mjRefreshStopWhenTen];
 }
@@ -317,6 +321,10 @@
             }else{
                 if ([[responseObject objectForKey:@"rspData"] count] == 0) {
                     [ToolsObject showMessageTitle:@"没有更多了哦" andDelay:1.0f andImage:nil];
+                    
+                    [self tableEndRefresh];
+                    
+                    return ;
                 }
                 
                 [wSelf.tradListArray addObjectsFromArray:[responseObject objectForKey:@"rspData"]];

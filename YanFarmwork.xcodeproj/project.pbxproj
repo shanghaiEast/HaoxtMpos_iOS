@@ -65,6 +65,8 @@
 		C713E6C8234C768500852889 /* WxAndZfbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C713E6C6234C768500852889 /* WxAndZfbViewController.xib */; };
 		C7140D37234EE2E90041E7D0 /* BlueToothSearchToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7140D35234EE2E90041E7D0 /* BlueToothSearchToolsViewController.m */; };
 		C7140D38234EE2E90041E7D0 /* BlueToothSearchToolsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7140D36234EE2E90041E7D0 /* BlueToothSearchToolsViewController.xib */; };
+		C7140D3C234F197C0041E7D0 /* testIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7140D3A234F197C0041E7D0 /* testIcon@2x.png */; };
+		C7140D3D234F197C0041E7D0 /* testIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7140D3B234F197C0041E7D0 /* testIcon@3x.png */; };
 		C714D81B2328903B008B48FD /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714D81A2328903B008B48FD /* CoreBluetooth.framework */; };
 		C714D81D23289059008B48FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714D81C23289059008B48FD /* AudioToolbox.framework */; };
 		C714D81F2328906D008B48FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714D81E2328906C008B48FD /* MediaPlayer.framework */; };
@@ -458,6 +460,8 @@
 		C7140D34234EE2E90041E7D0 /* BlueToothSearchToolsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueToothSearchToolsViewController.h; sourceTree = "<group>"; };
 		C7140D35234EE2E90041E7D0 /* BlueToothSearchToolsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueToothSearchToolsViewController.m; sourceTree = "<group>"; };
 		C7140D36234EE2E90041E7D0 /* BlueToothSearchToolsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlueToothSearchToolsViewController.xib; sourceTree = "<group>"; };
+		C7140D3A234F197C0041E7D0 /* testIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "testIcon@2x.png"; sourceTree = "<group>"; };
+		C7140D3B234F197C0041E7D0 /* testIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "testIcon@3x.png"; sourceTree = "<group>"; };
 		C714D81A2328903B008B48FD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C714D81C23289059008B48FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C714D81E2328906C008B48FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -1866,6 +1870,8 @@
 				C7ACE407231E93390033DF5F /* ConfirmSignViewController.h */,
 				C7ACE408231E93390033DF5F /* ConfirmSignViewController.m */,
 				C7ACE409231E93390033DF5F /* ConfirmSignViewController.xib */,
+				C7140D3A234F197C0041E7D0 /* testIcon@2x.png */,
+				C7140D3B234F197C0041E7D0 /* testIcon@3x.png */,
 				C7FF8B77231F93F30046379B /* priceRMB@2x.png */,
 				C7FF8B78231F93F30046379B /* priceRMB@3x.png */,
 				C7FCCBC6231E1CB900BCFE15 /* cell */,
@@ -2314,6 +2320,7 @@
 				C738F453234DCA37003006E6 /* UserCertificationViewController.xib in Resources */,
 				C79FC5C3231FE438003E9991 /* logoInPerson@3x.png in Resources */,
 				C764B2EC2320EFC600FCA7D3 /* progressStepTwo@2x.png in Resources */,
+				C7140D3C234F197C0041E7D0 /* testIcon@2x.png in Resources */,
 				C75B710023224C8100DC6AD3 /* waringBind@2x.png in Resources */,
 				C7441A6E2320B911009736EF /* userCenterBG@2x.png in Resources */,
 				C7441A9C2320E539009736EF /* idCardFM@3x.png in Resources */,
@@ -2397,6 +2404,7 @@
 				C7441A982320E4F5009736EF /* idCardZM@3x.png in Resources */,
 				C764B2FD2320F61E00FCA7D3 /* progressStepThree@2x.png in Resources */,
 				C79FC5C6231FE4C0003E9991 /* setPerson@2x.png in Resources */,
+				C7140D3D234F197C0041E7D0 /* testIcon@3x.png in Resources */,
 				C7D256DB23220BAE002A3569 /* linesListBG@3x.png in Resources */,
 				C7FCCBD2231E388E00BCFE15 /* unChooseRound@3x.png in Resources */,
 				C701CCCA2320A27E003F120E /* myPos@3x.png in Resources */,

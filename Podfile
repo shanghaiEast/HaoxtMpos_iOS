@@ -20,6 +20,9 @@ pod 'QRCode', '~> 2.0'
 pod 'LYEmptyView', '~> 1.3.0'
 pod 'BMKLocationKit', '~> 1.7.0'
 pod 'IQKeyboardManager', '~> 6.4.0'
+pod 'XNProgressHUD', '~> 1.1.1'
+
+
 
 
 

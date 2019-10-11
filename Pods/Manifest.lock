@@ -42,6 +42,7 @@ PODS:
     - SDWebImage/Core (= 4.1.2)
   - SDWebImage/Core (4.1.2)
   - SVProgressHUD (2.2.2)
+  - XNProgressHUD (1.1.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - SBJson (~> 5.0.0)
   - SDWebImage (~> 4.1.2)
   - SVProgressHUD (~> 2.2.2)
+  - XNProgressHUD (~> 1.1.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -84,6 +86,7 @@ SPEC REPOS:
     - SBJson
     - SDWebImage
     - SVProgressHUD
+    - XNProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -106,7 +109,8 @@ SPEC CHECKSUMS:
   SBJson: 73c848dc34be51fda282fab12bda6c426f5ead08
   SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  XNProgressHUD: 5b9a7f1a484af6db05af1463ae00a00b645c1468
 
-PODFILE CHECKSUM: 0ccc16483cbd60c9fcbea91bd000e02067c3a4a0
+PODFILE CHECKSUM: bfb75d07669327dc82e494256bbbecc56d5c332d
 
 COCOAPODS: 1.7.5

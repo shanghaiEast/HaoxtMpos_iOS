@@ -1058,7 +1058,7 @@ static inline CGFLOAT_TYPE CGFloat_ceil(CGFLOAT_TYPE cgfloat) {
     
     hud.animationType = MBProgressHUDAnimationZoomOut;
     
-    hud.detailsLabel.font = [UIFont systemFontOfSize:16];
+    hud.detailsLabel.font = [UIFont systemFontOfSize:14];
     
     hud.detailsLabel.text = title;
     

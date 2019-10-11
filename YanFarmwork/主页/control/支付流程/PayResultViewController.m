@@ -47,14 +47,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [ToolsObject disableTheSideslip:self];
+//    [ToolsObject disableTheSideslip:self];
+//    
+//    if (_payWayTag == 2) {
+//        [self showDrawView];
+//    }else{
+//        [self requestTrading:_scanString];
+//    }
     
-    if (_payWayTag == 2) {
-        [self showDrawView];
-    }else{
-        [self requestTrading:_scanString];
-    }
-    
+    [ToolsObject showMessageTitle:@"订单查询中" andDelay:5 andImage:@"testIcon.png"];
 }
 
 - (void)createView{

@@ -105,7 +105,7 @@
 //    15512345678    z123456
 
     
-//    UserStatementViewController *resultVC = [[UserStatementViewController alloc] initWithNibName:@"UserStatementViewController" bundle:nil];
+//    PayResultViewController *resultVC = [[PayResultViewController alloc] initWithNibName:@"PayResultViewController" bundle:nil];
 //    resultVC.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:resultVC animated:YES];
     
@@ -174,12 +174,7 @@
         [self requestGetNotices];
         [self requestReceive];
     }
-    
-    
 }
-
-
-
 
 - (void)createTableView {
     //table view
