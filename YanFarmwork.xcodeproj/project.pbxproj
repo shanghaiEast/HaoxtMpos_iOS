@@ -1989,7 +1989,6 @@
 		D501C87422602807009179F6 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				D501C8822260285B009179F6 /* TradingViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2000,6 +1999,7 @@
 				C7FF8B6C231F62660046379B /* 组件 */,
 				D501C8802260285B009179F6 /* TradingViewController.h */,
 				D501C8812260285B009179F6 /* TradingViewController.m */,
+				D501C8822260285B009179F6 /* TradingViewController.xib */,
 				C7FF8B85231FD1920046379B /* TradDetailTableViewController.h */,
 				C7FF8B87231FD1920046379B /* TradDetailTableViewController.m */,
 				C7FF8B86231FD1920046379B /* TradDetailTableViewController.xib */,
